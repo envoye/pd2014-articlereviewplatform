@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/Abr/2014 23:30:40 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Conferenciacomiteartigoforummensagem" table="conferenciacomiteartigoforummensagem" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="conferenciacomiteartigoforum" class="HibernatePackage.Conferenciacomiteartigoforum" fetch="select">
+            <column name="idConferenciaComiteArtigoForum" not-null="true" />
+        </many-to-one>
+        <many-to-one name="investigador" class="HibernatePackage.Investigador" fetch="select">
+            <column name="idInvestigador" not-null="true" />
+        </many-to-one>
+        <property name="data" type="timestamp">
+            <column name="data" length="19" />
+        </property>
+        <property name="mensagem" type="string">
+            <column name="mensagem" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>
