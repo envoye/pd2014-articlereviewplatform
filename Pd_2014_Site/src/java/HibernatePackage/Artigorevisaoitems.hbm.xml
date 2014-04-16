@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/Abr/2014 23:30:40 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Artigorevisaoitems" table="artigorevisaoitems" catalog="pd_2014">
+        <composite-id name="id" class="HibernatePackage.ArtigorevisaoitemsId">
+            <key-property name="idArtigoRevisao" type="int">
+                <column name="idArtigoRevisao" />
+            </key-property>
+            <key-property name="idItemRevisao" type="int">
+                <column name="idItemRevisao" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="artigorevisao" class="HibernatePackage.Artigorevisao" update="false" insert="false" fetch="select">
+            <column name="idArtigoRevisao" not-null="true" />
+        </many-to-one>
+        <many-to-one name="itemrevisao" class="HibernatePackage.Itemrevisao" update="false" insert="false" fetch="select">
+            <column name="idItemRevisao" not-null="true" />
+        </many-to-one>
+        <property name="classificacao" type="java.lang.Byte">
+            <column name="classificacao" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>
