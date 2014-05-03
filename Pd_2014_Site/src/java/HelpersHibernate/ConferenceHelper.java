@@ -22,11 +22,12 @@ public class ConferenceHelper<T> {
     public ConferenceHelper() {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
- public List<T> getConferences(T t) {
+ public List<T> getConferences(String tipo) {
     List<T> conferenciaList = null;
     try {
         org.hibernate.Transaction tx = session.beginTransaction();
-        Query q = session.createQuery ("from " + t.getClass().toString());
+        //t.getClass().toString()
+        Query q = session.createQuery ("from " + tipo);
         conferenciaList = (List<T>) q.list();
     } catch (Exception e) {
         e.printStackTrace();
