@@ -4,42 +4,111 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       >
-
+  
     <body>
 
         <ui:composition template="./WEB-INF/LoginTemplate.xhtml">
 
             <ui:define name="top">
-                
-                  <div class="boxLogin">
+
+                <div class="boxLogin">
                     <h:form class="jqtransform">
-                        <div class="rowElem">            
-                            <h:outputLabel for="usernameInput">Utilizador:
+                         <ul><li>
+                        <div class="rowElem"> 
+                           
+                            <h:outputLabel for="NomeInput">
+                                Nome:
                             </h:outputLabel>
-                            <h:inputText id="usernameInput" value="#{loginBean.username}" 
+                            <h:inputText id="NomeInput" value="#{registarBean.nome}" 
                                          required="true" />
                             <br />
-                        </div>  
+                        </div> 
+</li></ul>
                         <div class="rowElem">    
-                            <h:outputLabel for="passwordInput">
-                                Password:
+                            <h:outputLabel for="instituicaoInput">
+                                Instituicao:
                             </h:outputLabel>
-                            <h:inputSecret id="passwordInput" value="#{loginBean.password}" 
+                            <h:inputText id="instituicaoInput" value="#{registarBean.instituicao}" 
                                            required="true" />
                             <br />
-                        </div>  
+                        </div> 
+
+                        <div class="rowElem">    
+                            <h:outputLabel for="datanascimentoInput">
+                                Datanascimento:
+                            </h:outputLabel>
+                            <h:inputText id="datanascimentoInput" value="#{registarBean.datanascimento}" 
+                                           required="true" />
+                            <br />
+                        </div> 
+
+                        
+                        <div class="rowElem">    
+                            <h:outputLabel for="utilizadorInput">
+                                utilizador:
+                            </h:outputLabel>
+                            <h:inputText id="utilizadorInput" value="#{registarBean.utilizador}" 
+                                           required="true" />
+                            <br />
+                        </div> 
+                        
+                        <div class="rowElem">    
+                            <h:outputLabel for="passwordInput">
+                                password:
+                            </h:outputLabel>
+                            <h:inputSecret id="passwordInput" value="#{registarBean.password}" 
+                                           required="true" />
+                            <br />
+                        </div> 
+
+                        <div class="rowElem">    
+                            <h:outputLabel for="passwordconfInput">
+                                confirmação de password :
+                            </h:outputLabel>
+                            <h:inputSecret id="passwordconfInput" value="#{registarBean.passwordconf}" 
+                                           required="true" />
+                            <br />
+                        </div> 
+                        
+                        <div class="rowElem">    
+                            <h:outputLabel for="emailInput">
+                                email:
+                            </h:outputLabel>
+                            <h:inputText id="emailInput" value="#{registarBean.email}" 
+                                           required="true" />
+                            <br />
+                        </div>
+                        
+                        <div class="rowElem">    
+                            <h:outputLabel for="telefoneInput">
+                                telefone:
+                            </h:outputLabel>
+                            <h:inputText id="telefoneInput" value="#{registarBean.telefone}" 
+                                           required="true" />
+                            <br />
+                        </div>
+                        
+                        <div class="rowElem">    
+                            <h:outputLabel for="telemovelInput">
+                                telefone:
+                            </h:outputLabel>
+                            <h:inputText id="telemovelInput" value="#{registarBean.telemovel}" 
+                                           required="true" />
+                            <br />
+                        </div>
+                        
                         <div class="rowElem">  
-                            <h:commandButton value="Entrar"  action="#{loginBean.login}" />
+                            <h:commandButton value="Entrar"   />
                         </div>
                         <label for="j_idt25:usernameInput"></label>
 
 
                     </h:form>
-                    
-                  
+
+
                 </div>
-                
-                
+
+
             </ui:define>
 
             <ui:define name="left">
