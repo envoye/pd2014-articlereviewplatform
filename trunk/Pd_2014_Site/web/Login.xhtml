@@ -11,21 +11,30 @@
 
             <ui:define name="top">
                 <div class="boxLogin">
-                 <h:form>
-    <h:outputLabel for="usernameInput">Username:
-    </h:outputLabel>
-    <h:inputText id="usernameInput" value="#{loginBean.username}" 
-                 required="true" />
-    <br />
-    <h:outputLabel for="passwordInput">
-        Password:
-    </h:outputLabel>
-    <h:inputSecret id="passwordInput" value="#{loginBean.password}" 
-                   required="true" />
-    <br />
-    <h:commandButton value="Submit"  action="#{loginBean.login}" />
-</h:form>
-                    
+                    <h:form class="jqtransform">
+                        <div class="rowElem">            
+                            <h:outputLabel for="usernameInput">Username:
+                            </h:outputLabel>
+                            <h:inputText id="usernameInput" value="#{loginBean.username}" 
+                                         required="true" />
+                            <br />
+                        </div>  
+                        <div class="rowElem">    
+                            <h:outputLabel for="passwordInput">
+                                Password:
+                            </h:outputLabel>
+                            <h:inputSecret id="passwordInput" value="#{loginBean.password}" 
+                                           required="true" />
+                            <br />
+                        </div>  
+                        <div class="rowElem">  
+                            <h:commandButton value="Submit"  action="#{loginBean.login}" />
+                        </div>
+                        <label for="j_idt25:usernameInput"></label>
+
+
+                    </h:form>
+
                 </div>
             </ui:define>
 
