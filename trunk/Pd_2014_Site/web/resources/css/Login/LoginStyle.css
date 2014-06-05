@@ -1,0 +1,16 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5/Jun/2014, 9:24:11
+    Author     : Carlos
+*/
+
+div.boxLogin {
+    width: 100%;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0px;
+}
