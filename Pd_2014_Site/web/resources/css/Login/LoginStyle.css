@@ -14,3 +14,9 @@ div.boxLogin {
     border: 5px solid gray;
     margin: 0px;
 }
+div.boxLink {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid gray;
+    margin: 0px;
+}
