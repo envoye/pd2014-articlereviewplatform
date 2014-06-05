@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 $( document ).ready(function() {
-   alert("script");
+  
     $("form.jqtransform").jqTransform();
-    alert("script1");
+    
 });
 
 
