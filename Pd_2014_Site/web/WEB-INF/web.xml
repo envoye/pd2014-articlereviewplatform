@@ -18,8 +18,15 @@
             30
         </session-timeout>
     </session-config>
+    <filter>
+        <filter-name>FiltroDeEntrada</filter-name>
+        <filter-class>Filtro.FiltroDeEntrada</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FiltroDeEntrada</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 </web-app>
