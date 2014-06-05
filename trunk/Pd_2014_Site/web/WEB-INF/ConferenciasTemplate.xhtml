@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/5grid/core.css" />
+        <h:outputStylesheet name="./css/5grid/core-desktop.css" />
+        <h:outputStylesheet name="./css/5grid/core-1200px.css" />
+        <h:outputStylesheet name="./css/5grid/core-noscript.css" />
+        <h:outputStylesheet name="./css/style.css" />
+        <h:outputStylesheet name="./css/style-desktop.css" />
+        <h:outputStylesheet name="./css/Menu/styles.css" />
+        <h:outputScript name="./css/5grid/jquery.js"/>
+        <h:outputScript name="./css/Menu/menu_jquery.js"/>
+        <h:outputScript name="./css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"/>
+        <h:outputScript  name="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/> 
+        <title><ui:insert name="title" /></title>
+    </h:head>
+
+    <h:body>
+
+        <div id="header-wrapper">
+            <header id="header">
+                <div class="5grid-layout">
+                    <div class="row">
+                        <div class="4u" id="logo">
+                            <h1><a href="#" class="mobileUI-site-name">Conference Team Manager</a></h1>
+                            <p>manage your conference team</p>
+
+                        </div>
+                        <div class="8u" id="menu">
+                            <nav class="mobileUI-site-nav">
+                                <ul>
+                                    <li><a href="PaginaPrincipal.xhtml">Principal</a></li>
+                                    <li class="current_page_item"><a href="Conferencias.xhtml">Conferências</a></li>
+                                    <li><a href="AreaPessoal.xhtml">Área Pessoal</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+            <div id="top">
+                <ui:insert name="top">Top</ui:insert>
+            </div>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">Left</ui:insert>
+                </div>
+                <div id="content" class="left_content">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
+            </div>
+            <div id="bottom">
+                <ui:insert name="bottom">Bottom</ui:insert>
+            </div>
+
+    </h:body>
+
+</html>
