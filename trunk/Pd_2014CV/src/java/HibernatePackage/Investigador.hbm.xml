@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Investigador" table="investigador" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="grauacademico" class="HibernatePackage.Grauacademico" fetch="select">
+            <column name="idGrauacademico" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="50" not-null="true" />
+        </property>
+        <property name="instituicao" type="string">
+            <column name="instituicao" length="150" />
+        </property>
+        <property name="datanascimento" type="timestamp">
+            <column name="datanascimento" length="19" not-null="true" />
+        </property>
+        <property name="utilizador" type="string">
+            <column name="utilizador" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="150" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="telefone" length="45" />
+        </property>
+        <property name="telemovel" type="string">
+            <column name="telemovel" length="45" />
+        </property>
+        <set name="conferenciacomiteartigoforummensagems" table="conferenciacomiteartigoforummensagem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvestigador" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciacomiteartigoforummensagem" />
+        </set>
+        <set name="investigadorareaconhecimentos" table="investigadorareaconhecimento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvestigador" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Investigadorareaconhecimento" />
+        </set>
+        <set name="contactos" table="contacto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvestigador" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Contacto" />
+        </set>
+        <set name="conferenciapoolrevisoreses" table="conferenciapoolrevisores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvestigador" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciapoolrevisores" />
+        </set>
+        <set name="artigoautoreses" table="artigoautores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvestigador" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Artigoautores" />
+        </set>
+        <set name="conferenciacomites" table="conferenciacomite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idInvestigador" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciacomite" />
+        </set>
+    </class>
+</hibernate-mapping>

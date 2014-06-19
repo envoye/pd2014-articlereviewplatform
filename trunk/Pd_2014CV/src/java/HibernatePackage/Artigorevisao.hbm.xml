@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Artigorevisao" table="artigorevisao" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="conferenciacomiteartigo" class="HibernatePackage.Conferenciacomiteartigo" fetch="select">
+            <column name="idConferenciaComiteArtigo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="conferenciapoolrevisores" class="HibernatePackage.Conferenciapoolrevisores" fetch="select">
+            <column name="idConferenciaPoolRevisores" not-null="true" />
+        </many-to-one>
+        <property name="preferencia" type="java.lang.Byte">
+            <column name="preferencia" />
+        </property>
+        <property name="estadoRevisor" type="java.lang.Boolean">
+            <column name="estadoRevisor" />
+        </property>
+        <property name="estadoAuto" type="java.lang.Boolean">
+            <column name="estadoAuto" />
+        </property>
+        <property name="estadoGc" type="java.lang.Boolean">
+            <column name="estadoGC" />
+        </property>
+        <property name="pontuacao" type="java.lang.Byte">
+            <column name="pontuacao" />
+        </property>
+        <set name="artigorevisaoitemses" table="artigorevisaoitems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArtigoRevisao" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Artigorevisaoitems" />
+        </set>
+    </class>
+</hibernate-mapping>

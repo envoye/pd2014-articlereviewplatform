@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Artigo" table="artigo" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="subtema" class="HibernatePackage.Subtema" fetch="select">
+            <column name="idArea" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="titulo" length="150" />
+        </property>
+        <property name="resumo" type="string">
+            <column name="resumo" length="65535" />
+        </property>
+        <property name="data" type="timestamp">
+            <column name="data" length="19" />
+        </property>
+        <property name="link" type="string">
+            <column name="link" length="150" />
+        </property>
+        <property name="ficheiroPdf" type="binary">
+            <column name="ficheiroPDF" />
+        </property>
+        <set name="conferenciaartigos" table="conferenciaartigo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArtigo" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciaartigo" />
+        </set>
+        <set name="artigopalavrachaves" table="artigopalavrachave" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArtigo" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Artigopalavrachave" />
+        </set>
+        <set name="conferenciacomiteartigos" table="conferenciacomiteartigo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArtigo" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciacomiteartigo" />
+        </set>
+        <set name="artigoautoreses" table="artigoautores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArtigo" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Artigoautores" />
+        </set>
+    </class>
+</hibernate-mapping>

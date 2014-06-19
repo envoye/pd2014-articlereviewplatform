@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Conferenciaedicao" table="conferenciaedicao" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tema" class="HibernatePackage.Tema" fetch="select">
+            <column name="idTema" not-null="true" />
+        </many-to-one>
+        <many-to-one name="conferencia" class="HibernatePackage.Conferencia" fetch="select">
+            <column name="idConferencia" not-null="true" />
+        </many-to-one>
+        <property name="subNomeConferencia" type="string">
+            <column name="subNomeConferencia" length="50" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" length="65535" not-null="true" />
+        </property>
+        <property name="data" type="timestamp">
+            <column name="data" length="19" />
+        </property>
+        <property name="local" type="string">
+            <column name="local" length="150" />
+        </property>
+        <property name="edicao" type="string">
+            <column name="edicao" length="50" />
+        </property>
+        <property name="dataLimiteSubmissao" type="timestamp">
+            <column name="dataLimiteSubmissao" length="19" />
+        </property>
+        <property name="maxArtigosRevisor" type="java.lang.Short">
+            <column name="maxArtigosRevisor" />
+        </property>
+        <property name="maxArtigos" type="java.lang.Short">
+            <column name="maxArtigos" />
+        </property>
+        <property name="configuracaoEncerrada" type="java.lang.Boolean">
+            <column name="configuracaoEncerrada" />
+        </property>
+        <set name="conferenciacomites" table="conferenciacomite" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idConferenciaEdicao" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciacomite" />
+        </set>
+        <set name="conferenciaartigos" table="conferenciaartigo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idConferenciaEdicao" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciaartigo" />
+        </set>
+        <set name="conferenciapoolrevisoreses" table="conferenciapoolrevisores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idConferenciaEdicao" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciapoolrevisores" />
+        </set>
+    </class>
+</hibernate-mapping>

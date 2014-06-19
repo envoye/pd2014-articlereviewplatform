@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Itemrevisao" table="itemrevisao" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeItem" type="string">
+            <column name="nomeItem" length="50" not-null="true" />
+        </property>
+        <property name="tipo" type="boolean">
+            <column name="tipo" not-null="true" />
+        </property>
+        <property name="privado" type="boolean">
+            <column name="privado" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" length="150" />
+        </property>
+        <set name="artigorevisaoitemses" table="artigorevisaoitems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idItemRevisao" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Artigorevisaoitems" />
+        </set>
+    </class>
+</hibernate-mapping>
