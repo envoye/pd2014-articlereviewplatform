@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Subtema" table="subtema" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tema" class="HibernatePackage.Tema" fetch="select">
+            <column name="IdTema" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="Nome" length="50" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="Descricao" length="65535" />
+        </property>
+        <set name="artigos" table="artigo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArea" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Artigo" />
+        </set>
+        <set name="investigadorareaconhecimentos" table="investigadorareaconhecimento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSubTema" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Investigadorareaconhecimento" />
+        </set>
+    </class>
+</hibernate-mapping>

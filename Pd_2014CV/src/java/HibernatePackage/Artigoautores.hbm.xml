@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Artigoautores" table="artigoautores" catalog="pd_2014">
+        <composite-id name="id" class="HibernatePackage.ArtigoautoresId">
+            <key-property name="idArtigo" type="int">
+                <column name="idArtigo" />
+            </key-property>
+            <key-property name="idInvestigador" type="int">
+                <column name="idInvestigador" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="artigo" class="HibernatePackage.Artigo" update="false" insert="false" fetch="select">
+            <column name="idArtigo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="investigador" class="HibernatePackage.Investigador" update="false" insert="false" fetch="select">
+            <column name="idInvestigador" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

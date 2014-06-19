@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Conferenciacomiteartigo" table="conferenciacomiteartigo" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="conferenciacomite" class="HibernatePackage.Conferenciacomite" fetch="select">
+            <column name="idConferenciaComite" not-null="true" />
+        </many-to-one>
+        <many-to-one name="artigo" class="HibernatePackage.Artigo" fetch="select">
+            <column name="idArtigo" not-null="true" />
+        </many-to-one>
+        <property name="estado" type="string">
+            <column name="estado" length="50" />
+        </property>
+        <property name="dataInicioLicitacao" type="timestamp">
+            <column name="dataInicioLicitacao" length="19" />
+        </property>
+        <property name="dataFimLicitacao" type="timestamp">
+            <column name="dataFimLicitacao" length="19" />
+        </property>
+        <property name="pontuacao" type="java.lang.Byte">
+            <column name="pontuacao" />
+        </property>
+        <property name="pontuacaoComite" type="java.lang.Byte">
+            <column name="pontuacaoComite" />
+        </property>
+        <set name="artigorevisaos" table="artigorevisao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idConferenciaComiteArtigo" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Artigorevisao" />
+        </set>
+        <set name="conferenciacomiteartigoforums" table="conferenciacomiteartigoforum" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idConferenciaComiteArtigo" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciacomiteartigoforum" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="HibernatePackage.Conferenciacomite" table="conferenciacomite" catalog="pd_2014">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="conferenciaedicao" class="HibernatePackage.Conferenciaedicao" fetch="select">
+            <column name="idConferenciaEdicao" not-null="true" />
+        </many-to-one>
+        <many-to-one name="investigador" class="HibernatePackage.Investigador" fetch="select">
+            <column name="idInvestigador" not-null="true" />
+        </many-to-one>
+        <property name="aceite" type="java.lang.Boolean">
+            <column name="aceite" />
+        </property>
+        <set name="conferenciacomiteartigos" table="conferenciacomiteartigo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idConferenciaComite" not-null="true" />
+            </key>
+            <one-to-many class="HibernatePackage.Conferenciacomiteartigo" />
+        </set>
+    </class>
+</hibernate-mapping>

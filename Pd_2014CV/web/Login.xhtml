@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      >
+
+    <body>
+
+        <ui:composition template="./WEB-INF/LoginTemplate.xhtml">
+
+            <ui:define name="title">
+                Conference Team Manager
+            </ui:define>
+            
+            <ui:define name="top">
+                <div class="boxLogin">
+                    <h:form class="jqtransform">
+                        <div class="rowElem">            
+                            <h:outputLabel for="usernameInput">
+                                Utilizador:
+                            </h:outputLabel>
+                            <h:inputText id="usernameInput" value="#{loginBean.username}" 
+                                         required="true" />
+                            <br />
+                        </div>  
+                        <div class="rowElem">    
+                            <h:outputLabel for="passwordInput">
+                                Password:
+                            </h:outputLabel>
+                            <h:inputSecret id="passwordInput" value="#{loginBean.password}" 
+                                           required="true" />
+                            <br />
+                        </div>  
+                        <div class="rowElem">  
+                            <h:commandButton value="Entrar"  action="#{registarBean.login}" />
+                        </div>
+                        
+
+
+                    </h:form>
+                    <div class="boxLink">
+                   <h:link value="Recuperar Password" outcome="index" />
+                   </div>
+                   <div class="boxLink">
+                   <h:link value="Registar" outcome="Registo" />
+                   </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+                content
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
