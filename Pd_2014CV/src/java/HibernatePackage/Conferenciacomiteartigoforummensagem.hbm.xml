@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 12/Jun/2014 22:28:50 by Hibernate Tools 3.6.0 -->
+<!-- Generated 21/Jun/2014 18:22:05 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="HibernatePackage.Conferenciacomiteartigoforummensagem" table="conferenciacomiteartigoforummensagem" catalog="pd_2014">
         <id name="id" type="java.lang.Integer">

@@ -11,6 +11,7 @@ import HelpersHibernate.InvestigadorHelper;
 import HibernatePackage.Grauacademico;
 import HibernatePackage.Investigador;
 import com.sun.org.apache.bcel.internal.generic.AllocationInstruction;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -157,11 +159,11 @@ public class RegistarBean {
         this.telemovel = telemovel;
     }
      
-  public String registar () {
+  public String registar ()  {
      
      AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
-  
-    return "index";
+ 
+    return "../../index";
   }
     
 }
