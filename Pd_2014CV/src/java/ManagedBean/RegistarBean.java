@@ -42,8 +42,9 @@ public class RegistarBean {
      private String telemovel;
      private String passwordconf;
      private int idGrauacademico;
-
-    public int getIdGrauacademico() {
+     private List<Grauacademico> listGrauacademico; 
+     
+     public int getIdGrauacademico() {
         return idGrauacademico;
     }
 
@@ -71,7 +72,7 @@ public class RegistarBean {
         this.listGrauacademico = listGrauacademico;
         
     }
-     private List<Grauacademico> listGrauacademico;                    
+                        
     public void setPasswordconf(String passwordconf) {
         this.passwordconf = passwordconf;
     }
