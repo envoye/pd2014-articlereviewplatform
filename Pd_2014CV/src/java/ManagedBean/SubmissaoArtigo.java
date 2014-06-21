@@ -25,12 +25,12 @@ import javax.servlet.http.Part;
  */
 @Named(value = "artigoRegisto")
 @ViewScoped
-public class ArtigoRegisto {
+public class SubmissaoArtigo {
 
     /**
      * Creates a new instance of ArtigoRegisto
      */
-    public ArtigoRegisto() {
+    public SubmissaoArtigo() {
     }
      private Subtema subtema;
      private String titulo;
@@ -128,7 +128,7 @@ public class ArtigoRegisto {
         outputStream.close();  
         inputStream.close(); 
      //AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
- 
+  File f;
  //FileUtils. writeByteArrayToFile(f,buffer);
   
     return "index";

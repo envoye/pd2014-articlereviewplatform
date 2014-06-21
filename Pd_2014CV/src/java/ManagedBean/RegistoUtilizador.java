@@ -11,7 +11,6 @@ import HelpersHibernate.InvestigadorHelper;
 import HibernatePackage.Grauacademico;
 import HibernatePackage.Investigador;
 import com.sun.org.apache.bcel.internal.generic.AllocationInstruction;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,7 +21,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -30,9 +28,9 @@ import javax.inject.Named;
  *
  * @author Carlos
  */
-@Named(value = "registarBean")
+@Named(value = "RegistoUtilizador")
 @ViewScoped
-public class RegistarBean {
+public class RegistoUtilizador {
      private Grauacademico grauacademico;
      private String nome;
      private String instituicao;
@@ -54,25 +52,20 @@ public class RegistarBean {
         this.idGrauacademico = idGrauacademico;
         for(int i=0;i<getListGrauacademico().size();i++){
             if(listGrauacademico.get(i).getId()==idGrauacademico){
-            grauacademico=listGrauacademico.get(i);
+                grauacademico=listGrauacademico.get(i);
             }
-        
         }
     }
 
     public List<Grauacademico> getListGrauacademico() {
         if(listGrauacademico==null){
-            
-            
-        listGrauacademico= (List<Grauacademico>)AllHellper.getListQualquerCoisa(Grauacademico.class);
-        
+            listGrauacademico= (List<Grauacademico>)AllHellper.getListQualquerCoisa(Grauacademico.class);
         }
         return listGrauacademico;
     }
 
     public void setListGrauacademico(List<Grauacademico> listGrauacademico) {
         this.listGrauacademico = listGrauacademico;
-        
     }
                         
     public void setPasswordconf(String passwordconf) {
@@ -159,11 +152,11 @@ public class RegistarBean {
         this.telemovel = telemovel;
     }
      
-  public String registar ()  {
+  public String registar () {
      
      AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
- 
-    return "../../index";
+  
+    return "index";
   }
     
 }
