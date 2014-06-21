@@ -1,6 +1,5 @@
 $( document ).ready(function() {
 $('#cssmenu li.has-sub>a' ).click(function() {
-        alert("ola");
   $('#cssmenu li').removeClass('active');
   $(this).closest('li').addClass('active');	
   var checkElement = $(this).next();

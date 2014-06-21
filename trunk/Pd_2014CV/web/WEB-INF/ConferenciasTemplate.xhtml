@@ -28,12 +28,12 @@
             <header id="header">
                 <div class="5grid-layout">
                     <div class="row">
-                        <div class="4u" id="logo">
+                        <div class="6u" id="logo">
                             <h1><a href="#" class="mobileUI-site-name">Conference Team Manager</a></h1>
                             <p>manage your conference team</p>
 
                         </div>
-                        <div class="8u" id="menu">
+                        <div class="6u" id="menu">
                             <nav class="mobileUI-site-nav">
                                 <ul>
                                     <li><a href="PaginaPrincipal.xhtml">Principal</a></li>
@@ -47,20 +47,17 @@
             </header>
         </div>
 
-            <div id="top">
-                <ui:insert name="top">Top</ui:insert>
+        <div>
+            <div id="left">
+                <ui:insert name="left">Left</ui:insert>
             </div>
-            <div>
-                <div id="left">
-                    <ui:insert name="left">Left</ui:insert>
-                </div>
-                <div id="content" class="left_content">
-                    <ui:insert name="content">Content</ui:insert>
-                </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
             </div>
-            <div id="bottom">
-                <ui:insert name="bottom">Bottom</ui:insert>
-            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
 
     </h:body>
 
