@@ -8,15 +8,15 @@
 
     <body>
 
-        <ui:composition template="../../WEB-INF/AreaPessoalTemplate.xhtml">
+        <ui:composition template="./WEB-INF/AreaPessoalTemplate.xhtml">
 
-            
+
 
             <ui:define name="left">
-             <div class="boxLogin">
+                <div class="boxLogin">
                     <h:form class="jqtransform" enctype="multipart/form-data">
                         <h:panelGrid columns="3" >
-                          
+
                             <div > 
 
                                 <h:outputLabel for="TituloInput">
@@ -26,23 +26,18 @@
                                              required="true" />
                                 <br />
                             </div> 
-                              <div > 
+                            <div > 
 
                                 <h:outputLabel for="resumoInput">
                                     Resumo:
                                 </h:outputLabel>
                                 <h:inputTextarea id="resumoInput" value="#{artigoRegisto.resumo}" 
-                                             required="true" />
+                                                 required="true" />
                                 <br />
                             </div> 
 
-                              
-                            
-                            
-                            <!---->
-                            
-                            
-                              <div class="rowElem"> 
+
+                            <div class="rowElem"> 
 
                                 <h:outputLabel for="linkInput">
                                     link:
@@ -51,18 +46,18 @@
                                              required="true" />
                                 <br />
                             </div> 
-                            
-                              <div class="rowElem"> 
+
+                            <div class="rowElem"> 
 
                                 <h:outputLabel for="ficheiroPdfInput">
                                     Escolha um ficheiro:
                                 </h:outputLabel>
-                                  <h:inputFile id="ficheiroPdfInput" value="#{artigoRegisto.ficheiroPdf}"></h:inputFile>
-                                
+                                <h:inputFile id="ficheiroPdfInput" value="#{artigoRegisto.ficheiroPdf}"></h:inputFile>
+
                                 <br />
                             </div> 
-                            
-                            
+
+
                         </h:panelGrid>
                         <div class="rowElem">  
                             <h:commandButton value="Entrar"  action="#{artigoRegisto.registar()}" />
@@ -76,7 +71,7 @@
                 </div>
             </ui:define>
 
-           
+
 
         </ui:composition>
 

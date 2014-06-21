@@ -5,7 +5,6 @@
  */
 $('<div class="tl"></div><div class="tr"></div><div class="bl"></div><div class="br"></div>').appendTo("div.single-field");
 $( document ).ready(function() {
-  alert("oi1");
   //$("form.jqtransform").jqTransform();
     //$("form").highlight();
     

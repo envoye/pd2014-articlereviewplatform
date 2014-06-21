@@ -5,20 +5,26 @@
 
     <body>
 
-        <ui:composition template="../../WEB-INF/PrincipalTemplate.xhtml">
+        <ui:composition template="./WEB-INF/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
                 Conference Team Manager
             </ui:define>
+            
+            <ui:define name="areaIdentific">
+                Identification
+            </ui:define>
 
-            <ui:define name="banner">
-                <div class="5grid-layout">
-                    <div class="row">
-                        <div id="banner" class="12u">
-                            <div class="container"><a href="#"><img src="../../images/pics01.jpg" alt=""/></a></div>
-                        </div>
-                    </div>
-                </div>
+            <ui:define name="areaSelec">
+                Selection Buttons
+            </ui:define>
+
+            <ui:define name="areaMenu">
+                Menu
+            </ui:define>
+
+            <ui:define name="areaDados">
+                Dados
             </ui:define>
 
         </ui:composition>

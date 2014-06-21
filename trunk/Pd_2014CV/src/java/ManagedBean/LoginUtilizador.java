@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  */
 @Named(value = "loginBean")
 @ViewScoped
-public class LoginBean {
+public class LoginUtilizador {
 
     /**
      * Creates a new instance of LoginBean
