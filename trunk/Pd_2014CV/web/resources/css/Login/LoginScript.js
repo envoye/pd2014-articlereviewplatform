@@ -7,12 +7,13 @@ $('<div class="tl"></div><div class="tr"></div><div class="bl"></div><div class=
 $( document ).ready(function() {
   alert("oi1");
   //$("form.jqtransform").jqTransform();
-    $("form").highlight();
+    //$("form").highlight();
     
 //   var st= $("#daaatepicker");
 //   st.datepicker();
     
-    $(".datetime").datepicker({ dateFormat: 'dd/mm/yy' });
+    $(".datetime").datepicker({ dateFormat: 'dd/mm/yy' ,changeMonth: true,
+      changeYear: true});
    
   //$("#j_idt31:datanascimentoInput").datepicker();
     

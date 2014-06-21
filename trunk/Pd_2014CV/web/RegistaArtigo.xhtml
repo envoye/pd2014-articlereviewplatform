@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+    <body>
+
+        <ui:composition template="./WEB-INF/AreaPessoalTemplate.xhtml">
+
+            
+
+            <ui:define name="left">
+             <div class="boxLogin">
+                    <h:form class="jqtransform" enctype="multipart/form-data">
+                        <h:panelGrid columns="3" >
+                          
+                            <div > 
+
+                                <h:outputLabel for="TituloInput">
+                                    Titulo:
+                                </h:outputLabel>
+                                <h:inputText id="TituloInput" value="#{artigoRegisto.titulo}" 
+                                             required="true" />
+                                <br />
+                            </div> 
+                              <div > 
+
+                                <h:outputLabel for="resumoInput">
+                                    Resumo:
+                                </h:outputLabel>
+                                <h:inputTextarea id="resumoInput" value="#{artigoRegisto.resumo}" 
+                                             required="true" />
+                                <br />
+                            </div> 
+
+                              
+                            
+                            
+                            
+                              <div class="rowElem"> 
+
+                                <h:outputLabel for="linkInput">
+                                    link:
+                                </h:outputLabel>
+                                <h:inputText id="linkInput" value="#{artigoRegisto.link}" 
+                                             required="true" />
+                                <br />
+                            </div> 
+                            
+                              <div class="rowElem"> 
+
+                                <h:outputLabel for="ficheiroPdfInput">
+                                    Escolha um ficheiro:
+                                </h:outputLabel>
+                                  <h:inputFile id="ficheiroPdfInput" value="#{artigoRegisto.ficheiroPdf}"></h:inputFile>
+                                
+                                <br />
+                            </div> 
+                            
+                            
+                        </h:panelGrid>
+                        <div class="rowElem">  
+                            <h:commandButton value="Entrar"  action="#{artigoRegisto.registar()}" />
+                        </div>
+
+
+
+                    </h:form>
+
+
+                </div>
+            </ui:define>
+
+           
+
+        </ui:composition>
+
+    </body>
+</html>
