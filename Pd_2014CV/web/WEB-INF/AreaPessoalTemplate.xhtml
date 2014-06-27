@@ -15,6 +15,7 @@
         <h:outputStylesheet name="./css/style.css" />
         <h:outputStylesheet name="./css/style-desktop.css" />
         <h:outputStylesheet name="./css/Menu/styles.css" />
+        <h:outputStylesheet name="./css/FormAreaPessoal/FormAreaPessoal.css" />
         <h:outputScript name="./css/5grid/jquery.js"/>
         <h:outputScript name="./css/Menu/menu_jquery.js"/>
         <h:outputScript name="./css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"/>
@@ -74,25 +75,20 @@
                                                     <li><a href='#'><span>Criar Conferências</span></a></li>
                                                     <li><a href='#'><span>Listar Conferências</span></a></li>
                                                     <li class='last'><a href='#'><span>Editar Conferências</span></a></li>
-
-
                                                 </ul>
                                             </li>
                                             <li class='has-sub'><a href='#'><span>Elemento Comite</span></a>
                                                 <ul>
-
                                                     <li class='last'><a href='#'><span>Listar Conferencias</span></a></li>
                                                 </ul>
                                             </li> 
                                             <li class='has-sub'><a href='#'><span>Revisor</span></a>
                                                 <ul>
-
                                                     <li class='last'><a href='#'><span>Listar Conferencias</span></a></li>
                                                 </ul>
                                             </li>
                                             <li class='has-sub'><a href='#'><span>Autor</span></a>
                                                 <ul>
-
                                                     <li class='last'><a href='#'><span>Submeter Artigo</span></a></li>
                                                 </ul>
                                             </li>
@@ -116,13 +112,10 @@
                                 </ul>
                             </section>
                         </div>
-                        <div class="9u mobileUI-main-content" id="content">
+                        <div class="8u mobileUI-main-content" id="content">
                             <section>
                                 <div class="post">
-                                    <!--
-                                    <ui:include src="/WEB-INF/AreaPessoalPartialColunaDois.xhtml" />
-                                    -->
-                                    <ui:insert name="left">Left</ui:insert>
+                                    <ui:insert name="form">Form</ui:insert>
                                 </div>
                             </section>
                         </div>

@@ -58,8 +58,8 @@ public class RegistoUtilizador {
     }
 
     public List<Grauacademico> getListGrauacademico() {
-        if(listGrauacademico==null){
-            listGrauacademico= (List<Grauacademico>)AllHellper.getListQualquerCoisa(Grauacademico.class);
+        if(listGrauacademico == null){
+            listGrauacademico = (List<Grauacademico>)AllHellper.getListQualquerCoisa(Grauacademico.class);
         }
         return listGrauacademico;
     }
@@ -129,7 +129,7 @@ public class RegistoUtilizador {
 
     public void setDatanascimento(Date datanascimento) {
        
-             this.datanascimento =datanascimento;
+             this.datanascimento = datanascimento;
          
     }
     public void setUtilizador(String utilizador) {
@@ -153,8 +153,8 @@ public class RegistoUtilizador {
     }
      
   public String registar () {
-     
-     AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
+      
+      AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
   
     return "index";
   }
