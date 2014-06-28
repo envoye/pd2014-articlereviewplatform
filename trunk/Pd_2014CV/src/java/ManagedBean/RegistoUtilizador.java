@@ -152,11 +152,10 @@ public class RegistoUtilizador {
         this.telemovel = telemovel;
     }
      
-  public String registar () {
+    public String registar () {
       
-      AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
-  
-    return "index";
-  }
+        AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
+        return "index";
+    }
     
 }

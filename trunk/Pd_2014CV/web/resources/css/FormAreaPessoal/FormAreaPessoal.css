@@ -8,18 +8,29 @@ and open the template in the editor.
     Author     : Valter
 */
 
-div.boxLogin {
+div.boxTitleForm {
     width: 100%;
     padding: 10px;
-    border: 2px solid gray;
+    margin: 0px;
+    background-color: gainsboro;
+    border: 2px solid gainsboro;
+    font-size: 20px;
+}
+
+div.boxForm {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid gainsboro;
     margin: 0px;
 }
+
 div.boxLink {
     width: 200px;
     padding: 10px;
     border: 1px solid gray;
     margin: 0px;
 }
+
 div.curFocus {
 	background: #fdecb2;
 }
@@ -59,4 +70,26 @@ div.curFocus {
 	height: 10px;
 	background: url(images/corner-bottomright.jpg);
 	display: none;
+}
+
+.subtemaTable{   
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+
+.subtemaTableHeader{
+   text-align:center;
+   background:none repeat scroll 0 0 #B5B5B5;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+}
+
+.subtemaTableOddRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #FFFFFFF;	
+}
+
+.subtemaTableEvenRow{
+   text-align:center;
+   background:none repeat scroll 0 0 #D3D3D3;
 }

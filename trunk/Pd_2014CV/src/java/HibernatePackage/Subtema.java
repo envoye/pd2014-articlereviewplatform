@@ -20,12 +20,12 @@ public class Subtema  implements java.io.Serializable {
 
     public Subtema() {
     }
-
 	
     public Subtema(Tema tema, String nome) {
         this.tema = tema;
         this.nome = nome;
     }
+    
     public Subtema(Tema tema, String nome, String descricao, Set<Artigo> artigos, Set<Investigadorareaconhecimento> investigadorareaconhecimentos) {
        this.tema = tema;
        this.nome = nome;
