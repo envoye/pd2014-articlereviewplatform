@@ -7,19 +7,23 @@
       >
 
     <body>
-
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
-
+            <ui:define name="title">
+                Conference Team Manager - Submissão de Artigos
+            </ui:define>
+            
+            <ui:define name="formTitle">
+                
+                <p align="center" style="font: bold large Palatino,serif; color: white">
+                    Submissão de Artigos
+                </p>
+                
+            </ui:define>
 
             <ui:define name="form">
                 <div class="boxLogin">
-                    
-                   
                     <h:form class="jqtransform" enctype="multipart/form-data">
-                        
-                      
-                      
                         <h:panelGrid columns="3" >
 
                             <div > 
@@ -31,19 +35,6 @@
                                              required="true" />
                                 <br />
                             </div> 
-                               <div class="rowElem"> 
-                                <h:outputLabel for="SubTemaInpu">
-                                    Grauacademico:
-                                </h:outputLabel>
-                                   <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="SubTemaInput">
-
-                                       <f:selectItems value="#{artigoRegisto.listSubtema}" var="Subtema" itemValue="#{Subtema.id}" itemLabel="#{Subtema.nome}"/>
-
-                                </h:selectOneMenu>  
-                                <br />
-                            </div> 
-                            
-                            
                             <div > 
 
                                 <h:outputLabel for="resumoInput">
@@ -81,15 +72,10 @@
                             <h:commandButton value="Entrar"  action="#{artigoRegisto.registar()}" />
                         </div>
 
-
-
                     </h:form>
-
 
                 </div>
             </ui:define>
-
-
 
         </ui:composition>
 

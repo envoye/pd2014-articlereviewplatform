@@ -8,23 +8,26 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Tema;
-import javax.inject.Named;
+import HibernatePackage.Subtema;
+import java.util.List;
 import javax.enterprise.context.Dependent;
+import javax.inject.Named;
 
 /**
  *
  * @author Valter
  */
-@Named(value = "temasConferencias")
+@Named(value = "temaConferencia")
 @Dependent
-public class TemasConferencias {
+public class TemaConferencia {
     private String tema;
     private String descricao;
+    private List<SubtemaConferencia> listaSubtemas;
     
     /**
      * Creates a new instance of TemaConferencia
      */
-    public TemasConferencias(String tema, String descricao) {
+    public TemaConferencia(String tema, String descricao) {
         this.tema = tema;
         this.descricao = descricao;
     }
@@ -45,8 +48,23 @@ public class TemasConferencias {
         return this.descricao;
     }
     
-      public String registar () {
-      AllHellper.SaveQualquerCoisa(new Tema(1,this.tema,this.descricao));
+    public List<SubtemaConferencia> getSubtemas() {
+        if(this.listaSubtemas == null){
+            this.listaSubtemas = (List<SubtemaConferencia>)AllHellper.getListQualquerCoisa(Subtema.class);
+        }
+        return this.listaSubtemas;
+    }
+    
+    public void addSubtema(String nome, String descricao) {
+        this.listaSubtemas.add(new SubtemaConferencia(new Tema(this.tema),nome,descricao));
+    }
+    
+    public void delSubtema(SubtemaConferencia subtema) {
+        this.listaSubtemas.remove(subtema);
+    }
+    
+    public String registar () {
+        AllHellper.SaveQualquerCoisa(new Tema(this.tema,this.descricao,null,null));
         return "index";
-  }
+    }
 }

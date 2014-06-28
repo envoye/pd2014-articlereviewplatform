@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      >
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
 
@@ -13,22 +12,30 @@
             <ui:define name="title">
                 Conference Team Manager - Temas
             </ui:define>
+
+            <ui:define name="formTitle">
+
+                <h2 class="subtitle" align="center">
+                    Temas para Conferências
+                </h2>
+                
+            </ui:define>
             
             <ui:define name="form">
 
-                <div class="boxLogin">
+                <div class="boxForm">
                     
                     <h:form class="jqtransform" enctype="multipart/form-data">
                         <h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="40" >
                             <div > 
                                 <section>
                                     <h:column>
-                                        <h:outputLabel for="tema">
+                                        <h:outputLabel for="tema" class="style6">
                                             Tema
                                         </h:outputLabel>
                                     </h:column>
                                     <h:column>
-                                        <h:inputText id="TituloInput" value="#{TemasConferencias.tema}" 
+                                        <h:inputText id="TituloInput" size="40" value="#{TemasConferencias.tema}" 
                                                      required="true" />                                    
                                     </h:column>
                                 </section>
@@ -39,11 +46,12 @@
                                         </h:outputLabel>
                                     </h:column>    
                                     <h:column>
-                                        <h:inputTextarea id="resumoInput" value="#{TemasConferencias.descricao}" 
+                                        <h:inputText id="resumoInput" size="100" value="#{TemasConferencias.descricao}" 
                                                          required="true" />                                                        
                                     </h:column>          
                                 </section>
                                 <br/>
+                                
                                 <section>
                                     <h:column>
                                         <h:commandButton value="Gravar"  action="#{TemasConferencias.registar()}" />
@@ -54,8 +62,26 @@
                         </h:panelGrid>
 
                     </h:form>
-
-
+                    
+                    <div class="6u" id="tabelaSubtema">
+                        <section>
+                            <h:dataTable value="#{TemaConferencia.listaSubtemas}" var="subtemas"
+                                         styleClass="subtemaTable"
+                                         headerClass="subtemaTableHeader"
+                                         rowClasses="subtemaTableOddRow,subtemaTableEvenRow">
+                                <h:column>    				
+                                    <f:facet name="header">
+                                        Subtema
+                                    </f:facet>    				
+                                        #{TemaConferencia.nome}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Descrição</f:facet>
+                                        #{TemaConferencia.descricao}
+                                </h:column>
+                            </h:dataTable>
+                        </section>    
+                    </div>
                 </div>
             </ui:define>
         </ui:composition>
