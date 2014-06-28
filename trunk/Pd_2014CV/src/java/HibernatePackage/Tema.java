@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 21/Jun/2014 18:22:02 by Hibernate Tools 3.6.0
+// Generated 28/Jun/2014 14:50:24 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -20,21 +20,15 @@ public class Tema  implements java.io.Serializable {
     public Tema() {
     }
 
+	
     public Tema(String nomeTema) {
         this.nomeTema = nomeTema;
     }
-    
-    public Tema(int id, String nomeTema, String descricao) {
-        this.id = id;
-        this.nomeTema = nomeTema;
-        this.descricao = descricao;
-    }
-    
     public Tema(String nomeTema, String descricao, Set<Conferenciaedicao> conferenciaedicaos, Set<Subtema> subtemas) {
-        this.nomeTema = nomeTema;
-        this.descricao = descricao;
-        this.conferenciaedicaos = conferenciaedicaos;
-        this.subtemas = subtemas;
+       this.nomeTema = nomeTema;
+       this.descricao = descricao;
+       this.conferenciaedicaos = conferenciaedicaos;
+       this.subtemas = subtemas;
     }
    
     public Integer getId() {
@@ -72,6 +66,10 @@ public class Tema  implements java.io.Serializable {
     public void setSubtemas(Set<Subtema> subtemas) {
         this.subtemas = subtemas;
     }
+
+
+
+
 }
 
 

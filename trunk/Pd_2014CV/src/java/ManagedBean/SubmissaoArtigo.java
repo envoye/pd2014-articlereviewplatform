@@ -7,16 +7,22 @@
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
-import HibernatePackage.Investigador;
+import HibernatePackage.Artigo;
 import HibernatePackage.Subtema;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.List;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 
 /**
@@ -47,9 +53,20 @@ public class SubmissaoArtigo {
 
     public void setIdSubtema(int idSubtema) {
         this.idSubtema = idSubtema;
+        for(int i=0;i<getListSubtema().size();i++){
+            if(listSubtema.get(i).getId()==idSubtema){
+                subtema=listSubtema.get(i);
+            }
+        }
     }
 
     public List<Subtema> getListSubtema() {
+        if(listSubtema==null){
+            
+            
+        listSubtema= (List<Subtema>)AllHellper.getListQualquerCoisa(Subtema.class);
+        
+        }
         return listSubtema;
     }
 
@@ -59,6 +76,9 @@ public class SubmissaoArtigo {
      
      
     public Subtema getSubtema() {
+         if(subtema==null)
+            if(getListSubtema().size()>0)
+            subtema=listSubtema.get(0);
         return subtema;
     }
 
@@ -107,29 +127,36 @@ public class SubmissaoArtigo {
     }
 
   
+      
 
 
-    
   public String registar () throws IOException {
-     InputStream inputStream = ficheiroPdf.getInputStream();  
-     String fileName=getFilename(ficheiroPdf);
-        FileOutputStream outputStream = new FileOutputStream(fileName);  
+     
+    
+
+          InputStream inputStream =null;
+          String caminho;
+      try {
+          inputStream = ficheiroPdf.getInputStream();  
+          String fileName=getFilename(ficheiroPdf); 
+          String []split=fileName.split("\\.(?=[^\\.]+$)");
+          String relativeWebPath = "/upload/PDFs";
+          String absoluteDiskPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(relativeWebPath);
           
-        byte[] buffer = new byte[4096];          
-        int bytesRead = 0;  
-        while(true) {                          
-            bytesRead = inputStream.read(buffer);  
-            if(bytesRead > 0) {  
-                outputStream.write(buffer, 0, bytesRead);  
-            }else {  
-                break;  
-            }                         
-        }  
-        outputStream.close();  
-        inputStream.close(); 
-     //AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null));
-  File f;
- //FileUtils. writeByteArrayToFile(f,buffer);
+          File file = File.createTempFile(split[0], "."+split[1], new File(absoluteDiskPath)); 
+          CopyOption[] options = new CopyOption[]{
+      StandardCopyOption.REPLACE_EXISTING,
+      StandardCopyOption.COPY_ATTRIBUTES
+    }; 
+          Files.copy(inputStream, file.toPath(),StandardCopyOption.REPLACE_EXISTING);
+          caminho=file.getAbsolutePath();
+          inputStream.close(); 
+      } catch (Exception e) {
+       caminho="";   
+      }
+     
+  AllHellper.SaveQualquerCoisa(new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null));
+ 
   
     return "index";
   }   
