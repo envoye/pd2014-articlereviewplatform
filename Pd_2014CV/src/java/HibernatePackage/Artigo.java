@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 21/Jun/2014 18:22:02 by Hibernate Tools 3.6.0
+// Generated 28/Jun/2014 14:50:24 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -18,8 +18,7 @@ public class Artigo  implements java.io.Serializable {
      private String resumo;
      private Date data;
      private String link;
-     private byte[] ficheiroPdf;
-     private String nomeArtigo;
+     private String ficheiroPdf;
      private Set<Conferenciaartigo> conferenciaartigos = new HashSet<Conferenciaartigo>(0);
      private Set<Artigopalavrachave> artigopalavrachaves = new HashSet<Artigopalavrachave>(0);
      private Set<Conferenciacomiteartigo> conferenciacomiteartigos = new HashSet<Conferenciacomiteartigo>(0);
@@ -32,14 +31,13 @@ public class Artigo  implements java.io.Serializable {
     public Artigo(Subtema subtema) {
         this.subtema = subtema;
     }
-    public Artigo(Subtema subtema, String titulo, String resumo, Date data, String link, byte[] ficheiroPdf, String nomeArtigo, Set<Conferenciaartigo> conferenciaartigos, Set<Artigopalavrachave> artigopalavrachaves, Set<Conferenciacomiteartigo> conferenciacomiteartigos, Set<Artigoautores> artigoautoreses) {
+    public Artigo(Subtema subtema, String titulo, String resumo, Date data, String link, String ficheiroPdf, Set<Conferenciaartigo> conferenciaartigos, Set<Artigopalavrachave> artigopalavrachaves, Set<Conferenciacomiteartigo> conferenciacomiteartigos, Set<Artigoautores> artigoautoreses) {
        this.subtema = subtema;
        this.titulo = titulo;
        this.resumo = resumo;
        this.data = data;
        this.link = link;
        this.ficheiroPdf = ficheiroPdf;
-       this.nomeArtigo = nomeArtigo;
        this.conferenciaartigos = conferenciaartigos;
        this.artigopalavrachaves = artigopalavrachaves;
        this.conferenciacomiteartigos = conferenciacomiteartigos;
@@ -88,19 +86,12 @@ public class Artigo  implements java.io.Serializable {
     public void setLink(String link) {
         this.link = link;
     }
-    public byte[] getFicheiroPdf() {
+    public String getFicheiroPdf() {
         return this.ficheiroPdf;
     }
     
-    public void setFicheiroPdf(byte[] ficheiroPdf) {
+    public void setFicheiroPdf(String ficheiroPdf) {
         this.ficheiroPdf = ficheiroPdf;
-    }
-    public String getNomeArtigo() {
-        return this.nomeArtigo;
-    }
-    
-    public void setNomeArtigo(String nomeArtigo) {
-        this.nomeArtigo = nomeArtigo;
     }
     public Set<Conferenciaartigo> getConferenciaartigos() {
         return this.conferenciaartigos;

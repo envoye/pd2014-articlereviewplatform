@@ -12,9 +12,14 @@
 
 
 
-            <ui:define name="left">
+            <ui:define name="form">
                 <div class="boxLogin">
+                    
+                   
                     <h:form class="jqtransform" enctype="multipart/form-data">
+                        
+                      
+                      
                         <h:panelGrid columns="3" >
 
                             <div > 
@@ -26,6 +31,19 @@
                                              required="true" />
                                 <br />
                             </div> 
+                               <div class="rowElem"> 
+                                <h:outputLabel for="GrauacademicoInput">
+                                    Grauacademico:
+                                </h:outputLabel>
+                                   <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput">
+
+                                       <f:selectItems value="#{artigoRegisto.listSubtema}" var="Subtema" itemValue="#{Subtema.id}" itemLabel="#{Subtema.nome}"/>
+
+                                </h:selectOneMenu>  
+                                <br />
+                            </div> 
+                            
+                            
                             <div > 
 
                                 <h:outputLabel for="resumoInput">
