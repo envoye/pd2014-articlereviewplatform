@@ -16,10 +16,14 @@ import java.io.InputStream;
 import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
@@ -158,7 +162,7 @@ public class SubmissaoArtigo {
   AllHellper.SaveQualquerCoisa(new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null));
  
   
-    return "index";
+    return "/index.xhtml?faces-redirect=true";
   }   
     private static String getFilename(Part part) {  
         for (String cd : part.getHeader("content-disposition").split(";")) {  
@@ -169,4 +173,21 @@ public class SubmissaoArtigo {
         }  
         return null;  
     }   
+    public void validateFile(FacesContext ctx,
+                         UIComponent comp,
+                         Object value) {
+  List<FacesMessage> msgs = new ArrayList<FacesMessage>();
+  Part file = (Part)value;
+       
+  if (file.getSize() > 40000000 ) {
+      
+    msgs.add(new FacesMessage("file too big"));
+  }
+  if (!"application/pdf".equals(file.getContentType())) {
+    msgs.add(new FacesMessage("not a pdf file"));
+  }
+  if (!msgs.isEmpty()) {
+    throw new ValidatorException(msgs);
+  }
+}
 }

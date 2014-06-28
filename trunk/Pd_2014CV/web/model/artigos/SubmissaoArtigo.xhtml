@@ -8,7 +8,7 @@
 
     <body>
 
-        <ui:composition template="./WEB-INF/AreaPessoalTemplate.xhtml">
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
 
 
@@ -32,10 +32,10 @@
                                 <br />
                             </div> 
                                <div class="rowElem"> 
-                                <h:outputLabel for="GrauacademicoInput">
+                                <h:outputLabel for="SubTemaInpu">
                                     Grauacademico:
                                 </h:outputLabel>
-                                   <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput">
+                                   <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="SubTemaInput">
 
                                        <f:selectItems value="#{artigoRegisto.listSubtema}" var="Subtema" itemValue="#{Subtema.id}" itemLabel="#{Subtema.nome}"/>
 
@@ -70,7 +70,7 @@
                                 <h:outputLabel for="ficheiroPdfInput">
                                     Escolha um ficheiro:
                                 </h:outputLabel>
-                                <h:inputFile id="ficheiroPdfInput" value="#{artigoRegisto.ficheiroPdf}"></h:inputFile>
+                                <h:inputFile id="ficheiroPdfInput" value="#{artigoRegisto.ficheiroPdf}" validator="#{artigoRegisto.validateFile}"></h:inputFile>
 
                                 <br />
                             </div> 
