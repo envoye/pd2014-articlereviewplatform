@@ -15,26 +15,10 @@
         <h:outputStylesheet name="./css/style.css" />
         <h:outputStylesheet name="./css/style-desktop.css" />
         <h:outputStylesheet name="./css/Menu/styles.css" />
-        <h:outputStylesheet name="./css/Login/LoginStyle.css" />
-        
-        <h:outputStylesheet name="./css/plugin/jqtransformplugin/jqtransform.css" />
-       
-     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />   
-        
-     <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />  
-    <script  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" /> 
-    <!--
-     <h:outputStylesheet name="./css/jqueryApi/jquery-ui.css"/>
-     <h:outputScript name="./css/jqueryApi/jquery.min.js"/>
-     <h:outputScript name="./css/jqueryApi/jquery-ui.min.js"/>
-      -->  
-    
+        <h:outputScript name="./css/5grid/jquery.js"/>
         <h:outputScript name="./css/Menu/menu_jquery.js"/>
-        <h:outputScript name="./css/plugin/jqtransformplugin/jquery.highlight.pack.js" />
-        <h:outputScript name="./css/plugin/jqtransformplugin/jquery.jqtransform.js"/>
-        <h:outputScript name="./css/Login/LoginScript.js" />
         <h:outputScript name="./css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"/>
-      
+        <h:outputScript  name="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/> 
         <title><ui:insert name="title" /></title>
     </h:head>
 
@@ -53,8 +37,8 @@
                             <nav class="mobileUI-site-nav">
                                 <ul>
                                     <li><a href="PaginaPrincipal.xhtml">Principal</a></li>
-                                    <li><a href="Conferencias.xhtml">Conferências</a></li>
-                                    <li class="current_page_item"><a href="AreaPessoal.xhtml">Área Pessoal</a></li>
+                                    <li class="current_page_item"><a href="Conferencias.xhtml">Conferências</a></li>
+                                    <li><a href="AreaPessoal.xhtml">Área Pessoal</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -63,56 +47,60 @@
             </header>
         </div>
 
-        <div id="wrapper">
-            <div id="page">
-                <div class="5grid-layout">
-                    <div class="row">
-                        <div class="3u" id="sidebar2">
-                            <section>
-                                <div class="sbox1">
-                                    <!-- 
-                                    <h2>Nulla luctus eleifend</h2>
-                                    <ul class="style1">
-                                        <li class="first"><a href="#">Maecenas luctus lectus at sapien</a></li>
-                                        <li><a href="#">Donec dictum metus in sapien</a></li>
-                                        <li><a href="#">Nulla luctus eleifend purus</a></li>
-                                        <li><a href="#">Maecenas luctus lectus at sapien</a></li>
-                                        <li><a href="#">Donec dictum metus in sapien</a></li>
-                                    </ul>
-                                    -->  
-                      
-
+        
+        <div id="pageConf">
+            <div class="5grid-layout">
+                <div class="row divider">
+                    <div class="6u">
+                        <section>
+                            <p><a href="#"><img height="180" src="../../images/confConference.jpg" alt=""/></a></p>
+                            <h2 style="font-size: 18pt; color: white" class="title">Conferências</h2>
+                            <div class="row divider">
+                                <div class="4u">
+                                    <section>
+                                        <p><a href="#">Eventos já realizados</a><br/></p>
+                                    </section>
                                 </div>
-                            </section>
-                            <section>
-                                <h2>Fusce ultrices fringilla</h2>
-                                <ul class="style2">
-                                    <li class="first">
-                                        <p><a href="#"><img src="images/pics09.jpg" alt=""/>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
-                                    </li>
-                                    <li>
-                                        <p><a href="#"><img src="images/pics10.jpg" alt=""/>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
-                                    </li>
-                                    <li>
-                                        <p><a href="#"><img src="images/pics08.jpg" alt=""/>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. </a></p>
-                                    </li>
-                                </ul>
-                            </section>
-                        </div>
-                        <div class="9u mobileUI-main-content" id="content">
-                            <section>
-                                <div class="post">
-                                    <div >
-                                      <ui:insert name="form">Form</ui:insert>
-                                    </div>
-                                   </div>
-                            </section>
-                        </div>
+                                <div class="4u">
+                                    <section>
+                                        <p><a href="#">Eventos em curso</a><br/></p>
+                                    </section>
+                                </div>
+                                <div class="4u">
+                                    <section>
+                                        <p><a href="#">Eventos futuros</a><br/></p>
+                                    </section>
+                                </div>                               
+                            </div>
+                        </section>
+                    </div>
+                    <div class="6u">
+                        <section>
+                            <p><a href="#"><img src="../../images/confArt.jpg" alt=""/></a></p>
+                            <h2 style="font-size: 18pt; color: white" class="title">Artigos</h2>                            
+                            <div class="row divider">
+                                <div class="4u">
+                                    <section>
+                                        <p><a href="#">Top Artigos</a><br/></p>
+                                    </section>
+                                </div>
+                                <div class="4u">
+                                    <section>
+                                        <p><a href="#">Consulta de Artigos</a><br/></p>
+                                    </section>
+                                </div>
+                                <div class="4u">
+                                    <section>
+                                        <p><a href="#">Submissão de Artigos</a><br/></p>
+                                    </section>
+                                </div>                               
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div id="footer-wrapper">
             <div class="5grid-layout">
                 <div class="row" id="footer-content">
@@ -151,12 +139,12 @@
                         <section>
                             <h2>Nulla luctus eleifend</h2>
                             <ul class="style5">
-                                <li><a href="#"><img src="images/pics07.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="images/pics08.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="images/pics09.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="images/pics10.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="images/pics11.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="images/pics12.jpg" alt=""/></a></li>
+                                <li><a href="#"><img src="../../images/pics07.jpg" alt=""/></a></li>
+                                <li><a href="#"><img src="../../images/pics08.jpg" alt=""/></a></li>
+                                <li><a href="#"><img src="../../images/pics09.jpg" alt=""/></a></li>
+                                <li><a href="#"><img src="../../images/pics10.jpg" alt=""/></a></li>
+                                <li><a href="#"><img src="../../images/pics11.jpg" alt=""/></a></li>
+                                <li><a href="#"><img src="../../images/pics12.jpg" alt=""/></a></li>
                             </ul>
                             <p class="button-style2"><a href="#">More Collections</a></p>
                         </section>
@@ -174,30 +162,17 @@
                 </div>
             </div>
         </div>
-        <div id="copyright">
-            <div class="5grid-layout">
+        
+        <div>
+            <div class="5grid-layout" id="copyright">
                 <div class="row">
                     <div class="12u">
-                        <p>&copy; Your Site Name | Images: <a href="http://fotogrph.com/">Fotogrph</a> | Design: <a href="http://html5templates.com/">HTML5Templates.com</a></p>
+                        <p>&copy; <a href="http://www.ctm.com/">Conference Team Manager</a> | Built: <a href="http://www.isec.pt/">CT and VD</a></p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!--
-        <div>
-            <div id="left">
-                <ui:insert name="left">Left</ui:insert>
-            </div>
-            <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
-            </div>
-        </div>
-        <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
-        </div>
--->
+        </div>        
+        
     </h:body>
 
 </html>
-

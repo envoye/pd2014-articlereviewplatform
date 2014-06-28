@@ -5,20 +5,18 @@
 
     <body>
 
-        <ui:composition template="./WEB-INF/PrincipalTemplate.xhtml">
+        <ui:composition template="../Template/ConferenciasTemplate.xhtml">
 
             <ui:define name="title">
                 Conference Team Manager
             </ui:define>
+            
+            <ui:define name="conferencia">
+                top
+            </ui:define>
 
-            <ui:define name="banner">
-                <div class="5grid-layout">
-                    <div class="row">
-                        <div id="banner" class="12u">
-                            <div class="container"><a href="#"><img src="images/pics01.jpg" alt=""/></a></div>
-                        </div>
-                    </div>
-                </div>
+            <ui:define name="artigo">
+                left
             </ui:define>
 
         </ui:composition>
