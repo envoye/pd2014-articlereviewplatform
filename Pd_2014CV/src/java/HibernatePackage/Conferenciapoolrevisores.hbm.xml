@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/Jun/2014 14:50:27 by Hibernate Tools 3.6.0 -->
+<!-- Generated 28/Jun/2014 15:34:30 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="HibernatePackage.Conferenciapoolrevisores" table="conferenciapoolrevisores" catalog="pd_2014">
         <id name="id" type="java.lang.Integer">
