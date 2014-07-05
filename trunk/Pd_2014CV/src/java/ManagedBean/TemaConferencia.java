@@ -63,8 +63,12 @@ public class TemaConferencia {
         this.listaSubtemas.remove(subtema);
     }
     
-    public String registar () {
+    public String registar() {
         AllHellper.SaveQualquerCoisa(new Tema(this.tema,this.descricao,null,null));
         return "index";
+    }
+    
+    public String cancelar() {
+        return "TemaConferencia.xhtml";
     }
 }
