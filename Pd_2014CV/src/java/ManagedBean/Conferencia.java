@@ -14,7 +14,7 @@ import javax.inject.Named;
  *
  * @author Valter
  */
-@Named(value = "conferencia")
+@Named(value = "Conferencia")
 @Dependent
 public class Conferencia {
     public String nome;
