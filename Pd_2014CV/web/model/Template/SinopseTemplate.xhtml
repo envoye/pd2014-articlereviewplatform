@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/5grid/core.css" />
+        <h:outputStylesheet name="./css/5grid/core-desktop.css" />
+        <h:outputStylesheet name="./css/5grid/core-1200px.css" />
+        <h:outputStylesheet name="./css/5grid/core-noscript.css" />
+        <h:outputStylesheet name="./css/style.css" />
+        <h:outputStylesheet name="./css/style-desktop.css" />
+        <h:outputStylesheet name="./css/Menu/styles.css" />
+        <h:outputScript name="./css/5grid/jquery.js"/>
+        <h:outputScript name="./css/Menu/menu_jquery.js"/>
+        <h:outputScript name="./css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"/>
+        <h:outputScript  name="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/>      
+        <title><ui:insert name="title" /></title>
+    </h:head>
+
+    <h:body>
+        
+        <div id="header-wrapper">
+            <header id="header">
+                <div class="5grid-layout">
+                    <div class="row">
+                        <div class="12u" id="logo">
+                            <h1><a href="#" class="mobileUI-site-name">Conference Team Manager - team´s management and repository platform</a></h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div id="content" class="center_content">
+            <div class="5grid-layout">
+                <div class="row">
+                    <div class="6u">
+                        <div class="mobileUI-main-content" id="content">
+                            <section>
+                                <div class="post">
+                                    <p><a href="#"><img src="../../images/sinopse.jpg" alt=""/></a><br/></p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>                        
+                    <div class="12u">
+                        <div class="mobileUI-main-content" id="content">
+                            <section>
+                                <div class="post">
+                                    <ui:insert name="sinopse">Content</ui:insert>
+                                </div> 
+                            </section>
+                        </div>                                
+                    </div>
+                    <div class="12u">
+                        <div class="mobileUI-main-content" id="content">
+                            <section>
+                                <div class="post">
+                                    <p><a href="PaginaPrincipal.xhtml">Voltar</a><br/></p>
+                                </div>
+                            </section>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="5grid-layout" id="copyright">
+                <div class="row">
+                    <div class="12u">
+                        <p>&copy; <a href="http://www.ctm.com/">Conference Team Manager</a> | Built: <a href="http://www.isec.pt/">CT and VD</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </h:body>
+
+</html>
