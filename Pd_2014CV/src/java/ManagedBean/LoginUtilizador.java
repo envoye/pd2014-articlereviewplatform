@@ -6,7 +6,10 @@
 
 package ManagedBean;
 
+import HelpersHibernate.AllHellper;
+import HibernatePackage.Investigador;
 import java.io.Serializable;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -21,15 +24,20 @@ import javax.servlet.http.HttpSession;
  * @author Carlos
  */
 @Named(value = "loginBean")
-@ViewScoped
-public class LoginUtilizador {
+@SessionScoped
+public class LoginUtilizador implements Serializable {
 
     /**
      * Creates a new instance of LoginBean
      */
-    
-         private String username;
-         private String password;
+    private static final long serialVersionUID = 7765876811740798583L;
+    private String username;
+    private String password;
+    private boolean loggedIn;
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
 
   public String getUsername() {
     return this.username;
@@ -49,20 +57,24 @@ public class LoginUtilizador {
 
 
   public String login () {
-    FacesContext context = FacesContext.getCurrentInstance();
-    HttpServletRequest request = (HttpServletRequest) 
-        context.getExternalContext().getRequest();
-    try {
-      //request.login(this.username, this.password);
-      HttpSession s=request.getSession(true);
-      s.setAttribute("username", this.username);
-      s.setAttribute("password", this.password);
-    } catch (Exception e) {
-    
-      //context.addMessage(null, new FacesMessage("Login failed."));
-      return "ErrorYouMustLogon";
-    }
-    return "index";
+      Investigador investigador; 
+      
+       String condicao=(" as inv where inv.utilizador='"+ username+"' and inv.password='" +password+"'");
+      
+       investigador=(Investigador)AllHellper.getQualquerCoisaCondicao(Investigador.class,condicao);
+       if (investigador!=null&& password.equals(investigador.getPassword())&& username.equals(investigador.getUtilizador())) {
+        
+                loggedIn = true;
+                return "/index.xhtml?faces-redirect=true";
+            }
+
+      
+      
+     FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
+        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+
+   return"";
   }
 
   public void logout() {
