@@ -31,8 +31,22 @@ div.boxLink {
     margin: 0px;
 }
 
+div.grid {
+    padding: 10px;
+    background-color: gray;
+    border: 2px solid gray;
+    margin: 0px;
+    font-size: 16px;
+}
+
 div.curFocus {
 	background: #fdecb2;
+}
+
+.searchCaption {
+    background-image: url('../images/search.jpg');
+    border: 1px solid gray;
+    margin: 0px;
 }
 
 .tl {

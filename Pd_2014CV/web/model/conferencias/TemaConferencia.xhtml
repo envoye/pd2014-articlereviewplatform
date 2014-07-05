@@ -24,7 +24,72 @@
             <ui:define name="form">
 
                 <div class="boxForm">
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="height: 20px;"></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px; height: 50px;"></td>
+                                <td align="right" style="width: 80px;">Tema</td>
+                                <td style="width: 10px;"></td>
+                                <td>
+                                    <h:inputText id="TituloInput" size="40" value="#{TemasConferencias.tema}" 
+                                                 required="true" />                                    
+                                </td>
+                                <td>
+                                    <h:commandButton image="../../images/search.jpg" action="#{TemasConferencias.pesquisar()}" />
+                                </td>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <td style="width: 100px;"></td>
+                                <td align="right" style="width: 80px;">Descrição</td>
+                                <td style="width: 10px;"></td>
+                                <td>
+                                    <h:inputTextarea id="resumoInput" value="#{TemasConferencias.descricao}" 
+                                                 required="true" />                                                        
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 20px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     
+                    <table>
+                        <tr>
+                            <td style="width: 500px;"></td>
+                            <td>
+                                <h:commandButton value="Novo" action="#{TemasConferencias.introduzir()}" />
+                            </td>
+                            <td style="width: 5px;"></td>
+                            <td>
+                                <h:commandButton value="Gravar" disabled="disabled" action="#{TemasConferencias.registar()}" />
+                            </td>
+                            <td style="width: 5px;"></td>
+                            <td>
+                                <h:commandButton value="Cancelar" action="#{TemasConferencias.cancelar()}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height: 50px;"></td>
+                        </tr>
+                    </table>
+
+                    <div class="grid">
+                        <table>
+                            <tr>
+                                <td align="center" style="width: 100px;"></td>
+                                <td align="center" style="width: 100px; color: whitesmoke">Subtema</td>
+                                <td align="center" style="width: 600px;color: whitesmoke">Descrição</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    
+                    <!--                    
                     <h:form class="jqtransform" enctype="multipart/form-data">
                         <h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="40" >
                             <div > 
@@ -56,13 +121,16 @@
                                     <h:column>
                                         <h:commandButton value="Gravar"  action="#{TemasConferencias.registar()}" />
                                     </h:column>
+                                    <h:column>
+                                        <h:commandButton value="Cancelar"  action="#{TemasConferencias.cancelar()}" />
+                                    </h:column>
                                 </section>                                    
                             </div> 
 
                         </h:panelGrid>
 
                     </h:form>
-                    
+
                     <div class="6u" id="tabelaSubtema">
                         <section>
                             <h:dataTable value="#{TemaConferencia.listaSubtemas}" var="subtemas"
@@ -82,6 +150,8 @@
                             </h:dataTable>
                         </section>    
                     </div>
+-->                                 
+                    
                 </div>
             </ui:define>
         </ui:composition>
