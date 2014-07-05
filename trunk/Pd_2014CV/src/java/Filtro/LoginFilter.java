@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Filtro;
 
+import ManagedBean.LoginUtilizador;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -23,27 +23,27 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Carlos
  */
-public class FiltroLogin implements Filter {
-    
+public class LoginFilter implements Filter {
+
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-    
-    public FiltroLogin() {
-    }    
-    
+
+    public LoginFilter() {
+    }
+
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("FiltroLogin:DoBeforeProcessing");
+            log("LoginFilter:DoBeforeProcessing");
         }
 
 	// Write code here to process the request and/or response before
         // the rest of the filter chain is invoked.
-	// For example, a logging filter might log items on the request object,
+        // For example, a logging filter might log items on the request object,
         // such as the parameters.
 	/*
          for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
@@ -61,17 +61,17 @@ public class FiltroLogin implements Filter {
          log(buf.toString());
          }
          */
-    }    
-    
+    }
+
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("FiltroLogin:DoAfterProcessing");
+            log("LoginFilter:DoAfterProcessing");
         }
 
 	// Write code here to process the request and/or response after
         // the rest of the filter chain is invoked.
-	// For example, a logging filter might log the attributes on the
+        // For example, a logging filter might log the attributes on the
         // request object after the request has been processed. 
 	/*
          for (Enumeration en = request.getAttributeNames(); en.hasMoreElements(); ) {
@@ -81,7 +81,7 @@ public class FiltroLogin implements Filter {
 
          }
          */
-	// For example, a filter might append something to the response.
+        // For example, a filter might append something to the response.
 	/*
          PrintWriter respOut = new PrintWriter(response.getWriter());
          respOut.println("<P><B>This has been appended by an intrusive filter.</B>");
@@ -100,32 +100,29 @@ public class FiltroLogin implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
+
         if (debug) {
             log("FiltroLogin:doFilter()");
         }
-        
+
         doBeforeProcessing(request, response);
-        
+
         Throwable problem = null;
-         try {
- 
-            // check whether session variable is set
-            HttpServletRequest req = (HttpServletRequest) request;
-            HttpServletResponse res = (HttpServletResponse) response;
-            
-            //  allow user to proccede if url is login.xhtml or user logged in or user is accessing any page in //public folder
-            String reqURI = req.getRequestURI();
-            if ( reqURI.indexOf("/LoginUtilizador.xhtml") >= 0 || reqURI.contains("javax.faces.resource") )
-                   chain.doFilter(request, response);
-            else   // user didn't log in but asking for a page that is not allowed so take user to login page
-                   res.sendRedirect(req.getContextPath() + "/LoginUtilizador.xhtml");
-        
-        
-         }catch(Exception e){}
-	// If there was a problem, we want to rethrow it if it is
+        try {
+
+            LoginUtilizador loginBean = (LoginUtilizador) ((HttpServletRequest) request).getSession().getAttribute("loginBean");
+            if (loginBean == null || !loginBean.isLoggedIn()) {
+                String contextPath = ((HttpServletRequest) request).getContextPath();
+                ((HttpServletResponse) response).sendRedirect(contextPath + "/faces/model/investigador/LoginUtilizador.xhtml");
+            }
+
+            chain.doFilter(request, response);
+
+        } catch (Exception e) {
+        }
+        // If there was a problem, we want to rethrow it if it is
         // a known type, otherwise log it.
-         doAfterProcessing(request, response);
+        doAfterProcessing(request, response);
         if (problem != null) {
             if (problem instanceof ServletException) {
                 throw (ServletException) problem;
@@ -156,17 +153,17 @@ public class FiltroLogin implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
-                log("FiltroLogin:Initializing filter");
+            if (debug) {
+                log("LoginFilter:Initializing filter");
             }
         }
     }
@@ -177,27 +174,27 @@ public class FiltroLogin implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("FiltroLogin()");
+            return ("LoginFilter()");
         }
-        StringBuffer sb = new StringBuffer("FiltroLogin(");
+        StringBuffer sb = new StringBuffer("LoginFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -214,7 +211,7 @@ public class FiltroLogin implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -228,9 +225,9 @@ public class FiltroLogin implements Filter {
         }
         return stackTrace;
     }
-    
+
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+        filterConfig.getServletContext().log(msg);
     }
-    
+
 }

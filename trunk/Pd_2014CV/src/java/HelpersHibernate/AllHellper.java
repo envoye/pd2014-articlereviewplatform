@@ -44,8 +44,28 @@ public class AllHellper {
   Session session = GeralHelper.GetSession(); //HibernateUtil.getSessionFactory().openSession();
         org.hibernate.Transaction tx = session.beginTransaction();
         Query q = session.createQuery("from " + classObj.getSimpleName());
-        q.list();
+       
 
         return q.list();
-}  
+} 
+    public static  List<? extends Object> getListQualquerCoisaCondicao(Class classObj,String condicao) {
+  Session session = GeralHelper.GetSession(); //HibernateUtil.getSessionFactory().openSession();
+        org.hibernate.Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("from " + classObj.getSimpleName()+condicao);
+        
+
+        return q.list();
+}   
+   
+    public static  Object getQualquerCoisaCondicao(Class classObj,String condicao) {
+  Session session = GeralHelper.GetSession(); //HibernateUtil.getSessionFactory().openSession();
+        org.hibernate.Transaction tx = session.beginTransaction();
+        Query q = session.createQuery("from " + classObj.getSimpleName()+condicao);
+        
+
+        return q.uniqueResult();
+}   
+    
+    
+   
 }

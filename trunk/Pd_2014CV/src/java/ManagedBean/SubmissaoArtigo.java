@@ -162,7 +162,7 @@ public class SubmissaoArtigo {
   AllHellper.SaveQualquerCoisa(new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null));
  
   
-    return "/index.xhtml?faces-redirect=true";
+    return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
   }   
     private static String getFilename(Part part) {  
         for (String cd : part.getHeader("content-disposition").split(";")) {  

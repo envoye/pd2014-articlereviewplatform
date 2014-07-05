@@ -44,7 +44,17 @@
                                                  required="true" />
                                 <br />
                             </div> 
+<div class="rowElem"> 
+                                <h:outputLabel for="GrauacademicoInput">
+                                    Grau Academico
+                                </h:outputLabel>
+    <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput">
 
+        <f:selectItems value="#{artigoRegisto.listSubtema}" var="item" itemValue="#{item.id}" itemLabel="#{item.nome}"/>
+
+                                </h:selectOneMenu>  
+                                <br />
+                            </div>  
 
                             <div class="rowElem"> 
 
