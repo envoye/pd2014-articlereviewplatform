@@ -12,13 +12,13 @@
             <ui:define name="title">
                 Conference Team Manager - Submissão de Artigos
             </ui:define>
-            
+
             <ui:define name="formTitle">
-                
+
                 <p align="center" style="font: bold large Palatino,serif; color: white">
                     Submissão de Artigos
                 </p>
-                
+
             </ui:define>
 
             <ui:define name="form">
@@ -44,13 +44,13 @@
                                                  required="true" />
                                 <br />
                             </div> 
-<div class="rowElem"> 
+                            <div class="rowElem"> 
                                 <h:outputLabel for="GrauacademicoInput">
                                     Grau Academico
                                 </h:outputLabel>
-    <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput">
+                                <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput">
 
-        <f:selectItems value="#{artigoRegisto.listSubtema}" var="item" itemValue="#{item.id}" itemLabel="#{item.nome}"/>
+                                    <f:selectItems value="#{artigoRegisto.listSubtema}" var="item" itemValue="#{item.id}" itemLabel="#{item.nome}"/>
 
                                 </h:selectOneMenu>  
                                 <br />
@@ -79,7 +79,7 @@
 
                         </h:panelGrid>
                         <div class="rowElem">  
-                            <h:commandButton value="Entrar"  action="#{artigoRegisto.registar()}" />
+                            <h:commandButton value="Submeter"  action="#{artigoRegisto.registar()}" />
                         </div>
 
                     </h:form>

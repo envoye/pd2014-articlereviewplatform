@@ -24,115 +24,78 @@
             <ui:define name="form">
 
                 <div class="boxForm">
-
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td style="height: 20px;"></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 100px; height: 50px;"></td>
-                                <td align="right" style="width: 80px;">Tema</td>
-                                <td style="width: 10px;"></td>
-                                <td>
-                                    <h:inputText id="TituloInput" size="40" value="#{TemasConferencias.tema}" 
-                                                 required="true" />                                    
-                                </td>
-                                <td>
-                                    <h:commandButton image="../../images/search.jpg" action="#{TemasConferencias.pesquisar()}" />
-                                </td>
-                            </tr>
-                            <tr></tr>
-                            <tr>
-                                <td style="width: 100px;"></td>
-                                <td align="right" style="width: 80px;">Descrição</td>
-                                <td style="width: 10px;"></td>
-                                <td>
-                                    <h:inputTextarea id="resumoInput" value="#{TemasConferencias.descricao}" 
-                                                 required="true" />                                                        
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="height: 20px;"></td>
-                            </tr>
-                        </tbody>
-                    </table>
                     
-                    <table>
-                        <tr>
-                            <td style="width: 500px;"></td>
-                            <td>
-                                <h:commandButton value="Novo" action="#{TemasConferencias.introduzir()}" />
-                            </td>
-                            <td style="width: 5px;"></td>
-                            <td>
-                                <h:commandButton value="Gravar" disabled="disabled" action="#{TemasConferencias.registar()}" />
-                            </td>
-                            <td style="width: 5px;"></td>
-                            <td>
-                                <h:commandButton value="Cancelar" action="#{TemasConferencias.cancelar()}" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="height: 50px;"></td>
-                        </tr>
-                    </table>
+                    <h:form class="jqtransform" enctype="multipart/form-data">
 
-                    <div class="grid">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; height: 50px;"></td>
+                                    <td align="right" style="width: 80px;">Tema</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="TituloInput" size='40' value="#{TemaConferencia.tema}" 
+                                                     required="true" />
+                                       
+                                    </td>
+                                    
+                                    <td>
+                                        <h:commandButton image="../../images/search.jpg" action="#{TemaConferencia.pesquisar()}" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px;"></td>
+                                    <td align="right" style="width: 80px;">Descrição</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="resumoInput" size="100" value="#{TemaConferencia.descricao}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                         <table>
                             <tr>
-                                <td align="center" style="width: 100px;"></td>
-                                <td align="center" style="width: 100px; color: whitesmoke">Subtema</td>
-                                <td align="center" style="width: 600px;color: whitesmoke">Descrição</td>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton value="Novo" action="#{TemaConferencia.introduzir()}" />
+                        </td>
+                                <td style="width: 5px;"></td>
+
+                                <td>
+                                    <h:commandButton value="Gravar" action="#{TemaConferencia.registar()}" />
+                                </td>
+
+                                <td style="width: 5px;"></td>
+                                <td>
+                                    <h:commandButton value="Cancelar" action="#{TemaConferencia.cancelar()}" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
                             </tr>
                         </table>
-                    </div>
-                    
-                    
-                    <!--                    
-                    <h:form class="jqtransform" enctype="multipart/form-data">
-                        <h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="40" >
-                            <div > 
-                                <section>
-                                    <h:column>
-                                        <h:outputLabel for="tema" class="style6">
-                                            Tema
-                                        </h:outputLabel>
-                                    </h:column>
-                                    <h:column>
-                                        <h:inputText id="TituloInput" size="40" value="#{TemasConferencias.tema}" 
-                                                     required="true" />                                    
-                                    </h:column>
-                                </section>
-                                <section>
-                                    <h:column>
-                                        <h:outputLabel for="descricao">
-                                            Descrição
-                                        </h:outputLabel>
-                                    </h:column>    
-                                    <h:column>
-                                        <h:inputText id="resumoInput" size="100" value="#{TemasConferencias.descricao}" 
-                                                         required="true" />                                                        
-                                    </h:column>          
-                                </section>
-                                <br/>
-                                
-                                <section>
-                                    <h:column>
-                                        <h:commandButton value="Gravar"  action="#{TemasConferencias.registar()}" />
-                                    </h:column>
-                                    <h:column>
-                                        <h:commandButton value="Cancelar"  action="#{TemasConferencias.cancelar()}" />
-                                    </h:column>
-                                </section>                                    
-                            </div> 
+    <!--
+                        <div class="grid">
 
-                        </h:panelGrid>
+                            <table>
+                                <tr>
+                                    <td align="center" style="width: 100px;"></td>
+                                    <td align="center" style="width: 100px; color: whitesmoke">Subtema</td>
+                                    <td align="center" style="width: 600px;color: whitesmoke">Descrição</td>
+                                </tr>
+                            </table>
 
-                    </h:form>
-
-                    <div class="6u" id="tabelaSubtema">
-                        <section>
                             <h:dataTable value="#{TemaConferencia.listaSubtemas}" var="subtemas"
                                          styleClass="subtemaTable"
                                          headerClass="subtemaTableHeader"
@@ -147,12 +110,80 @@
                                     <f:facet name="header">Descrição</f:facet>
                                         #{TemaConferencia.descricao}
                                 </h:column>
-                            </h:dataTable>
-                        </section>    
-                    </div>
--->                                 
-                    
+                            </h:dataTable>                        
+
+
+                        </div>
+    -->                    
+
+                        <!--                  
+
+                        <h:form class="jqtransform" enctype="multipart/form-data">
+                            <h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="40" >
+                                <div > 
+                                    <section>
+                                        <h:column>
+                                            <h:outputLabel for="tema" class="style6">
+                                                Tema
+                                            </h:outputLabel>
+                                        </h:column>
+                                        <h:column>
+                                            <h:inputText id="TituloInput" size="40" value="#{TemasConferencias.tema}" 
+                                                         required="true" />                                    
+                                        </h:column>
+                                    </section>
+                                    <section>
+                                        <h:column>
+                                            <h:outputLabel for="descricao">
+                                                Descrição
+                                            </h:outputLabel>
+                                        </h:column>    
+                                        <h:column>
+                                            <h:inputText id="resumoInput" size="100" value="#{TemasConferencias.descricao}" 
+                                                             required="true" />                                                        
+                                        </h:column>          
+                                    </section>
+                                    <br/>
+
+                                    <section>
+                                        <h:column>
+                                            <h:commandButton value="Gravar"  action="#{TemasConferencias.registar()}" />
+                                        </h:column>
+                                        <h:column>
+                                            <h:commandButton value="Cancelar"  action="#{TemasConferencias.cancelar()}" />
+                                        </h:column>
+                                    </section>                                    
+                                </div> 
+
+                            </h:panelGrid>
+
+                        </h:form>
+
+                        <div class="6u" id="tabelaSubtema">
+                            <section>
+                                <h:dataTable value="#{TemaConferencia.listaSubtemas}" var="subtemas"
+                                             styleClass="subtemaTable"
+                                             headerClass="subtemaTableHeader"
+                                             rowClasses="subtemaTableOddRow,subtemaTableEvenRow">
+                                    <h:column>    				
+                                        <f:facet name="header">
+                                            Subtema
+                                        </f:facet>    				
+                                            #{TemaConferencia.nome}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Descrição</f:facet>
+                                            #{TemaConferencia.descricao}
+                                    </h:column>
+                                </h:dataTable>
+                            </section>    
+                        </div>
+    -->                                 
+
+                    </h:form>
+
                 </div>
+               
             </ui:define>
         </ui:composition>
     </body>

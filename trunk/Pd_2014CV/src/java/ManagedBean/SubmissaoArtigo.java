@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
@@ -42,14 +41,14 @@ public class SubmissaoArtigo {
      */
     public SubmissaoArtigo() {
     }
-     private Subtema subtema;
-     private String titulo;
-     private String resumo;
-     private Date data;
-     private String link;
-     private Part ficheiroPdf;
-     private int idSubtema;
-     private List<Subtema> listSubtema; 
+    private Subtema subtema;
+    private String titulo;
+    private String resumo;
+    private Date data;
+    private String link;
+    private Part ficheiroPdf;
+    private int idSubtema;
+    private List<Subtema> listSubtema;
 
     public int getIdSubtema() {
         return idSubtema;
@@ -57,19 +56,18 @@ public class SubmissaoArtigo {
 
     public void setIdSubtema(int idSubtema) {
         this.idSubtema = idSubtema;
-        for(int i=0;i<getListSubtema().size();i++){
-            if(listSubtema.get(i).getId()==idSubtema){
-                subtema=listSubtema.get(i);
+        for (int i = 0; i < getListSubtema().size(); i++) {
+            if (listSubtema.get(i).getId() == idSubtema) {
+                subtema = listSubtema.get(i);
             }
         }
     }
 
     public List<Subtema> getListSubtema() {
-        if(listSubtema==null){
-            
-            
-        listSubtema= (List<Subtema>)AllHellper.getListQualquerCoisa(Subtema.class);
-        
+        if (listSubtema == null) {
+
+            listSubtema = (List<Subtema>) AllHellper.getListQualquerCoisa(Subtema.class);
+
         }
         return listSubtema;
     }
@@ -77,12 +75,13 @@ public class SubmissaoArtigo {
     public void setListSubtema(List<Subtema> listSubtema) {
         this.listSubtema = listSubtema;
     }
-     
-     
+
     public Subtema getSubtema() {
-         if(subtema==null)
-            if(getListSubtema().size()>0)
-            subtema=listSubtema.get(0);
+        if (subtema == null) {
+            if (getListSubtema().size() > 0) {
+                subtema = listSubtema.get(0);
+            }
+        }
         return subtema;
     }
 
@@ -130,64 +129,59 @@ public class SubmissaoArtigo {
         this.ficheiroPdf = ficheiroPdf;
     }
 
-  
-      
+    public String registar() throws IOException {
 
+        InputStream inputStream = null;
+        String caminho;
+        try {
+            inputStream = ficheiroPdf.getInputStream();
+            String fileName = getFilename(ficheiroPdf);
+            String[] split = fileName.split("\\.(?=[^\\.]+$)");
+            String relativeWebPath = "/upload/PDFs";
+            String absoluteDiskPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(relativeWebPath);
 
-  public String registar () throws IOException {
-     
-    
+            File file = File.createTempFile(split[0], "." + split[1], new File(absoluteDiskPath));
+            CopyOption[] options = new CopyOption[]{
+                StandardCopyOption.REPLACE_EXISTING,
+                StandardCopyOption.COPY_ATTRIBUTES
+            };
+            Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            caminho = file.getAbsolutePath();
+            inputStream.close();
+        } catch (Exception e) {
+            caminho = "";
+        }
 
-          InputStream inputStream =null;
-          String caminho;
-      try {
-          inputStream = ficheiroPdf.getInputStream();  
-          String fileName=getFilename(ficheiroPdf); 
-          String []split=fileName.split("\\.(?=[^\\.]+$)");
-          String relativeWebPath = "/upload/PDFs";
-          String absoluteDiskPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath(relativeWebPath);
-          
-          File file = File.createTempFile(split[0], "."+split[1], new File(absoluteDiskPath)); 
-          CopyOption[] options = new CopyOption[]{
-      StandardCopyOption.REPLACE_EXISTING,
-      StandardCopyOption.COPY_ATTRIBUTES
-    }; 
-          Files.copy(inputStream, file.toPath(),StandardCopyOption.REPLACE_EXISTING);
-          caminho=file.getAbsolutePath();
-          inputStream.close(); 
-      } catch (Exception e) {
-       caminho="";   
-      }
-     
-  AllHellper.SaveQualquerCoisa(new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null));
- 
-  
-    return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
-  }   
-    private static String getFilename(Part part) {  
-        for (String cd : part.getHeader("content-disposition").split(";")) {  
-            if (cd.trim().startsWith("filename")) {  
-                String filename = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");  
+        AllHellper.SaveQualquerCoisa(new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null));
+
+        return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
+    }
+
+    private static String getFilename(Part part) {
+        for (String cd : part.getHeader("content-disposition").split(";")) {
+            if (cd.trim().startsWith("filename")) {
+                String filename = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
                 return filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE fix.  
-            }  
-        }  
-        return null;  
-    }   
+            }
+        }
+        return null;
+    }
+
     public void validateFile(FacesContext ctx,
-                         UIComponent comp,
-                         Object value) {
-  List<FacesMessage> msgs = new ArrayList<FacesMessage>();
-  Part file = (Part)value;
-       
-  if (file.getSize() > 40000000 ) {
-      
-    msgs.add(new FacesMessage("file too big"));
-  }
-  if (!"application/pdf".equals(file.getContentType())) {
-    msgs.add(new FacesMessage("not a pdf file"));
-  }
-  if (!msgs.isEmpty()) {
-    throw new ValidatorException(msgs);
-  }
-}
+            UIComponent comp,
+            Object value) {
+        List<FacesMessage> msgs = new ArrayList<FacesMessage>();
+        Part file = (Part) value;
+
+        if (file.getSize() > 40000000) {
+
+            msgs.add(new FacesMessage("file too big"));
+        }
+        if (!"application/pdf".equals(file.getContentType())) {
+            msgs.add(new FacesMessage("not a pdf file"));
+        }
+        if (!msgs.isEmpty()) {
+            throw new ValidatorException(msgs);
+        }
+    }
 }

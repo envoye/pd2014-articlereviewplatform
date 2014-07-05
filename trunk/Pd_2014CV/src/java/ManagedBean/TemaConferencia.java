@@ -17,7 +17,7 @@ import javax.inject.Named;
  *
  * @author Valter
  */
-@Named(value = "temaConferencia")
+@Named(value = "TemaConferencia")
 @Dependent
 public class TemaConferencia {
     private String tema;
@@ -27,11 +27,13 @@ public class TemaConferencia {
     /**
      * Creates a new instance of TemaConferencia
      */
+    public TemaConferencia() { }
+/*    
     public TemaConferencia(String tema, String descricao) {
         this.tema = tema;
         this.descricao = descricao;
     }
-
+*/
     public void setTema(String tema) {
         this.tema = tema;
     }
@@ -63,12 +65,32 @@ public class TemaConferencia {
         this.listaSubtemas.remove(subtema);
     }
     
+    public String introduzir() {
+        return "index";
+    }
+    
     public String registar() {
-        AllHellper.SaveQualquerCoisa(new Tema(this.tema,this.descricao,null,null));
+        AllHellper.SaveQualquerCoisa(new Tema(tema,descricao,null,null));
         return "index";
     }
     
     public String cancelar() {
-        return "TemaConferencia.xhtml";
+        return "index";
     }
+
+    public String pesquisar() {
+        return "index";
+    }
+    
+    /*
+    * TESTE
+
+    
+    public void teste(){
+        this.listaSubtemas.add(new SubtemaConferencia(new Tema("Cidades"),"igrejas","história"));
+        this.listaSubtemas.add(new SubtemaConferencia(new Tema("Cidades"),"largos","acontecimentos"));
+        this.listaSubtemas.add(new SubtemaConferencia(new Tema("Cidades"),"ruas","ligações"));
+        this.listaSubtemas.add(new SubtemaConferencia(new Tema("Cidades"),"mapa","tipo"));
+    }
+    */
 }
