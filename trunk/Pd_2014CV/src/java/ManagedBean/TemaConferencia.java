@@ -66,10 +66,12 @@ public class TemaConferencia {
     }
     
     public String introduzir() {
+        System.out.println("Passei aqui para novo");
         return "index";
     }
     
     public String registar() {
+        System.out.println("Passei aqui para gravar");
         AllHellper.SaveQualquerCoisa(new Tema(tema,descricao,null,null));
         return "index";
     }
