@@ -72,7 +72,9 @@
                                 <td style="width: 5px;"></td>
 
                                 <td>
+
                                     <h:commandButton value="Gravar" action="#{TemaConferencia.registar()}" />
+
                                 </td>
 
                                 <td style="width: 5px;"></td>
@@ -85,15 +87,17 @@
                                 <td style="height: 50px;"></td>
                             </tr>
                         </table>
-    <!--
+
                         <div class="grid">
 
                             <table>
+                                <thead>
                                 <tr>
-                                    <td align="center" style="width: 100px;"></td>
-                                    <td align="center" style="width: 100px; color: whitesmoke">Subtema</td>
-                                    <td align="center" style="width: 600px;color: whitesmoke">Descrição</td>
+                                    <th align="center" style="width: 100px;"></th>
+                                    <th align="center" style="width: 100px; color: whitesmoke">Subtema</th>
+                                    <th align="center" style="width: 600px;color: whitesmoke">Descrição</th>
                                 </tr>
+                                </thead>
                             </table>
 
                             <h:dataTable value="#{TemaConferencia.listaSubtemas}" var="subtemas"
@@ -114,7 +118,7 @@
 
 
                         </div>
-    -->                    
+
 
                         <!--                  
 

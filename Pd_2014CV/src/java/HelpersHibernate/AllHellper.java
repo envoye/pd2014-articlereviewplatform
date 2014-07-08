@@ -22,7 +22,7 @@ public class AllHellper {
             tx = session.beginTransaction();
             //t.getClass().toString()
             session.save(i);
-
+            System.out.println(i);
             //Commit the transaction
             tx.commit();
 
