@@ -9,27 +9,29 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Investigador;
 import java.io.Serializable;
-import java.util.List;
+
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
+
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
 
 /**
  *
  * @author Carlos
  */
-@Named(value = "loginBean")
+@Named(value = "auth")
 @SessionScoped
 public class LoginUtilizador implements Serializable {
 
     /**
      * Creates a new instance of LoginBean
      */
+    
     private static final long serialVersionUID = 7765876811740798583L;
     private String username;
     private String password;
