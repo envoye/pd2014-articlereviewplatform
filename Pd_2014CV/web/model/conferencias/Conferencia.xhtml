@@ -39,13 +39,13 @@
                                     <td align="right" style="width: 80px;">Conferência</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="TituloInput" size='40' value="#{Conferencia.nome}" 
+                                        <h:inputText id="TituloInput" size='40' value="#{MBConferencia.nome}" 
                                                      required="true" />
                                        
                                     </td>
                                     
                                     <td>
-                                        <h:commandButton image="../../images/search.jpg" action="#{Conferencia.pesquisar()}" />
+                                      <h:commandButton image="../../images/search.jpg" action="#{MBConferencia.pesquisar}" />
                                     </td>
 
                                 </tr>
@@ -60,7 +60,7 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  action="#{Conferencia.registar()}" />
+                                    <h:commandButton value="Gravar"  action="#{MBConferencia.registar}" />
                                 </td>
                             </tr>
                             <tr>

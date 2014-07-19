@@ -7,35 +7,34 @@
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
+import HibernatePackage.Conferencia;
 import javax.enterprise.context.Dependent;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
  *
  * @author Valter
  */
-@Named(value = "Conferencia")
-@Dependent
-public class Conferencia {
-    public String nome;
-    
-    /**
-     * Creates a new instance of Conferencia
-     */
-    public Conferencia() {
+@Named(value = "MBConferencia")
+@ViewScoped
+public class MBConferencia{
+    private String nome;
+    public String getNome() {
+        return nome;
     }
-    
-    public Conferencia(String nome) {
-        this.nome = nome;
-    }
-    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
     
-    public String getNome() {
-        return this.nome;
-    }
+    
+    /**
+     * Creates a new instance of Conferencia
+     */
+    
+    
+  
     
     public String registar() {
         AllHellper.SaveQualquerCoisa(new Conferencia(this.nome));
