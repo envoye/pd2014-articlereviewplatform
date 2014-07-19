@@ -23,7 +23,11 @@
 
                 <div class="boxForm">
 
-                    <h:form class="jqtransform" enctype="multipart/form-data">
+                    <h:form class="jqtransform">
+<!--
+                            enctype="multipart/form-data"
+-->
+                         
 
                         <table>
                             <tbody>
@@ -41,7 +45,7 @@
                                     </td>
                                     
                                     <td>
-                                        <h:commandButton image="../../images/search.jpg" action="#{TemaConferencia.pesquisar()}" />
+                                        <h:commandButton image="../../images/search.jpg" action="#{Conferencia.pesquisar()}" />
                                     </td>
 
                                 </tr>
@@ -56,7 +60,7 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  onclick="#{Conferencia.registar()}" />
+                                    <h:commandButton value="Gravar"  action="#{Conferencia.registar()}" />
                                 </td>
                             </tr>
                             <tr>
