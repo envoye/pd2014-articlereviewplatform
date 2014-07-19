@@ -7,31 +7,28 @@
          <h:outputStylesheet name="./css/menu2/css/jquery.mmenu.all.css"  />
          <h:outputScript name="./css/menu2/js/jquery.mmenu.min.all.js" />
   <script type="text/javascript">
-   $(document).ready(function() {
+ $(document).ready(function() {
       $("#my-menu").mmenu({
-         slidingSubmenus: false
-      }, {
-         // configuration
-         offCanvas: {
-            pageNodetype: "section"
-         }
+         slidingSubmenus: true
+      });
+      $("#OpenMenu").click(function() {
+         $("#my-menu").trigger("open.mm");
       });
    });
 </script>
     </h:head>
     <h:body>
         
-        <div id="page"> 
-           <div class="header mm-fixed-top">
-				<a href="#my-menu">Open the menu</a>
-			</div>
+       
+        <img width="200" height="200" src="../../images/menuImage.jpg" alt="" id="OpenMenu"/>
+			
 				
 			
             
-       <nav id="my-menu">
+      <nav id="my-menu">
    <ul>
       <li><a href="/">Home</a></li>
-      <li>
+      <li >
          <a href="/about/">About us</a>
          <ul>
             <li><a href="/about/history/">History</a></li>
@@ -43,7 +40,6 @@
    </ul>
 </nav>
         
-        </div> 
     </h:body>
 </html>
 
