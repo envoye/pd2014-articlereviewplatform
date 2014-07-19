@@ -7,7 +7,7 @@
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
-import HibernatePackage.Conferencia;
+import HibernatePackage.Grauacademico;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -15,25 +15,26 @@ import javax.inject.Named;
  *
  * @author Valter
  */
-@Named(value = "MBConferencia")
+@Named(value = "MBGrauAcademico")
 @ViewScoped
-public class MBConferencia{
-    private String nome;
-    
-    public String getNome() {
-        return nome;
+public class MBGrauAcademico {
+    private String grauAcademico;
+    /**
+     * Creates a new instance of MBGrauAcademico
+     */
+    public MBGrauAcademico() {
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getGrauAcademico() {
+        return grauAcademico;
     }
- 
-    public String introduzir() {
-        return "index";
+
+    public void setGrauAcademico(String grauAcademico) {
+        this.grauAcademico = grauAcademico;
     }
-    
+
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Conferencia(this.nome));
+        AllHellper.SaveQualquerCoisa(new Grauacademico(grauAcademico, null));
         return "index";
     }
     
