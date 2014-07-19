@@ -39,7 +39,7 @@
                                     <td align="right" style="width: 80px;">Conferência</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="TituloInput" size='40' value="#{MBConferencia.nome}" 
+                                        <h:inputText id="conferenciaInput" size='40' value="#{MBConferencia.nome}" 
                                                      required="true" />
                                        
                                     </td>
@@ -60,7 +60,7 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  action="#{MBConferencia.registar}" />
+                                    <h:commandButton value="Gravar" action="#{MBConferencia.gravar}" />
                                 </td>
                             </tr>
                             <tr>
@@ -68,32 +68,6 @@
                             </tr>
                         </table>                        
                         
-<!--                        
-                        <h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="40" >
-                            <div > 
-                                <section>
-                                    <h:column>
-                                        <h:outputLabel for="conferencia">
-                                            Conferência
-                                        </h:outputLabel>
-                                    </h:column>
-                                    <h:column>
-                                        <h:inputText id="TituloInput" size="30" value="#{Conferencia.nome}" 
-                                                     required="true" />                                    
-                                    </h:column>
-                                </section>
-
-                                <br/>
-                                <section>
-                                    <h:column></h:column>
-                                    <h:column>
-                                        <h:commandButton value="Gravar"  action="#{Conferencia.registar()}" />
-                                    </h:column>
-                                </section>                                    
-                            </div> 
-
-                        </h:panelGrid>
--->
                     </h:form>
                 </div>
         

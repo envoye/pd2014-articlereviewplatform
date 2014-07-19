@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -22,7 +23,7 @@
                 
                 <div class="boxForm">
 
-                    <h:form class="jqtransform" enctype="multipart/form-data">
+                    <h:form class="jqtransform">
 
                         <table>
                             <tbody>
@@ -36,7 +37,7 @@
                                     <td align="right" style="width: 250px;">Conferência</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='NomeInput' size='40' value="#{ConferenciaEdicao.idConferencia}" 
+                                        <h:inputText id='NomeInput' size='40' value="#{MBConferenciaEdicao.conferencia.id}" 
                                                      required="true" />
                                     </td>
                                 </tr>
@@ -46,7 +47,7 @@
                                     <td align="right" style="width: 250px;">Edição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="resumoInput" size="10" value="#{ConferenciaEdicao.edicao}" 
+                                        <h:inputText id="edicaoInput" size="10" value="#{MBConferenciaEdicao.edicao}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -56,7 +57,7 @@
                                     <td align="right" style="width: 250px;">Nome</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="resumoInput" size="60" value="#{ConferenciaEdicao.subNome}" 
+                                        <h:inputText id="subNomeInput" size="60" value="#{MBConferenciaEdicao.subNome}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -66,8 +67,19 @@
                                     <td align="right" style="width: 250px;">Descrição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="resumoInput" value="#{ConferenciaEdicao.descricao}" 
+                                        <h:inputTextarea id="descricaoInput" value="#{MBConferenciaEdicao.descricao}" 
                                                      required="true" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Tema -->
+                                <tr>
+                                    <td style="width: 10px; height: 45px;"></td>
+                                    <td align="right" style="width: 250px;">Tema</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferenciaEdicao.idTema}" id="TemaInput">
+                                            <f:selectItems value="#{MBConferenciaEdicao.listTemas}" var="temaEdicao" itemValue="#{temaEdicao.id}" itemLabel="#{temaEdicao.nomeTema}"/>
+                                        </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
 <!-- Data -->
@@ -76,8 +88,8 @@
                                     <td align="right" style="width: 250px;">Data do Evento</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="resumoInput" size="10" value="#{ConferenciaEdicao.data}" 
-                                                     required="true" />                                                        
+                                        <h:inputText id="dataInput" value="#{MBConferenciaEdicao.data}" class="datetime"
+                                             required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
                                     </td>
                                 </tr>                                
 <!-- Local -->
@@ -86,7 +98,7 @@
                                     <td align="right" style="width: 250px;">Local</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="resumoInput" value="#{ConferenciaEdicao.local}" 
+                                        <h:inputTextarea id="localInput" value="#{MBConferenciaEdicao.local}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -96,9 +108,9 @@
                                     <td align="right" style="width: 250px;">Data Limite Submissão</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="resumoInput" size="10" value="#{ConferenciaEdicao.limiteSubmissao}" 
-                                                     required="true" />                                                        
-                                    </td>
+                                        <h:inputText id="limiteSubmissaoInput" value="#{MBConferenciaEdicao.limiteSubmissao}" class="datetime"
+                                             required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                    </td>                                  
                                 </tr>                                
 <!-- Nº Máximo de Artigos -->
                                 <tr>
@@ -106,7 +118,7 @@
                                     <td align="right" style="width: 250px;">Nº Máximo de Artigos</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="resumoInput" size="1" value="#{ConferenciaEdicao.maxArtigos}" 
+                                        <h:inputText id="maxArtigosInput" size="1" value="#{MBConferenciaEdicao.maxArtigos}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -116,7 +128,7 @@
                                     <td align="right" style="width: 250px;">Nº Máximo de Artigos por Revisor</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="resumoInput" size="1" value="#{ConferenciaEdicao.maxArtigosRevisor}" />                                                        
+                                        <h:inputText id="maxArtigosRevisorInput" size="1" value="#{MBConferenciaEdicao.maxArtigosRevisor}" />                                                        
                                     </td>
                                 </tr>                                
 <!-- Configuração Encerrada -->
@@ -125,7 +137,7 @@
                                     <td align="right" style="width: 250px;">Configuração Encerrada</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectBooleanCheckbox id="resumoInput" value="#{ConferenciaEdicao.configuracaoEncerrada}"/>                                                        
+                                        <h:selectBooleanCheckbox id="configuracaoEncerradaInput" value="#{MBConferenciaEdicao.configEncerrada}"/>                                                        
                                     </td>
                                 </tr>                                
                                 <tr>
@@ -134,6 +146,20 @@
                             </tbody>
                         </table>
 
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton value="Gravar"  action="#{MBConferenciaEdicao.gravar}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>                                                
+                        
+                        
                     </h:form>
                     
                 </div>    

@@ -2,8 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">    
 
     <body>
 
@@ -25,7 +24,7 @@
 
                 <div class="boxForm">
                     
-                    <h:form class="jqtransform" enctype="multipart/form-data">
+                    <h:form class="jqtransform">
 
                         <table>
                             <tbody>
@@ -37,13 +36,12 @@
                                     <td align="right" style="width: 80px;">Tema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="TituloInput" size='40' value="#{ConferenciaTema.tema}" 
+                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" 
                                                      required="true" />
-                                       
                                     </td>
                                     
                                     <td>
-                                        <h:commandButton image="../../images/search.jpg" action="#{ConferenciaTema.pesquisar()}" />
+                                        <h:commandButton image="../../images/search.jpg" action="#{MBConferenciaTema.pesquisar()}" />
                                     </td>
 
                                 </tr>
@@ -52,7 +50,7 @@
                                     <td align="right" style="width: 80px;">Descrição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="resumoInput" rows="3" cols="60" value="#{ConferenciaTema.descricao}" 
+                                        <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.descricao}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>
@@ -65,23 +63,19 @@
                         <table>
                             <tr>
                                 <td style="width: 500px;"></td>
-
                                 <td>
-                                    <h:commandButton value="Novo" action="#{ConferenciaTema.introduzir()}" />
-                        </td>
+                                    <h:commandButton value="Novo" action="#{MBConferenciaTema.introduzir()}" />
+                                </td>
+                                
                                 <td style="width: 5px;"></td>
-
                                 <td>
-
-                                    <h:commandButton value="Gravar" action="#{ConferenciaTema.registar()}" />
-
+                                    <h:commandButton value="Gravar" action="#{MBConferenciaTema.gravar()}" />
                                 </td>
 
                                 <td style="width: 5px;"></td>
                                 <td>
-                                    <h:commandButton value="Cancelar" action="#{ConferenciaTema.cancelar()}" />
+                                    <h:commandButton value="Cancelar" action="#{MBConferenciaTema.cancelar()}" />
                                 </td>
-
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
@@ -99,7 +93,7 @@
                                 </tr>
                                 </thead>
                             </table>
-
+<!--
                             <h:dataTable value="#{ConferenciaTema.listaSubtemas}" var="subtemas"
                                          styleClass="subtemaTable"
                                          headerClass="subtemaTableHeader"
@@ -108,84 +102,16 @@
                                     <f:facet name="header">
                                         Subtema
                                     </f:facet>    				
-                                        #{ConferenciaTema.nome}
+                                        #{ConferenciaTema.subtemas}
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">Descrição</f:facet>
                                         #{ConferenciaTema.descricao}
                                 </h:column>
                             </h:dataTable>                        
-
-
+-->
                         </div>
-
-
-                        <!--                  
-
-                        <h:form class="jqtransform" enctype="multipart/form-data">
-                            <h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="40" >
-                                <div > 
-                                    <section>
-                                        <h:column>
-                                            <h:outputLabel for="tema" class="style6">
-                                                Tema
-                                            </h:outputLabel>
-                                        </h:column>
-                                        <h:column>
-                                            <h:inputText id="TituloInput" size="40" value="#{TemasConferencias.tema}" 
-                                                         required="true" />                                    
-                                        </h:column>
-                                    </section>
-                                    <section>
-                                        <h:column>
-                                            <h:outputLabel for="descricao">
-                                                Descrição
-                                            </h:outputLabel>
-                                        </h:column>    
-                                        <h:column>
-                                            <h:inputText id="resumoInput" size="100" value="#{TemasConferencias.descricao}" 
-                                                             required="true" />                                                        
-                                        </h:column>          
-                                    </section>
-                                    <br/>
-
-                                    <section>
-                                        <h:column>
-                                            <h:commandButton value="Gravar"  action="#{TemasConferencias.registar()}" />
-                                        </h:column>
-                                        <h:column>
-                                            <h:commandButton value="Cancelar"  action="#{TemasConferencias.cancelar()}" />
-                                        </h:column>
-                                    </section>                                    
-                                </div> 
-
-                            </h:panelGrid>
-
-                        </h:form>
-
-                        <div class="6u" id="tabelaSubtema">
-                            <section>
-                                <h:dataTable value="#{TemaConferencia.listaSubtemas}" var="subtemas"
-                                             styleClass="subtemaTable"
-                                             headerClass="subtemaTableHeader"
-                                             rowClasses="subtemaTableOddRow,subtemaTableEvenRow">
-                                    <h:column>    				
-                                        <f:facet name="header">
-                                            Subtema
-                                        </f:facet>    				
-                                            #{TemaConferencia.nome}
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Descrição</f:facet>
-                                            #{TemaConferencia.descricao}
-                                    </h:column>
-                                </h:dataTable>
-                            </section>    
-                        </div>
-    -->                                 
-
                     </h:form>
-
                 </div>
                
             </ui:define>

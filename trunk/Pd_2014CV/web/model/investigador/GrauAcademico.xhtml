@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
+
+            <ui:define name="title">
+                Conference Team Manager - Grau Académico
+            </ui:define>
+
+            <ui:define name="formTitle">
+                
+                <h2 class="subtitle" align="center">
+                    Grau Académico
+                </h2>
+                
+            </ui:define>
+
+            <ui:define name="form">
+                
+                                <div class="boxForm">
+                    
+                    <h:form class="jqtransform">
+
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 120px; height: 50px;"></td>
+                                    <td align="right" style="width: 120px;">Grau Académico</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="grauInput" size='40' value="#{MBGrauAcademico.grauAcademico}" 
+                                                     required="true" />
+                                    </td>
+
+                                    <td>
+                                        <h:commandButton image="../../images/search.jpg" action="#{MBGrauAcademico.pesquisar()}" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton value="Novo" action="#{MBGrauAcademico.introduzir()}" />
+                        </td>
+                                <td style="width: 5px;"></td>
+
+                                <td>
+
+                                    <h:commandButton value="Gravar" action="#{MBGrauAcademico.gravar()}" />
+
+                                </td>
+
+                                <td style="width: 5px;"></td>
+                                <td>
+                                    <h:commandButton value="Cancelar" action="#{MBGrauAcademico.cancelar()}" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>
+
+                    </h:form>
+
+                </div>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
