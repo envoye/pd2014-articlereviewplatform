@@ -33,15 +33,17 @@ private LoginUtilizador loginUtilizador;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-   HttpServletRequest req = (HttpServletRequest) request;
-        LoginUtilizador  auth = (LoginUtilizador ) req.getSession().getAttribute("auth");
+       HttpServletRequest rq = (HttpServletRequest) request; 
         loginUtilizador.isLoggedIn();
-        String n=loginUtilizador.getUsername();
-            if (auth == null || !auth .isLoggedIn()) {
+        
+            if (loginUtilizador == null || !loginUtilizador.isLoggedIn()) {
                 String contextPath = ((HttpServletRequest) request).getContextPath();
                 ((HttpServletResponse) response).sendRedirect(contextPath + "/faces/model/investigador/LoginUtilizador.xhtml");
             }
-
+            if(loginUtilizador.isLoggedIn() && rq.getRequestURL().toString().contains("LoginUtilizador.xhtml" )){
+               String contextPath = ((HttpServletRequest) request).getContextPath();
+                ((HttpServletResponse) response).sendRedirect(contextPath + "/faces/model/principais/PaginaPrincipal.xhtml");
+            }
             chain.doFilter(request, response);
     }
 
