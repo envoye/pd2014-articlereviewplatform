@@ -14,19 +14,19 @@ import javax.inject.Named;
  *
  * @author Valter
  */
-@Named(value = "subtemaConferencia")
+@Named(value = "conferenciaSubtema")
 @Dependent
-public class SubtemaConferencia {
+public class ConferenciaSubtema {
     private Tema tema;
     private String nome;
     private String descricao;
     /**
-     * Creates a new instance of SubtemaConferencia
+     * Creates a new instance of ConferenciaSubtema
      */
-    public SubtemaConferencia() {
+    public ConferenciaSubtema() {
     }
 
-    public SubtemaConferencia(Tema tema, String nome, String descricao) {
+    public ConferenciaSubtema(Tema tema, String nome, String descricao) {
         this.tema = tema;
         this.nome = nome;
         this.descricao = descricao;

@@ -17,23 +17,23 @@ import javax.inject.Named;
  *
  * @author Valter
  */
-@Named(value = "TemaConferencia")
+@Named(value = "ConferenciaTema")
 @Dependent
-public class TemaConferencia {
+public class ConferenciaTema {
     private String tema;
     private String descricao;
-    private List<SubtemaConferencia> listaSubtemas;
+    private List<ConferenciaSubtema> listaSubtemas;
     
     /**
-     * Creates a new instance of TemaConferencia
+     * Creates a new instance of ConferenciaTema
      */
-    public TemaConferencia() { }
-/*    
-    public TemaConferencia(String tema, String descricao) {
+    public ConferenciaTema() { }
+    
+    public ConferenciaTema(String tema, String descricao) {
         this.tema = tema;
         this.descricao = descricao;
     }
-*/
+
     public void setTema(String tema) {
         this.tema = tema;
     }
@@ -50,18 +50,18 @@ public class TemaConferencia {
         return this.descricao;
     }
     
-    public List<SubtemaConferencia> getSubtemas() {
+    public List<ConferenciaSubtema> getSubtemas() {
         if(this.listaSubtemas == null){
-            this.listaSubtemas = (List<SubtemaConferencia>)AllHellper.getListQualquerCoisa(Subtema.class);
+            this.listaSubtemas = (List<ConferenciaSubtema>)AllHellper.getListQualquerCoisa(Subtema.class);
         }
         return this.listaSubtemas;
     }
     
     public void addSubtema(String nome, String descricao) {
-        this.listaSubtemas.add(new SubtemaConferencia(new Tema(this.tema),nome,descricao));
+        this.listaSubtemas.add(new ConferenciaSubtema(new Tema(this.tema),nome,descricao));
     }
     
-    public void delSubtema(SubtemaConferencia subtema) {
+    public void delSubtema(ConferenciaSubtema subtema) {
         this.listaSubtemas.remove(subtema);
     }
     
