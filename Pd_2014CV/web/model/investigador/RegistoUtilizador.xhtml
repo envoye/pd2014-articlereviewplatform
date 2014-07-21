@@ -36,7 +36,7 @@
                                     <td align="right" style="width: 250px;">Nome</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='NomeInput' size='40' value="#{RegistoUtilizador.nome}" 
+                                        <h:inputText id='NomeInput' size='60' value="#{RegistoUtilizador.nome}" 
                                                      required="true" />
                                     </td>
                                 </tr>
@@ -46,7 +46,7 @@
                                     <td align="right" style="width: 250px;">Grau Académico</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{RegistoUtilizador.idGrauacademico}" id="GrauacademicoInput">
+                                        <h:selectOneMenu value="#{RegistoUtilizador.idGrauacademico}" id="GrauacademicoInput" style="width: 200px">
                                             <f:selectItems value="#{RegistoUtilizador.listGrauacademico}" var="country" itemValue="#{country.id}" itemLabel="#{country.grauacademico}"/>
                                         </h:selectOneMenu>  
                                     </td>
@@ -57,7 +57,7 @@
                                     <td align="right" style="width: 250px;">Instituição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="instituicaoInput" value="#{RegistoUtilizador.instituicao}" 
+                                        <h:inputText id="instituicaoInput" size="60" value="#{RegistoUtilizador.instituicao}" 
                                                      required="true"/> 
                                     </td>
                                 </tr>
@@ -67,7 +67,7 @@
                                     <td align="right" style="width: 250px;">Data de Nascimento</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime"
+                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime" size="10"
                                                      required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
                                     </td>
                                 </tr>
@@ -107,7 +107,7 @@
                                     <td align="right" style="width: 250px;">Email</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="emailInput" value="#{RegistoUtilizador.email}" 
+                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}" 
                                                      required="true" />
                                     </td>
                                 </tr>
@@ -117,7 +117,7 @@
                                     <td align="right" style="width: 250px;">Telefone</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="telefoneInput" value="#{RegistoUtilizador.telefone}" 
+                                        <h:inputText id="telefoneInput" size="20" value="#{RegistoUtilizador.telefone}" 
                                                      required="true" />
                                     </td>
                                 </tr>
@@ -127,7 +127,7 @@
                                     <td align="right" style="width: 250px;">Telemóvel</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="telemovelInput" value="#{RegistoUtilizador.telemovel}" 
+                                        <h:inputText id="telemovelInput" size="20" value="#{RegistoUtilizador.telemovel}" 
                                                      required="true" />
                                     </td>
                                 </tr>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
+
+            <ui:define name="title">
+                Conference Team Manager - Contactos
+            </ui:define>
+
+            <ui:define name="formTitle">
+                <h3 class="subtitle" align="center">Contactos do Investigador</h3>
+            </ui:define>
+
+            <ui:define name="form">
+                
+                <div class="boxForm">
+
+                    <h:form class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; height: 50px;"></td>
+                                    <td align="right" style="width: 80px;">Investigador</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBInvestigadorContacto.investigador.id}" id="InvestigadorInput" style="width: 400px">
+                                            <f:selectItems value="#{MBInvestigadorContacto.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                    
+                                    <td>
+                                      <h:commandButton image="../../images/search.jpg" action="#{MBConferencia.pesquisar}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 100px; height: 50px;"></td>
+                                    <td align="right" style="width: 80px;">Contacto</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBInvestigadorContacto.idContacto}" id="ContactoInput" style="width: 400px">
+                                            <f:selectItems value="#{MBInvestigadorContacto.listaInvestigadores}" var="contactos" itemValue="#{contactos.id}" itemLabel="#{contactos.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton value="Gravar" action="#{MBInvestigadorContacto.gravar}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>                        
+                        
+                    </h:form>
+                </div>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

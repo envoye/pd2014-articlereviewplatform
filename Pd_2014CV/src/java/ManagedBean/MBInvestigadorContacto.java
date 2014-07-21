@@ -9,8 +9,9 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Contacto;
 import HibernatePackage.Investigador;
-import javax.inject.Named;
+import java.util.List;
 import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 /**
  *
@@ -21,6 +22,8 @@ import javax.faces.view.ViewScoped;
 public class MBInvestigadorContacto {
     private Investigador investigador;
     private String idContacto;
+    private List<Investigador> listaInvestigadores;
+            
     /**
      * Creates a new instance of MBInvestigadorContacto
      */
@@ -31,16 +34,35 @@ public class MBInvestigadorContacto {
         return investigador;
     }
 
-    public void setInvestigador(Investigador investigador) {
-        this.investigador = investigador;
+    public void setInvestigador() {
+        for(int i=0;i<this.getListaInvestigadores().size();i++){
+            if(this.listaInvestigadores.get(i).getId().equals(this.investigador.getId())){
+                this.investigador = this.listaInvestigadores.get(i);
+            }
+        }        
     }
 
     public String getIdContacto() {
         return idContacto;
     }
 
-    public void setIdContacto(String idContacto) {
-        this.idContacto = idContacto;
+    public void setIdContacto() {
+        for(int i=0;i<this.getListaInvestigadores().size();i++){
+            if(this.listaInvestigadores.get(i).getId().equals(this.investigador.getId())){
+                this.idContacto = this.listaInvestigadores.get(i).getNome();
+            }
+        }                
+    }
+
+    public List<Investigador> getListaInvestigadores() {
+        if(this.listaInvestigadores == null){
+            this.listaInvestigadores = (List<Investigador>)AllHellper.getListQualquerCoisa(Investigador.class);
+        }        
+        return this.listaInvestigadores;
+    }
+
+    public void setListaInvestigadores(List<Investigador> listaInvestigadores) {
+        this.listaInvestigadores = listaInvestigadores;
     }
     
     public String introduzir() {
@@ -48,7 +70,7 @@ public class MBInvestigadorContacto {
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Contacto(this.nome));
+        AllHellper.SaveQualquerCoisa(new Contacto(this.investigador, this.idContacto));
         return "index";
     }
     
