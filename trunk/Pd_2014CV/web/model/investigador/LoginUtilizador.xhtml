@@ -12,10 +12,56 @@
             <ui:define name="title">
                 Conference Team Manager - Login
             </ui:define>
+
+            <ui:define name="formTitle">
+                <h3 class="subtitle" align="center">Dados de acesso à plataforma</h3>
+            </ui:define>            
             
             <ui:define name="form">
                 <div class="boxLogin">
                     <h:form class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!-- Utilizador -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Utilizador</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="usernameInput" value="#{auth.username}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+<!-- Password -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Password</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputSecret id="passwordInput" value="#{auth.password}" 
+                                                       required="true" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton image="../../images/login.jpg" value="Entrar"  action="#{auth.login}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>                                                                        
+                        
+<!--                        
                         <div class="rowElem">            
                             <h:outputLabel for="usernameInput">
                                 Utilizador:
@@ -36,7 +82,7 @@
                             <h:commandButton value="Entrar"  action="#{auth.login}" />
                         </div>
                         
-
+-->
 
                     </h:form>
                     <div class="boxLink">
