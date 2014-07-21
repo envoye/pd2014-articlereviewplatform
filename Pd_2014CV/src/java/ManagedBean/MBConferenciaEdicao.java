@@ -33,10 +33,8 @@ public class MBConferenciaEdicao {
     private boolean configEncerrada;
     private Conferencia conferencia;
     private List<Conferencia> listConferencias; 
-    private int idTema;
     private Tema temaEdicao;
     private List<Tema> listTemas; 
-    private Conferenciaedicao confEdicao;
     
     /**
      * Creates a new instance of ConferenciaEdicao
@@ -122,8 +120,8 @@ public class MBConferenciaEdicao {
 
     public void setConferencia() {
         for(int i=0;i<getListConferencias().size();i++){
-            if(listTemas.get(i).getId().equals(this.conferencia.getId())){
-                temaEdicao=listTemas.get(i);
+            if(listConferencias.get(i).getId().equals(this.conferencia.getId())){
+                this.conferencia=listConferencias.get(i);
             }
         }
     }
@@ -138,25 +136,17 @@ public class MBConferenciaEdicao {
     public void setListConferencias(List<Conferencia> listConferencias) {
         this.listConferencias = listConferencias;
     }
-   
-    public int getIdTema() {
-        return idTema;
-    }
-
-    public void setIdTema(int idTema) {
-        this.idTema = idTema;
-        for(int i=0;i<getListTemas().size();i++){
-            if(listTemas.get(i).getId()==idTema){
-                temaEdicao=listTemas.get(i);
-            }
-        }
-    }
 
     public Tema getTemaEdicao() {
         return temaEdicao;
     }
 
     public void setTemaEdicao(Tema temaEdicao) {
+        for(int i=0;i<getListTemas().size();i++){
+            if(listTemas.get(i).getId().equals(this.temaEdicao.getId())){
+                temaEdicao=listTemas.get(i);
+            }
+        }
         this.temaEdicao = temaEdicao;
     }
 
@@ -171,21 +161,12 @@ public class MBConferenciaEdicao {
         this.listTemas = listTemas;
     }
 
-    public Conferenciaedicao getConfEdicao() {
-        return confEdicao;
-    }
-
-    public void setConfEdicao(Conferenciaedicao confEdicao) {
-        this.confEdicao = confEdicao;
-    }
-
     public String introduzir() {
         return "index";
     }
     
     public String gravar() {
-        confEdicao = new Conferenciaedicao(temaEdicao, conferencia, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null);
-        AllHellper.SaveQualquerCoisa(this.confEdicao);
+        AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conferencia, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
         return "index";
     }
     

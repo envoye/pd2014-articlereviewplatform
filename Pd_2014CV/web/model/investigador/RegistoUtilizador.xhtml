@@ -10,10 +10,144 @@
 
         <ui:composition template="./../Template/LoginTemplate.xhtml">
 
+            <ui:define name="title">
+                Conference Team Manager - Registo de Utilizador
+            </ui:define>
+
+            
+            <ui:define name="formTitle">
+                <h3 class="subtitle" align="center">Registo de acesso à plataforma</h3>
+            </ui:define>
+            
+            
             <ui:define name="form">
 
                 <div class="boxLogin">
                     <h:form class="jqtransform">
+                        
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!-- Nome Investigador -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Nome</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id='NomeInput' size='40' value="#{RegistoUtilizador.nome}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+<!-- Grau Académico -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Grau Académico</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{RegistoUtilizador.idGrauacademico}" id="GrauacademicoInput">
+                                            <f:selectItems value="#{RegistoUtilizador.listGrauacademico}" var="country" itemValue="#{country.id}" itemLabel="#{country.grauacademico}"/>
+                                        </h:selectOneMenu>  
+                                    </td>
+                                </tr>
+<!-- Instituição -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Instituição</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="instituicaoInput" value="#{RegistoUtilizador.instituicao}" 
+                                                     required="true"/> 
+                                    </td>
+                                </tr>
+<!-- DataNascimento -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Data de Nascimento</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime"
+                                                     required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                    </td>
+                                </tr>
+<!-- Utilizador -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Utilizador</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="utilizadorInput" value="#{RegistoUtilizador.utilizador}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+<!-- Password -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Password</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputSecret id="passwordInput" value="#{RegistoUtilizador.password}" 
+                                                       required="true" />
+                                    </td>
+                                </tr>
+<!-- Password Conformação -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Confirme a Password</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputSecret id="passwordconfInput" value="#{RegistoUtilizador.password}" 
+                                                       required="true" />
+                                    </td>
+                                </tr>
+<!-- Email -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Email</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="emailInput" value="#{RegistoUtilizador.email}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+<!-- Telefone -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Telefone</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="telefoneInput" value="#{RegistoUtilizador.telefone}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+<!-- Telemovel -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Telemóvel</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="telemovelInput" value="#{RegistoUtilizador.telemovel}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton image="../../images/registo.jpg" value="Registar"  action="#{RegistoUtilizador.registar()}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>                                                
+                        
+<!--                        
                         <h:panelGrid columns="3" >
                             <div class="rowElem single-field"> 
 
@@ -113,29 +247,12 @@
                             </div>
                         </h:panelGrid>
                         <div class="rowElem">  
-                            <h:commandButton value="Entrar"  action="#{RegistoUtilizador.registar()}" />
+                            <h:commandButton value="Registar"  action="#{RegistoUtilizador.registar()}" />
                         </div>
-
-
+-->
 
                     </h:form>
-
-
                 </div>
-
-
-            </ui:define>
-
-            <ui:define name="left">
-                left
-            </ui:define>
-
-            <ui:define name="content">
-                content
-            </ui:define>
-
-            <ui:define name="bottom">
-                bottom
             </ui:define>
 
         </ui:composition>
