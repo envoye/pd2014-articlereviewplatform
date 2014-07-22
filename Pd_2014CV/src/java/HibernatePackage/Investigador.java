@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 28/Jun/2014 15:34:25 by Hibernate Tools 3.6.0
+// Generated 22/Jul/2014 21:12:36 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -24,7 +24,8 @@ public class Investigador  implements java.io.Serializable {
      private String telemovel;
      private Set<Conferenciacomiteartigoforummensagem> conferenciacomiteartigoforummensagems = new HashSet<Conferenciacomiteartigoforummensagem>(0);
      private Set<Investigadorareaconhecimento> investigadorareaconhecimentos = new HashSet<Investigadorareaconhecimento>(0);
-     private Set<Contacto> contactos = new HashSet<Contacto>(0);
+     private Set<Contacto> contactosForInvestigadorContactId = new HashSet<Contacto>(0);
+     private Set<Contacto> contactosForIdInvestigador = new HashSet<Contacto>(0);
      private Set<Conferenciapoolrevisores> conferenciapoolrevisoreses = new HashSet<Conferenciapoolrevisores>(0);
      private Set<Artigoautores> artigoautoreses = new HashSet<Artigoautores>(0);
      private Set<Conferenciacomite> conferenciacomites = new HashSet<Conferenciacomite>(0);
@@ -40,7 +41,7 @@ public class Investigador  implements java.io.Serializable {
         this.utilizador = utilizador;
         this.password = password;
     }
-    public Investigador(Grauacademico grauacademico, String nome, String instituicao, Date datanascimento, String utilizador, String password, String email, String telefone, String telemovel, Set<Conferenciacomiteartigoforummensagem> conferenciacomiteartigoforummensagems, Set<Investigadorareaconhecimento> investigadorareaconhecimentos, Set<Contacto> contactos, Set<Conferenciapoolrevisores> conferenciapoolrevisoreses, Set<Artigoautores> artigoautoreses, Set<Conferenciacomite> conferenciacomites) {
+    public Investigador(Grauacademico grauacademico, String nome, String instituicao, Date datanascimento, String utilizador, String password, String email, String telefone, String telemovel, Set<Conferenciacomiteartigoforummensagem> conferenciacomiteartigoforummensagems, Set<Investigadorareaconhecimento> investigadorareaconhecimentos, Set<Contacto> contactosForInvestigadorContactId, Set<Contacto> contactosForIdInvestigador, Set<Conferenciapoolrevisores> conferenciapoolrevisoreses, Set<Artigoautores> artigoautoreses, Set<Conferenciacomite> conferenciacomites) {
        this.grauacademico = grauacademico;
        this.nome = nome;
        this.instituicao = instituicao;
@@ -52,7 +53,8 @@ public class Investigador  implements java.io.Serializable {
        this.telemovel = telemovel;
        this.conferenciacomiteartigoforummensagems = conferenciacomiteartigoforummensagems;
        this.investigadorareaconhecimentos = investigadorareaconhecimentos;
-       this.contactos = contactos;
+       this.contactosForInvestigadorContactId = contactosForInvestigadorContactId;
+       this.contactosForIdInvestigador = contactosForIdInvestigador;
        this.conferenciapoolrevisoreses = conferenciapoolrevisoreses;
        this.artigoautoreses = artigoautoreses;
        this.conferenciacomites = conferenciacomites;
@@ -142,12 +144,19 @@ public class Investigador  implements java.io.Serializable {
     public void setInvestigadorareaconhecimentos(Set<Investigadorareaconhecimento> investigadorareaconhecimentos) {
         this.investigadorareaconhecimentos = investigadorareaconhecimentos;
     }
-    public Set<Contacto> getContactos() {
-        return this.contactos;
+    public Set<Contacto> getContactosForInvestigadorContactId() {
+        return this.contactosForInvestigadorContactId;
     }
     
-    public void setContactos(Set<Contacto> contactos) {
-        this.contactos = contactos;
+    public void setContactosForInvestigadorContactId(Set<Contacto> contactosForInvestigadorContactId) {
+        this.contactosForInvestigadorContactId = contactosForInvestigadorContactId;
+    }
+    public Set<Contacto> getContactosForIdInvestigador() {
+        return this.contactosForIdInvestigador;
+    }
+    
+    public void setContactosForIdInvestigador(Set<Contacto> contactosForIdInvestigador) {
+        this.contactosForIdInvestigador = contactosForIdInvestigador;
     }
     public Set<Conferenciapoolrevisores> getConferenciapoolrevisoreses() {
         return this.conferenciapoolrevisoreses;

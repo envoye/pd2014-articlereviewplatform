@@ -36,7 +36,15 @@ public class LoginUtilizador implements Serializable {
     private String username;
     private String password;
     private boolean loggedIn;
+    private Investigador investigador; 
 
+    public Investigador getInvestigador() {
+        return investigador;
+    }
+
+   
+    
+    
     public boolean isLoggedIn() {
         return loggedIn;
     }
@@ -59,7 +67,7 @@ public class LoginUtilizador implements Serializable {
 
 
   public String login () {
-      Investigador investigador; 
+      
       
        String condicao=(" as inv where inv.utilizador='"+ username+"' and inv.password='" +password+"'");
       

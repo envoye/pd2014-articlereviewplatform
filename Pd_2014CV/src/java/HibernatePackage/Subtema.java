@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 28/Jun/2014 15:34:25 by Hibernate Tools 3.6.0
+// Generated 22/Jul/2014 21:12:36 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -20,12 +20,12 @@ public class Subtema  implements java.io.Serializable {
 
     public Subtema() {
     }
+
 	
     public Subtema(Tema tema, String nome) {
         this.tema = tema;
         this.nome = nome;
     }
-    
     public Subtema(Tema tema, String nome, String descricao, Set<Artigo> artigos, Set<Investigadorareaconhecimento> investigadorareaconhecimentos) {
        this.tema = tema;
        this.nome = nome;

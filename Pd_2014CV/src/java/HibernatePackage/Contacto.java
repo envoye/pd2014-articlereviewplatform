@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 28/Jun/2014 15:34:25 by Hibernate Tools 3.6.0
+// Generated 22/Jul/2014 21:12:36 by Hibernate Tools 3.6.0
 
 
 
@@ -10,14 +10,16 @@ public class Contacto  implements java.io.Serializable {
 
 
      private Integer id;
-     private Investigador investigador;
-     private String idContacto;
+     private Investigador investigadorByInvestigadorContactId;
+     private Investigador investigadorByIdInvestigador;
+     private int idContacto;
 
     public Contacto() {
     }
 
-    public Contacto(Investigador investigador, String idContacto) {
-       this.investigador = investigador;
+    public Contacto(Investigador investigadorByInvestigadorContactId, Investigador investigadorByIdInvestigador, int idContacto) {
+       this.investigadorByInvestigadorContactId = investigadorByInvestigadorContactId;
+       this.investigadorByIdInvestigador = investigadorByIdInvestigador;
        this.idContacto = idContacto;
     }
    
@@ -28,18 +30,25 @@ public class Contacto  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Investigador getInvestigador() {
-        return this.investigador;
+    public Investigador getInvestigadorByInvestigadorContactId() {
+        return this.investigadorByInvestigadorContactId;
     }
     
-    public void setInvestigador(Investigador investigador) {
-        this.investigador = investigador;
+    public void setInvestigadorByInvestigadorContactId(Investigador investigadorByInvestigadorContactId) {
+        this.investigadorByInvestigadorContactId = investigadorByInvestigadorContactId;
     }
-    public String getIdContacto() {
+    public Investigador getInvestigadorByIdInvestigador() {
+        return this.investigadorByIdInvestigador;
+    }
+    
+    public void setInvestigadorByIdInvestigador(Investigador investigadorByIdInvestigador) {
+        this.investigadorByIdInvestigador = investigadorByIdInvestigador;
+    }
+    public int getIdContacto() {
         return this.idContacto;
     }
     
-    public void setIdContacto(String idContacto) {
+    public void setIdContacto(int idContacto) {
         this.idContacto = idContacto;
     }
 
