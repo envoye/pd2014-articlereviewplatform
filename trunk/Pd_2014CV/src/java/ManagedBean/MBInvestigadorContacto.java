@@ -11,6 +11,7 @@ import HibernatePackage.Contacto;
 import HibernatePackage.Investigador;
 import java.util.List;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -21,9 +22,11 @@ import javax.inject.Named;
 @ViewScoped
 public class MBInvestigadorContacto {
     private Investigador investigador;
-    private String idContacto;
+    
     private List<Investigador> listaInvestigadores;
-            
+     @Inject
+     private LoginUtilizador loginUtilizador;
+	       
     /**
      * Creates a new instance of MBInvestigadorContacto
      */
@@ -42,17 +45,7 @@ public class MBInvestigadorContacto {
         }        
     }
 
-    public String getIdContacto() {
-        return idContacto;
-    }
-
-    public void setIdContacto() {
-        for(int i=0;i<this.getListaInvestigadores().size();i++){
-            if(this.listaInvestigadores.get(i).getId().equals(this.investigador.getId())){
-                this.idContacto = this.listaInvestigadores.get(i).getNome();
-            }
-        }                
-    }
+  
 
     public List<Investigador> getListaInvestigadores() {
         if(this.listaInvestigadores == null){
@@ -70,8 +63,8 @@ public class MBInvestigadorContacto {
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Contacto(this.investigador, this.idContacto));
-        return "index";
+        AllHellper.SaveQualquerCoisa(new Contacto(loginUtilizador.getInvestigador(),investigador,0));
+        return  "index";
     }
     
     public String cancelar() {
