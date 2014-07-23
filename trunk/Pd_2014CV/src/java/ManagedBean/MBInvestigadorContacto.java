@@ -21,7 +21,7 @@ import javax.inject.Named;
 @Named(value = "MBInvestigadorContacto")
 @ViewScoped
 public class MBInvestigadorContacto {
-    private Investigador investigador;
+    private Investigador investigador=new Investigador();
     
     private List<Investigador> listaInvestigadores;
      @Inject
@@ -63,6 +63,7 @@ public class MBInvestigadorContacto {
     }
     
     public String gravar() {
+        
         AllHellper.SaveQualquerCoisa(new Contacto(loginUtilizador.getInvestigador(),investigador,0));
         return  "index";
     }
