@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       >
 
-    <body>
+    <h:body>
 
         <ui:composition template="../Template/LoginTemplate.xhtml">
 
@@ -66,7 +66,7 @@
                             <h:outputLabel for="usernameInput">
                                 Utilizador:
                             </h:outputLabel>
-                            <h:inputText id="usernameInput" value="#{auth.username}" 
+                            <h:inputText id="usernameInput" value="" 
                                          required="true" />
                             <br />
                         </div>  
@@ -74,12 +74,12 @@
                             <h:outputLabel for="passwordInput">
                                 Password:
                             </h:outputLabel>
-                            <h:inputSecret id="passwordInput" value="#{auth.password}" 
+                            <h:inputSecret id="passwordInput" value="" 
                                            required="true" />
                             <br />
                         </div>  
                         <div class="rowElem">  
-                            <h:commandButton value="Entrar"  action="#{auth.login}" />
+                            <h:commandButton value="Entrar"  action="" />
                         </div>
                         
 -->
@@ -108,5 +108,5 @@
 
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

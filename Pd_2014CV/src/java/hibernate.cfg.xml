@@ -22,6 +22,7 @@
     <mapping resource="HibernatePackage/Investigador.hbm.xml"/>
     <mapping resource="HibernatePackage/Conferenciacomiteartigoforummensagem.hbm.xml"/>
     <mapping resource="HibernatePackage/Itemrevisao.hbm.xml"/>
+    <mapping resource="HibernatePackage/Conferenciaartigo.hbm.xml"/>
     <mapping resource="HibernatePackage/Artigoautores.hbm.xml"/>
     <mapping resource="HibernatePackage/Conferenciapoolrevisores.hbm.xml"/>
     <mapping resource="HibernatePackage/Artigorevisao.hbm.xml"/>
