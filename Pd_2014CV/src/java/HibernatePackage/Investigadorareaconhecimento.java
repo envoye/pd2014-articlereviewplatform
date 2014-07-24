@@ -23,6 +23,7 @@ public class Investigadorareaconhecimento  implements java.io.Serializable {
         this.subtema = subtema;
         this.investigador = investigador;
     }
+    
     public Investigadorareaconhecimento(Subtema subtema, Investigador investigador, Byte grauConfianca, Byte preferencia) {
        this.subtema = subtema;
        this.investigador = investigador;

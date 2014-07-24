@@ -45,7 +45,6 @@ public class MBInvestigadorContacto {
         }        
     }
 
-  
 
     public List<Investigador> getListaInvestigadores() {
         if(this.listaInvestigadores == null){
