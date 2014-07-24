@@ -7,6 +7,7 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
+import HibernatePackage.Artigoautores;
 import HibernatePackage.Subtema;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,32 +50,7 @@ public class SubmissaoArtigo {
     private Part ficheiroPdf;
     private int idSubtema;
     private List<Subtema> listSubtema;
-
-    public int getIdSubtema() {
-        return idSubtema;
-    }
-
-    public void setIdSubtema(int idSubtema) {
-        this.idSubtema = idSubtema;
-        for (int i = 0; i < getListSubtema().size(); i++) {
-            if (listSubtema.get(i).getId() == idSubtema) {
-                subtema = listSubtema.get(i);
-            }
-        }
-    }
-
-    public List<Subtema> getListSubtema() {
-        if (listSubtema == null) {
-
-            listSubtema = (List<Subtema>) AllHellper.getListQualquerCoisa(Subtema.class);
-
-        }
-        return listSubtema;
-    }
-
-    public void setListSubtema(List<Subtema> listSubtema) {
-        this.listSubtema = listSubtema;
-    }
+    private List<Artigoautores> autores;
 
     public Subtema getSubtema() {
         if (subtema == null) {
@@ -87,7 +63,7 @@ public class SubmissaoArtigo {
 
     public void setSubtema(Subtema subtema) {
         this.subtema = subtema;
-    }
+    }    
 
     public String getTitulo() {
         return titulo;
@@ -129,8 +105,42 @@ public class SubmissaoArtigo {
         this.ficheiroPdf = ficheiroPdf;
     }
 
-    public String registar() throws IOException {
+        public int getIdSubtema() {
+        return idSubtema;
+    }
 
+    public void setIdSubtema(int idSubtema) {
+        this.idSubtema = idSubtema;
+        for (int i = 0; i < getListSubtema().size(); i++) {
+            if (listSubtema.get(i).getId() == idSubtema) {
+                subtema = listSubtema.get(i);
+            }
+        }
+    }
+
+    public List<Subtema> getListSubtema() {
+        if (listSubtema == null) {
+            listSubtema = (List<Subtema>) AllHellper.getListQualquerCoisa(Subtema.class);
+        }
+        return listSubtema;
+    }
+
+    public void setListSubtema(List<Subtema> listSubtema) {
+        this.listSubtema = listSubtema;
+    }
+
+    public List<Artigoautores> getAutores() {
+        if (autores == null) {
+            autores = (List<Artigoautores>) AllHellper.getListQualquerCoisa(Artigoautores.class);
+        }        
+        return autores;
+    }
+
+    public void setAutores(List<Artigoautores> autores) {
+        this.autores = autores;
+    }
+    
+    public String registar() throws IOException {
         InputStream inputStream = null;
         String caminho;
         try {
@@ -153,7 +163,6 @@ public class SubmissaoArtigo {
         }
 
         AllHellper.SaveQualquerCoisa(new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null));
-
         return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
     }
 
@@ -174,7 +183,6 @@ public class SubmissaoArtigo {
         Part file = (Part) value;
 
         if (file.getSize() > 40000000) {
-
             msgs.add(new FacesMessage("file too big"));
         }
         if (!"application/pdf".equals(file.getContentType())) {

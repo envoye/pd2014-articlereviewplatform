@@ -1,0 +1,180 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/jul/2014, 23:50:01
+    Author     : Valter
+*/
+
+@charset "utf-8";
+/*html * {margin:0;padding:0;outline:0}
+body {background: #FCFCFC; font: normal normal 1em/1.5 Arial,Verdana, sans-serif; color:#444;padding:1em}*/
+input,button {font-size:100%;color: #444}
+input[type=text] {border:1px solid;border-color: #999 #CCC #CCC}
+
+/*#wrap {width:60em; margin:0 auto}*/
+
+fieldset {margin: 0 0 1em;padding: 0;border:0;border-top:1px solid #DDD;width:54em; display:block;background:#FFF}
+legend {padding:1em 1em 1em 0; font-size:larger;color: #333}
+
+caption span {float:left; display:block; margin-right: 1em}
+caption label, tbody td label {display: block}
+button, #submit {padding: 0 .5em;}
+small {display: block;font-size:.8em}
+
+.txtC {text-align: center}
+
+#content #example.grid-ui {font-size:.75em;width:75.875em}
+
+.grid-ui a {color: #333}
+
+fieldset table {table-layout:fixed;border-collapse: separate;border-spacing:0;clear:both;border-top: 1px solid #CCC;border-left:1px solid #DDD;margin-left:-1px;background: #FFF}
+
+.tableWrap {width:75.875em;overflow: auto;border:1px solid #DDD}
+caption, th {text-align: left}
+caption {padding: 1em}
+th, td {border-right:1px solid #DDD;border-bottom:1px solid #DDD;width:9em;overflow:hidden}
+
+th {padding:.5em}
+
+thead th {border-color: #BBB;
+  background-color: #DDD;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#EEE)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #DDD, #EEE); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #DDD, #EEE); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #DDD, #EEE); /* IE10 */
+  background-image:      -o-linear-gradient(top, #DDD, #EEE); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #DDD, #EEE);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#DDDDDD', EndColorStr='#EEEEEE'); /* IE6–IE9 */
+
+}
+/*tbody th, tbody td {border-color: #EEE #CCC #CCC #EEE}*/
+tbody input[type=text]{display:block;width:9em;padding:.625em .5em;border:0;background: none}
+
+tfoot input {border:1px solid #CCC}
+.init {color:#CCC}
+
+.txtR {text-align:right}
+
+.inputGrid tr .btn {position:relative;right: -9999em;padding:.125em .25em; border:1px solid #CCC; line-height:1;display:inline-block;cursor:pointer;
+  background-color: #DDD;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CCC)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #FFF, #CCC); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #FFF, #CCC); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #FFF, #CCC); /* IE10 */
+  background-image:      -o-linear-gradient(top, #FFF, #CCC); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #FFF, #CCC);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#CCCCCC'); /* IE6–IE9 */
+text-shadow: 1px 1px 1px rgba(255,255,255,1);
+-moz-border-radius:3px;
+-webkit-border-radius: 3px;
+border-radius:3px;
+}
+
+.inputGrid .hover .btn {right:0;float:right}
+
+.inputGrid .hover .btn:hover{color:#FFF;text-decoration:none;border:1px solid #999;
+text-shadow: 0 0 1px rgba(0,0,0,.75);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ED998E), to(#D35B4C)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #ED998E, #D35B4C); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #ED998E, #D35B4C); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #ED998E, #D35B4C); /* IE10 */
+  background-image:      -o-linear-gradient(top, #ED998E, #D35B4C); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #ED998E, #D35B4C);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ED998E', EndColorStr='#D35B4C'); /* IE6–IE9 */
+}
+
+.inputGrid .hover .pressed:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#D35B4C), to(#ED998E)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #D35B4C, #ED998E); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #D35B4C, #ED998E); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #D35B4C, #ED998E); /* IE10 */
+  background-image:      -o-linear-gradient(top, #D35B4C, #ED998E); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #D35B4C, #ED998E);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D35B4C', EndColorStr='#ED998E'); /* IE6–IE9 */
+}
+
+/*.hover th, .hover td, .hover td input {background: #FFC}*/
+tr.hover th, tr.hover td {background: #FFC}
+td .focus, .hover .focus {color: #000; background: #F5FFE1}
+.addCtrl {width:auto}
+
+.dropOption {width:75.875em; float:left;margin:0; padding:0;border:1px solid #CCC;border-top:0;background: #F6F6F6;line-height:1}
+.dropOption li {float:left;position:relative; list-style:none;margin:1em .5em;border:1px solid; border-color: #CCC #999 #999 #CCC;overflow:hidden;height:2em;width:auto;
+-moz-border-radius: .5em ;
+-webkit-border-radius: .5em;
+border-radius: .5em;
+  background-color: #DDD;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #FFF, #DDD); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #FFF, #DDD); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #FFF, #DDD); /* IE10 */
+  background-image:      -o-linear-gradient(top, #FFF, #DDD); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #FFF, #DDD);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#DDDDDD'); /* IE6–IE9 */
+		}
+
+
+.dropOption span {float:left;display:block;position:absolute;top:0; left:-9999em;padding:.5em;border-left:#EEE;border-right: 1px solid #BBB}
+.dropOption a {float:left;display:block;cursor: pointer;margin:-1px;position:relative;z-index:1;float:left;display:block;
+padding: .5em 1em;display:inline-block;border:1px solid; border-color: #CCC #999 #999 #CCC;
+
+  background-color: #DDD;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CCC)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #FFF, #CCC); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #FFF, #CCC); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #FFF, #CCC); /* IE10 */
+  background-image:      -o-linear-gradient(top, #FFF, #CCC); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #FFF, #CCC);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#CCCCCC'); /* IE6–IE9 */
+-moz-text-shadow: 0 1px 1px #FFF;
+-webkit-text-shadow: 0 1px 1px #FFF;
+text-shadow: 0 1px 1px #FFF;
+}
+.dropOption a.btn {border-right-color: #BBB; margin-right:0;
+-moz-border-radius: .5em 0 0 .5em;
+-webkit-border-radius: .5em 0 0 .5em;
+border-radius: .5em 0 0 .5em
+}		
+
+.dropOption a.btn:hover {text-decoration:underline}
+
+.dropOption a.toggle {border-left: 1px solid #EEE; padding: .5em;margin-left:0;letter-spacing:-1px;
+-moz-border-radius: 0 .5em .5em 0;
+-webkit-border-radius: 0 .5em .5em 0;
+border-radius: 0 .5em .5em 0
+}	
+
+.dropOption .show span {position: relative;left:0}
+
+.dropOption .clicked {
+-moz-text-shadow: 0 -1px 1px #FFF;
+-webkit-text-shadow: 0 -1px 1px #FFF;
+text-shadow: 0 -1px 1px #FFF;
+  background-color: #CCC;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#CCC), to(#FFF)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #CCC, #FFF); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #CCC, #FFF); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #CCC, #FFF); /* IE10 */
+  background-image:      -o-linear-gradient(top, #CCC, #FFF); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #CCC, #FFF);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#CCCCCC', EndColorStr='#FFFFFF'); /* IE6–IE9 */
+}
+
+.dropOption label input[type=checkbox] {vertical-align: middle}
+.dropOption input[type=text] {text-align:right}
+.dropOption input[type=text]:focus {border-color:#690 #6C6 #6C6; background:#DFFFDF;color: #000}
+/*.modal {position: absolute}*/
+#modalBg {z-index:10000;top:0;left:0;width:100%;height: 100%;background: rgba(0,0,0,.5);position:fixed}
+#modalDialog {z-index:20000;background: #FFF;border:1px solid #000;position:absolute;width:auto;
+-moz-box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,.75);
+box-shadow: 5px 5px 5px rgba(0,0,0,.75);
+}
+html>body #modalDialog {*width:50%}
+#modalDialog h1 {font-size:1.5em;padding:.25em .5em; border-bottom:1px solid #CCC; color: #FFF; background: #333}
+#modalDialog.error h1 {background: #C00}
+#modalDialog h1 a {position:absolute; top:.25em;right:.5em;cursor: pointer;color:#FFF}
+#modalDialog p {padding:1em}
