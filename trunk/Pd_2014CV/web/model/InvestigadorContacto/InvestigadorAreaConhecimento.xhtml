@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
+
+            <ui:define name="title">
+                Conference Team Manager - Áreas de Conhecimento
+            </ui:define>
+
+            <ui:define name="formTitle">
+                <h3 class="subtitle" align="center">Áreas de Conhecimento do Investigador</h3>
+            </ui:define>
+
+            <ui:define name="form">
+
+                <div class="boxForm">
+
+                    <h:form class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!-- Investigador -->
+                                <tr>
+                                    <td style="width: 100px; height: 40px;"></td>
+                                    <td align="right" style="width: 80px;">Investigador</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBInvestigadorAreaConhecimento.investigador.id}" id="InvestigadorInput" style="width: 200px">
+                                            <f:selectItems value="#{MBInvestigadorAreaConhecimento.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>
+<!-- Subtema -->                                                             
+                                <tr>
+                                    <td style="width: 100px; height: 40px;"></td>
+                                    <td align="right" style="width: 80px;">Subtema</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBInvestigadorAreaConhecimento.subtema.id}" id="subtemaInput" style="width: 200px">
+                                            <f:selectItems value="#{MBInvestigadorAreaConhecimento.listaSubtemas}" var="subtemas" itemValue="#{subtemas.id}" itemLabel="#{subtemas.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>
+<!-- Grau de Confiança -->
+                                <tr>
+                                    <td style="width: 100px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Grau de Confiança</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="confiancaInput" size="10" value="#{MBInvestigadorAreaConhecimento.grauConfianca}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Preferência -->
+                                <tr>
+                                    <td style="width: 100px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Preferência</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="preferenciaInput" size="10" value="#{MBInvestigadorAreaConhecimento.preferencia}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton value="Gravar" action="#{MBInvestigadorAreaConhecimento.gravar}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>                        
+                        
+                    </h:form>
+                </div>                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
