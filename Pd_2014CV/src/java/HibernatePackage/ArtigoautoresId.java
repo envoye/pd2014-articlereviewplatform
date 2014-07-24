@@ -8,8 +8,7 @@ package HibernatePackage;
  */
 public class ArtigoautoresId  implements java.io.Serializable {
 
-
-     private int idArtigo;
+    private int idArtigo;
      private int idInvestigador;
 
     public ArtigoautoresId() {

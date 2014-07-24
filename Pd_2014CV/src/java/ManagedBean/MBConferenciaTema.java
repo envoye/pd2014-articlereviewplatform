@@ -7,7 +7,9 @@
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
+import HibernatePackage.Subtema;
 import HibernatePackage.Tema;
+import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -20,7 +22,7 @@ import javax.inject.Named;
 public class MBConferenciaTema {
     private String tema;
     private String descricao;
-//    private List<ConferenciaSubtema> listaSubtemas;
+    private List<MBConferenciaSubtema> listaSubtemas;
 
     public String getTema() {
         return tema;
@@ -37,18 +39,18 @@ public class MBConferenciaTema {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-/*
-    public List<ConferenciaSubtema> getListaSubtemas() {
+
+    public List<MBConferenciaSubtema> getListaSubtemas() {
         if(this.listaSubtemas == null){
-            this.listaSubtemas = (List<ConferenciaSubtema>)AllHellper.getListQualquerCoisa(Subtema.class);
+            this.listaSubtemas = (List<MBConferenciaSubtema>)AllHellper.getListQualquerCoisa(Subtema.class);
         }
         return listaSubtemas;
     }
 
-    public void setListaSubtemas(List<ConferenciaSubtema> listaSubtemas) {
+    public void setListaSubtemas(List<MBConferenciaSubtema> listaSubtemas) {
         this.listaSubtemas = listaSubtemas;
     }
-  */      
+
     public String introduzir() {
         return "index";
     }
@@ -65,4 +67,9 @@ public class MBConferenciaTema {
     public String pesquisar() {
         return "index";
     }
+    
+    public String addSubtema() {
+        return "index";
+    }
+    
 }

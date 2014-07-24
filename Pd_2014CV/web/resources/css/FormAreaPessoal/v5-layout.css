@@ -1,0 +1,189 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/jul/2014, 23:51:10
+    Author     : Valter
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Kameron:400,700);
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
+body {font:normal normal 1em/1.5 'Droid Sans', 'Trebuchet MS', sans-serif; color: #333;padding:0; margin: 0 auto; height: auto;background: #FAFEF0}
+body * {margin:0; padding:0;position: relative; outline:none}
+
+/* HTML5 ELEMENTS */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block}
+
+h1,h2,h3,h4 {line-height:1.25}
+
+p {margin: 0 0 1em}
+
+ul, ol {margin : .25em 0 .75em 2em}
+
+a {color: #57AF00; text-decoration:none}
+a:hover {color: #F90; text-decoration:underline}
+
+header {position:relative;z-index:1;background-color: #6C0;border-bottom:1px solid #666;
+background: rgb(102,204,0); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY2Y2MwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1N2FmMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(102,204,0,1) 0%, rgba(87,175,0,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,204,0,1)), color-stop(100%,rgba(87,175,0,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(102,204,0,1) 0%,rgba(87,175,0,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(102,204,0,1) 0%,rgba(87,175,0,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(102,204,0,1) 0%,rgba(87,175,0,1) 100%); /* IE10+ */
+
+background: radial-gradient(farthest-side at center bottom, rgba(0,0,0,.25) 0%, rgba(128,128,128,0) 100%),linear-gradient(45deg, transparent 25%, #6C0 25%, #6C0 50%,transparent 50%, transparent 75%, #6C0 75%),linear-gradient(to bottom,  #66cc00 0%,#57af00 100%); /* W3C */
+background-size:auto,4px 4px,auto;
+filter:none;
+}
+
+
+.oie header{filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66cc00', endColorstr='#57af00',GradientType=0 ); /* IE6-8 */}
+		
+.wrapper {width: 60em; margin:0 auto}
+
+header p{text-align: right;font: normal bold 1.75em/1 'Kameron', Georgia, Times, serif;color: #57AF00;width: 34.2858em; margin:0 auto;text-shadow: 1px 1px 1px rgba(255,255,255,.25)}
+header p a {color: #57AF00}
+header p small {display:inline;font-size:.5em}
+
+header a:hover {color: #FFF;text-shadow:1px 1px 1px rgba(0,0,0,.25)}
+header p span {float:none;display:inline;margin:0}
+
+header h1 {font: normal bold 4em/.9 'Kameron', Georgia, Times, serif; color: #FAFEF0; width:15em;margin:.5em auto 0; letter-spacing:-1px;text-shadow: 1px 1px 5px rgba(0,0,0,.75)}
+
+#content {border-top:1px solid #FFF;min-height:50em;
+background: none; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxsaW5lYXJHcmFkaWVudCBpZD0iZzEiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSJyZ2IoMjExLCAyMjMsIDE4MSkiLz48c3RvcCBvZmZzZXQ9IjAuMSIgc3RvcC1jb2xvcj0icmdiKDI1MCwgMjU0LCAyNDApIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2cxKSIgLz48L3N2Zz4=);
+background: -moz-linear-gradient(top,  rgba(211,223,181,1) 0%, rgba(250,254,240,1) 5em); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(211,223,181,1)), color-stop(5em,rgba(250,254,240,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(211,223,181,1) 0%,rgba(250,254,240,1) 5em); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(211,223,181,1) 0%,rgba(250,254,240,1) 5em); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(211,223,181,1) 0%,rgba(250,254,240,1) 5em); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(211,223,181,0) 0%,rgba(250,254,240,0) 5em),linear-gradient(-45deg, transparent 25%, #FAFEF0 25%, #FAFEF0 50%,transparent 50%, transparent 75%, #FAFEF0 75%),linear-gradient(to bottom,  rgba(0,0,0,.25) 0%,rgba(250,254,240,0) 5em); /* W3C */
+background-size:auto,4px 4px,auto;
+filter: none
+
+}
+
+#content .wrapper {padding: 2em 0}
+#content .wrapper #main {float: left; width: 44em}
+#content .wrapper #sidebar {float: right; width: 14em}
+
+h2, h3, h4 {margin: 0 0 1em;}
+
+#main h2 {font: normal bold 1.5em/1.1em Georgia, Times, serif}
+
+#main h4 {padding:.5em 1.5%;font: normal normal 1.25em/1.1em Georgia, Times, serif }
+
+#content form {float: left}
+#content #egHead {margin: 2em 0 0; border:1px solid #CCC;border-bottom:none; padding: 1em 0; text-align:center;
+background-color: #DDD;
+background-image: -moz-linear-gradient(top, #CCC, #DDD 3em); /* FF3.6 */
+		background-image: -webkit-linear-gradient(top, #CCC, #DDD 3em); /* Saf4+, Chrome */
+		/*filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#4477a1', endColorstr='#81a8cb'); /* IE6,IE7 */
+		/*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#4477a1', endColorstr='#81a8cb')"; /* IE8+ */
+text-shadow: 1px 1px 1px rgba(255,255,255,.75)
+}
+#content #example{float: left; width:55.875em; padding: 2em; margin-bottom:2em; border: 1px solid #CCC; background: #FFF}
+
+/*#loading {width:100%; float:left;z-index:100;position:absolute; top:0;left:0;padding: 10em 0 0; margin: 0;text-align:center; background: #FFF url(../../img/bg/loading.gif) 50% 4em no-repeat; }
+
+.loading {width:100%; float:left;z-index:100;position:absolute; top:0;left:0;padding: 10em 0 0; margin: 0;text-align:center;}
+
+.init {left:-10000px;text-indent:-10000px}*/
+
+#sidebar dl {float: left; width:100%}
+#sidebar dl dt {color:#390; font-family:"Times New Roman", Times, serif; font-size: larger; border-bottom: 1px solid #DDD}
+#sidebar dl dd {background: #FAFEF0; padding: .5em 0 0;margin-bottom: 2em}
+
+#nav {margin: 0 0 1em}
+#nav li {list-style: none; padding: .125em 0; border-bottom: 1px dashed #DEC}
+#nav li a {border-left: 10px solid #DEC; display: block;padding: .25em .5em}
+#nav li a:hover {border-color: #6C0; background: #FFE}
+#nav li.current a, #nav li.current a:hover {border-left-color: #390;background: none; cursor: default; color: #390 !important; text-decoration:none}
+
+/* Generic global dropdown styles */
+.dropDown{margin:0;padding: 0; float: left; z-index:1000; line-height:1;position:relative}
+.dropDown * {position: relative; line-height:1.25; margin:0; padding:0}
+.dropDown ul {margin:0; float: left;width:auto}
+.dropDown li {list-style: none; float: left;position: relative; line-height:1.25}
+.dropDown .dropNode {border:1px solid; border-color: #CCC}
+.dropDown a {padding:.5em; display: block;text-decoration: none; color: #999}
+
+.dropDown a:hover span {text-decoration: none}
+.dropDown a img {vertical-align:middle; border:none;margin-right:.5em}
+
+.dropDown .dropLabel {cursor:pointer;z-index:100;border: 1px solid #FFF;padding-right:0;
+  background-color: #FFF;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#F6F6F6)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #FFF, #F6F6F6); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #FFF, #F6F6F6); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #FFF, #F6F6F6); /* IE10 */
+  background-image:      -o-linear-gradient(top, #FFF, #F6F6F6); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #FFF, #F6F6F6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#F6F6F6'); /* IE6�IE9 */
+}
+.dropDown .dropLabel span {padding:.25em;margin:-.25em 0 -.25em .5em;display:inline-block; border-left:1px solid #CCC;
+  background-color: #FFF;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#CCC)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #EEE, #CCC); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #EEE, #CCC); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #EEE, #CCC); /* IE10 */
+  background-image:      -o-linear-gradient(top, #EEE, #CCC); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #EEE, #CCC);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#EEEEEE', EndColorStr='#CCCCCC'); /* IE6�IE9 */
+}
+
+
+/* Dropdown item 2nd level nesting  */
+.dropDown ul ul{position: absolute;top:1.875em; border: 1px solid #DDD ; width: auto;float:left;z-index:50;left:-9999em;display:none;
+  background-color: #FFF;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#EEE)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #FFF, #EEE); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, #FFF, #EEE); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #FFF, #EEE); /* IE10 */
+  background-image:      -o-linear-gradient(top, #FFF, #EEE); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, #FFF, #EEE);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#EEEEEE'); /* IE6�IE9 */
+-moz-box-shadow:3px 3px 3px rgba(0,0,0,.25);		
+-webkit-box-shadow:3px 3px 3px rgba(0,0,0,.25);
+box-shadow:3px 3px 3px rgba(0,0,0,.25)	
+}
+
+.dropDown ul ul a:hover {background: #57AF00; color: #FFF;text-decoration:underline}
+
+.dropDown li li {float:none; border:0}
+
+.dropDown .dropOver {z-index:200}
+.dropDown .dropOver ul {left:0;display:block}
+/*.dropDown .dropOver .dropLabel { border:1px solid #999;border-bottom:0; margin:-1px 0 0; background: #FFF}*/
+
+
+
+
+/* Main Nav Specific dropdown styles */
+#mainNav {position: absolute; top:1em; right:0;z-index:2000;font-size:1.25em}
+#mainNav .dropLabel {padding:.25em 0 .25em .5em; color:#333}
+#mainNav .dropOver .dropLabel {color: #333;background: #FFF;border-color: #FFF;border-style:solid;border-width:1px;margin:0;z-index:200}
+
+
+
+.dropdown .current {display:none}
+
+#footer {float: left;width: 100%; margin: auto; text-align:center}
+#footer .wrapper {border-top:1em solid #D3DFB5}
+
+#footer img {border:0; margin: 0 0 1em; display: block}
+
+#footer dl {width: 29em; float:left;  margin:0; padding:2em 0; text-align: left}
+#footer #intro {padding-right:2em}
+#footer dt {border-bottom:.25em solid #D3DFB5}
+#footer dd {margin:0;padding:.5em 0 0}
+#footer dd ul {margin:0}
+#footer dd ul li {display: inline; margin-right: 1em}
+
