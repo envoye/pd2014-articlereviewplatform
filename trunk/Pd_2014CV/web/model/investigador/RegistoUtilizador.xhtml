@@ -154,7 +154,7 @@
                                 <h:outputLabel for="NomeInput">
                                     Nome
                                 </h:outputLabel>
-                                <h:inputText id="NomeInput" value="#{RegistoUtilizador.nome}" 
+                                <h:inputText id="NomeInput" value="" 
                                              required="true" />
                                 <br />
                             </div> 
@@ -163,9 +163,9 @@
                                 <h:outputLabel for="GrauacademicoInput">
                                     Grau Academico
                                 </h:outputLabel>
-                                <h:selectOneMenu value="#{RegistoUtilizador.idGrauacademico}" id="GrauacademicoInput">
+                                <h:selectOneMenu value="" id="GrauacademicoInput">
 
-                                    <f:selectItems value="#{RegistoUtilizador.listGrauacademico}" var="country" itemValue="#{country.id}" itemLabel="#{country.grauacademico}"/>
+                                    <f:selectItems value="" var="country" itemValue="" itemLabel=""/>
 
                                 </h:selectOneMenu>  
                                 <br />
@@ -175,7 +175,7 @@
                                 <h:outputLabel for="instituicaoInput">
                                     Instituição
                                 </h:outputLabel>
-                                <h:inputText id="instituicaoInput" value="#{RegistoUtilizador.instituicao}" 
+                                <h:inputText id="instituicaoInput" value="" 
                                              required="true"/> 
                                 <br />
                             </div> 
@@ -185,7 +185,7 @@
                                     Data de Nascimento
                                 </h:outputLabel>
 
-                                <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime"
+                                <h:inputText id="datanascimentoInput" value="" class="datetime"
                                              required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
 
                                 <br />
@@ -196,7 +196,7 @@
                                 <h:outputLabel for="utilizadorInput">
                                     Utilizador
                                 </h:outputLabel>
-                                <h:inputText id="utilizadorInput" value="#{RegistoUtilizador.utilizador}" 
+                                <h:inputText id="utilizadorInput" value="" 
                                              required="true" />
                                 <br />
                             </div> 
@@ -205,7 +205,7 @@
                                 <h:outputLabel for="passwordInput">
                                     Password
                                 </h:outputLabel>
-                                <h:inputSecret id="passwordInput" value="#{RegistoUtilizador.password}" 
+                                <h:inputSecret id="passwordInput" value="" 
                                                required="true" />
                                 <br />
                             </div> 
@@ -214,7 +214,7 @@
                                 <h:outputLabel for="passwordconfInput">
                                     Confirme a Password
                                 </h:outputLabel>
-                                <h:inputSecret id="passwordconfInput" value="#{RegistoUtilizador.passwordconf}" 
+                                <h:inputSecret id="passwordconfInput" value="" 
                                                required="true" />
                                 <br />
                             </div> 
@@ -223,7 +223,7 @@
                                 <h:outputLabel for="emailInput">
                                     E-Mail
                                 </h:outputLabel>
-                                <h:inputText id="emailInput" value="#{RegistoUtilizador.email}" 
+                                <h:inputText id="emailInput" value="" 
                                              required="true" />
                                 <br />
                             </div>
@@ -232,7 +232,7 @@
                                 <h:outputLabel for="telefoneInput">
                                     Telefone
                                 </h:outputLabel>
-                                <h:inputText id="telefoneInput" value="#{RegistoUtilizador.telefone}" 
+                                <h:inputText id="telefoneInput" value="" 
                                              required="true" />
                                 <br />
                             </div>
@@ -241,13 +241,13 @@
                                 <h:outputLabel for="telemovelInput">
                                     Telemovel
                                 </h:outputLabel>
-                                <h:inputText id="telemovelInput" value="#{RegistoUtilizador.telemovel}" 
+                                <h:inputText id="telemovelInput" value="" 
                                              required="true" />
                                 <br />
                             </div>
                         </h:panelGrid>
                         <div class="rowElem">  
-                            <h:commandButton value="Registar"  action="#{RegistoUtilizador.registar()}" />
+                            <h:commandButton value="Registar"  action="" />
                         </div>
 -->
 
