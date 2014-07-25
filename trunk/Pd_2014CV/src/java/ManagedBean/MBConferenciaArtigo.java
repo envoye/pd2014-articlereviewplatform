@@ -23,7 +23,7 @@ import javax.inject.Named;
 public class MBConferenciaArtigo {
     private Conferenciaedicao conferenciaedicao;
     private Artigo artigo;
-    private Boolean publicar;
+    private boolean publicar;
     private List<Conferenciaedicao> listaEdicoes;
     private List<Artigo> listaArtigos;
     

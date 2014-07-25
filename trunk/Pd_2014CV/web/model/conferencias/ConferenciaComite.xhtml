@@ -10,15 +10,15 @@
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Artigos para a Conferência
+                Conference Team Manager - Elementos do Comité
             </ui:define>
 
             <ui:define name="formTitle">
-                <h3 class="subtitle" align="center">Artigos para a Conferência</h3>
+                <h3 class="subtitle" align="center">Elementos do Comité da Conferência</h3>
             </ui:define>
 
             <ui:define name="form">
-
+                
                 <div class="boxForm">
 
                     <h:form class="jqtransform">
@@ -30,33 +30,33 @@
                                 </tr>
 <!-- Edição -->
                                 <tr>
-                                    <td style="width: 10px; height: 45px;"></td>
+                                    <td style="width: 10px; height: 30px;"></td>
                                     <td align="right" style="width: 250px;">Edição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaArtigo.conferenciaedicao.id}" id="edicaoInput" style="width: 300px">
-                                            <f:selectItems value="#{MBConferenciaArtigo.listaEdicoes}" var="edicao" itemValue="#{edicao.id}" itemLabel="#{edicao.edicao}"/>
+                                        <h:selectOneMenu value="#{MBConferenciaComite.conferenciaedicao.id}" id="edicaoInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaComite.listaEdicoes}" var="edicoes" itemValue="#{edicoes.id}" itemLabel="#{edicoes.edicao}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
-<!-- Artigo -->
-                                <tr>
-                                    <td style="width: 10px; height: 45px;"></td>
-                                    <td align="right" style="width: 250px;">Artigo</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:selectOneMenu value="#{MBConferenciaArtigo.artigo.id}" id="artigoInput" style="width: 300px">
-                                            <f:selectItems value="#{MBConferenciaArtigo.listaArtigos}" var="artigos" itemValue="#{artigos.id}" itemLabel="#{artigos.titulo}"/>
-                                        </h:selectOneMenu>                                          
-                                    </td>
-                                </tr>                                
-<!-- Publicar? -->
+<!-- Investigador -->
                                 <tr>
                                     <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">Publicar?</td>
+                                    <td align="right" style="width: 250px;">Investigador</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectBooleanCheckbox id="publicarInput" value="#{MBConferenciaArtigo.publicar}"/>                                                        
+                                        <h:selectOneMenu value="#{MBConferenciaComite.investigador.id}" id="investigadorInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaComite.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>                                
+<!-- Aceite -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Aceite</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectBooleanCheckbox id="isAceiteInput" value="#{MBConferenciaComite.aceite}"/>                                                        
                                     </td>
                                 </tr>                                
                                 <tr>
@@ -70,7 +70,7 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  action="#{MBConferenciaArtigo.gravar}" />
+                                    <h:commandButton value="Gravar"  action="#{MBConferenciaComite.gravar}" />
                                 </td>
                             </tr>
                             <tr>
