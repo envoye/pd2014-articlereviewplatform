@@ -21,108 +21,105 @@
 
             <ui:define name="form">
 
-                 <div class="boxForm">
+                <div class="boxForm">
                     <h:form class="jqtransform" enctype="multipart/form-data">
                        
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td style="height: 20px;"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height: 20px;"></td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td style="width: 10px; height: 40px;"></td>
-                                        <td align="right" style="width: 250px;"> <h:outputLabel for="TituloInput">
-                                                Titulo:
-                                            </h:outputLabel></td>
-                                        <td style="width: 10px;"></td>
-                                        <td>
-
-
-                                            <h:inputText id="TituloInput" value="#{artigoRegisto.titulo}" 
-                                                         required="true" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 10px; height: 40px;"></td>
-                                        <td align="right" style="width: 250px;"><h:outputLabel for="resumoInput">
-                                                Resumo:
-                                            </h:outputLabel></td>
-                                        <td style="width: 10px;"></td>
-                                        <td>
-
-                                            <h:inputTextarea id="resumoInput" value="#{artigoRegisto.resumo}" 
-                                                             required="true" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 10px; height: 40px;"></td>
-                                        <td align="right" style="width: 250px;"><h:outputLabel for="GrauacademicoInput">
-                                                Grau Academico
-                                            </h:outputLabel></td>
-                                        <td style="width: 10px;"></td>
-                                        <td>
-
-                                            <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput">
-
-                                                <f:selectItems value="#{artigoRegisto.listSubtema}" var="item" itemValue="#{item.id}" itemLabel="#{item.nome}"/>
-
-                                            </h:selectOneMenu>  
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 10px; height: 40px;"></td>
-                                        <td align="right" style="width: 250px;"><h:outputLabel for="linkInput">
-                                                link:
-                                            </h:outputLabel></td>
-                                        <td style="width: 10px;"></td>
-                                        <td>
-
-
-                                            <h:inputText id="linkInput" value="#{artigoRegisto.link}" 
-                                                         required="true" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 10px; height: 40px;"></td>
-                                        <td align="right" style="width: 250px;"><h:outputLabel for="ficheiroPdfInput">
-                                                Escolha um ficheiro:
-                                            </h:outputLabel></td>
-                                        <td style="width: 10px;"></td>
-                                        <td>
-
-                                            <h:inputFile id="ficheiroPdfInput" value="#{artigoRegisto.ficheiroPdf}" validator="#{artigoRegisto.validateFile}"></h:inputFile>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="height: 20px;"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table>
+                        <table>
+                            <tbody>
                                 <tr>
-                                    <td style="width: 500px;"></td>
-
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!--Título-->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;"> 
+                                        <h:outputLabel for="TituloInput">
+                                            Título
+                                        </h:outputLabel></td>
+                                    <td style="width: 10px;"></td>
                                     <td>
-                                        <h:commandButton value="Submeter"  action="#{artigoRegisto.registar()}" />
+                                        <h:inputText id="TituloInput" size="52" value="#{artigoRegisto.titulo}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+<!--Resumo-->
+                                <tr>
+                                    <td style="width: 10px; height: 70px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="resumoInput">
+                                            Resumo
+                                        </h:outputLabel></td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputTextarea id="resumoInput" rows="3" cols="40" value="#{artigoRegisto.resumo}" 
+                                                         required="true" />
+                                    </td>
+                                </tr>
+<!--Grau Académico-->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="GrauacademicoInput">
+                                            Grau Académico
+                                        </h:outputLabel></td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput" style="width: 200px">
+                                            <f:selectItems value="#{artigoRegisto.listSubtema}" var="item" itemValue="#{item.id}" itemLabel="#{item.nome}"/>
+                                        </h:selectOneMenu>  
+                                    </td>
+                                </tr>
+<!--Link-->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="linkInput">
+                                            Link
+                                        </h:outputLabel></td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="linkInput" size="52" value="#{artigoRegisto.link}" 
+                                                     required="true" />
+                                    </td>
+                                </tr>
+<!--Ficheiro PDF-->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="ficheiroPdfInput">
+                                            Escolha um ficheiro:
+                                        </h:outputLabel></td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputFile id="ficheiroPdfInput" value="#{artigoRegisto.ficheiroPdf}" validator="#{artigoRegisto.validateFile}"></h:inputFile>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="height: 50px;"></td>
+                                    <td style="height: 20px;"></td>
                                 </tr>
-                            </table>  
-                        </h:form>
-                     </div>
-                            </ui:define>
+                            </tbody>
+                        </table>
 
-                            </ui:composition>
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+                                <td>
+                                    <h:commandButton value="Submeter"  action="#{artigoRegisto.registar()}" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>  
+                    </h:form>
+                </div>
+            </ui:define>
 
-                            </body>
-                            </html>
+        </ui:composition>
+
+    </body>
+
+</html>
