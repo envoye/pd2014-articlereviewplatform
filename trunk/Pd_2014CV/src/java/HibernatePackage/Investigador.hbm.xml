@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22/Jul/2014 22:40:36 by Hibernate Tools 3.6.0 -->
+<!-- Generated 27/Jul/2014 15:52:51 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="HibernatePackage.Investigador" table="investigador" catalog="pd_2014">
         <id name="id" type="java.lang.Integer">
@@ -65,11 +65,11 @@
             </key>
             <one-to-many class="HibernatePackage.Conferenciapoolrevisores" />
         </set>
-        <set name="artigoautoreses" table="artigoautores" inverse="true" lazy="true" fetch="select">
+        <set name="artigoinvestigadors" table="artigoinvestigador" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idInvestigador" not-null="true" />
             </key>
-            <one-to-many class="HibernatePackage.Artigoautores" />
+            <one-to-many class="HibernatePackage.Artigoinvestigador" />
         </set>
         <set name="conferenciacomites" table="conferenciacomite" inverse="true" lazy="true" fetch="select">
             <key>

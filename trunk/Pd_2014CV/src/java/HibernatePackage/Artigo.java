@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 22/Jul/2014 22:40:36 by Hibernate Tools 3.6.0
+// Generated 27/Jul/2014 15:52:48 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -19,10 +19,11 @@ public class Artigo  implements java.io.Serializable {
      private Date data;
      private String link;
      private String ficheiroPdf;
+     private String palavrasChave;
      private Set<Conferenciaartigo> conferenciaartigos = new HashSet<Conferenciaartigo>(0);
      private Set<Artigopalavrachave> artigopalavrachaves = new HashSet<Artigopalavrachave>(0);
      private Set<Conferenciacomiteartigo> conferenciacomiteartigos = new HashSet<Conferenciacomiteartigo>(0);
-     private Set<Artigoautores> artigoautoreses = new HashSet<Artigoautores>(0);
+     private Set<Artigoinvestigador> artigoinvestigadors = new HashSet<Artigoinvestigador>(0);
 
     public Artigo() {
     }
@@ -31,17 +32,18 @@ public class Artigo  implements java.io.Serializable {
     public Artigo(Subtema subtema) {
         this.subtema = subtema;
     }
-    public Artigo(Subtema subtema, String titulo, String resumo, Date data, String link, String ficheiroPdf, Set<Conferenciaartigo> conferenciaartigos, Set<Artigopalavrachave> artigopalavrachaves, Set<Conferenciacomiteartigo> conferenciacomiteartigos, Set<Artigoautores> artigoautoreses) {
+    public Artigo(Subtema subtema, String titulo, String resumo, Date data, String link, String ficheiroPdf, String palavrasChave, Set<Conferenciaartigo> conferenciaartigos, Set<Artigopalavrachave> artigopalavrachaves, Set<Conferenciacomiteartigo> conferenciacomiteartigos, Set<Artigoinvestigador> artigoinvestigadors) {
        this.subtema = subtema;
        this.titulo = titulo;
        this.resumo = resumo;
        this.data = data;
        this.link = link;
        this.ficheiroPdf = ficheiroPdf;
+       this.palavrasChave = palavrasChave;
        this.conferenciaartigos = conferenciaartigos;
        this.artigopalavrachaves = artigopalavrachaves;
        this.conferenciacomiteartigos = conferenciacomiteartigos;
-       this.artigoautoreses = artigoautoreses;
+       this.artigoinvestigadors = artigoinvestigadors;
     }
    
     public Integer getId() {
@@ -93,6 +95,13 @@ public class Artigo  implements java.io.Serializable {
     public void setFicheiroPdf(String ficheiroPdf) {
         this.ficheiroPdf = ficheiroPdf;
     }
+    public String getPalavrasChave() {
+        return this.palavrasChave;
+    }
+    
+    public void setPalavrasChave(String palavrasChave) {
+        this.palavrasChave = palavrasChave;
+    }
     public Set<Conferenciaartigo> getConferenciaartigos() {
         return this.conferenciaartigos;
     }
@@ -114,12 +123,12 @@ public class Artigo  implements java.io.Serializable {
     public void setConferenciacomiteartigos(Set<Conferenciacomiteartigo> conferenciacomiteartigos) {
         this.conferenciacomiteartigos = conferenciacomiteartigos;
     }
-    public Set<Artigoautores> getArtigoautoreses() {
-        return this.artigoautoreses;
+    public Set<Artigoinvestigador> getArtigoinvestigadors() {
+        return this.artigoinvestigadors;
     }
     
-    public void setArtigoautoreses(Set<Artigoautores> artigoautoreses) {
-        this.artigoautoreses = artigoautoreses;
+    public void setArtigoinvestigadors(Set<Artigoinvestigador> artigoinvestigadors) {
+        this.artigoinvestigadors = artigoinvestigadors;
     }
 
 

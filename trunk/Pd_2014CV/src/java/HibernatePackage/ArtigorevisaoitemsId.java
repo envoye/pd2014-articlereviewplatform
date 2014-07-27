@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 22/Jul/2014 22:40:36 by Hibernate Tools 3.6.0
+// Generated 27/Jul/2014 15:52:48 by Hibernate Tools 3.6.0
 
 
 
@@ -28,7 +28,7 @@ public class ArtigorevisaoitemsId  implements java.io.Serializable {
         this.idArtigoRevisao = idArtigoRevisao;
     }
     public int getIdItemRevisao() {
-        return this.idItemRevisao; 
+        return this.idItemRevisao;
     }
     
     public void setIdItemRevisao(int idItemRevisao) {
