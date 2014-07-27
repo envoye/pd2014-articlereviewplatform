@@ -7,7 +7,7 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
-import HibernatePackage.Artigoautores;
+import HibernatePackage.Artigoinvestigador;
 import HibernatePackage.Subtema;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,6 +25,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
@@ -50,8 +51,10 @@ public class SubmissaoArtigo {
     private Part ficheiroPdf;
     private int idSubtema;
     private List<Subtema> listSubtema;
-    private List<Artigoautores> autores;
-
+    private List<Artigoinvestigador> autores;
+    @Inject
+    private LoginUtilizador loginUtilizador;
+     
     public Subtema getSubtema() {
         if (subtema == null) {
             if (getListSubtema().size() > 0) {
@@ -129,14 +132,14 @@ public class SubmissaoArtigo {
         this.listSubtema = listSubtema;
     }
 
-    public List<Artigoautores> getAutores() {
+    public List<Artigoinvestigador> getAutores() {
         if (autores == null) {
-            autores = (List<Artigoautores>) AllHellper.getListQualquerCoisa(Artigoautores.class);
+            autores = (List<Artigoinvestigador>) AllHellper.getListQualquerCoisa(Artigoinvestigador.class);
         }        
         return autores;
     }
 
-    public void setAutores(List<Artigoautores> autores) {
+    public void setAutores(List<Artigoinvestigador> autores) {
         this.autores = autores;
     }
     
@@ -161,8 +164,10 @@ public class SubmissaoArtigo {
         } catch (Exception e) {
             caminho = "";
         }
-
-        AllHellper.SaveQualquerCoisa(new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null));
+        Artigo art=new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null, null);
+        AllHellper.SaveQualquerCoisa(art);
+        AllHellper.SaveQualquerCoisa(new Artigoinvestigador(art, loginUtilizador.getInvestigador()));
+        
         return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
     }
 

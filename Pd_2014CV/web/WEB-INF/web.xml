@@ -20,6 +20,7 @@
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/faces/model/artigos/*</url-pattern>
+        <url-pattern>/faces/model/conferencias/*</url-pattern>
     </filter-mapping>
       
     <servlet>

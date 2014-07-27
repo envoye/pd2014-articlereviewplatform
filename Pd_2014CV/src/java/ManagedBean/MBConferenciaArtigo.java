@@ -12,6 +12,7 @@ import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciaedicao;
 import java.util.List;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -26,7 +27,8 @@ public class MBConferenciaArtigo {
     private boolean publicar;
     private List<Conferenciaedicao> listaEdicoes;
     private List<Artigo> listaArtigos;
-    
+    @Inject
+     private LoginUtilizador loginUtilizador;
     
     /**
      * Creates a new instance of MBConferenciaArtigo
