@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 27/Jul/2014 15:52:48 by Hibernate Tools 3.6.0
+// Generated 27/Jul/2014 19:30:51 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -27,7 +27,7 @@ public class Investigador  implements java.io.Serializable {
      private Set<Contacto> contactosForInvestigadorContactId = new HashSet<Contacto>(0);
      private Set<Contacto> contactosForIdInvestigador = new HashSet<Contacto>(0);
      private Set<Conferenciapoolrevisores> conferenciapoolrevisoreses = new HashSet<Conferenciapoolrevisores>(0);
-     private Set<Artigoinvestigador> artigoinvestigadors = new HashSet<Artigoinvestigador>(0);
+     private Set<Artigo> artigos = new HashSet<Artigo>(0);
      private Set<Conferenciacomite> conferenciacomites = new HashSet<Conferenciacomite>(0);
 
     public Investigador() {
@@ -41,7 +41,7 @@ public class Investigador  implements java.io.Serializable {
         this.utilizador = utilizador;
         this.password = password;
     }
-    public Investigador(Grauacademico grauacademico, String nome, String instituicao, Date datanascimento, String utilizador, String password, String email, String telefone, String telemovel, Set<Conferenciacomiteartigoforummensagem> conferenciacomiteartigoforummensagems, Set<Investigadorareaconhecimento> investigadorareaconhecimentos, Set<Contacto> contactosForInvestigadorContactId, Set<Contacto> contactosForIdInvestigador, Set<Conferenciapoolrevisores> conferenciapoolrevisoreses, Set<Artigoinvestigador> artigoinvestigadors, Set<Conferenciacomite> conferenciacomites) {
+    public Investigador(Grauacademico grauacademico, String nome, String instituicao, Date datanascimento, String utilizador, String password, String email, String telefone, String telemovel, Set<Conferenciacomiteartigoforummensagem> conferenciacomiteartigoforummensagems, Set<Investigadorareaconhecimento> investigadorareaconhecimentos, Set<Contacto> contactosForInvestigadorContactId, Set<Contacto> contactosForIdInvestigador, Set<Conferenciapoolrevisores> conferenciapoolrevisoreses, Set<Artigo> artigos, Set<Conferenciacomite> conferenciacomites) {
        this.grauacademico = grauacademico;
        this.nome = nome;
        this.instituicao = instituicao;
@@ -56,7 +56,7 @@ public class Investigador  implements java.io.Serializable {
        this.contactosForInvestigadorContactId = contactosForInvestigadorContactId;
        this.contactosForIdInvestigador = contactosForIdInvestigador;
        this.conferenciapoolrevisoreses = conferenciapoolrevisoreses;
-       this.artigoinvestigadors = artigoinvestigadors;
+       this.artigos = artigos;
        this.conferenciacomites = conferenciacomites;
     }
    
@@ -165,12 +165,12 @@ public class Investigador  implements java.io.Serializable {
     public void setConferenciapoolrevisoreses(Set<Conferenciapoolrevisores> conferenciapoolrevisoreses) {
         this.conferenciapoolrevisoreses = conferenciapoolrevisoreses;
     }
-    public Set<Artigoinvestigador> getArtigoinvestigadors() {
-        return this.artigoinvestigadors;
+    public Set<Artigo> getArtigos() {
+        return this.artigos;
     }
     
-    public void setArtigoinvestigadors(Set<Artigoinvestigador> artigoinvestigadors) {
-        this.artigoinvestigadors = artigoinvestigadors;
+    public void setArtigos(Set<Artigo> artigos) {
+        this.artigos = artigos;
     }
     public Set<Conferenciacomite> getConferenciacomites() {
         return this.conferenciacomites;
