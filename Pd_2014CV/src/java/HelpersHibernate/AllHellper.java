@@ -36,21 +36,42 @@ public class AllHellper {
     }
 
     public static List<? extends Object> getListQualquerCoisa(Class classObj) {
+        Query q;
+        try {
         Session session = GeralHelper.GetSession(); //HibernateUtil.getSessionFactory().openSession();
         org.hibernate.Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from " + classObj.getSimpleName());
-
+        q = session.createQuery("from " + classObj.getSimpleName());
+        }catch (Exception e) {
+           
+            return null;
+        }
         return q.list();
     }
 
     public static List<? extends Object> getListQualquerCoisaCondicao(Class classObj, String condicao) {
+         Query q;
+        try {
         Session session = GeralHelper.GetSession(); //HibernateUtil.getSessionFactory().openSession();
         org.hibernate.Transaction tx = session.beginTransaction();
-        Query q = session.createQuery("from " + classObj.getSimpleName() + condicao);
-
+        q = session.createQuery("from " + classObj.getSimpleName() + condicao);
+ }catch (Exception e) {
+           
+            return null;
+        }
         return q.list();
     }
-
+public static List<? extends Object> getListArtigosInvestigador(String condicao) {
+         Query q;
+        try {
+        Session session = GeralHelper.GetSession(); //HibernateUtil.getSessionFactory().openSession();
+        org.hibernate.Transaction tx = session.beginTransaction();
+        q = session.createQuery(condicao);
+ }catch (Exception e) {
+           
+            return null;
+        }
+        return q.list();
+    }
     public static Object getQualquerCoisaCondicao(Class classObj, String condicao) {
         Session session = GeralHelper.GetSession(); //HibernateUtil.getSessionFactory().openSession();
         org.hibernate.Transaction tx = session.beginTransaction();

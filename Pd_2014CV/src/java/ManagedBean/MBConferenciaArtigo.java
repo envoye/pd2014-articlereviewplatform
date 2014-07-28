@@ -10,6 +10,8 @@ import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
 import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciaedicao;
+import HibernatePackage.Investigador;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -73,7 +75,12 @@ public class MBConferenciaArtigo {
 
     public List<Artigo> getListaArtigos() {
         if(this.listaArtigos == null){
-            this.listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisa(Conferenciaedicao.class);
+           this.listaArtigos=new ArrayList<Artigo> ();
+         try{
+            this.listaArtigos.addAll(loginUtilizador.getInvestigador().getArtigos());
+         }catch(Exception ex){
+         return null;
+         }
         }                
         return listaArtigos;
     }

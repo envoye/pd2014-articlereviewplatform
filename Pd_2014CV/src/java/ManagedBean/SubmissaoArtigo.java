@@ -7,7 +7,7 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
-import HibernatePackage.Artigoinvestigador;
+import HibernatePackage.Investigador;
 import HibernatePackage.Subtema;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,7 +18,9 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
@@ -51,7 +53,7 @@ public class SubmissaoArtigo {
     private Part ficheiroPdf;
     private int idSubtema;
     private List<Subtema> listSubtema;
-    private List<Artigoinvestigador> autores;
+   
     @Inject
     private LoginUtilizador loginUtilizador;
      
@@ -132,16 +134,9 @@ public class SubmissaoArtigo {
         this.listSubtema = listSubtema;
     }
 
-    public List<Artigoinvestigador> getAutores() {
-        if (autores == null) {
-            autores = (List<Artigoinvestigador>) AllHellper.getListQualquerCoisa(Artigoinvestigador.class);
-        }        
-        return autores;
-    }
+   
 
-    public void setAutores(List<Artigoinvestigador> autores) {
-        this.autores = autores;
-    }
+   
     
     public String registar() throws IOException {
         InputStream inputStream = null;
@@ -164,9 +159,12 @@ public class SubmissaoArtigo {
         } catch (Exception e) {
             caminho = "";
         }
-        Artigo art=new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null, null);
+        Artigo art=new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null);
+        Set<Investigador> inv = new HashSet<Investigador>();
+        inv.add(loginUtilizador.getInvestigador());
+        art.setInvestigadors(inv);
         AllHellper.SaveQualquerCoisa(art);
-        AllHellper.SaveQualquerCoisa(new Artigoinvestigador(art, loginUtilizador.getInvestigador()));
+        
         
         return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
     }
