@@ -2,8 +2,8 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
-
+      xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <body>
 
         <ui:composition template="../Template/AreaPessoalTemplate.xhtml">
@@ -37,7 +37,109 @@
                                                      required="true" />
                                        
                                     </td>
-                                    
+                                    <!-- Edição -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Edição</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="edicaoInput" size="10" value="#{MBConferencia.edicao}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- SubNome -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Nome</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="subNomeInput" size="60" value="#{MBConferencia.subNome}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Descrição -->
+                                <tr>
+                                    <td style="width: 10px; height: 45px;"></td>
+                                    <td align="right" style="width: 250px;">Descrição</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputTextarea id="descricaoInput" value="#{MBConferencia.descricao}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Tema -->
+                                <tr>
+                                    <td style="width: 10px; height: 45px;"></td>
+                                    <td align="right" style="width: 250px;">Tema</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferencia.temaEdicao.id}" id="TemaInput">
+                                            <f:selectItems value="#{MBConferencia.listTemas}" var="temaEdicao" itemValue="#{temaEdicao.id}" itemLabel="#{temaEdicao.nomeTema}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>                                
+<!-- Data -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Data do Evento</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="dataInput" value="#{MBConferencia.data}" class="datetime" size="10"
+                                             required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                    </td>
+                                </tr>                                
+<!-- Local -->
+                                <tr>
+                                    <td style="width: 10px; height: 45px;"></td>
+                                    <td align="right" style="width: 250px;">Local</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputTextarea id="localInput" value="#{MBConferencia.local}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Data Limite Submissão -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Data Limite Submissão</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="limiteSubmissaoInput" value="#{MBConferencia.limiteSubmissao}" class="datetime"
+                                             required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                    </td>                                  
+                                </tr>                                
+<!-- Nº Máximo de Artigos -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Nº Máximo de Artigos</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="maxArtigosInput" size="1" value="#{MBConferencia.maxArtigos}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Nº Máximo de Artigos por Revisor -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Nº Máximo de Artigos por Revisor</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="maxArtigosRevisorInput" size="1" value="#{MBConferencia.maxArtigosRevisor}" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Configuração Encerrada -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Configuração Encerrada</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectBooleanCheckbox id="configuracaoEncerradaInput" value="#{MBConferencia.configEncerrada}"/>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                         
                                     <td>
                                       <h:commandButton image="../../images/search.jpg" action="#{MBConferencia.pesquisar}" />
                                     </td>

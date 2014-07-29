@@ -5,8 +5,8 @@
  */
 
 $( document ).ready(function() {
-   
+   alert("ola");
     $(".datetime").datepicker({ dateFormat: 'dd/mm/yy' ,changeMonth: true,
       changeYear: true});
-  
+    alert("ola1");
 });
