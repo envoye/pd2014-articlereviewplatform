@@ -53,7 +53,15 @@ public class SubmissaoArtigo {
     private Part ficheiroPdf;
     private int idSubtema;
     private List<Subtema> listSubtema;
-   
+   private String palavrasChave;
+
+    public String getPalavrasChave() {
+        return palavrasChave;
+    }
+
+    public void setPalavrasChave(String palavrasChave) {
+        this.palavrasChave = palavrasChave;
+    }
     @Inject
     private LoginUtilizador loginUtilizador;
      
@@ -159,7 +167,7 @@ public class SubmissaoArtigo {
         } catch (Exception e) {
             caminho = "";
         }
-        Artigo art=new Artigo(subtema, titulo, resumo, new Date(), link, caminho, null, null, null, null);
+        Artigo art=new Artigo(subtema, titulo, resumo, new Date(), link, caminho, palavrasChave, null, null, null);
         Set<Investigador> inv = new HashSet<Investigador>();
         inv.add(loginUtilizador.getInvestigador());
         art.setInvestigadors(inv);

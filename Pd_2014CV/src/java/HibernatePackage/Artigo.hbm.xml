@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27/Jul/2014 19:30:53 by Hibernate Tools 3.6.0 -->
+<!-- Generated 29/Jul/2014 18:24:25 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="HibernatePackage.Artigo" table="artigo" catalog="pd_2014">
         <id name="id" type="java.lang.Integer">
@@ -26,17 +26,14 @@
         <property name="ficheiroPdf" type="string">
             <column name="ficheiroPDF" length="300" />
         </property>
+        <property name="palavrasChave" type="string">
+            <column name="palavrasChave" length="150" />
+        </property>
         <set name="conferenciaartigos" table="conferenciaartigo" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idArtigo" not-null="true" />
             </key>
             <one-to-many class="HibernatePackage.Conferenciaartigo" />
-        </set>
-        <set name="artigopalavrachaves" table="artigopalavrachave" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idArtigo" not-null="true" />
-            </key>
-            <one-to-many class="HibernatePackage.Artigopalavrachave" />
         </set>
         <set name="conferenciacomiteartigos" table="conferenciacomiteartigo" inverse="true" lazy="true" fetch="select">
             <key>

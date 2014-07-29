@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 27/Jul/2014 19:30:51 by Hibernate Tools 3.6.0
+// Generated 29/Jul/2014 18:24:24 by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
@@ -19,7 +19,7 @@ public class Conferenciaedicao  implements java.io.Serializable {
      private String descricao;
      private Date data;
      private String local;
-     private String edicao;
+     private int edicao;
      private Date dataLimiteSubmissao;
      private Short maxArtigosRevisor;
      private Short maxArtigos;
@@ -32,13 +32,14 @@ public class Conferenciaedicao  implements java.io.Serializable {
     }
 
 	
-    public Conferenciaedicao(Tema tema, Conferencia conferencia, String subNomeConferencia, String descricao) {
+    public Conferenciaedicao(Tema tema, Conferencia conferencia, String subNomeConferencia, String descricao, int edicao) {
         this.tema = tema;
         this.conferencia = conferencia;
         this.subNomeConferencia = subNomeConferencia;
         this.descricao = descricao;
+        this.edicao = edicao;
     }
-    public Conferenciaedicao(Tema tema, Conferencia conferencia, String subNomeConferencia, String descricao, Date data, String local, String edicao, Date dataLimiteSubmissao, Short maxArtigosRevisor, Short maxArtigos, Boolean configuracaoEncerrada, Set<Conferenciacomite> conferenciacomites, Set<Conferenciaartigo> conferenciaartigos, Set<Conferenciapoolrevisores> conferenciapoolrevisoreses) {
+    public Conferenciaedicao(Tema tema, Conferencia conferencia, String subNomeConferencia, String descricao, Date data, String local, int edicao, Date dataLimiteSubmissao, Short maxArtigosRevisor, Short maxArtigos, Boolean configuracaoEncerrada, Set<Conferenciacomite> conferenciacomites, Set<Conferenciaartigo> conferenciaartigos, Set<Conferenciapoolrevisores> conferenciapoolrevisoreses) {
        this.tema = tema;
        this.conferencia = conferencia;
        this.subNomeConferencia = subNomeConferencia;
@@ -104,11 +105,11 @@ public class Conferenciaedicao  implements java.io.Serializable {
     public void setLocal(String local) {
         this.local = local;
     }
-    public String getEdicao() {
+    public int getEdicao() {
         return this.edicao;
     }
     
-    public void setEdicao(String edicao) {
+    public void setEdicao(int edicao) {
         this.edicao = edicao;
     }
     public Date getDataLimiteSubmissao() {

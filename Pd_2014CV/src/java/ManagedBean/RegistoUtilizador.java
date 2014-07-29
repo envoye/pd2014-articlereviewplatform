@@ -144,7 +144,7 @@ public class RegistoUtilizador {
      
     public String registar () {
       
-        AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null,null));
+        AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null,null,null));
         return "index";
     }
     
