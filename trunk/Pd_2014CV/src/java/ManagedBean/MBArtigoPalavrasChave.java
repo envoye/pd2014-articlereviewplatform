@@ -8,7 +8,7 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
-import HibernatePackage.Artigopalavrachave;
+
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -23,7 +23,7 @@ public class MBArtigoPalavrasChave {
     private Artigo artigo;
     private String palavraChave;
     private List<Artigo> listaArtigos;
-    private List<Artigopalavrachave> listaPalavrasChave;
+   // private List<Artigopalavrachave> listaPalavrasChave;
     
     /**
      * Creates a new instance of MBArtigoPalavrasChave
@@ -58,19 +58,19 @@ public class MBArtigoPalavrasChave {
         this.listaArtigos = listaArtigos;
     }
     
-    public List<Artigopalavrachave> getListaPalavrasChave() {
-        if(this.listaPalavrasChave == null){
-            this.listaPalavrasChave = (List<Artigopalavrachave>)AllHellper.getListQualquerCoisa(Artigopalavrachave.class);
-        }                
-        return this.listaPalavrasChave;
-    }
-
-    public void setListaPalavrasChave(List<Artigopalavrachave> listaPalavrasChave) {
-        this.listaPalavrasChave = listaPalavrasChave;
-    }
-    
+//    public List<Artigopalavrachave> getListaPalavrasChave() {
+//        if(this.listaPalavrasChave == null){
+//            this.listaPalavrasChave = (List<Artigopalavrachave>)AllHellper.getListQualquerCoisa(Artigopalavrachave.class);
+//        }                
+//        return this.listaPalavrasChave;
+//    }
+//
+//    public void setListaPalavrasChave(List<Artigopalavrachave> listaPalavrasChave) {
+//        this.listaPalavrasChave = listaPalavrasChave;
+//    }
+//    
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Artigopalavrachave(artigo, palavraChave));
+//        AllHellper.SaveQualquerCoisa(new Artigopalavrachave(artigo, palavraChave));
         return "index";
     }
     

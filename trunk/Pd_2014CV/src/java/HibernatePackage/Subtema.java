@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 27/Jul/2014 19:30:51 by Hibernate Tools 3.6.0
+// Generated 29/Jul/2014 18:24:24 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -20,12 +20,12 @@ public class Subtema  implements java.io.Serializable {
 
     public Subtema() {
     }
+
 	
     public Subtema(Tema tema, String nome) {
         this.tema = tema;
         this.nome = nome;
     }
-    
     public Subtema(Tema tema, String nome, String descricao, Set<Artigo> artigos, Set<Investigadorareaconhecimento> investigadorareaconhecimentos) {
        this.tema = tema;
        this.nome = nome;
@@ -48,7 +48,6 @@ public class Subtema  implements java.io.Serializable {
     public void setTema(Tema tema) {
         this.tema = tema;
     }
-    
     public String getNome() {
         return this.nome;
     }
@@ -56,7 +55,6 @@ public class Subtema  implements java.io.Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
     public String getDescricao() {
         return this.descricao;
     }
@@ -64,7 +62,6 @@ public class Subtema  implements java.io.Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
     public Set<Artigo> getArtigos() {
         return this.artigos;
     }
@@ -72,7 +69,6 @@ public class Subtema  implements java.io.Serializable {
     public void setArtigos(Set<Artigo> artigos) {
         this.artigos = artigos;
     }
-    
     public Set<Investigadorareaconhecimento> getInvestigadorareaconhecimentos() {
         return this.investigadorareaconhecimentos;
     }
@@ -80,6 +76,9 @@ public class Subtema  implements java.io.Serializable {
     public void setInvestigadorareaconhecimentos(Set<Investigadorareaconhecimento> investigadorareaconhecimentos) {
         this.investigadorareaconhecimentos = investigadorareaconhecimentos;
     }
+
+
+
 
 }
 

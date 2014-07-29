@@ -26,7 +26,7 @@ public class MBConferenciaEdicao {
     private String descricao;
     private Date data;
     private String local;
-    private String edicao;
+    private int edicao;
     private Date limiteSubmissao;
     private short maxArtigosRevisor;
     private short maxArtigos;
@@ -74,11 +74,11 @@ public class MBConferenciaEdicao {
         this.local = local;
     }
 
-    public String getEdicao() {
+    public int getEdicao() {
         return edicao;
     }
 
-    public void setEdicao(String edicao) {
+    public void setEdicao(int edicao) {
         this.edicao = edicao;
     }
 

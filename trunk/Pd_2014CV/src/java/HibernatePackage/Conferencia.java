@@ -1,5 +1,5 @@
 package HibernatePackage;
-// Generated 27/Jul/2014 19:30:51 by Hibernate Tools 3.6.0
+// Generated 29/Jul/2014 18:24:24 by Hibernate Tools 3.6.0
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class Conferencia  implements java.io.Serializable {
 
 
      private Integer id;
+     private Investigador investigador;
      private String nome;
      private Set<Conferenciaedicao> conferenciaedicaos = new HashSet<Conferenciaedicao>(0);
 
@@ -19,10 +20,12 @@ public class Conferencia  implements java.io.Serializable {
     }
 
 	
-    public Conferencia(String nome) {
+    public Conferencia(Investigador investigador, String nome) {
+        this.investigador = investigador;
         this.nome = nome;
     }
-    public Conferencia(String nome, Set<Conferenciaedicao> conferenciaedicaos) {
+    public Conferencia(Investigador investigador, String nome, Set<Conferenciaedicao> conferenciaedicaos) {
+       this.investigador = investigador;
        this.nome = nome;
        this.conferenciaedicaos = conferenciaedicaos;
     }
@@ -33,6 +36,13 @@ public class Conferencia  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Investigador getInvestigador() {
+        return this.investigador;
+    }
+    
+    public void setInvestigador(Investigador investigador) {
+        this.investigador = investigador;
     }
     public String getNome() {
         return this.nome;

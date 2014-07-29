@@ -13,6 +13,7 @@ import HibernatePackage.Tema;
 import java.util.Date;
 import java.util.List;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -27,7 +28,7 @@ public class MBConferencia{
     private String descricao;
     private Date data;
     private String local;
-    private String edicao;
+    private int edicao;
     private Date limiteSubmissao;
     private short maxArtigosRevisor;
     private short maxArtigos;
@@ -36,7 +37,8 @@ public class MBConferencia{
     private List<Conferencia> listConferencias; 
     private Tema temaEdicao;
     private List<Tema> listTemas;
-    
+      @Inject
+    private LoginUtilizador loginUtilizador;
     public String getNome() {
         return nome;
     }
@@ -76,11 +78,11 @@ public class MBConferencia{
         this.local = local;
     }
 
-    public String getEdicao() {
+    public int getEdicao() {
         return edicao;
     }
 
-    public void setEdicao(String edicao) {
+    public void setEdicao(int edicao) {
         this.edicao = edicao;
     }
 
@@ -160,7 +162,7 @@ public class MBConferencia{
     }
     
     public String gravar() {
-        Conferencia conf=new Conferencia(this.nome);
+        Conferencia conf=new Conferencia(loginUtilizador.getInvestigador(), nome);
         AllHellper.SaveQualquerCoisa(conf);
          AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
         return "index";
