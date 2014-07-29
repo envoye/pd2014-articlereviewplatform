@@ -77,7 +77,7 @@ public class MBConferenciaSubtema {
     }
 
         public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Subtema(this.tema,this.nome,this.descricao,null,null));
+        AllHellper.SaveQualquerCoisa(new Subtema(tema, nome, descricao, null, null));
         return "index";
     }
     
