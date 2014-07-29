@@ -2,23 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Subtemas
+                Conference Team Manager - Artigos dos Elementos do Comité
             </ui:define>
 
             <ui:define name="formTitle">
 
                 <h2 class="subtitle" align="center">
-                    Subtemas para Conferências
+                    Artigos dos Elementos do Comité
                 </h2>                
-
+                
             </ui:define>
 
             <ui:define name="form">
@@ -34,41 +33,24 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 100px; height: 50px;"></td>
-                                    <td align="right" style="width: 80px;">
-                                        <h:outputLabel for="temaInput">
-                                            Tema
-                                        </h:outputLabel>
-                                    </td>
+                                    <td align="right" style="width: 80px;">Tema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaSubtema.tema}" id="TemaInput">
-                                            <f:selectItems value="#{MBConferenciaSubtema.listTemas}" var="temas" itemValue="#{temas.id}" itemLabel="#{temas.nomeTema}"/>
-                                        </h:selectOneMenu>                                                                                  
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 100px; height: 50px;"></td>
-                                    <td align="right" style="width: 80px;">
-                                        <h:outputLabel for="subtemaInput">
-                                            Subtema
-                                        </h:outputLabel>
-                                    </td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="subtemaInput" size='40' value="#{MBConferenciaSubtema.nome}" 
+                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" 
                                                      required="true" />
                                     </td>
-                                </tr>                                
+
+                                    <td>
+                                        <h:commandButton image="../../images/search.jpg" action="#{MBConferenciaTema.pesquisar()}" />
+                                    </td>
+
+                                </tr>
                                 <tr>
                                     <td style="width: 100px;"></td>
-                                    <td align="right" style="width: 80px;">
-                                        <h:outputLabel for="descricaoInput">
-                                            Descrição
-                                        </h:outputLabel>
-                                    </td>
+                                    <td align="right" style="width: 80px;">Descrição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="descSubtemaInput" rows="3" cols="60" value="#{MBConferenciaSubtema.descricao}" 
+                                        <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.descricao}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>
@@ -80,8 +62,22 @@
 
                         <table>
                             <tr>
-                                <td style="width: 550px;"></td>
+                                <td style="width: 100px;"></td>
+                                <td>
+                                    <h:commandButton value="Adicionar Subtema" action="./ConferenciaSubtema.xhtml"  />
+                                </td>                                                                
 
+                                <td style="width: 5px;"></td>
+                                <td>
+                                    <h:commandButton value="Listar Subtemas" action="." />
+                                </td>                                
+
+                                <td style="width: 125px;"></td>
+                                <td>
+                                    <h:commandButton value="Novo" action="#{MBConferenciaTema.introduzir()}" />
+                                </td>
+
+                                <td style="width: 5px;"></td>
                                 <td>
                                     <h:commandButton value="Gravar" action="#{MBConferenciaTema.gravar()}" />
                                 </td>
@@ -97,7 +93,7 @@
                         </table>
                     </h:form>
                 </div>                
-
+                
             </ui:define>
 
         </ui:composition>

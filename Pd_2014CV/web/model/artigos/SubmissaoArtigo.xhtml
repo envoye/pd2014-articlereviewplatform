@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      >
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
@@ -58,12 +57,12 @@
                                                          required="true" />
                                     </td>
                                 </tr>
-<!--Grau Académico-->
+<!--Subtema-->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">
-                                        <h:outputLabel for="GrauacademicoInput">
-                                            Tema
+                                        <h:outputLabel for="subtemaInput">
+                                            Subtema
                                         </h:outputLabel></td>
                                     <td style="width: 10px;"></td>
                                     <td>
@@ -82,7 +81,7 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="linkInput" size="52" value="#{artigoRegisto.link}" 
-                                                     required="true" />
+                                                     required="false" />
                                     </td>
                                 </tr>
 <!--Ficheiro PDF-->
