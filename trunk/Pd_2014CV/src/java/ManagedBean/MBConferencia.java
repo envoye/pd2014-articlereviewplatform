@@ -130,6 +130,8 @@ public class MBConferencia{
     }
 
     public Tema getTemaEdicao() {
+        if(temaEdicao==null)
+            temaEdicao=new Tema();
         return temaEdicao;
     }
 
