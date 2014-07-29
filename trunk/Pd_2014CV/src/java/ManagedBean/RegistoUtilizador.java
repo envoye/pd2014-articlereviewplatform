@@ -7,20 +7,10 @@
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
-import HelpersHibernate.InvestigadorHelper;
 import HibernatePackage.Grauacademico;
 import HibernatePackage.Investigador;
-import com.sun.org.apache.bcel.internal.generic.AllocationInstruction;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.AbstractList;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 

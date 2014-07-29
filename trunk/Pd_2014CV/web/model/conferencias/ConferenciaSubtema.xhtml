@@ -41,7 +41,7 @@
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaSubtema.tema}" id="TemaInput">
+                                        <h:selectOneMenu value="#{MBConferenciaSubtema.temaId}" id="TemaInput">
                                             <f:selectItems value="#{MBConferenciaSubtema.listTemas}" var="temas" itemValue="#{temas.id}" itemLabel="#{temas.nomeTema}"/>
                                         </h:selectOneMenu>                                                                                  
                                     </td>
@@ -83,12 +83,12 @@
                                 <td style="width: 550px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar" action="#{MBConferenciaTema.gravar()}" />
+                                    <h:commandButton value="Gravar" action="#{MBConferenciaSubtema.gravar()}" />
                                 </td>
 
                                 <td style="width: 5px;"></td>
                                 <td>
-                                    <h:commandButton value="Cancelar" action="#{MBConferenciaTema.cancelar()}" />
+                                    <h:commandButton value="Cancelar" action="#{MBConferenciaSubtema.cancelar()}" />
                                 </td>
                             </tr>
                             <tr>

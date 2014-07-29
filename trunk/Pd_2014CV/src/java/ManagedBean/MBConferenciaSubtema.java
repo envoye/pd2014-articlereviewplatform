@@ -24,28 +24,27 @@ public class MBConferenciaSubtema {
     private String nome;
     private String descricao;
     private List<Tema> listTemas;
+    private int temaId;
     /**
      * Creates a new instance of MBConferenciaSubtema
      */
     public MBConferenciaSubtema() {
     }
 
-    public MBConferenciaSubtema(Tema tema, String nome, String descricao) {
-        this.tema = tema;
-        this.nome = nome;
-        this.descricao = descricao;
-    }
+//    public MBConferenciaSubtema(Tema tema, String nome, String descricao) {
+//        this.tema = tema;
+//        this.nome = nome;
+//        this.descricao = descricao;
+//    }
     
     public void setTema(Tema tema) {
-        for(int i=0;i<getListTemas().size();i++){
-            if(this.getListTemas().get(i).getId().equals(this.tema.getId())){
-                tema=this.getListTemas().get(i);
-            }
-        }        
         this.tema = tema;
     }
     
     public Tema getTema() {
+        if(this.tema == null)
+            if(this.getListTemas().size() > 0)
+                this.tema = this.listTemas.get(0);
         return this.tema;
     }
     
@@ -76,9 +75,22 @@ public class MBConferenciaSubtema {
         this.listTemas = listTemas;
     }
 
-        public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Subtema(tema, nome, descricao, null, null));
-        return "index";
+    public int getTemaId() {
+        return temaId;
+    }
+
+    public void setTemaId(int temaId) {
+        this.temaId = temaId;
+        for(int i=0;i<this.getListTemas().size();i++){
+            if(this.listTemas.get(i).getId() == this.temaId){
+                this.tema=this.listTemas.get(i);
+            }
+        }        
+    }
+
+    public String gravar() {
+        AllHellper.SaveQualquerCoisa(new Subtema(this.tema, this.nome, this.descricao, null, null));
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {

@@ -75,7 +75,7 @@ public class LoginUtilizador implements Serializable {
        if (investigador!=null&& password.equals(investigador.getPassword())&& username.equals(investigador.getUtilizador())) {
         
                 loggedIn = true;
-                return "/index.xhtml?faces-redirect=true";
+                return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
             }
 
       
