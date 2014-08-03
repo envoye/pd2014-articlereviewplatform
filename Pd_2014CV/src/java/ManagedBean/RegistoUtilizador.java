@@ -21,34 +21,34 @@ import javax.inject.Named;
 @Named(value = "RegistoUtilizador")
 @ViewScoped
 public class RegistoUtilizador {
-     private Grauacademico grauacademico;
-     private String nome;
-     private String instituicao;
-     private Date datanascimento;
-     private String utilizador;
-     private String password;
-     private String email;
-     private String telefone;
-     private String telemovel;
-     private String passwordconf;
-     private int idGrauacademico;
-     private List<Grauacademico> listGrauacademico; 
+    private Grauacademico grauacademico;
+    private String nome;
+    private String instituicao;
+    private Date datanascimento;
+    private String utilizador;
+    private String password;
+    private String email;
+    private String telefone;
+    private String telemovel;
+    private String passwordconf;
+    private int idGrauacademico;
+    private List<Grauacademico> listGrauacademico; 
      
-     public int getIdGrauacademico() {
+    public int getIdGrauacademico() {
         return idGrauacademico;
     }
 
     public void setIdGrauacademico(int idGrauacademico) {
         this.idGrauacademico = idGrauacademico;
-        for(int i=0;i<getListGrauacademico().size();i++){
-            if(listGrauacademico.get(i).getId()==idGrauacademico){
+        for (int i=0;i<getListGrauacademico().size();i++){
+            if (listGrauacademico.get(i).getId()==idGrauacademico){
                 grauacademico=listGrauacademico.get(i);
             }
         }
     }
 
     public List<Grauacademico> getListGrauacademico() {
-        if(listGrauacademico == null){
+        if (listGrauacademico == null){
             listGrauacademico = (List<Grauacademico>)AllHellper.getListQualquerCoisa(Grauacademico.class);
         }
         return listGrauacademico;
@@ -143,9 +143,8 @@ public class RegistoUtilizador {
     }
      
     public String registar () {
-      
         AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null,null,null));
-        return "index";
+        return "/model/investigador/LoginUtilizador.xhtml";
     }
     
 }

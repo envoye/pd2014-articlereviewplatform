@@ -10,7 +10,8 @@ import HelpersHibernate.AllHellper;
 import HibernatePackage.Subtema;
 import HibernatePackage.Tema;
 import java.util.List;
-import javax.enterprise.context.Dependent;
+import javax.faces.component.html.HtmlDataTable;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -18,13 +19,17 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBConferenciaSubtema")
-@Dependent
+@ViewScoped
 public class MBConferenciaSubtema {
     private Tema tema;
     private String nome;
     private String descricao;
     private List<Tema> listTemas;
     private int temaId;
+    private List<Subtema> listSubtemas;
+    private Subtema subtemaSelecionado;
+    private HtmlDataTable dataTableSubtemas;
+    
     /**
      * Creates a new instance of MBConferenciaSubtema
      */
@@ -88,12 +93,42 @@ public class MBConferenciaSubtema {
         }        
     }
 
+    public List<Subtema> getListSubtemas() {
+        this.listSubtemas = (List<Subtema>)AllHellper.getListQualquerCoisa(Subtema.class);
+        return this.listSubtemas;
+    }
+
+    public void setListSubtemas(List<Subtema> listSubtemas) {
+        this.listSubtemas = listSubtemas;
+    }
+
+    public Subtema getSubtemaSelecionado() {
+        return subtemaSelecionado;
+    }
+
+    public String setSubtemaSelecionado() {
+        this.subtemaSelecionado = (Subtema) this.dataTableSubtemas.getRowData();
+        return "subtemaSelecionado";
+    }
+
+    public HtmlDataTable getDataTableSubtemas() {
+        return dataTableSubtemas;
+    }
+
+    public void setDataTableSubtemas(HtmlDataTable dataTableSubtemas) {
+        this.dataTableSubtemas = dataTableSubtemas;
+    }
+
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Subtema(this.tema, this.nome, this.descricao, null, null));
-        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+        return "/model/conferencias/ConferenciaSubtema.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
         return "index";
+    }
+    
+    public String pesquisar() {
+        return "/model/conferencias/ConferenciaSubtemaList.xhtml?faces-redirect=true";
     }
 }

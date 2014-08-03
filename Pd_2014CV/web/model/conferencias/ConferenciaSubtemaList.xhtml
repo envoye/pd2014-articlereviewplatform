@@ -10,17 +10,19 @@
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Palavras Chave de Artigos
+                Conference Team Manager - Subtemas
             </ui:define>
 
             <ui:define name="formTitle">
                 
-                <h3 class="subtitle" align="center">Palavras Chave de Artigos</h3>
+                <h2 class="subtitle" align="center">
+                    Seleção de Subtemas para Conferências
+                </h2>                                
                 
             </ui:define>
 
             <ui:define name="form">
-                
+
                 <div class="boxForm">
 
                     <h:form class="jqtransform">
@@ -30,28 +32,30 @@
                                     <td style="height: 20px;"></td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 50px; height: 50px;"></td>
+                                    <td style="width: 5px; height: 50px;"></td>
                                     <td>
 
-                                        <h:dataTable id="palavrasChaveGrid" value="#{MBArtigoPalavrasChave.listaPalavrasChave}" var="palavrasChave"
-                                                     border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow">
-<!--
-                                            <f:facet name="header">
-                                                <h:outputText value="Palavras Chave para Artigos" />
-                                            </f:facet>
--->
+                                        <h:dataTable id="subtemasGrid" value="#{MBConferenciaSubtema.listSubtemas}" var="subtemas"
+                                                     border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+
                                             <h:column>
                                                 <f:facet name="header">
-                                                    <h:outputText value="Artigo"/>
+                                                    <h:outputText value="Tema"/>
                                                 </f:facet>
-                                                <h:outputText value="#{palavrasChave.artigo}"/>
+                                                <h:outputText value="#{subtemas.tema.nomeTema}"/>
                                             </h:column>
                                             <h:column>
                                                 <f:facet name="header">
-                                                    <h:outputText value="Palavras Chave" />
+                                                    <h:outputText value="Subtema" />
                                                 </f:facet>
-                                                <h:outputText value="#{palavrasChave.palavraChave}" />
+                                                <h:outputText value="#{subtemas.nome}" />
                                             </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Descrição" />
+                                                </f:facet>
+                                                <h:outputText value="#{subtemas.descricao}" />
+                                            </h:column>                                            
                                         </h:dataTable>
                                     </td>
                                 </tr>
@@ -66,7 +70,7 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"/>
+                                    <h:commandButton value="Selecionar"/>
                                 </td>
                             </tr>
                             <tr>
@@ -75,7 +79,7 @@
                         </table>                        
                         
                     </h:form>
-                </div>                
+                </div>                                
                 
             </ui:define>
 

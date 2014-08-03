@@ -10,7 +10,6 @@ import HibernatePackage.Artigo;
 import HibernatePackage.Investigador;
 import HibernatePackage.Subtema;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.CopyOption;
@@ -23,13 +22,11 @@ import java.util.List;
 import java.util.Set;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 
 /**
@@ -53,15 +50,8 @@ public class SubmissaoArtigo {
     private Part ficheiroPdf;
     private int idSubtema;
     private List<Subtema> listSubtema;
-   private String palavrasChave;
+    private String palavrasChave;
 
-    public String getPalavrasChave() {
-        return palavrasChave;
-    }
-
-    public void setPalavrasChave(String palavrasChave) {
-        this.palavrasChave = palavrasChave;
-    }
     @Inject
     private LoginUtilizador loginUtilizador;
      
@@ -142,9 +132,13 @@ public class SubmissaoArtigo {
         this.listSubtema = listSubtema;
     }
 
-   
+    public String getPalavrasChave() {
+        return palavrasChave;
+    }
 
-   
+    public void setPalavrasChave(String palavrasChave) {
+        this.palavrasChave = palavrasChave;
+    }   
     
     public String registar() throws IOException {
         InputStream inputStream = null;
@@ -173,7 +167,6 @@ public class SubmissaoArtigo {
         art.setInvestigadors(inv);
         AllHellper.SaveQualquerCoisa(art);
         
-        
         return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
     }
 
@@ -187,9 +180,7 @@ public class SubmissaoArtigo {
         return null;
     }
 
-    public void validateFile(FacesContext ctx,
-            UIComponent comp,
-            Object value) {
+    public void validateFile(FacesContext ctx, UIComponent comp, Object value) {
         List<FacesMessage> msgs = new ArrayList<FacesMessage>();
         Part file = (Part) value;
 

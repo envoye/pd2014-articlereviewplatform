@@ -57,18 +57,18 @@ public class MBConferenciaTema {
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Tema(this.tema,this.descricao,null,null));
-        return "index";
+        return "/model/conferencias/ConferenciaTema.xhtml";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/conferencias/ConferenciaTema.xhtml";
     }
 
     public String pesquisar() {
         return "index";
     }
     
-    public String addSubtema() {
+    public String listSubtema() {
         return "index";
     }
     
