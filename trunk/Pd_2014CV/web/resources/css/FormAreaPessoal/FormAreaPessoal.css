@@ -91,18 +91,21 @@ div.curFocus {
 .areaPessoalGridHeader{
    text-align:center;
 //   background:none repeat scroll 0 0 #B5B5B5;
-   background-color: #B5B5B5;
+   background-color: #383636;
    padding: 10px;
    font-size: 16px;
+   color: gainsboro;
    width: 300px;
 }
 
 .areaPessoalGridOddRow{
-   text-align:center;
-   background:none repeat scroll 0 0 #FFFFFF;	
+    text-align: center;
+    background:none repeat scroll 0 0 #FFFFFF;	
+    height: 30px;
 }
 
 .areaPessoalGridEvenRow{
-   text-align:center;
-   background:none repeat scroll 0 0 #D3D3D3;
+    text-align:center;
+    background:none repeat scroll 0 0 #CDC8C8;
+    height: 30px;
 }

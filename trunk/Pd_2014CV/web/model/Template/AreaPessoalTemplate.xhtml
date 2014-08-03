@@ -17,8 +17,6 @@
         <h:outputStylesheet name="./css/style-desktop.css" />
         <h:outputStylesheet name="./css/Menu/styles.css" />
         <h:outputStylesheet name="./css/FormAreaPessoal/FormAreaPessoal.css" />
-<!--        <h:outputScript name="./css/5grid/jquery.js"/>
-        <h:outputScript name="./css/Menu/menu_jquery.js"/>-->
         <h:outputScript name="./css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"/>
         
        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />   
@@ -119,6 +117,25 @@
                                 </section>
                             </div>
 
+                            <div class="9u" id="pageform">
+                                
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 650px;"></td>
+                                            <td>
+                                                <h:outputText style="font-size: 16px;font-weight: bolder; font-stretch: ultra-expanded; " value="#{auth.investigador.nome}"/>
+                                            </td>
+                                            <td>
+                                                <h:commandButton image="../../images/icon_user2.png" style="height: 30px; width: 30px;" rendered="#{auth.loggedIn}" action="#{auth.logout()}"/>
+                                            </td>                              
+                                        </tr>
+                                        <tr style="height: 30px;"></tr>
+                                    </tbody>
+                                </table>
+
+                            </div>                            
+                            
                             <div class="8u" id="pageform">
                                 <section>
                                     <div class="post">

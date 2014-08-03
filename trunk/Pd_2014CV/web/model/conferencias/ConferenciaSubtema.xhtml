@@ -58,7 +58,12 @@
                                         <h:inputText id="subtemaInput" size='40' value="#{MBConferenciaSubtema.nome}" 
                                                      required="true" />
                                     </td>
-                                </tr>                                
+                                    
+                                    <td>
+                                        <h:commandButton image="../../images/search.jpg" action="#{MBConferenciaSubtema.pesquisar()}" />
+                                    </td>                                                                    
+                                </tr>   
+                                
                                 <tr>
                                     <td style="width: 100px;"></td>
                                     <td align="right" style="width: 80px;">

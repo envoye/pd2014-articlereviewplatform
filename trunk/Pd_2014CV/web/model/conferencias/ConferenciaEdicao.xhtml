@@ -37,8 +37,9 @@
                                     <td align="right" style="width: 250px;">Conferência</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='NomeInput' size='40' value="#{MBConferenciaEdicao.conferencia.id}" 
-                                                     required="true" />
+                                        <h:selectOneMenu value="#{MBConferenciaEdicao.conferencia.id}" id="TemaInput" style="width: 200px">
+                                            <f:selectItems value="#{MBConferenciaEdicao.listConferencias}" var="conferencias" itemValue="#{conferencias.id}" itemLabel="#{conferencias.nome}"/>
+                                        </h:selectOneMenu>                                          
                                     </td>
                                 </tr>
 <!-- Edição -->

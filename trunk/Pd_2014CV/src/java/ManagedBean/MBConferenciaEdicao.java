@@ -78,8 +78,16 @@ public class MBConferenciaEdicao {
         return edicao;
     }
 
-    public void setEdicao(int edicao) {
-        this.edicao = edicao;
+    public void setEdicao() {
+        int _edicao = 1;
+        String condicao=(" where Conferenciaedicao.conferencia.id = '"+ this.conferencia.getId()+"'");        
+        List<Conferenciaedicao> listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class, condicao);
+        for (int i=0; i<listaEdicoes.size(); i++) {
+            if (_edicao < listaEdicoes.get(i).getEdicao()) {
+                _edicao = listaEdicoes.get(i).getEdicao();
+            }
+        }
+        this.edicao = _edicao;
     }
 
     public Date getLimiteSubmissao() {
