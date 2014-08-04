@@ -1,12 +1,54 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
     <h:body>
-        Deves logarte
+
+        <ui:composition template="../Template/LoginTemplate.xhtml">
+
+            <ui:define name="title">
+                Conference Team Manager - Área Pessoal
+            </ui:define>
+
+            <ui:define name="formTitle">
+                <h3 class="subtitle" align="center">Acesso à área pessoal da plataforma</h3>
+            </ui:define>            
+
+            <ui:define name="form">
+                
+                <div class="boxLogin">
+                    <h:form class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 60px;"></td>
+                                </tr>                    
+<!-- Mensagem -->
+                                <tr>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="center" style="font-size: 16px; color: red;">
+                                        Para aceder à área pessoal da plataforma deve introduzir as suas credenciais de acesso.
+                                    </td>
+                                </tr>                    
+                                <tr>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="left" style="font-size: 14px; font-family: serif; ">
+                                        <h:commandLink value="Clique aqui para aceder à sua área pessoal" action="/model/investigador/LoginUtilizador.xhtml?faces-redirect=true" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height: 40px;"></td>
+                                </tr>                    
+                            </tbody>
+                        </table>
+                    </h:form>
+                </div>
+                
+            </ui:define>
+            
+        </ui:composition>    
     </h:body>
 </html>
 

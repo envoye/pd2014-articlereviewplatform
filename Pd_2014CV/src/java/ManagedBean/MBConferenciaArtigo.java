@@ -88,6 +88,10 @@ public class MBConferenciaArtigo {
     public void setListaArtigos(List<Artigo> listaArtigos) {
         this.listaArtigos = listaArtigos;
     }
+
+    public String introduzir() {
+        return "index";
+    }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Conferenciaartigo(conferenciaedicao, artigo, publicar));

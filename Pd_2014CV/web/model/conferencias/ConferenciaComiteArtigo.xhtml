@@ -40,7 +40,7 @@
                                     </td>
 
                                     <td>
-                                        <h:commandButton image="../../images/search.jpg" action="#{MBConferenciaTema.pesquisar()}" />
+                                        <h:commandButton image="../../images/ctm_Search.jpg" action="#{MBConferenciaTema.pesquisar()}" />
                                     </td>
 
                                 </tr>
@@ -61,35 +61,30 @@
 
                         <table>
                             <tr>
-                                <td style="width: 100px;"></td>
-                                <td>
-                                    <h:commandButton value="Adicionar Subtema" action="./ConferenciaSubtema.xhtml"  />
-                                </td>                                                                
+                                <td style="width: 500px;"></td>
 
-                                <td style="width: 5px;"></td>
                                 <td>
-                                    <h:commandButton value="Listar Subtemas" action="." />
-                                </td>                                
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBConferenciaComiteArtigo.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
 
-                                <td style="width: 125px;"></td>
                                 <td>
-                                    <h:commandButton value="Novo" action="#{MBConferenciaTema.introduzir()}" />
+
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaComiteArtigo.gravar()}" />
+
                                 </td>
 
-                                <td style="width: 5px;"></td>
+                                <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton value="Gravar" action="#{MBConferenciaTema.gravar()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaComiteArtigo.cancelar()}" />
                                 </td>
 
-                                <td style="width: 5px;"></td>
-                                <td>
-                                    <h:commandButton value="Cancelar" action="#{MBConferenciaTema.cancelar()}" />
-                                </td>
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
                             </tr>
-                        </table>
+                        </table>                        
+
                     </h:form>
                 </div>                
                 

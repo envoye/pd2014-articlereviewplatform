@@ -33,6 +33,10 @@ public class MBGrauAcademico {
         this.grauAcademico = grauAcademico;
     }
 
+    public String introduzir() {
+        return "index";
+    }
+    
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Grauacademico(grauAcademico, null));
         return "index";
