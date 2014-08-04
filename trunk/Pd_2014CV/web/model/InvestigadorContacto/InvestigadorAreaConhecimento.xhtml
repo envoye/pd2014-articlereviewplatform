@@ -80,8 +80,21 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar" action="#{MBInvestigadorAreaConhecimento.gravar}" />
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBInvestigadorAreaConhecimento.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBInvestigadorAreaConhecimento.gravar()}" />
+
                                 </td>
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBInvestigadorAreaConhecimento.cancelar()}" />
+                                </td>
+
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>

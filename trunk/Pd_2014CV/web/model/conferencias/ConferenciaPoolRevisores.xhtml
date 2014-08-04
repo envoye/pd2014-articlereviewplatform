@@ -121,14 +121,26 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  action="#{MBConferenciaPoolRevisores.gravar}" />
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBConferenciaPoolRevisores.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaPoolRevisores.gravar()}" />
+
                                 </td>
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaPoolRevisores.cancelar()}" />
+                                </td>
+
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
                             </tr>
-                        </table>                                                
-                        
+                        </table>                        
                         
                     </h:form>
                     

@@ -123,6 +123,10 @@ public class MBConferenciaComiteArtigo {
     public void setListaArtigos(List<Artigo> listaArtigos) {
         this.listaArtigos = listaArtigos;
     }
+
+    public String introduzir() {
+        return "index";
+    }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Conferenciacomiteartigo(conferenciacomite, artigo, estado, dataInicioLicitacao, dataFimLicitacao, pontuacao, pontuacaoComite, null, null));

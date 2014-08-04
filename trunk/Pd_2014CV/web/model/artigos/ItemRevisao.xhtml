@@ -78,8 +78,21 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar" action="#{MBItemRevisao.gravar}" />
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBItemRevisao.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBItemRevisao.gravar()}" />
+
                                 </td>
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBItemRevisao.cancelar()}" />
+                                </td>
+
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>

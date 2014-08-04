@@ -56,7 +56,7 @@
                                     <td align="right" style="width: 250px;">Publicar?</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectBooleanCheckbox id="publicarInput" value="#{MBConferenciaArtigo.publicar}"/>                                                        
+                                        <h:selectBooleanCheckbox id="publicarInput" value="#{MBConferenciaArtigo.isPublicar}"/>
                                     </td>
                                 </tr>                                
                                 <tr>
@@ -70,14 +70,26 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  action="#{MBConferenciaArtigo.gravar}" />
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBConferenciaArtigo.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaArtigo.gravar()}" />
+
                                 </td>
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaArtigo.cancelar()}" />
+                                </td>
+
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
                             </tr>
-                        </table>                                                
-                        
+                        </table>                        
                         
                     </h:form>
                     
