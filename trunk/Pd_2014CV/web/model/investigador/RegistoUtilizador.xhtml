@@ -37,7 +37,11 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id='NomeInput' size='60' value="#{RegistoUtilizador.nome}" 
-                                                     required="true" />
+                                                      validatorMessage="Por favor intruduza um nome com pelo menos 3 caracteres.">
+                                        <f:validateLength minimum="3" maximum="150" />
+                                        <f:validateRequired/>
+                                        </h:inputText> 
+                                        <h:message for="NomeInput" style="color:red" />
                                     </td>
                                 </tr>
 <!-- Grau Académico -->
@@ -58,7 +62,11 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="instituicaoInput" size="60" value="#{RegistoUtilizador.instituicao}" 
-                                                     required="true"/> 
+                                                      validatorMessage="Por favor intruduza um nome com pelo menos 2 caracteres.">
+                                        <f:validateLength minimum="2" maximum="150" />
+                                        <f:validateRequired/>
+                                        </h:inputText> 
+                                        <h:message for="instituicaoInput" style="color:red"  />
                                     </td>
                                 </tr>
 <!-- DataNascimento -->
@@ -68,7 +76,11 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime" size="10"
-                                                     required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                                      validatorMessage="Por favor intruduza uma data no formato dd/MM/yyyy."> 
+                                          
+                                        <f:validateRequired/>
+                                            <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                        <h:message for="datanascimentoInput" style="color:red"  />
                                     </td>
                                 </tr>
 <!-- Utilizador -->
@@ -78,7 +90,12 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="utilizadorInput" value="#{RegistoUtilizador.utilizador}" 
-                                                     required="true" />
+                                                     validatorMessage="Por favor intruduza um nome com pelo menos 3 caracteres.">
+                                        <f:validateLength minimum="3" maximum="150" />
+                                        <f:validateRequired/>
+                                       
+                                        </h:inputText> 
+                                        <h:message for="utilizadorInput" style="color:red" />
                                     </td>
                                 </tr>
 <!-- Password -->
@@ -87,8 +104,12 @@
                                     <td align="right" style="width: 250px;">Password</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputSecret id="passwordInput" value="#{RegistoUtilizador.password}" 
-                                                       required="true" />
+                                        <h:inputSecret id="passwordInput" binding="#{passwordComponent}" value="#{RegistoUtilizador.password}" 
+                                                       validatorMessage="Password terá de ter 6 caracteres.">
+                                        <f:validateLength minimum="6" maximum="150" />
+                                        <f:validateRequired/>
+                                        </h:inputSecret> 
+                                        <h:message for="passwordInput" style="color:red"  />
                                     </td>
                                 </tr>
 <!-- Password Conformação -->
@@ -98,7 +119,13 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputSecret id="passwordconfInput" value="#{RegistoUtilizador.password}" 
-                                                       required="true" />
+                                                       >
+                                        
+                                        
+                                         <f:validator validatorId="confirmPasswordValidator" />
+                                        <f:attribute name="passwordComponent" value="#{passwordComponent}" />
+                                        </h:inputSecret> 
+                                        <h:message for="passwordconfInput" style="color:red"  />
                                     </td>
                                 </tr>
 <!-- Email -->
@@ -108,7 +135,11 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}" 
-                                                     required="true" />
+                                                       validatorMessage="Email formato (xxx@xxx.xxx) .">
+                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                        <f:validateRequired/>
+                                        </h:inputText> 
+                                        <h:message for="emailInput" style="color:red"  />
                                     </td>
                                 </tr>
 <!-- Telefone -->
@@ -118,7 +149,11 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="telefoneInput" size="20" value="#{RegistoUtilizador.telefone}" 
-                                                     required="true" />
+                                                     validatorMessage="Formato desconhecido.">
+                                         <f:validateRegex pattern="^((\+|0)351)?9\d{8}$" />
+                                        <f:validateRequired/>
+                                        </h:inputText> 
+                                        <h:message for="telefoneInput" style="color:red"  />
                                     </td>
                                 </tr>
 <!-- Telemovel -->
@@ -128,7 +163,11 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="telemovelInput" size="20" value="#{RegistoUtilizador.telemovel}" 
-                                                     required="true" />
+                                                      validatorMessage="Formato desconhecido.">
+                                         <f:validateRegex pattern="^((\+|0)351)?9\d{8}$" />
+                                        <f:validateRequired/>
+                                        </h:inputText> 
+                                        <h:message for="telemovelInput" style="color:red"  />
                                     </td>
                                 </tr>
                             </tbody>
