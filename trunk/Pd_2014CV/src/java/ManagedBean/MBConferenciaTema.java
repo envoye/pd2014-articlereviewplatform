@@ -68,8 +68,8 @@ public class MBConferenciaTema {
         return "index";
     }
     
-    public String listSubtema() {
-        return "index";
+    public String listSubtemas() {
+        return "/model/conferencias/ConferenciaSubtemaList.xhtml";
     }
     
 }

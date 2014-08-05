@@ -301,24 +301,24 @@ html.mm-opening .mm-fixed-bottom {
 .mm-menu {
   width: 80%; }
 
-@media all and (max-width: 175px) {
+@media all and (max-width: 300px) {
   .mm-menu {
-    width: 140px; }
+    width: 300px; }
 
   html.mm-opening .mm-page,
   html.mm-opening #mm-blocker,
   html.mm-opening .mm-fixed-top,
   html.mm-opening .mm-fixed-bottom {
     left: 140px; } }
-@media all and (min-width: 550px) {
+@media all and (min-width: 300px) {
   .mm-menu {
-    width: 440px; }
+    width: 300px; }
 
   html.mm-opening .mm-page,
   html.mm-opening #mm-blocker,
   html.mm-opening .mm-fixed-top,
   html.mm-opening .mm-fixed-bottom {
-    left: 440px; } }
+    left: 300px; } }
 /*
 	jQuery.mmenu counters addon CSS
 */

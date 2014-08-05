@@ -9,12 +9,12 @@
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Items para Revisão
+                Conference Team Manager - Items para Revisões
             </ui:define>
 
             <ui:define name="formTitle">
                 
-                <h3 class="subtitle" align="center">Items para Revisão</h3>
+                <h3 class="subtitle" align="center">Items para Revisões</h3>
                 
             </ui:define>
 
@@ -31,7 +31,7 @@
 <!-- NomeItem -->
 
                                 <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td style="width: 10px; height: 30px;"></td>
                                     <td align="right" style="width: 250px;">Nome Item</td>
                                     <td style="width: 10px;"></td>
                                     <td>
@@ -41,11 +41,15 @@
                                 </tr>
 <!-- Descricao -->
                                 <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td align="right" style="width: 250px;">Descrição</td>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="descricaoInput">
+                                            Descrição
+                                        </h:outputLabel>                                        
+                                    </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="descricaoItemInput" value="#{MBItemRevisao.descricao}" 
+                                        <h:inputTextarea id="descricaoItemInput" cols="31" rows="4" value="#{MBItemRevisao.descricao}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
