@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <body>
 
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
@@ -30,26 +31,104 @@
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
+<!--Elemento do Comité-->
                                 <tr>
-                                    <td style="width: 100px; height: 50px;"></td>
-                                    <td align="right" style="width: 80px;">Tema</td>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="right" style="width: 200px;">
+                                        <h:outputLabel for="elementoInput">
+                                            Elemento do Comité
+                                        </h:outputLabel>
+                                    </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" 
-                                                     required="true" />
+                                        <h:selectOneMenu value="#{MBConferenciaComiteArtigo.conferenciacomite.investigador.nome}" id="comiteInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaComiteArtigo.listaConferenciaComite}" var="comite" itemValue="#{comite.id}" itemLabel="#{comite.investigador.nome}"/>
+                                        </h:selectOneMenu>                                                                                  
                                     </td>
-
-                                    <td>
-                                        <h:commandButton image="../../images/ctm_Search.jpg" action="#{MBConferenciaTema.pesquisar()}" />
-                                    </td>
-
                                 </tr>
+
+<!--Artigo-->
                                 <tr>
-                                    <td style="width: 100px;"></td>
-                                    <td align="right" style="width: 80px;">Descrição</td>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="right" style="width: 200px;">
+                                        <h:outputLabel for="artigoInput">
+                                            Artigo
+                                        </h:outputLabel>
+                                    </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.descricao}" 
+                                        <h:selectOneMenu value="#{MBConferenciaComiteArtigo.artigo.id}" id="artigoInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaComiteArtigo.listaArtigos}" var="artigo" itemValue="#{artigo.id}" itemLabel="#{artigo.titulo}"/>
+                                        </h:selectOneMenu>                                                                                  
+                                    </td>
+                                </tr>
+<!--Estado-->
+                                <tr>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="right" style="width: 200px;">
+                                        <h:outputLabel for="estadoInput">
+                                            Estado
+                                        </h:outputLabel>                                        
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="estadoInput" value="#{MBConferenciaComiteArtigo.estado}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>
+<!-- Licitação: Início -->
+                                <tr>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="right" style="width: 200px;">
+                                        <h:outputLabel for="licitacaoInicioInput">
+                                            Licitação: Início
+                                        </h:outputLabel>                                                                                
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="licitacaoInicioInput" value="#{MBConferenciaComiteArtigo.dataInicioLicitacao}" class="datetime" size="10"
+                                                     required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                    </td>
+                                </tr>
+<!-- Licitação: Fim -->
+                                <tr>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="right" style="width: 200px;">
+                                        <h:outputLabel for="licitacaoFimInput">
+                                            Fim
+                                        </h:outputLabel>                                                                                
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="licitacaoFimInput" value="#{MBConferenciaComiteArtigo.dataFimLicitacao}" class="datetime" size="10"
+                                                     required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                    </td>
+                                </tr>
+<!--Pontuação-->
+                                <tr>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="right" style="width: 200px;">
+                                        <h:outputLabel for="pontuacaoInput">
+                                            Pontuação
+                                        </h:outputLabel>                                        
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="pontuacaoInput" size="3" value="#{MBConferenciaComiteArtigo.pontuacao}" 
+                                                     required="true" />                                                        
+                                    </td>
+                                </tr>
+<!--Pontuação Comite-->
+                                <tr>
+                                    <td style="width: 80px; height: 40px;"></td>
+                                    <td align="right" style="width: 200px;">
+                                        <h:outputLabel for="pontuacaoComiteInput">
+                                            Pontuação do Comité
+                                        </h:outputLabel>                                        
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="pontuacaoComiteInput" size="3" value="#{MBConferenciaComiteArtigo.pontuacaoComite}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>

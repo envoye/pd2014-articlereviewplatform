@@ -28,28 +28,67 @@
             </tr>
         </table>    
            
-      <nav id="my-menu">
-   <ul>
-      
-      <li >
-         <a>Artigos</a>
-         <ul>
-            <li><a href="/Pd_2014CV/faces/model/artigos/SubmissaoArtigo.xhtml">Adicionar Artigo</a></li>
-         </ul>
-      </li>
-       <li >
-         <a>Conferencia</a>
-         <ul>
-            <li><a href="/Pd_2014CV/faces/model/conferencias/Conferencia.xhtml">Adicionar Conferencia</a></li>
-            <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaEdicao.xhtml">Adicionar edição</a></li>
-            <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaTema.xhtml">Adicionar tema</a></li>
-            <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaSubtema.xhtml">Adicionar sub-tema</a></li>
-            <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaArtigo.xhtml">Submeter artigo</a></li>
-            <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaComite.xhtml">Selecionar Comite</a></li>
-         </ul>
-      </li>
-   </ul>
-</nav>
+        <nav id="my-menu">
+            <ul>
+<!--MENU: Investigadores-->
+                <li >
+                    <a style="color: yellow;">Investigador</a>
+                    <ul>
+                        <li><a href="/Pd_2014CV/faces/model/investigador/RegistoUtilizador.xhtml">Dados Pessoais</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/InvestigadorContacto/InvestigadorAreaConhecimento.xhtml">Áreas de Conhecimento</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/InvestigadorContacto/InvestigadorContacto.xhtml">Contactos</a></li>
+                    </ul>
+                </li>
+<!--MENU: Artigos-->
+                <li >
+                    <a style="color: orange;">Artigos</a>
+                    <ul>
+                        <li><a href="/Pd_2014CV/faces/model/artigos/SubmissaoArtigo.xhtml">Submeter Artigo</a></li>
+                    </ul>
+                </li>
+                <li >
+<!--MENU: Conferências-->
+                    <a style="color: orangered;">Conferências</a>
+                    <ul>
+                        <li><a href="/Pd_2014CV/faces/model/conferencias/Conferencia.xhtml">Conferência</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaEdicao.xhtml">Edições de Conferências</a></li>                                
+
+                        <li>
+                            <a style="color: orangered;">Artigos</a>
+                            <ul>
+                                <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaArtigo.xhtml">Associar Artigo</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a style="color: orangered;">Comité</a>
+                            <ul>
+                                <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaComite.xhtml">Selecionar Elemento Comite</a></li>
+                                <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaComiteArtigo.xhtml">Associar Artigo a Elemento</a></li>                                
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a style="color: orangered;">Revisores</a>
+                            <ul>
+                                <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaPoolRevisores.xhtml">Selecionar Revisores</a></li>
+                            </ul>
+                        </li>
+                       
+                    </ul>
+                </li>
+<!--MENU: Dados Diversos-->
+                <li>
+                    <a style="color: red;">Dados Diversos</a>
+                    <ul>
+                        <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaTema.xhtml">Temas</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaSubtema.xhtml">Sub-Temas</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/InvestigadorContacto/GrauAcademico.xhtml">Graus Académicos</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/artigos/ItemRevisao.xhtml">Items para Revisões</a></li>
+                    </ul>
+                </li> 
+            </ul>
+        </nav>
         
     </h:body>
 </html>
