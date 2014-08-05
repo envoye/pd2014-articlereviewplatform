@@ -39,8 +39,26 @@
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
-                              
-                               
+<!-- Investigador -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Investigador</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferenciaComite.investigador.id}" id="investigadorInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaComite.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>                                
+<!-- Aceite -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Aceite</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectBooleanCheckbox id="isAceiteInput" value="#{MBConferenciaComite.aceite}"/>                                                        
+                                    </td>
+                                </tr>                                
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
@@ -52,19 +70,14 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  action="#{MBConferenciaComite.next()}" />
+                                    <h:commandButton value="Gravar"  action="#{MBConferenciaComite.gravar}" />
                                 </td>
-
-                                <td style="width: 15px;"></td>
-                                <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaComite.cancelar()}" />
-                                </td>
-
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
                             </tr>
-                        </table>
+                        </table>                                                
+                        
                         
                     </h:form>
                     
@@ -73,6 +86,5 @@
             </ui:define>
 
         </ui:composition>
-
     </body>
 </html>

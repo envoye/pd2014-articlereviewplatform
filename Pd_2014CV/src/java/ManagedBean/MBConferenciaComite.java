@@ -7,11 +7,18 @@
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
+import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Investigador;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -19,14 +26,15 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBConferenciaComite")
-@ViewScoped
-public class MBConferenciaComite {
+@SessionScoped
+public class MBConferenciaComite implements Serializable {
      private Conferenciaedicao conferenciaedicao;
      private Investigador investigador;
      private boolean aceite;
      private List<Conferenciaedicao> listaEdicoes;
      private List<Investigador> listaInvestigadores;
-     
+      @Inject
+    private LoginUtilizador loginUtilizador;
     /**
      * Creates a new instance of MBConferenciaComite
      */
@@ -34,6 +42,8 @@ public class MBConferenciaComite {
     }
 
     public Conferenciaedicao getConferenciaedicao() {
+        if(conferenciaedicao==null)
+          conferenciaedicao=new Conferenciaedicao();
         return conferenciaedicao;
     }
 
@@ -46,6 +56,8 @@ public class MBConferenciaComite {
     }
 
     public Investigador getInvestigador() {
+        if(investigador==null)
+          investigador=new Investigador();
         return investigador;
     }
 
@@ -66,8 +78,25 @@ public class MBConferenciaComite {
     }
 
     public List<Conferenciaedicao> getListaEdicoes() {
-        if(this.listaEdicoes == null){
-            this.listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisa(Conferenciaedicao.class);
+        
+            //this.listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisa(Conferenciaedicao.class);
+        this.listaEdicoes=new ArrayList<Conferenciaedicao>();
+            Set<Conferencia> conf=loginUtilizador.getInvestigador().getConferencias();
+            for (Iterator<Conferencia> it = conf.iterator(); it.hasNext();) {
+                Conferencia conferencia = it.next();
+                Set<Conferenciaedicao> edit= conferencia.getConferenciaedicaos();
+                Conferenciaedicao confEd=new Conferenciaedicao();
+                confEd.setId(0);
+                for (Iterator<Conferenciaedicao> it1 = edit.iterator(); it1.hasNext();) {
+                    Conferenciaedicao conferenciaedicao1 = it1.next();
+                    if(conferenciaedicao1.getId() >confEd.getId())
+                    confEd=conferenciaedicao1;
+                }
+                if(confEd!=null){
+                 this.listaEdicoes.add(confEd);
+                         }
+            
+            
         }        
         return this.listaEdicoes;
     }
@@ -102,5 +131,12 @@ public class MBConferenciaComite {
 
     public String pesquisar() {
         return "index";
-    }    
+    }
+    
+    public String next() {
+        if(conferenciaedicao!=null)
+            return "/model/conferencias/ConferenciaComiteDois.xhtml?faces-redirect=true";
+        else
+            return "";
+    }
 }
