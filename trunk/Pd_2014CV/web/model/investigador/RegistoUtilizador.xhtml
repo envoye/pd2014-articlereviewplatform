@@ -134,7 +134,7 @@
                                     <td align="right" style="width: 250px;">Email</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}" 
+                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}" data-validation="email" data-validation-error-msg="You did not enter a valid e-mail" 
                                                        validatorMessage="Email formato (xxx@xxx.xxx) .">
                                          <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                         <f:validateRequired/>
@@ -295,6 +295,16 @@
             </ui:define>
 
         </ui:composition>
-
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
+<script>
+    alert("ola1");
+  $.validate({
+    validateOnBlur : false, // disable validation when input looses focus
+    errorMessagePosition : 'top' // Instead of 'element' which is default
+    scrollToTopOnError : false // Set this property to true if you have a long form
+  });
+  alert("ola");
+</script>
     </body>
+ 
 </html>
