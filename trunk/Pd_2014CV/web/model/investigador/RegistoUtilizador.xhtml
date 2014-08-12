@@ -4,6 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
       >
 
     <body>
@@ -23,7 +24,7 @@
             <ui:define name="form">
 
                 <div class="boxLogin">
-                    <h:form class="jqtransform">
+                    <h:form prependId="false">
                         
                         <table>
                             <tbody>
@@ -37,9 +38,9 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id='NomeInput' size='60' value="#{RegistoUtilizador.nome}" 
-                                                      validatorMessage="Por favor intruduza um nome com pelo menos 3 caracteres.">
-                                        <f:validateLength minimum="3" maximum="150" />
-                                        <f:validateRequired/>
+                                                  pt:data-validate="required(ola)"  >
+                                       
+                                        
                                         </h:inputText> 
                                         <h:message for="NomeInput" style="color:red" />
                                     </td>
@@ -134,7 +135,7 @@
                                     <td align="right" style="width: 250px;">Email</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}" data-validation="email" data-validation-error-msg="You did not enter a valid e-mail" 
+                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}"  
                                                        validatorMessage="Email formato (xxx@xxx.xxx) .">
                                          <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                         <f:validateRequired/>
@@ -281,10 +282,7 @@
                                     Telemovel
                                 </h:outputLabel>
                                 <h:inputText id="telemovelInput" value="" 
-                                             required="true" />
-                                <br />
-                            </div>
-                        </h:panelGrid>
+                                                                     </h:panelGrid>
                         <div class="rowElem">  
                             <h:commandButton value="Registar"  action="" />
                         </div>
@@ -295,16 +293,8 @@
             </ui:define>
 
         </ui:composition>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.1.47/jquery.form-validator.min.js"></script>
-<script>
-    alert("ola1");
-  $.validate({
-    validateOnBlur : false, // disable validation when input looses focus
-    errorMessagePosition : 'top' // Instead of 'element' which is default
-    scrollToTopOnError : false // Set this property to true if you have a long form
-  });
-  alert("ola");
-</script>
+   
+
     </body>
  
 </html>
