@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:f="http://xmlns.jcp.org/jsf/core">
+     xmlns:f="http://xmlns.jcp.org/jsf/core"
+     >
     <body>
 
         <ui:composition template="../Template/AreaPessoalTemplate.xhtml">
@@ -90,7 +91,11 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="dataInput" value="#{MBConferencia.data}" class="datetime" size="10"
-                                             required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+                                             >   <f:validateRequired/>
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                             
+                                        </h:inputText>
+                                       <message for="datanascimentoInput"  /> 
                                     </td>
                                 </tr>                                
 <!-- Local -->

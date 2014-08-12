@@ -13,6 +13,13 @@ import java.util.Date;
 import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+
 
 /**
  *
@@ -22,14 +29,24 @@ import javax.inject.Named;
 @ViewScoped
 public class RegistoUtilizador {
     private Grauacademico grauacademico;
+     @Size(min = 3, max = 60,message = "Por favor intruduza um nome com pelo menos 5 caracteres.")
     private String nome;
+     @Size(min = 3, max = 60,message ="Por favor intruduza um nome com pelo menos 2 caracteres.")
     private String instituicao;
+     
+    
     private Date datanascimento;
+     @Size(min = 3, max = 60,message = "Por favor intruduza um nome com pelo menos 5 caracteres.")
     private String utilizador;
+     @Size(min = 6, max = 60,message = "Password terá de ter 6 caracteres.")
     private String password;
+     @Email(message = "Email formato terá de ter o formato (xxx@xxx.xxx)")
     private String email;
+     @Pattern(regexp = "^((\\+|0)351)?2\\d{8}$", message = "Formato de telefone desconhecido.")
     private String telefone;
+     @Pattern(regexp = "^((\\+|0)351)?9\\d{8}$", message = "Formato de telemovel desconhecido.")
     private String telemovel;
+     @Size(min = 6, max = 60,message = "Password terá de ter 6 caracteres.")
     private String passwordconf;
     private int idGrauacademico;
     private List<Grauacademico> listGrauacademico; 
