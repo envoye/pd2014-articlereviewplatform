@@ -29,16 +29,16 @@ import org.hibernate.validator.constraints.NotBlank;
 @ViewScoped
 public class RegistoUtilizador {
     private Grauacademico grauacademico;
-     @Size(min = 3, max = 60,message = "Por favor intruduza um nome com pelo menos 5 caracteres.")
+     @Size(min = 3, max = 60,message = "Por favor intruduza um nome com pelo menos 3 caracteres.")
     private String nome;
-     @Size(min = 3, max = 60,message ="Por favor intruduza um nome com pelo menos 2 caracteres.")
+     @Size(min = 2, max = 60,message ="Por favor intruduza um nome com pelo menos 2 caracteres.")
     private String instituicao;
      
     
     private Date datanascimento;
      @Size(min = 3, max = 60,message = "Por favor intruduza um nome com pelo menos 5 caracteres.")
     private String utilizador;
-     @Size(min = 6, max = 60,message = "Password terá de ter 6 caracteres.")
+     @Size(min = 6, max = 60,message = "Password terá de ter pelo menos 6 caracteres.")
     private String password;
      @Email(message = "Email formato terá de ter o formato (xxx@xxx.xxx)")
     private String email;
