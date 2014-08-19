@@ -29,16 +29,7 @@
                                     <td style="height: 20px;"></td>
                                 </tr>
 <!-- Edição -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">Edição</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:selectOneMenu value="#{MBConferenciaComite.conferenciaedicao.id}" id="edicaoInput" style="width: 300px">
-                                            <f:selectItems value="#{MBConferenciaComite.listaEdicoes}" var="edicoes" itemValue="#{edicoes.id}" itemLabel="#{edicoes.edicao}"/>
-                                        </h:selectOneMenu>                                          
-                                    </td>
-                                </tr>                                
+                                                           
 <!-- Investigador -->
                                 <tr>
                                     <td style="width: 10px; height: 30px;"></td>
@@ -51,14 +42,7 @@
                                     </td>
                                 </tr>                                
 <!-- Aceite -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">Aceite</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:selectBooleanCheckbox id="isAceiteInput" value="#{MBConferenciaComite.aceite}"/>                                                        
-                                    </td>
-                                </tr>                                
+                                                            
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
@@ -70,7 +54,11 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton value="Gravar"  action="#{MBConferenciaComite.gravar}" />
+                                    <h:commandButton value="Gravar"  action="#{MBConferenciaComite.gravar()}" />
+                                </td>
+                                 <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton  value="Terminar" action="#{MBConferenciaComite.cancelar()}" />
                                 </td>
                             </tr>
                             <tr>
