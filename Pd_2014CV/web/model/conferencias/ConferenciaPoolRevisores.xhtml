@@ -10,11 +10,11 @@
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Pool de Revisores
+                Conference Team Manager - Elementos do Comité
             </ui:define>
 
             <ui:define name="formTitle">
-                <h3 class="subtitle" align="center">Pool de Revisores da Conferência</h3>
+                <h3 class="subtitle" align="center">Elementos do Comité da Conferência</h3>
             </ui:define>
 
             <ui:define name="form">
@@ -30,86 +30,17 @@
                                 </tr>
 <!-- Edição -->
                                 <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td style="width: 10px; height: 30px;"></td>
                                     <td align="right" style="width: 250px;">Edição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaPoolRevisores.conferenciaedicao.id}" id="edicaoInput" style="width: 300px">
-                                            <f:selectItems value="#{MBConferenciaPoolRevisores.listaEdicoes}" var="edicoes" itemValue="#{edicoes.id}" itemLabel="#{edicoes.edicao}"/>
+                                        <h:selectOneMenu value="#{MBConferenciaPoolRevisores.conferencia.id}" id="edicaoInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaPoolRevisores.listConferencias}" var="edicoes" itemValue="#{edicoes.id}" itemLabel="#{edicoes.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
-<!-- Investigador -->
-                                <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td align="right" style="width: 250px;">Investigador</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:selectOneMenu value="#{MBConferenciaPoolRevisores.investigador.id}" id="investigadorInput" style="width: 300px">
-                                            <f:selectItems value="#{MBConferenciaPoolRevisores.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.nome}"/>
-                                        </h:selectOneMenu>                                          
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td style="height: 20px;"></td>
-                                </tr>                                
-<!-- Período para Convite -->
-                                <tr>
-                                    <td style="width: 10px; height: 10px;"></td>
-                                    <td align="right" style="width: 250px;">Período do Convite</td>
-                                    <td style="width: 10px;"></td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td style="width: 10px; height: 10px;"></td>
-                                    <td align="right" style="width: 60px;">de</td>
-                                    <td style="width: 10px;"></td>                                    
-                                    <td>
-                                        <h:inputText id="inicioConviteInput" value="#{MBConferenciaPoolRevisores.dataInicioConvite}" class="datetime" size="10"
-                                                     required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td style="width: 10px; height: 10px;"></td>
-                                    <td align="right" style="width: 60px;">até</td>
-                                    <td style="width: 10px;"></td>                                    
-                                    <td>
-                                        <h:inputText id="fimConviteInput" value="#{MBConferenciaPoolRevisores.dataFimConvite}" class="datetime" size="10"
-                                                     required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td style="height: 20px;"></td>
-                                </tr>                                
-<!-- Estado -->                                
-                                <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td align="right" style="width: 250px;">Estado</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="estadoInput" value="#{MBConferenciaPoolRevisores.estado}" 
-                                                     required="true" />
-                                    </td>
-                                </tr>
-<!-- Classificação -->
-                                <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td align="right" style="width: 250px;">Classificação</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="classificacaoInput" size="2" value="#{MBConferenciaPoolRevisores.classificacao}" 
-                                                     required="true" />
-                                    </td>
-                                </tr>
+                              
+                               
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
@@ -121,30 +52,23 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBConferenciaPoolRevisores.introduzir()}" />
-                        </td>
-                                <td style="width: 15px;"></td>
-
-                                <td>
-
-                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaPoolRevisores.gravar()}" />
-
+                                    <h:commandButton value="Seguinte"  action="#{MBConferenciaPoolRevisores.next()}" />
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaPoolRevisores.cancelar()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaComite.cancelar()}" />
                                 </td>
 
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
                             </tr>
-                        </table>                        
+                        </table>
                         
                     </h:form>
                     
-                </div>                                    
+                </div>                    
                 
             </ui:define>
 
