@@ -7,30 +7,65 @@
 package ManagedBean;
 
 import HelpersHibernate.AllHellper;
+import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Conferenciapoolrevisores;
 import HibernatePackage.Investigador;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
-import javax.inject.Named;
+import java.util.Set;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  *
  * @author Valter
  */
 @Named(value = "MBConferenciaPoolRevisores")
-@ViewScoped
-public class MBConferenciaPoolRevisores {
+@SessionScoped
+public class MBConferenciaPoolRevisores implements Serializable {
     private Conferenciaedicao conferenciaedicao;
-    private Investigador investigador;
+    private Investigador investigador=new Investigador();
     private Byte classificacao;
     private String estado;
     private Date dataInicioConvite;
     private Date dataFimConvite;
     private List<Conferenciaedicao> listaEdicoes;
     private List<Investigador> listaInvestigadores;
-    
+     private List<Conferencia> listConferencias;
+      public Conferencia getConferencia() {
+        return conferencia;
+    }
+
+    public void setConferencia() {
+        for(int i=0;i<getListConferencias().size();i++){
+            if(listConferencias.get(i).getId().equals(this.conferencia.getId())){
+                this.conferencia=listConferencias.get(i);
+            }
+        }
+    }
+
+    public List<Conferencia> getListConferencias() {
+        if(listConferencias == null || listConferencias.size()==0 ){
+        listConferencias=new ArrayList<Conferencia>();
+            Set<Conferencia> conf=loginUtilizador.getInvestigador().getConferencias();
+        
+            listConferencias .addAll(conf);
+        }
+        return listConferencias;
+    }
+
+    public void setListConferencias(List<Conferencia> listConferencias) {
+        this.listConferencias = listConferencias;
+    }
+      @Inject
+    private LoginUtilizador loginUtilizador;
+    private Conferencia conferencia=new Conferencia();
     /**
      * Creates a new instance of MBConferenciaPoolRevisores
      */
@@ -120,8 +155,21 @@ public class MBConferenciaPoolRevisores {
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Conferenciapoolrevisores(this.conferenciaedicao, this.investigador, this.classificacao, this.estado, this.dataInicioConvite, this.dataFimConvite, null));
-        return "index";
+        for(int i=0;i<getListConferencias().size();i++){
+            if(listConferencias.get(i).getId().equals(this.conferencia.getId())){
+                this.conferencia=listConferencias.get(i);
+            }}
+        setInvestigador(this.investigador);
+        Conferenciaedicao confEd=new Conferenciaedicao();
+                confEd.setId(0);
+                for (Iterator<Conferenciaedicao> it1 = this.conferencia.getConferenciaedicaos().iterator(); it1.hasNext();) {
+                    Conferenciaedicao conferenciaedicao1 = it1.next();
+                    if(conferenciaedicao1.getId() >confEd.getId())
+                    confEd=conferenciaedicao1;
+                }
+                if(confEd!=null)
+        AllHellper.SaveQualquerCoisa(new Conferenciapoolrevisores(confEd, this.investigador, this.classificacao, this.estado, this.dataInicioConvite, this.dataFimConvite, null));
+        return "/model/principais/PaginaPrincipal.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
@@ -130,5 +178,12 @@ public class MBConferenciaPoolRevisores {
 
     public String pesquisar() {
         return "index";
-    }    
+    } 
+    
+     public String next() {
+        if(conferencia.getId()>=0)
+            return "/model/conferencias/ConferenciaPoolRevisoresDois.xhtml?faces-redirect=true";
+        else
+            return "";
+    }
 }
