@@ -5,6 +5,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <h:head>
+
+        <!-- jQuery and Bootstrap JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- BootstrapValidator JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>         
+
+    </h:head>    
+    
     <body>
 
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
@@ -21,7 +32,7 @@
 
                 <div class="boxForm">
 
-                    <h:form class="jqtransform">
+                    <h:form id="CA" class="jqtransform">
 
                         <table>
                             <tbody>
@@ -99,5 +110,21 @@
 
         </ui:composition>
 
+        <script>
+            $(document).ready(function(){
+                $("#CA").validate({
+                    rules: {
+                        'CA:edicaoInput': {
+                            required: true
+                        },
+
+                        'CA:artigoInput': {
+                            required: true
+                        }
+                    }
+                });
+            });
+        </script>                
+        
     </body>
 </html>

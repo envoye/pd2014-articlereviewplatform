@@ -3,8 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:f="http://xmlns.jcp.org/jsf/core"
-     >
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+
+        <!-- jQuery and Bootstrap JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- BootstrapValidator JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>         
+
+    </h:head>    
+    
     <body>
 
         <ui:composition template="../Template/AreaPessoalTemplate.xhtml">
@@ -23,12 +34,13 @@
 
                 <div class="boxForm">
 
-                    <h:form class="jqtransform">
+                    <h:form id="CO" class="jqtransform">
                         <table>
                             <tbody>
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
+<!-- Conferência -->                                
                                 <tr>
                                     <td style="width: 100px; height: 50px;"></td>
                                     <td align="right" style="width: 80px;">Conferência</td>
@@ -79,7 +91,7 @@
                                     <td align="right" style="width: 250px;">Tema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferencia.temaEdicao.id}" id="TemaInput">
+                                        <h:selectOneMenu value="#{MBConferencia.temaEdicao.id}" id="temaInput">
                                             <f:selectItems value="#{MBConferencia.listTemas}" var="temaEdicao" itemValue="#{temaEdicao.id}" itemLabel="#{temaEdicao.nomeTema}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
@@ -188,5 +200,71 @@
             </ui:define>
 
         </ui:composition>
+        
+        <script>
+            $(document).ready(function(){
+                $("#CO").validate({
+                    rules: {
+                        'CO:conferenciaInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'CO:edicaoInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'CO:subNomeInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 120
+
+                        },
+
+                        'CO:descricaoInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 250
+                        },
+
+                        'CO:temaInput': {
+                            required: true
+                        },
+
+                        'CO:dataInput': {
+                            required: true,
+                            date: true
+                        }, 
+
+                        'CO:localInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 250
+                        }, 
+
+                        'CO:limiteSubmissaoInput': {
+                            required: true,
+                            date: true
+                        },
+
+                        'CO:maxArtigosInput': {
+                            required: true,
+                            minlength: 0,
+                            maxlength: 3
+                        },
+                        
+                        'CO:maxArtigosRevisorInput': {
+                            required: true,
+                            minlength: 0,
+                            maxlength: 2
+                        }
+                    }
+                });
+            });
+        </script>        
+        
     </body>
 </html>

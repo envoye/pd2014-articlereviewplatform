@@ -165,7 +165,7 @@ public class MBConferencia{
         Conferencia conf=new Conferencia(loginUtilizador.getInvestigador(), nome);
         AllHellper.SaveQualquerCoisa(conf);
          AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
-        return "index";
+        return "./model/conferencias/Conferencia.xhtml";
     }
     
     public String cancelar() {

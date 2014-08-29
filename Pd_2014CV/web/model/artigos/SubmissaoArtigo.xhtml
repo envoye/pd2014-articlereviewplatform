@@ -5,6 +5,17 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 
+    <h:head>
+
+        <!-- jQuery and Bootstrap JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- BootstrapValidator JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script> 
+        
+    </h:head>
+    
     <body>
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
@@ -21,7 +32,7 @@
             <ui:define name="form">
 
                 <div class="boxForm">
-                    <h:form class="jqtransform" enctype="multipart/form-data">
+                    <h:form id="SA" class="jqtransform" enctype="multipart/form-data">
                        
                         <table>
                             <tbody>
@@ -40,7 +51,7 @@
                                         </h:outputLabel></td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="TituloInput" size="52" value="#{artigoRegisto.titulo}" 
+                                        <h:inputText id="tituloInput" size="52" value="#{artigoRegisto.titulo}" 
                                                      required="true" />
                                     </td>
                                 </tr>
@@ -48,7 +59,7 @@
                                 <tr>
                                     <td style="width: 10px; height: 70px;"></td>
                                     <td align="right" style="width: 250px;">
-                                        <h:outputLabel for="resumoInput">
+                                        <h:outputLabel for="ResumoInput">
                                             Resumo
                                         </h:outputLabel></td>
                                     <td style="width: 10px;"></td>
@@ -61,12 +72,12 @@
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">
-                                        <h:outputLabel for="subtemaInput">
+                                        <h:outputLabel for="SubtemaInput">
                                             Subtema
                                         </h:outputLabel></td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="GrauacademicoInput" style="width: 200px">
+                                        <h:selectOneMenu value="#{artigoRegisto.idSubtema}" id="grauacademicoInput" style="width: 200px">
                                             <f:selectItems value="#{artigoRegisto.listSubtema}" var="item" itemValue="#{item.id}" itemLabel="#{item.nome}"/>
                                         </h:selectOneMenu>  
                                     </td>
@@ -75,7 +86,7 @@
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">
-                                        <h:outputLabel for="linkInput">
+                                        <h:outputLabel for="LinkInput">
                                             Link
                                         </h:outputLabel></td>
                                     <td style="width: 10px;"></td>
@@ -119,6 +130,36 @@
 
         </ui:composition>
 
+        <script>
+            $(document).ready(function(){
+                $("#SA").validate({
+                    rules: {
+                        'SA:tituloInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'SA:resumoInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 250
+                        },
+
+                        'SA:grauacademicoInput': {
+                            required: true
+                        },
+
+                        'SA:linkInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 180
+                        }
+                    }
+                });
+            });
+        </script>        
+        
     </body>
 
 </html>

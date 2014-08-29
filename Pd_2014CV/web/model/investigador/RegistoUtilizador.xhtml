@@ -37,11 +37,8 @@
                                     <td align="right" style="width: 250px;" >Nome</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='NomeInput' size='60' class="form-control" value="#{RegistoUtilizador.nome}"> 
+                                        <h:inputText id='nomeInput' size='60' class="form-control" value="#{RegistoUtilizador.nome}"> 
 <!--                                                  pt:data-validate="required,size(3,60)">-->
-                                                  
-                                       
-                                        
                                         </h:inputText> 
                                         <h:message for="NomeInput" style="color:red" />
                                     </td>
@@ -65,8 +62,6 @@
                                     <td>
                                         <h:inputText id="instituicaoInput" size="60" value="#{RegistoUtilizador.instituicao}" class="form-control">
 <!--                                                pt:data-validate="required,size(2,60)"   --> 
-                                                
-                                       
                                         </h:inputText> 
                                         <h:message for="instituicaoInput" style="color:red"  />
                                     </td>
@@ -77,10 +72,7 @@
                                     <td align="right" style="width: 250px;">Data de Nascimento</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime form-control" size="10"
-                                                    > 
-                                          
-                                        
+                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime form-control" size="10"> 
                                             <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
                                         <h:message for="datanascimentoInput" style="color:red"  />
                                     </td>
@@ -93,9 +85,6 @@
                                     <td>
                                         <h:inputText id="utilizadorInput" value="#{RegistoUtilizador.utilizador}" class="form-control">
 <!--                                                    pt:data-validate="required,size(3,60)"-->
-                                                    
-                                       
-                                       
                                         </h:inputText> 
                                         <h:message for="utilizadorInput" style="color:red" />
                                     </td>
@@ -108,8 +97,6 @@
                                     <td>
                                         <h:inputSecret id="passwordInput" binding="#{passwordComponent}" value="#{RegistoUtilizador.password}" class="form-control">
 <!--                                                  pt:data-validate="required,size(3,60)"  -->
-                                                  
-                                       
                                         </h:inputSecret> 
                                         <h:message for="passwordInput" style="color:red"  />
                                     </td>
@@ -122,11 +109,8 @@
                                     <td>
                                         <h:inputSecret id="passwordconfInput" value="#{RegistoUtilizador.password}" class="form-control">
 <!--                                                pt:data-validate="required,size(3,6)"   -->
-                                                
-                                        
-                                        
-                                         <f:validator validatorId="confirmPasswordValidator" />
-                                        <f:attribute name="passwordComponent" value="#{passwordComponent}" />
+                                            <f:validator validatorId="confirmPasswordValidator" />
+                                            <f:attribute name="passwordComponent" value="#{passwordComponent}" />
                                         </h:inputSecret> 
                                         <h:message for="passwordconfInput" style="color:red"  />
                                     </td>
@@ -139,8 +123,6 @@
                                     <td>
                                         <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}"  class="form-control">
 <!--                                                   pt:data-validate="required,email" -->
-                                                   
-                                        
                                         </h:inputText> 
                                         <h:message for="emailInput" style="color:red"  />
                                     </td>
@@ -153,8 +135,6 @@
                                     <td>
                                         <h:inputText id="telefoneInput" size="20" value="#{RegistoUtilizador.telefone}" class="form-control">
 <!--                                                pt:data-validate="required"  -->
-                                                
-                                        
                                         </h:inputText> 
                                         <h:message for="telefoneInput" style="color:red"  />
                                     </td>
@@ -167,8 +147,6 @@
                                     <td>
                                         <h:inputText id="telemovelInput" size="20" value="#{RegistoUtilizador.telemovel}" class="form-control">
 <!--                                              pt:data-validate="required"   -->
-                                              
-                                         
                                         </h:inputText> 
                                         <h:message for="telemovelInput" style="color:red"  />
                                     </td>
@@ -189,165 +167,70 @@
                             </tr>
                         </table>                                                
                         
-<!--                        
-                        <h:panelGrid columns="3" >
-                            <div class="rowElem single-field"> 
-
-                                <h:outputLabel for="NomeInput">
-                                    Nome
-                                </h:outputLabel>
-                                <h:inputText id="NomeInput" value="" 
-                                             required="true" />
-                                <br />
-                            </div> 
-
-                            <div class="rowElem"> 
-                                <h:outputLabel for="GrauacademicoInput">
-                                    Grau Academico
-                                </h:outputLabel>
-                                <h:selectOneMenu value="" id="GrauacademicoInput">
-
-                                    <f:selectItems value="" var="country" itemValue="" itemLabel=""/>
-
-                                </h:selectOneMenu>  
-                                <br />
-                            </div>  
-
-                            <div class="rowElem single-field">    
-                                <h:outputLabel for="instituicaoInput">
-                                    Instituição
-                                </h:outputLabel>
-                                <h:inputText id="instituicaoInput" value="" 
-                                             required="true"/> 
-                                <br />
-                            </div> 
-
-                            <div class="rowElem">    
-                                <h:outputLabel for="datanascimentoInput">
-                                    Data de Nascimento
-                                </h:outputLabel>
-
-                                <h:inputText id="datanascimentoInput" value="" class="datetime"
-                                             required="true">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
-
-                                <br />
-                            </div> 
-
-
-                            <div class="rowElem">    
-                                <h:outputLabel for="utilizadorInput">
-                                    Utilizador
-                                </h:outputLabel>
-                                <h:inputText id="utilizadorInput" value="" 
-                                             required="true" />
-                                <br />
-                            </div> 
-
-                            <div class="rowElem">    
-                                <h:outputLabel for="passwordInput">
-                                    Password
-                                </h:outputLabel>
-                                <h:inputSecret id="passwordInput" value="" 
-                                               required="true" />
-                                <br />
-                            </div> 
-
-                            <div class="rowElem">    
-                                <h:outputLabel for="passwordconfInput">
-                                    Confirme a Password
-                                </h:outputLabel>
-                                <h:inputSecret id="passwordconfInput" value="" 
-                                               required="true" />
-                                <br />
-                            </div> 
-
-                            <div class="rowElem">    
-                                <h:outputLabel for="emailInput">
-                                    E-Mail
-                                </h:outputLabel>
-                                <h:inputText id="emailInput" value="" 
-                                             required="true" />
-                                <br />
-                            </div>
-
-                            <div class="rowElem">    
-                                <h:outputLabel for="telefoneInput">
-                                    Telefone
-                                </h:outputLabel>
-                                <h:inputText id="telefoneInput" value="" 
-                                             required="true" />
-                                <br />
-                            </div>
-
-                            <div class="rowElem">    
-                                <h:outputLabel for="telemovelInput">
-                                    Telemovel
-                                </h:outputLabel>
-                                <h:inputText id="telemovelInput" value="" 
-                                                                     </h:panelGrid>
-                        <div class="rowElem">  
-                            <h:commandButton value="Registar"  action="" />
-                        </div>
--->
-
                     </h:form>
                 </div>
             </ui:define>
 
         </ui:composition>
    
-<script>
-$(document).ready(function(){
-    alert("ola");
-     $("#lol").validate({
-         rules: {
-      'lol:NomeInput': {
-          required: true,
-          minlength: 3,
-          maxlength: 60
-          },
-       'lol:instituicaoInput': {
-          required: true,
-          minlength: 3,
-          maxlength: 60
-          },
-       'lol:datanascimentoInput': {
-          required: true,
-          date: true
-          },
-       'lol:utilizadorInput': {
-            required: true,
-          minlength: 3,
-          maxlength: 60
-          },
-       'lol:passwordInput': {
-            required: true,
-          minlength: 3,
-          maxlength: 60
-          },
-       'lol:passwordconfInput': {
-          required: true,
-          minlength: 3,
-          maxlength: 60,
-          equalTo: '#lol\\:passwordInput'
-          }, 
-       'lol:emailInput': {
-          required: true,
-          email: true
-          }, 
-        'lol:telefoneInput': {
-          required: true,
-          regex:"^((\\+|0)351)?2\\d{8}$"
-          },
-        'lol:telemovelInput': {
-          required: true,
-          regex:"^((\\+|0)351)?9\\d{8}$"
-          }
-      }
-  });
-  alert("ola1");
-     });
-</script>
+        <script>
+            $(document).ready(function(){
+                $("#lol").validate({
+                    rules: {
+                        'lol:nomeInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'lol:instituicaoInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'lol:datanascimentoInput': {
+                            required: true,
+                            date: true
+                        },
+
+                        'lol:utilizadorInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'lol:passwordInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'lol:passwordconfInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60,
+                            equalTo: '#lol\\:passwordInput'
+                        }, 
+
+                        'lol:emailInput': {
+                            required: true,
+                            email: true
+                        }, 
+
+                        'lol:telefoneInput': {
+                            required: true,
+                            regex:"^((\\+|0)351)?2\\d{8}$"
+                        },
+
+                        'lol:telemovelInput': {
+                            required: true,
+                            regex:"^((\\+|0)351)?9\\d{8}$"
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
- 
+
 </html>

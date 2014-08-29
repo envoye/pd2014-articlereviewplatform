@@ -10,10 +10,8 @@ $( document ).ready(function() {
     
 //   var st= $("#daaatepicker");
 //   st.datepicker();
-    alert("ola");
     $(".datetime").datepicker({ dateFormat: 'dd/mm/yy' ,changeMonth: true,
       changeYear: true});
-  alert("oi");
    
   //$("#j_idt31:datanascimentoInput").datepicker();
     

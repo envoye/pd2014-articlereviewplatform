@@ -10,7 +10,7 @@ import HelpersHibernate.AllHellper;
 import HibernatePackage.Subtema;
 import HibernatePackage.Tema;
 import java.util.List;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 /**
@@ -18,7 +18,7 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBConferenciaTema")
-@ViewScoped
+@SessionScoped
 public class MBConferenciaTema {
     private String tema;
     private String descricao;
@@ -65,11 +65,10 @@ public class MBConferenciaTema {
     }
 
     public String pesquisar() {
-        return "index";
+        return "./PesquisaConferenciaTema.xhtml";
     }
     
-    public String listSubtemas() {
+    public String listarSubtemas() {
         return "/model/conferencias/ConferenciaSubtemaList.xhtml";
     }
-    
-}
+ }

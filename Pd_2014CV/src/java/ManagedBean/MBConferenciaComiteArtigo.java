@@ -8,11 +8,18 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
+import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciacomiteartigo;
+import HibernatePackage.Conferenciaedicao;
+import HibernatePackage.Investigador;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
-import javax.faces.view.ViewScoped;
+import java.util.Set;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -20,7 +27,7 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBConferenciaComiteArtigo")
-@ViewScoped
+@SessionScoped
 public class MBConferenciaComiteArtigo {
     private Conferenciacomite conferenciacomite;
     private Artigo artigo;
@@ -31,6 +38,12 @@ public class MBConferenciaComiteArtigo {
     private Byte pontuacaoComite;    
     private List<Conferenciacomite> listaConferenciaComite;
     private List<Artigo> listaArtigos;
+    private List<Conferenciaedicao> listaEdicoes;
+    private List<Conferencia> listConferencias;
+    private List<Investigador> listaInvestigadores;
+     @Inject
+    private LoginUtilizador loginUtilizador;
+    private Conferencia conferencia=new Conferencia();   
     
     /**
      * Creates a new instance of MBConferenciaComiteArtigo
@@ -124,17 +137,89 @@ public class MBConferenciaComiteArtigo {
         this.listaArtigos = listaArtigos;
     }
 
+    public List<Conferenciaedicao> getListaEdicoes() {
+        this.listaEdicoes = new ArrayList<Conferenciaedicao>();
+        Set<Conferencia> conf = loginUtilizador.getInvestigador().getConferencias();
+        for (Iterator<Conferencia> it = conf.iterator(); it.hasNext();) {
+            Conferencia conferencia = it.next();
+            Set<Conferenciaedicao> edit = conferencia.getConferenciaedicaos();
+            Conferenciaedicao confEd = new Conferenciaedicao();
+            confEd.setId(0);
+            for (Iterator<Conferenciaedicao> it1 = edit.iterator(); it1.hasNext();) {
+                Conferenciaedicao conferenciaedicao1 = it1.next();
+                if(conferenciaedicao1.getId() > confEd.getId())
+                    confEd=conferenciaedicao1;
+            }
+            if(confEd!=null){
+                this.listaEdicoes.add(confEd);
+            }
+        }                
+        return listaEdicoes;
+    }
+
+    public void setListaEdicoes(List<Conferenciaedicao> listaEdicoes) {
+        this.listaEdicoes = listaEdicoes;
+    }
+
+    public List<Conferencia> getListConferencias() {
+        return listConferencias;
+    }
+
+    public void setListConferencias(List<Conferencia> listConferencias) {
+        this.listConferencias = listConferencias;
+    }
+
+    public List<Investigador> getListaInvestigadores() {
+        if(this.listaInvestigadores == null){
+            this.listaInvestigadores = (List<Investigador>)AllHellper.getListQualquerCoisa(Investigador.class);
+        }             
+        return listaInvestigadores;
+    }
+
+    public void setListaInvestigadores(List<Investigador> listaInvestigadores) {
+        this.listaInvestigadores = listaInvestigadores;
+    }
+
+    public LoginUtilizador getLoginUtilizador() {
+        return loginUtilizador;
+    }
+
+    public void setLoginUtilizador(LoginUtilizador loginUtilizador) {
+        this.loginUtilizador = loginUtilizador;
+    }
+
+    public Conferencia getConferencia() {
+        return conferencia;
+    }
+
+    public void setConferencia(Conferencia conferencia) {
+        this.conferencia = conferencia;
+    }
+
     public String introduzir() {
         return "index";
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Conferenciacomiteartigo(conferenciacomite, artigo, estado, dataInicioLicitacao, dataFimLicitacao, pontuacao, pontuacaoComite, null, null));
-        return "index";
+        for(int i = 0;i < getListConferencias().size();i++){
+           if(listConferencias.get(i).getId().equals(this.conferencia.getId())){
+               this.conferencia=listConferencias.get(i);
+           }
+        }
+        Conferenciaedicao confEd = new Conferenciaedicao();
+        confEd.setId(0);
+        for (Iterator<Conferenciaedicao> it1 = this.conferencia.getConferenciaedicaos().iterator(); it1.hasNext();) {
+            Conferenciaedicao conferenciaedicao1 = it1.next();
+            if(conferenciaedicao1.getId() >confEd.getId())
+                confEd=conferenciaedicao1;
+        }
+        if(confEd!=null)
+            AllHellper.SaveQualquerCoisa(new Conferenciacomiteartigo(conferenciacomite, artigo, estado, dataInicioLicitacao, dataFimLicitacao, pontuacao, pontuacaoComite, null, null));
+        return "/model/conferencias/ConferenciaComiteArtigo.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {
