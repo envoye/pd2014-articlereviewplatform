@@ -22,6 +22,7 @@
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/faces/model/artigos/*</url-pattern>
         <url-pattern>/faces/model/conferencias/*</url-pattern>
+        <url-pattern>/faces/model/principais/AreaPessoal.xhtml</url-pattern>
     </filter-mapping>
       
     <servlet>

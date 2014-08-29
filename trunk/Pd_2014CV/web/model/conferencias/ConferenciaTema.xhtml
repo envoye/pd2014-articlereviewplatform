@@ -38,12 +38,12 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" 
-                                                     required="true" />
+                                                     required="false" />
                                     </td>
 
-                                    <td>
+<!--                                    <td>
                                         <h:commandButton image="../../images/ctm_Search.png" action="#{MBConferenciaTema.pesquisar()}" />
-                                    </td>
+                                    </td>-->
 
                                 </tr>
                                 <tr>
@@ -52,7 +52,7 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.descricao}" 
-                                                     required="true" />                                                        
+                                                     required="false" />                                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,7 +69,7 @@
                                 <td>
                                     <h:commandButton image="../../images/ctm_Loading.png" 
                                                      value="Listar Subtemas" 
-                                                     action="#{MBConferenciaTema.listSubtemas()}" />
+                                                     action="#{MBConferenciaTema.listarSubtemas()}" />
                                 </td>                                
 
                                 <td style="width: 300px;"></td>
@@ -90,6 +90,11 @@
                                     <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaTema.cancelar()}" />
                                 </td>
 
+                                <td style="width: 15px;"></td>                                
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Search.png" value="Pesquisar" action="#{MBConferenciaTema.pesquisar()}" />
+                                </td>                                
+                                
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>

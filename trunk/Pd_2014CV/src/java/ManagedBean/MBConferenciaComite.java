@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -28,20 +27,27 @@ import javax.inject.Named;
 @Named(value = "MBConferenciaComite")
 @SessionScoped
 public class MBConferenciaComite implements Serializable {
-     private Conferenciaedicao conferenciaedicao;
-     private Investigador investigador=new Investigador();
-     private boolean aceite;
-     private List<Conferenciaedicao> listaEdicoes;
-     private List<Conferencia> listConferencias;
-     private List<Investigador> listaInvestigadores;
-      @Inject
+    private Conferenciaedicao conferenciaedicao;
+    private Investigador investigador=new Investigador();
+    private boolean aceite;
+    private List<Conferenciaedicao> listaEdicoes;
+    private List<Conferencia> listConferencias;
+    private List<Investigador> listaInvestigadores;
+     @Inject
     private LoginUtilizador loginUtilizador;
     private Conferencia conferencia=new Conferencia();
+
     /**
      * Creates a new instance of MBConferenciaComite
      */
-      
-       public Conferencia getConferencia() {
+    public MBConferenciaComite() {
+    }
+    
+    /**
+     * Creates a new instance of MBConferenciaComite
+     * @return
+     */
+    public Conferencia getConferencia() {
         return conferencia;
     }
 
@@ -65,8 +71,6 @@ public class MBConferenciaComite implements Serializable {
 
     public void setListConferencias(List<Conferencia> listConferencias) {
         this.listConferencias = listConferencias;
-    }
-    public MBConferenciaComite() {
     }
 
     public Conferenciaedicao getConferenciaedicao() {
@@ -106,25 +110,22 @@ public class MBConferenciaComite implements Serializable {
     }
 
     public List<Conferenciaedicao> getListaEdicoes() {
-        
-            //this.listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisa(Conferenciaedicao.class);
-            this.listaEdicoes=new ArrayList<Conferenciaedicao>();
-            Set<Conferencia> conf=loginUtilizador.getInvestigador().getConferencias();
-            for (Iterator<Conferencia> it = conf.iterator(); it.hasNext();) {
-                Conferencia conferencia = it.next();
-                Set<Conferenciaedicao> edit= conferencia.getConferenciaedicaos();
-                Conferenciaedicao confEd=new Conferenciaedicao();
-                confEd.setId(0);
-                for (Iterator<Conferenciaedicao> it1 = edit.iterator(); it1.hasNext();) {
-                    Conferenciaedicao conferenciaedicao1 = it1.next();
-                    if(conferenciaedicao1.getId() >confEd.getId())
+        //this.listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisa(Conferenciaedicao.class);
+        this.listaEdicoes = new ArrayList<Conferenciaedicao>();
+        Set<Conferencia> conf = loginUtilizador.getInvestigador().getConferencias();
+        for (Iterator<Conferencia> it = conf.iterator(); it.hasNext();) {
+            Conferencia conferencia = it.next();
+            Set<Conferenciaedicao> edit = conferencia.getConferenciaedicaos();
+            Conferenciaedicao confEd = new Conferenciaedicao();
+            confEd.setId(0);
+            for (Iterator<Conferenciaedicao> it1 = edit.iterator(); it1.hasNext();) {
+                Conferenciaedicao conferenciaedicao1 = it1.next();
+                if(conferenciaedicao1.getId() > confEd.getId())
                     confEd=conferenciaedicao1;
-                }
-                if(confEd!=null){
-                 this.listaEdicoes.add(confEd);
-                         }
-            
-            
+            }
+            if(confEd!=null){
+                this.listaEdicoes.add(confEd);
+            }
         }        
         return this.listaEdicoes;
     }
@@ -137,7 +138,6 @@ public class MBConferenciaComite implements Serializable {
         if(this.listaInvestigadores == null){
             this.listaInvestigadores = (List<Investigador>)AllHellper.getListQualquerCoisa(Investigador.class);
         }     
-        
         return this.listaInvestigadores;
     }
 
@@ -150,25 +150,26 @@ public class MBConferenciaComite implements Serializable {
     }
     
     public String gravar() {
-         for(int i=0;i<getListConferencias().size();i++){
-            if(listConferencias.get(i).getId().equals(this.conferencia.getId())){
-                this.conferencia=listConferencias.get(i);
-            }}
-        Conferenciaedicao confEd=new Conferenciaedicao();
-                confEd.setId(0);
-                for (Iterator<Conferenciaedicao> it1 = this.conferencia.getConferenciaedicaos().iterator(); it1.hasNext();) {
-                    Conferenciaedicao conferenciaedicao1 = it1.next();
-                    if(conferenciaedicao1.getId() >confEd.getId())
-                    confEd=conferenciaedicao1;
-                }
-                if(confEd!=null)
-        AllHellper.SaveQualquerCoisa(new Conferenciacomite(confEd, investigador, aceite, null));
-        return "";
+        for(int i = 0;i < getListConferencias().size();i++){
+           if(listConferencias.get(i).getId().equals(this.conferencia.getId())){
+               this.conferencia=listConferencias.get(i);
+           }
+        }
+        Conferenciaedicao confEd = new Conferenciaedicao();
+        confEd.setId(0);
+        for (Iterator<Conferenciaedicao> it1 = this.conferencia.getConferenciaedicaos().iterator(); it1.hasNext();) {
+            Conferenciaedicao conferenciaedicao1 = it1.next();
+            if(conferenciaedicao1.getId() >confEd.getId())
+                confEd=conferenciaedicao1;
+        }
+        if(confEd!=null)
+            AllHellper.SaveQualquerCoisa(new Conferenciacomite(confEd, investigador, aceite, null));
+        return "/model/conferencias/ConferenciaComite.xhtml?faces-redirect=true";
     }
     
     
     public String cancelar() {
-        return "/model/principais/PaginaPrincipal.xhtml?faces-redirect=true";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {

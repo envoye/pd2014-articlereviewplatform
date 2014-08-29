@@ -4,7 +4,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html">
 
-    <body>
+    <h:head>
+
+        <!-- jQuery and Bootstrap JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- BootstrapValidator JS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>         
+
+    </h:head>
+    
+    <h:body>
 
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
@@ -22,7 +33,7 @@
 
                 <div class="boxForm">
 
-                    <h:form class="jqtransform">
+                    <h:form id="IR" class="jqtransform">
                         <table>
                             <tbody>
                                 <tr>
@@ -35,7 +46,7 @@
                                     <td align="right" style="width: 250px;">Nome Item</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='NomeInput' size='40' value="#{MBItemRevisao.nomeItem}" 
+                                        <h:inputText id='nomeInput' size='40' value="#{MBItemRevisao.nomeItem}" 
                                                      required="true" />
                                     </td>
                                 </tr>
@@ -110,5 +121,23 @@
 
         </ui:composition>
 
-    </body>
+        <script>
+            $(document).ready(function(){
+                $("#IR").validate({
+                    rules: {
+                        'IR:nomeInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'IR:descricaoItemInput': {
+                            required: true
+                        }
+                    }
+                });
+            });
+        </script>        
+        
+    </h:body>
 </html>

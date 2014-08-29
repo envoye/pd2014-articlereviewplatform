@@ -10,7 +10,6 @@ import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
 import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciaedicao;
-import HibernatePackage.Investigador;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.view.ViewScoped;
