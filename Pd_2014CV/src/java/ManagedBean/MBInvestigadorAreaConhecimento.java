@@ -22,8 +22,8 @@ import javax.inject.Named;
 @Named(value = "MBInvestigadorAreaConhecimento")
 @ViewScoped
 public class MBInvestigadorAreaConhecimento {
-    private Subtema subtema;
-    private Investigador investigador = new Investigador();
+    private Subtema subtema=new Subtema();
+//    private Investigador investigador = new Investigador();
     private Byte grauConfianca;
     private Byte preferencia;
     private List<Subtema> listaSubtemas;
@@ -46,17 +46,17 @@ public class MBInvestigadorAreaConhecimento {
         this.subtema = subtema;
     }
 
-    public Investigador getInvestigador() {
-        return investigador;
-    }
-
-    public void setInvestigador(Investigador investigador) {
-        for(int i=0;i<this.getListaInvestigadores().size();i++){
-            if(this.listaInvestigadores.get(i).getId().equals(this.investigador.getId())){
-                this.investigador = this.listaInvestigadores.get(i);
-            }
-        }        
-    }
+//    public Investigador getInvestigador() {
+//        return investigador;
+//    }
+//
+//    public void setInvestigador(Investigador investigador) {
+//        for(int i=0;i<this.getListaInvestigadores().size();i++){
+//            if(this.listaInvestigadores.get(i).getId().equals(this.investigador.getId())){
+//                this.investigador = this.listaInvestigadores.get(i);
+//            }
+//        }        
+//    }
 
     public Byte getGrauConfianca() {
         return grauConfianca;
@@ -109,7 +109,7 @@ public class MBInvestigadorAreaConhecimento {
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Investigadorareaconhecimento(subtema, investigador, grauConfianca, preferencia));
+        AllHellper.SaveQualquerCoisa(new Investigadorareaconhecimento(subtema, loginUtilizador.getInvestigador(), grauConfianca, preferencia));
         return "/model/investigadorAP/InvestigadorAreaConhecimento.xhtml?faces-redirect=true";
     }
     
