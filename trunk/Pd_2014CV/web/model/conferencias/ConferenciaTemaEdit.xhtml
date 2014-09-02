@@ -21,7 +21,6 @@
                 <div class="boxForm">
 
                     <h:form class="jqtransform">
-
                         <table>
                             <tbody>
                                 <tr>
@@ -32,7 +31,7 @@
                                     <td align="right" style="width: 80px;">Tema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" 
+                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.selectedTema.nomeTema}" 
                                                      required="false" />
                                     </td>
 
@@ -42,7 +41,7 @@
                                     <td align="right" style="width: 80px;">Descrição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.descricao}" 
+                                        <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.selectedTema.descricao}" 
                                                      required="false" />                                                        
                                     </td>
                                 </tr>
@@ -90,8 +89,7 @@
                             <tr>
                                 <td style="height: 50px;"></td>
                             </tr>
-                        </table>                        
-
+                        </table>
                     </h:form>
                 </div>                
                 
@@ -101,3 +99,5 @@
 
     </body>
 </html>
+
+
