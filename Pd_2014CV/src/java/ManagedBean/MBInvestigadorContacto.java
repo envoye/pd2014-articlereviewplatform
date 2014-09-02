@@ -58,17 +58,17 @@ public class MBInvestigadorContacto {
     }
     
     public String introduzir() {
-        return "index";
+        return  "/model/investigadorAP/InvestigadorContacto.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         
         AllHellper.SaveQualquerCoisa(new Contacto(loginUtilizador.getInvestigador(),investigador,0));
-        return  "index";
+        return  "/model/investigadorAP/InvestigadorContacto.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {

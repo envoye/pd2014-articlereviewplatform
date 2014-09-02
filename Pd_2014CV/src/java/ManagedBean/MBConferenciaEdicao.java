@@ -170,16 +170,16 @@ public class MBConferenciaEdicao {
     }
 
     public String introduzir() {
-        return "index";
+        return "/model/conferencias/ConferenciaEdicao.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conferencia, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
-        return "index";
+        return "/model/conferencias/ConferenciaEdicao.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {

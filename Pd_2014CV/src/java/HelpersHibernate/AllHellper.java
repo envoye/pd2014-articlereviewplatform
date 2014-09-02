@@ -6,6 +6,7 @@
 package HelpersHibernate;
 
 import HibernatePackage.Investigador;
+import HibernatePackage.Tema;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -104,4 +105,25 @@ public class AllHellper {
         return true;
     }
 
+        public static Boolean UpdateTema(int idTema, String nomeTema, String descricao) {
+        Session session = GeralHelper.GetSession();
+        org.hibernate.Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Tema tema = (Tema) session.get(Tema.class, idTema);
+            tema.setNomeTema(nomeTema);
+            tema.setDescricao(descricao);
+            session.update(tema);
+
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            return false;
+        }
+        return true;
+    }
+    
 }

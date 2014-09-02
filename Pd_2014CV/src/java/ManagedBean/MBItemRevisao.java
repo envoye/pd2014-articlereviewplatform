@@ -61,16 +61,16 @@ public class MBItemRevisao {
     }
     
     public String introduzir() {
-        return "index";
+        return "/model/artigos/ItemRevisao.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Itemrevisao(this.nomeItem,this.tipo,this.privado,this.descricao,null));
-        return "index";
+        return "/model/artigos/ItemRevisao.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {

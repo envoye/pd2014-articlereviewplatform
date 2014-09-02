@@ -9,23 +9,24 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Grauacademico;
 import HibernatePackage.Investigador;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
- * @author Carlos
+ * @author Valter
  */
-@Named(value = "RegistoUtilizador")
-@ViewScoped
-public class RegistoUtilizador {
+@Named(value = "MBInvestigadorDadosPessoais")
+@SessionScoped
+public class MBInvestigadorDadosPessoais implements Serializable {
+
     private Grauacademico grauacademico;
      @Size(min = 3, max = 60,message = "Por favor intruduza um nome com pelo menos 3 caracteres.")
     private String nome;
@@ -43,11 +44,22 @@ public class RegistoUtilizador {
      @Pattern(regexp = "^((\\+|0)351)?9\\d{8}$", message = "Formato de telemovel desconhecido.")
     private String telemovel;
      @Size(min = 6, max = 60,message = "Password terá de ter 6 caracteres.")
+    private String oldpassconf;
+    private String newpassword;
     private String passwordconf;
     private int idGrauacademico;
     private List<Grauacademico> listGrauacademico; 
+     @Inject
+    private LoginUtilizador loginUtilizador;    
+
+    /**
+     * Creates a new instance of MBInvestigadorDadosPessoais
+     */
+    public MBInvestigadorDadosPessoais() {
+    }
      
     public int getIdGrauacademico() {
+        this.idGrauacademico = loginUtilizador.getInvestigador().getGrauacademico().getId();
         return idGrauacademico;
     }
 
@@ -55,7 +67,7 @@ public class RegistoUtilizador {
         this.idGrauacademico = idGrauacademico;
         for (int i=0;i<getListGrauacademico().size();i++){
             if (listGrauacademico.get(i).getId()==idGrauacademico){
-                grauacademico=listGrauacademico.get(i);
+                this.grauacademico=listGrauacademico.get(i);
             }
         }
     }
@@ -71,6 +83,22 @@ public class RegistoUtilizador {
         this.listGrauacademico = listGrauacademico;
     }
 
+    public String getOldpassconf() {
+        return oldpassconf;
+    }
+
+    public void setOldpassconf(String oldpassconf) {
+        this.oldpassconf = oldpassconf;
+    }
+   
+    public String getNewpassword() {
+        return newpassword;
+    }
+
+    public void setNewpassword(String newpassword) {
+        this.newpassword = newpassword;
+    }
+    
     public void setPasswordconf(String passwordconf) {
         this.passwordconf = passwordconf;
     }
@@ -87,18 +115,22 @@ public class RegistoUtilizador {
     }
 
     public String getNome() {
+        this.nome = loginUtilizador.getInvestigador().getNome();
         return nome;
     }
 
     public String getInstituicao() {
+        this.instituicao = loginUtilizador.getInvestigador().getInstituicao();
         return instituicao;
     }
 
     public Date getDatanascimento() {
+        this.datanascimento = loginUtilizador.getInvestigador().getDatanascimento();
         return datanascimento;
     }
 
     public String getUtilizador() {
+        this.utilizador = loginUtilizador.getInvestigador().getUtilizador();
         return utilizador;
     }
 
@@ -107,14 +139,17 @@ public class RegistoUtilizador {
     }
 
     public String getEmail() {
+        this.email = loginUtilizador.getInvestigador().getEmail();
         return email;
     }
 
     public String getTelefone() {
+        this.telefone = loginUtilizador.getInvestigador().getTelefone();
         return telefone;
     }
 
     public String getTelemovel() {
+        this.telemovel = loginUtilizador.getInvestigador().getTelemovel();        
         return telemovel;
     }
 
@@ -131,8 +166,7 @@ public class RegistoUtilizador {
     }
 
     public void setDatanascimento(Date datanascimento) {
-       
-             this.datanascimento = datanascimento;
+        this.datanascimento = datanascimento;
          
     }
     public void setUtilizador(String utilizador) {
@@ -155,13 +189,12 @@ public class RegistoUtilizador {
         this.telemovel = telemovel;
     }
      
-    public String registar () {
+    public String atualizar() {
         AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null,null,null));
-        return "/model/investigador/LoginUtilizador.xhtml?faces-redirect=true";
+        return "/model/investigadorAP/InvestigadorDadosPessoais.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "/model/principais/PaginaPrincipal.xhtml?faces-redirect=true";
+        return "/model/investigadorAP/InvestigadorDadosPessoais.xhtml?faces-redirect=true";
     }
-    
 }

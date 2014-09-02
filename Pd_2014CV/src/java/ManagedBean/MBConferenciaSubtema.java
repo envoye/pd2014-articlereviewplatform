@@ -119,13 +119,17 @@ public class MBConferenciaSubtema {
         this.dataTableSubtemas = dataTableSubtemas;
     }
 
+    public String introduzir() {
+        return "/model/conferencias/ConferenciaSubtema.xhtml?faces-redirect=true";
+    }    
+    
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Subtema(this.tema, this.nome, this.descricao, null, null));
         return "/model/conferencias/ConferenciaSubtema.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     
     public String pesquisar() {

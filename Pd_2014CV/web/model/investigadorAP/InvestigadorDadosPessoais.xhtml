@@ -2,29 +2,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-      >
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
-        <ui:composition template="./../Template/LoginTemplate.xhtml">
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Registo de Utilizador
+                Conference Team Manager - Dados Pessoais do Investigador
             </ui:define>
 
-            
             <ui:define name="formTitle">
-                <h3 class="subtitle" align="center">Registo de acesso à plataforma</h3>
+
+                <h2 class="subtitle" align="center">
+                    Dados Pessoais do Investigador
+                </h2>                
+                
             </ui:define>
-            
-            
+
             <ui:define name="form">
 
                 <div class="boxLogin">
-                    <h:form id="lol" >
+                    <h:form id="DP" >
                         
                         <table>
                             <tbody>
@@ -37,7 +37,7 @@
                                     <td align="right" style="width: 250px;" >Nome</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='nomeInput' size='60' class="form-control" value="#{RegistoUtilizador.nome}"> 
+                                        <h:inputText id='nomeInput' size='60' class="form-control" value="#{MBInvestigadorDadosPessoais.nome}"> 
 <!--                                                  pt:data-validate="required,size(3,60)">-->
                                         </h:inputText> 
                                         <h:message for="NomeInput" style="color:red" />
@@ -49,8 +49,8 @@
                                     <td align="right" style="width: 250px;">Grau Académico</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{RegistoUtilizador.idGrauacademico}" id="GrauacademicoInput" style="width: 200px" class="form-control">
-                                            <f:selectItems value="#{RegistoUtilizador.listGrauacademico}" var="country" itemValue="#{country.id}" itemLabel="#{country.grauacademico}"/>
+                                        <h:selectOneMenu value="#{MBInvestigadorDadosPessoais.idGrauacademico}" id="GrauacademicoInput" style="width: 200px" class="form-control">
+                                            <f:selectItems value="#{MBInvestigadorDadosPessoais.listGrauacademico}" var="country" itemValue="#{country.id}" itemLabel="#{country.grauacademico}"/>
                                         </h:selectOneMenu>  
                                     </td>
                                 </tr>
@@ -60,7 +60,7 @@
                                     <td align="right" style="width: 250px;">Instituição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="instituicaoInput" size="60" value="#{RegistoUtilizador.instituicao}" class="form-control">
+                                        <h:inputText id="instituicaoInput" size="60" value="#{MBInvestigadorDadosPessoais.instituicao}" class="form-control">
 <!--                                                pt:data-validate="required,size(2,60)"   --> 
                                         </h:inputText> 
                                         <h:message for="instituicaoInput" style="color:red"  />
@@ -72,7 +72,7 @@
                                     <td align="right" style="width: 250px;">Data de Nascimento</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime form-control" size="10"> 
+                                        <h:inputText id="datanascimentoInput" value="#{MBInvestigadorDadosPessoais.datanascimento}" class="datetime form-control" size="10"> 
                                             <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
                                         <h:message for="datanascimentoInput" style="color:red"  />
                                     </td>
@@ -83,34 +83,10 @@
                                     <td align="right" style="width: 250px;">Utilizador</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="utilizadorInput" value="#{RegistoUtilizador.utilizador}" class="form-control">
+                                        <h:inputText id="utilizadorInput" value="#{MBInvestigadorDadosPessoais.utilizador}" class="form-control">
 <!--                                                    pt:data-validate="required,size(3,60)"-->
                                         </h:inputText> 
                                         <h:message for="utilizadorInput" style="color:red" />
-                                    </td>
-                                </tr>
-<!-- Password -->
-                                <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td align="right" style="width: 250px;">Password</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputSecret id="passwordInput" binding="#{passwordComponent}" value="#{RegistoUtilizador.password}" class="form-control">
-                                        </h:inputSecret> 
-                                        <h:message for="passwordInput" style="color:red"  />
-                                    </td>
-                                </tr>
-<!-- Password Conformação -->
-                                <tr>
-                                    <td style="width: 10px; height: 40px;"></td>
-                                    <td align="right" style="width: 250px;">Confirme a Password</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputSecret id="passwordconfInput" value="#{RegistoUtilizador.password}" class="form-control">
-                                            <f:validator validatorId="confirmPasswordValidator" />
-                                            <f:attribute name="passwordComponent" value="#{passwordComponent}" />
-                                        </h:inputSecret> 
-                                        <h:message for="passwordconfInput" style="color:red"  />
                                     </td>
                                 </tr>
 <!-- Email -->
@@ -119,7 +95,7 @@
                                     <td align="right" style="width: 250px;">Email</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}"  class="form-control">
+                                        <h:inputText id="emailInput" size="40" value="#{MBInvestigadorDadosPessoais.email}"  class="form-control">
 <!--                                                   pt:data-validate="required,email" -->
                                         </h:inputText> 
                                         <h:message for="emailInput" style="color:red"  />
@@ -131,7 +107,7 @@
                                     <td align="right" style="width: 250px;">Telefone</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="telefoneInput" size="20" value="#{RegistoUtilizador.telefone}" class="form-control">
+                                        <h:inputText id="telefoneInput" size="20" value="#{MBInvestigadorDadosPessoais.telefone}" class="form-control">
 <!--                                                pt:data-validate="required"  -->
                                         </h:inputText> 
                                         <h:message for="telefoneInput" style="color:red"  />
@@ -143,7 +119,7 @@
                                     <td align="right" style="width: 250px;">Telemóvel</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="telemovelInput" size="20" value="#{RegistoUtilizador.telemovel}" class="form-control">
+                                        <h:inputText id="telemovelInput" size="20" value="#{MBInvestigadorDadosPessoais.telemovel}" class="form-control">
 <!--                                              pt:data-validate="required"   -->
                                         </h:inputText> 
                                         <h:message for="telemovelInput" style="color:red"  />
@@ -157,82 +133,66 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Save.png" value="Registar" class="btn btn-default" action="#{RegistoUtilizador.registar()}" />
+                                    <h:commandButton  value="Registar" class="btn btn-default" action="#{MBInvestigadorDadosPessoais.atualizar()}" />
                                 </td>
                             </tr>
-                            <td style="width: 15px;"></td>
-                            <td>
-                                <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{RegistoUtilizador.cancelar()}" />
-                            </td>
                             <tr>
                                 <td style="height: 50px;"></td>
                             </tr>
                         </table>                                                
                         
                     </h:form>
-                </div>
+                </div>                
+                
             </ui:define>
 
         </ui:composition>
-   
+
         <script>
             $(document).ready(function(){
-                $("#lol").validate({
+                $("#DP").validate({
                     rules: {
-                        'lol:nomeInput': {
+                        'DP:nomeInput': {
                             required: true,
                             minlength: 3,
                             maxlength: 60
                         },
 
-                        'lol:instituicaoInput': {
+                        'DP:instituicaoInput': {
                             required: true,
                             minlength: 3,
                             maxlength: 60
                         },
 
-                        'lol:datanascimentoInput': {
+                        'DP:datanascimentoInput': {
                             required: true,
                             date: true
                         },
 
-                        'lol:utilizadorInput': {
+                        'DP:utilizadorInput': {
                             required: true,
                             minlength: 3,
                             maxlength: 60
                         },
 
-                        'lol:passwordInput': {
-                            required: true,
-                            minlength: 3,
-                            maxlength: 60
-                        },
-
-                        'lol:passwordconfInput': {
-                            required: true,
-                            minlength: 3,
-                            maxlength: 60,
-                            equalTo: '#lol\\:passwordInput'
-                        }, 
-
-                        'lol:emailInput': {
+                        'DP:emailInput': {
                             required: true,
                             email: true
                         }, 
 
-                        'lol:telefoneInput': {
+                        'DP:telefoneInput': {
                             required: true,
                             regex:"^((\\+|0)351)?2\\d{8}$"
                         },
 
-                        'lol:telemovelInput': {
+                        'DP:telemovelInput': {
                             required: true,
                             regex:"^((\\+|0)351)?9\\d{8}$"
                         }
                     }
                 });
             });
-        </script>
+        </script>        
+        
     </body>
-
 </html>

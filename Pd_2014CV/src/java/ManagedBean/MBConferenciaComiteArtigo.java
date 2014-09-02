@@ -13,12 +13,13 @@ import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciacomiteartigo;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Investigador;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -28,7 +29,7 @@ import javax.inject.Named;
  */
 @Named(value = "MBConferenciaComiteArtigo")
 @SessionScoped
-public class MBConferenciaComiteArtigo {
+public class MBConferenciaComiteArtigo implements Serializable {
     private Conferenciacomite conferenciacomite;
     private Artigo artigo;
     private String estado;
@@ -225,5 +226,12 @@ public class MBConferenciaComiteArtigo {
     public String pesquisar() {
         return "index";
     }        
+
+    public String next() {
+        if(conferencia.getId()>=0)
+            return "/model/conferencias/ConferenciaComiteArtigoDois.xhtml?faces-redirect=true";
+        else
+            return "";
+    }    
     
 }

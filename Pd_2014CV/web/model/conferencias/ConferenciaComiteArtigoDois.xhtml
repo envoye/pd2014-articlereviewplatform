@@ -25,7 +25,7 @@
 
                 <div class="boxForm">
 
-                    <h:form id="CCA" class="jqtransform">
+                    <h:form id="CCA2" class="jqtransform">
 
                         <table>
                             <tbody>
@@ -171,6 +171,21 @@
             </ui:define>
 
         </ui:composition>
-
+        
+        <script>
+            $(document).ready(function(){
+                $("#CCA2").validate({
+                    rules: {
+                        'CCA2:comiteInput': {
+                            required: true                            
+                        },
+                        
+                        'CCA2:artigoInput': {
+                            required: true
+                        }
+                    }
+                });
+            });
+        </script>                
     </body>
 </html>

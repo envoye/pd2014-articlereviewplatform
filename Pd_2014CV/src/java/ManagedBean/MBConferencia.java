@@ -158,18 +158,18 @@ public class MBConferencia{
     }
 
     public String introduzir() {
-        return "index";
+        return "./model/conferencias/Conferencia.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         Conferencia conf=new Conferencia(loginUtilizador.getInvestigador(), nome);
         AllHellper.SaveQualquerCoisa(conf);
-         AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
-        return "./model/conferencias/Conferencia.xhtml";
+        AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
+        return "./model/conferencias/Conferencia.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return  "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {
