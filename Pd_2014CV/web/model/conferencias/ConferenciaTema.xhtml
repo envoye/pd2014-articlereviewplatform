@@ -37,8 +37,7 @@
                                     <td align="right" style="width: 80px;">Tema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" 
-                                                     required="false" />
+                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" required="true" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -47,7 +46,7 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.descricao}" 
-                                                     required="false" />                                                        
+                                                     required="true" />                                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,7 +68,6 @@
                                 <td>
                                     <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaTema.cancelar()}" />
                                 </td>
-
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
