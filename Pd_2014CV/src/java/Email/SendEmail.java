@@ -58,7 +58,7 @@ public class SendEmail {
                InternetAddress.parse(to));
 	
 	   // Set Subject: header field
-	   message.setSubject("Testing Subject");
+	   message.setSubject("Conference recuperar password");
 	
 	   // Now set the actual message
 	   message.setText(messageToSend);
