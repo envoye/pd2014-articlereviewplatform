@@ -13,6 +13,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.Pattern;
@@ -33,9 +35,9 @@ public class MBInvestigadorDadosPessoais implements Serializable {
      @Size(min = 2, max = 60,message ="Por favor intruduza um nome com pelo menos 2 caracteres.")
     private String instituicao;
     private Date datanascimento;
-     @Size(min = 3, max = 60,message = "Por favor intruduza um nome com pelo menos 5 caracteres.")
+     @Size(min = 6, max = 60,message = "Por favor intruduza um nome com pelo menos 5 caracteres.")
     private String utilizador;
-     @Size(min = 6, max = 60,message = "Password terá de ter pelo menos 6 caracteres.")
+     @Size(min = 6, max = 60,message = "Password terá de ter pelo menos 3 caracteres.")
     private String password;
      @Email(message = "Email formato terá de ter o formato (xxx@xxx.xxx)")
     private String email;
@@ -45,7 +47,9 @@ public class MBInvestigadorDadosPessoais implements Serializable {
     private String telemovel;
      @Size(min = 6, max = 60,message = "Password terá de ter 6 caracteres.")
     private String oldpassconf;
+     @Size(min = 6, max = 60,message = "Password terá de ter 6 caracteres.")
     private String newpassword;
+     @Size(min = 6, max = 60,message = "Password terá de ter 6 caracteres.")
     private String passwordconf;
     private int idGrauacademico;
     private List<Grauacademico> listGrauacademico; 
@@ -190,10 +194,19 @@ public class MBInvestigadorDadosPessoais implements Serializable {
     }
      
     public String atualizar() {
-        AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null,null,null));
+        if(loginUtilizador.getInvestigador().getPassword()==password){
+        AllHellper.UpdateInvestigador(loginUtilizador.getInvestigador().getId(),grauacademico, nome, instituicao, datanascimento, utilizador, email, telefone, telemovel);
+        return "/model/investigadorAP/InvestigadorDadosPessoais.xhtml?faces-redirect=true";
+        }
+         FacesMessage msg = new FacesMessage("Erro passWord invalida!", "ERROR MSG");
+        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return"";
+    }
+      public String atualizarPassWord() {
+        AllHellper.UpdatePassInvestigador(loginUtilizador.getInvestigador().getId(), newpassword);
         return "/model/investigadorAP/InvestigadorDadosPessoais.xhtml?faces-redirect=true";
     }
-    
     public String cancelar() {
         return "/model/investigadorAP/InvestigadorDadosPessoais.xhtml?faces-redirect=true";
     }

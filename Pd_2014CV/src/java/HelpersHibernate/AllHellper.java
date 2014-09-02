@@ -5,8 +5,10 @@
  */
 package HelpersHibernate;
 
+import HibernatePackage.Grauacademico;
 import HibernatePackage.Investigador;
 import HibernatePackage.Tema;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -84,14 +86,22 @@ public class AllHellper {
         return q.uniqueResult();
     }
 
-    public static Boolean UpdateInvestigador(int idInvestigador) {
+    public static Boolean UpdateInvestigador(int idInvestigador,Grauacademico grauacademico, String nome, String instituicao, Date datanascimento, String utilizador,  String email, String telefone, String telemovel) {
         Session session = GeralHelper.GetSession();
         org.hibernate.Transaction tx = null;
         try {
             tx = session.beginTransaction();
             Investigador investigador
                     = (Investigador) session.get(Investigador.class, idInvestigador);
-               investigador.setInstituicao(null);
+               investigador.setGrauacademico(grauacademico);
+               investigador.setNome(nome);
+               investigador.setInstituicao(instituicao);
+               investigador.setDatanascimento(datanascimento);
+               investigador.setUtilizador(utilizador);
+               investigador.setEmail(email);
+               investigador.setTelefone(telefone);
+               investigador.setTelemovel(telemovel);
+            
             session.update(investigador);
 
             tx.commit();
