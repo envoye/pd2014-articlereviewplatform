@@ -6,15 +6,9 @@
      
           
       xmlns:p="http://primefaces.org/ui"
-xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" <script type="text/javascript">
-        setInterval("nextMessage()", 200); //update the chart every 200 ms               
-         
-        function updateMessages(xhr, status, args) {
-            if(!args.ok) return;
-            $('#chat').append('<div class="msg">[' +args.dateSent+ '] <strong>'+args.user+'</strong>: '+args.text+'</div>');
-        }
-         
-    </script>
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+
     <body>
 
        <ui:composition template="../Template/AreaPessoalTemplate.xhtml">
@@ -31,24 +25,24 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" <script type="text/javascript">
             
             <ui:define name="form">
 
-               
+              
                
         <h:form prependId="false">
             <h:panelGrid columns="2">
-                Name: <p:inputText value="#{messageBean.message.user}"/>
-                Text: <p:inputText value="#{messageBean.message.message}"/>
+                Name: <p:inputText value="#{mBChat.message.user}"/>
+                Text: <p:inputText value="#{mBChat.message.message}"/>
                 <p:commandButton type="reset" value="Clear"/>
-                <p:commandButton value="Send!" actionListener="#{messageBean.sendMessage}"/>
+                <p:commandButton value="Send!" actionListener="#{mBChat.sendMessage}"/>
             </h:panelGrid>
  
-            <p:remoteCommand name="nextMessage" actionListener="#{messageBean.firstUnreadMessage}"
+            <p:remoteCommand name="nextMessage" actionListener="#{mBChat.firstUnreadMessage}"
                              oncomplete="updateMessages(xhr, status, args);"/>
         </h:form>
         <hr/>
         <h3>Live chat</h3>
         <div id="chat">
-            <c:forEach var='item' items='${messageBean.messageList}' varStatus="item">
-             <h:outputText value="${item.name}"/><br/>
+            <c:forEach var='item' items='${mBChat.messages}' varStatus="item">
+                <h:outputText value="${item.message}"/><br/>
 
             </c:forEach>
             
@@ -64,4 +58,13 @@ xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" <script type="text/javascript">
         </ui:composition>
 
     </body>
+ <script type="text/javascript">
+        setInterval("nextMessage()", 200); //update the chart every 200 ms               
+         
+        function updateMessages(xhr, status, args) {
+            if(!args.ok) return;
+            $('#chat').append('<div class="msg">[' +args.dateSent+ '] <strong>'+args.user+'</strong>: '+args.text+'</div>');
+        }
+         
+    </script>
 </html>
