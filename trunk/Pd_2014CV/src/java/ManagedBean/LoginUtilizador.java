@@ -57,7 +57,7 @@ public class LoginUtilizador implements Serializable {
     }
 
     public String login () {
-        SendEmail.sendEmail();
+        
         String condicao=(" as inv where inv.utilizador='"+ username+"' and inv.password='" +password+"'");
 
         investigador=(Investigador)AllHellper.getQualquerCoisaCondicao(Investigador.class,condicao);

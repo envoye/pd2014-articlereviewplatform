@@ -126,4 +126,25 @@ public class AllHellper {
         return true;
     }
     
+     public static Boolean UpdatePassInvestigador(int idInvestigador,String pass) {
+        Session session = GeralHelper.GetSession();
+        org.hibernate.Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Investigador investigador
+                    = (Investigador) session.get(Investigador.class, idInvestigador);
+               investigador.setPassword(pass);
+            session.update(investigador);
+
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            return false;
+        }
+        return true;
+    }    
+        
 }
