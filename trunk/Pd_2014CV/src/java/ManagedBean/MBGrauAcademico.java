@@ -34,16 +34,16 @@ public class MBGrauAcademico {
     }
 
     public String introduzir() {
-        return "index";
+        return "/model/investigadorAP/GrauAcademico.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Grauacademico(grauAcademico, null));
-        return "index";
+        return "/model/investigadorAP/GrauAcademico.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {

@@ -130,16 +130,16 @@ public class MBArtigoRevisao {
     }    
 
     public String introduzir() {
-        return "index";
+        return  "/model/artigos/ArtigoRevisao.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Artigorevisao(conferenciacomiteartigo, conferenciapoolrevisores, preferencia, estadoRevisor, estadoAuto, estadoGc, pontuacao, null));
-        return "index";
+        return  "/model/artigos/ArtigoRevisao.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return  "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {

@@ -52,23 +52,28 @@ public class MBConferenciaTema {
     }
 
     public String introduzir() {
-        return "index";
+        return "/model/conferencias/ConferenciaTema.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Tema(this.tema,this.descricao,null,null));
-        return "/model/conferencias/ConferenciaTema.xhtml";
+        return "/model/conferencias/ConferenciaTema.xhtml?faces-redirect=true";
     }
+  
+    public String atualizar() {
+        AllHellper.SaveQualquerCoisa(new Tema(this.tema,this.descricao,null,null));
+        return "/model/conferencias/ConferenciaTema.xhtml?faces-redirect=true";
+    }        
     
     public String cancelar() {
-        return "/model/conferencias/ConferenciaTema.xhtml";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {
-        return "./PesquisaConferenciaTema.xhtml";
+        return "/model/conferencias/ConferenciaTemaPesquisa.xhtml?faces-redirect=true";
     }
     
     public String listarSubtemas() {
-        return "/model/conferencias/ConferenciaSubtemaList.xhtml";
+        return "/model/conferencias/ConferenciaSubtemaList.xhtml?faces-redirect=true";
     }
  }

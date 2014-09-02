@@ -151,7 +151,7 @@ public class MBConferenciaPoolRevisores implements Serializable {
     }
     
     public String introduzir() {
-        return "index";
+        return "/model/conferencias/ConferenciaPoolRevisores.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
@@ -169,11 +169,11 @@ public class MBConferenciaPoolRevisores implements Serializable {
                 }
                 if(confEd!=null)
         AllHellper.SaveQualquerCoisa(new Conferenciapoolrevisores(confEd, this.investigador, this.classificacao, this.estado, this.dataInicioConvite, this.dataFimConvite, null));
-        return "/model/principais/PaginaPrincipal.xhtml?faces-redirect=true";
+        return "/model/conferencias/ConferenciaPoolRevisores.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {

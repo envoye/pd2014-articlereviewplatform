@@ -8,11 +8,13 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
+import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciaedicao;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,8 +23,8 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBConferenciaArtigo")
-@ViewScoped
-public class MBConferenciaArtigo {
+@SessionScoped
+public class MBConferenciaArtigo implements Serializable {
     private Conferenciaedicao conferenciaedicao;
     private Artigo artigo;
     private boolean publicar;
@@ -30,7 +32,7 @@ public class MBConferenciaArtigo {
     private List<Artigo> listaArtigos;
     @Inject
      private LoginUtilizador loginUtilizador;
-    
+    private Conferencia conferencia=new Conferencia();    
     /**
      * Creates a new instance of MBConferenciaArtigo
      */
@@ -94,14 +96,21 @@ public class MBConferenciaArtigo {
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Conferenciaartigo(conferenciaedicao, artigo, publicar));
-        return "index";
+        return "/model/conferencias/ConferenciaComiteArtigo.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
-        return "index";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {
         return "index";
     }    
+    
+    public String next() {
+        if(conferencia.getId()>=0)
+            return "/model/conferencias/ConferenciaComiteArtigoDois.xhtml?faces-redirect=true";
+        else
+            return "";
+    }
 }

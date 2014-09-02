@@ -17,34 +17,20 @@ import java.util.List;
  *
  * @author Valter
  */
-@Named(value = "MBPesquisaConferenciaTema")
+@Named(value = "MBConferenciaTemaPesquisa")
 @SessionScoped
-public class MBPesquisaConferenciaTema implements Serializable {
-    private String pesquisa;
+public class MBConferenciaTemaPesquisa implements Serializable {
     private List<MBConferenciaTema> listaTemas;
     private MBConferenciaTema selectedTema;
 
     /**
-     * Creates a new instance of MBPesquisaConferenciaTema
+     * Creates a new instance of MBConferenciaTemaPesquisa
      */
-    public MBPesquisaConferenciaTema() {
-    }
-
-    public String getPesquisa() {
-        return pesquisa;
-    }
-
-    public void setPesquisa(String pesquisa) {
-        this.pesquisa = pesquisa;
+    public MBConferenciaTemaPesquisa() {
     }
 
     public List<MBConferenciaTema> getListaTemas() {
-        if (this.pesquisa == null) {
-            this.listaTemas = (List<MBConferenciaTema>)AllHellper.getListQualquerCoisa(Tema.class);
-        }else {
-            String condicao=(" where nomeTema like '%" + this.pesquisa + "%' or descricao like '%" + this.pesquisa + "%'");
-            this.listaTemas = (List<MBConferenciaTema>)AllHellper.getListQualquerCoisaCondicao(Tema.class, condicao);
-        }
+        this.listaTemas = (List<MBConferenciaTema>)AllHellper.getListQualquerCoisa(Tema.class);
         return listaTemas;
     }
 
@@ -60,8 +46,10 @@ public class MBPesquisaConferenciaTema implements Serializable {
         this.selectedTema = selectedTema;
     }
     
-    public String pesquisarTemaCondicao() {
-        
-        return ".";
-    }        
+    public String next() {
+        if(this.selectedTema.getTema()!=null)
+            return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
+        else
+            return "";
+    }
 }

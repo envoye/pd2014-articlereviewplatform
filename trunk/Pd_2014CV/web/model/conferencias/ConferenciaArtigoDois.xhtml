@@ -5,17 +5,6 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-
-        <!-- jQuery and Bootstrap JS -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-        <!-- BootstrapValidator JS -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>         
-
-    </h:head>    
-    
     <body>
 
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
@@ -32,7 +21,7 @@
 
                 <div class="boxForm">
 
-                    <h:form id="CA" class="jqtransform">
+                    <h:form id="CA2" class="jqtransform">
 
                         <table>
                             <tbody>
@@ -50,7 +39,29 @@
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
-
+<!-- Artigo -->
+                                <tr>
+                                    <td style="width: 10px; height: 45px;"></td>
+                                    <td align="right" style="width: 250px;">Artigo</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferenciaArtigo.artigo.id}" id="artigoInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaArtigo.listaArtigos}" var="artigos" itemValue="#{artigos.id}" itemLabel="#{artigos.titulo}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>                                
+<!-- Publicar? -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">Publicar?</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectBooleanCheckbox id="publicarInput" value="#{MBConferenciaArtigo.isPublicar}"/>
+                                    </td>
+                                </tr>                                
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -90,15 +101,14 @@
 
         <script>
             $(document).ready(function(){
-                $("#CA").validate({
+                $("#CA2").validate({
                     rules: {
-                        'CA:edicaoInput': {
+                        'CA2:artigoInput': {
                             required: true
                         }
                     }
                 });
             });
         </script>                
-        
     </body>
 </html>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
+
+            <ui:define name="title">
+                Conference Team Manager - Temas
+            </ui:define>
+
+            <ui:define name="formTitle">
+                
+                <h2 class="subtitle" align="center">
+                    Pesquisa de Temas para Conferências
+                </h2>                                
+                
+            </ui:define>
+
+            <ui:define name="form">
+
+                <div class="boxForm">
+
+                    <h:form class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 60px; height: 50px;"></td>
+                                    <td align="right" style="width: 80px;">Tema</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferenciaTemaPesquisa.selectedTema}" id="TemaInput">
+                                            <f:selectItems value="#{MBPesquisaConferenciaTema.listTemas}" var="temaEdicao" itemValue="#{temaEdicao.id}" itemLabel="#{temaEdicao.nomeTema}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+
+                                    <td>
+                                        <h:commandButton image="../../images/ctm_Next.png" action="#{MBConferenciaTemaPesquisa.next()}" />
+                                    </td>
+                                </tr>  
+                                
+                            </tbody>
+                        </table>
+                        
+                    </h:form>
+                </div>                                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
