@@ -32,6 +32,10 @@ public class LoginUtilizador implements Serializable {
     private boolean loggedIn;
     private Investigador investigador; 
 
+    public void setInvestigador(Investigador investigador) {
+        this.investigador = investigador;
+    }
+
     public Investigador getInvestigador() {
         return investigador;
     }
