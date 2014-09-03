@@ -8,5 +8,7 @@ $( document ).ready(function() {
    
     $(".datetime").datepicker({ dateFormat: 'dd/mm/yy' ,changeMonth: true,
       changeYear: true});
-    
+    $( ".selector" ).spinner({ max: 10, min: 1});
+    $( ".selector" ).spinner( "value", 5 );
+    $( ".selector" ).spinner({ numberFormat: "n" });
 });

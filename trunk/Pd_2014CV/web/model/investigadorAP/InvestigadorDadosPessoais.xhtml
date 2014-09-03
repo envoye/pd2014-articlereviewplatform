@@ -18,32 +18,32 @@
                 <h2 class="subtitle" align="center">
                     Dados Pessoais do Investigador
                 </h2>                
-                
+
             </ui:define>
 
             <ui:define name="form">
 
                 <div class="boxLogin">
                     <h:form id="DP" >
-                        
+
                         <table>
                             <tbody>
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
-<!-- Nome Investigador -->
+                                <!-- Nome Investigador -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;" >Nome</td>
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id='nomeInput' size='60' class="form-control" value="#{MBInvestigadorDadosPessoais.nome}"> 
-<!--                                                  pt:data-validate="required,size(3,60)">-->
+                                            <!--                                                  pt:data-validate="required,size(3,60)">-->
                                         </h:inputText> 
                                         <h:message for="NomeInput" style="color:red" />
                                     </td>
                                 </tr>
-<!-- Grau Académico -->
+                                <!-- Grau Académico -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">Grau Académico</td>
@@ -54,19 +54,19 @@
                                         </h:selectOneMenu>  
                                     </td>
                                 </tr>
-<!-- Instituição -->
+                                <!-- Instituição -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">Instituição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="instituicaoInput" size="60" value="#{MBInvestigadorDadosPessoais.instituicao}" class="form-control">
-<!--                                                pt:data-validate="required,size(2,60)"   --> 
+                                            <!--                                                pt:data-validate="required,size(2,60)"   --> 
                                         </h:inputText> 
                                         <h:message for="instituicaoInput" style="color:red"  />
                                     </td>
                                 </tr>
-<!-- DataNascimento -->
+                                <!-- DataNascimento -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">Data de Nascimento</td>
@@ -77,57 +77,85 @@
                                         <h:message for="datanascimentoInput" style="color:red"  />
                                     </td>
                                 </tr>
-<!-- Utilizador -->
+                                <!-- Utilizador -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">Utilizador</td>
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="utilizadorInput" value="#{MBInvestigadorDadosPessoais.utilizador}" class="form-control">
-<!--                                                    pt:data-validate="required,size(3,60)"-->
+                                            <!--                                                    pt:data-validate="required,size(3,60)"-->
                                         </h:inputText> 
                                         <h:message for="utilizadorInput" style="color:red" />
                                     </td>
                                 </tr>
-<!-- Email -->
+                                <!-- Email -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">Email</td>
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="emailInput" size="40" value="#{MBInvestigadorDadosPessoais.email}"  class="form-control">
-<!--                                                   pt:data-validate="required,email" -->
+                                            <!--                                                   pt:data-validate="required,email" -->
                                         </h:inputText> 
                                         <h:message for="emailInput" style="color:red"  />
                                     </td>
                                 </tr>
-<!-- Telefone -->
+                                <!-- Telefone -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">Telefone</td>
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="telefoneInput" size="20" value="#{MBInvestigadorDadosPessoais.telefone}" class="form-control">
-<!--                                                pt:data-validate="required"  -->
+                                            <!--                                                pt:data-validate="required"  -->
                                         </h:inputText> 
                                         <h:message for="telefoneInput" style="color:red"  />
                                     </td>
                                 </tr>
-<!-- Telemovel -->
+                                <!-- Telemovel -->
                                 <tr>
                                     <td style="width: 10px; height: 40px;"></td>
                                     <td align="right" style="width: 250px;">Telemóvel</td>
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="telemovelInput" size="20" value="#{MBInvestigadorDadosPessoais.telemovel}" class="form-control">
-<!--                                              pt:data-validate="required"   -->
+                                            <!--                                              pt:data-validate="required"   -->
                                         </h:inputText> 
                                         <h:message for="telemovelInput" style="color:red"  />
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Password</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputSecret id="passwordInput" binding="#{passwordComponent}" value="#{MBInvestigadorDadosPessoais.password}" class="form-control">
+                                        </h:inputSecret> 
+                                        <h:message for="passwordInput" style="color:red"  />
+                                    </td>
+                                </tr>
+                                <!-- Password Conformação -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Confirme a Password</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputSecret id="passwordconfInput" value="#{MBInvestigadorDadosPessoais.passwordconf}" class="form-control">
+                                            <f:validator validatorId="confirmPasswordValidator" />
+                                            <f:attribute name="passwordComponent" value="#{passwordComponent}" />
+                                        </h:inputSecret> 
+                                        <h:message for="passwordconfInput" style="color:red"  />
+                                    </td>
+                                </tr>
+
+
+
+
                             </tbody>
                         </table>
-                        
+
                         <table>
                             <tr>
                                 <td style="width: 500px;"></td>
@@ -140,16 +168,16 @@
                                 <td style="height: 50px;"></td>
                             </tr>
                         </table>                                                
-                        
+
                     </h:form>
                 </div>                
-                
+
             </ui:define>
 
         </ui:composition>
 
         <script>
-            $(document).ready(function(){
+            $(document).ready(function() {
                 $("#DP").validate({
                     rules: {
                         'DP:nomeInput': {
@@ -157,42 +185,48 @@
                             minlength: 3,
                             maxlength: 60
                         },
-
                         'DP:instituicaoInput': {
                             required: true,
                             minlength: 3,
                             maxlength: 60
                         },
-
                         'DP:datanascimentoInput': {
                             required: true,
                             date: true
                         },
-
                         'DP:utilizadorInput': {
                             required: true,
                             minlength: 3,
                             maxlength: 60
                         },
+                        'DP:passwordInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60
+                        },
 
+                        'DP:passwordconfInput': {
+                            required: true,
+                            minlength: 3,
+                            maxlength: 60,
+                            equalTo: '#DP\\:passwordInput'
+                        },
                         'DP:emailInput': {
                             required: true,
                             email: true
-                        }, 
-
+                        },
                         'DP:telefoneInput': {
                             required: true,
-                            regex:"^((\\+|0)351)?2\\d{8}$"
+                            regex: "^((\\+|0)351)?2\\d{8}$"
                         },
-
                         'DP:telemovelInput': {
                             required: true,
-                            regex:"^((\\+|0)351)?9\\d{8}$"
+                            regex: "^((\\+|0)351)?9\\d{8}$"
                         }
                     }
                 });
             });
         </script>        
-        
+
     </body>
 </html>

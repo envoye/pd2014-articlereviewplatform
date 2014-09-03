@@ -86,12 +86,13 @@ public class AllHellper {
         return q.uniqueResult();
     }
 
-    public static Boolean UpdateInvestigador(int idInvestigador,Grauacademico grauacademico, String nome, String instituicao, Date datanascimento, String utilizador,  String email, String telefone, String telemovel) {
+    public static Investigador UpdateInvestigador(int idInvestigador,Grauacademico grauacademico, String nome, String instituicao, Date datanascimento, String utilizador,  String email, String telefone, String telemovel) {
         Session session = GeralHelper.GetSession();
         org.hibernate.Transaction tx = null;
+        Investigador investigador;
         try {
             tx = session.beginTransaction();
-            Investigador investigador
+            investigador
                     = (Investigador) session.get(Investigador.class, idInvestigador);
                investigador.setGrauacademico(grauacademico);
                investigador.setNome(nome);
@@ -110,9 +111,9 @@ public class AllHellper {
             if (tx != null) {
                 tx.rollback();
             }
-            return false;
+            return null;
         }
-        return true;
+        return investigador;
     }
 
         public static Boolean UpdateTema(int idTema, String nomeTema, String descricao) {
@@ -136,12 +137,13 @@ public class AllHellper {
         return true;
     }
     
-     public static Boolean UpdatePassInvestigador(int idInvestigador,String pass) {
+     public static Investigador UpdatePassInvestigador(int idInvestigador,String pass) {
         Session session = GeralHelper.GetSession();
         org.hibernate.Transaction tx = null;
+        Investigador investigador;
         try {
             tx = session.beginTransaction();
-            Investigador investigador
+            investigador
                     = (Investigador) session.get(Investigador.class, idInvestigador);
                investigador.setPassword(pass);
             session.update(investigador);
@@ -152,9 +154,9 @@ public class AllHellper {
             if (tx != null) {
                 tx.rollback();
             }
-            return false;
+            return null;
         }
-        return true;
+        return investigador;
     }    
         
 }
