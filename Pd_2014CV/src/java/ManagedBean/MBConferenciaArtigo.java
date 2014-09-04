@@ -26,7 +26,7 @@ import javax.inject.Named;
 @Named(value = "MBConferenciaArtigo")
 @SessionScoped
 public class MBConferenciaArtigo implements Serializable {
-    private Conferenciaedicao conferenciaedicao;
+    private Conferenciaedicao conferenciaedicao=new Conferenciaedicao();
     private Artigo artigo;
     private boolean publicar;
     private List<Conferencia> listaEdicoes;
