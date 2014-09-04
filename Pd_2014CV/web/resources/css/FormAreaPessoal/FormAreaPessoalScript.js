@@ -11,4 +11,8 @@ $( document ).ready(function() {
     $( ".selector" ).spinner({ max: 10, min: 1});
     $( ".selector" ).spinner( "value", 5 );
     $( ".selector" ).spinner({ numberFormat: "n" });
+    $( ".selector").unbind("keypress");
+    $( ".selector").bind("keydown", function (event) {
+    event.preventDefault();
+});
 });
