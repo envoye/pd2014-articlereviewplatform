@@ -25,7 +25,7 @@ public class MBConferenciaTema implements Serializable {
     private String descricao;
 
     private List<Tema> listaTemas;
-    private Tema selectedTema;
+    private Tema selectedTema = new Tema();
     private int idTema;    
     
     private List<Subtema> listaSubtemas;
@@ -59,6 +59,9 @@ public class MBConferenciaTema implements Serializable {
     }
 
     public Tema getSelectedTema() {
+        if (this.selectedTema.getId() == null) {
+            this.selectedTema = new Tema("");
+        }
         return selectedTema;
     }
 
@@ -104,8 +107,16 @@ public class MBConferenciaTema implements Serializable {
         return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
     }        
     
-    public String cancelar() {
+    public String cancelarAct() {
+        this.tema = "";
+        this.descricao = "";
         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+    }
+    
+    public String cancelarIntro() {
+        this.tema = "";
+        this.descricao = "";
+        return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
     }
 
     public String pesquisar() {
@@ -113,10 +124,10 @@ public class MBConferenciaTema implements Serializable {
     }
 
     public String next() {
-        if(this.selectedTema.getId()!=null)
-            return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
-        else
+        if(this.selectedTema.getId() == null) {
             return "";
+        }
+        return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
     }    
     
     public String listarSubtemas() {

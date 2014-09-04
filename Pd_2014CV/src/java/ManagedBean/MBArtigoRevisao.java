@@ -11,8 +11,9 @@ import HibernatePackage.Artigorevisao;
 import HibernatePackage.Artigorevisaoitems;
 import HibernatePackage.Conferenciacomiteartigo;
 import HibernatePackage.Conferenciapoolrevisores;
+import java.io.Serializable;
 import java.util.List;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
@@ -20,8 +21,9 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBArtigoRevisao")
-@ViewScoped
-public class MBArtigoRevisao {
+@SessionScoped
+public class MBArtigoRevisao implements Serializable {
+    
     private Conferenciacomiteartigo conferenciacomiteartigo;
     private Conferenciapoolrevisores conferenciapoolrevisores;
     private Byte preferencia;
@@ -29,8 +31,10 @@ public class MBArtigoRevisao {
     private Boolean estadoAuto;
     private Boolean estadoGc;
     private Byte pontuacao;
+    
     private List<Conferenciacomiteartigo> listaArtigos;
     private List<Conferenciapoolrevisores> listaRevisores;
+    
     private List<Artigorevisaoitems> listaItemsRevisao;
 
     /**

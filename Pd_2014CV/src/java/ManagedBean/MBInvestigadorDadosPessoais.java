@@ -196,19 +196,19 @@ public class MBInvestigadorDadosPessoais implements Serializable {
     public String atualizar() {
        Investigador i=loginUtilizador.getInvestigador();
         if(i.getPassword().equals(password)){
-        loginUtilizador.setInvestigador(AllHellper.UpdateInvestigador(loginUtilizador.getInvestigador().getId(),grauacademico, nome, instituicao, datanascimento, utilizador, email, telefone, telemovel));
-         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+            loginUtilizador.setInvestigador(AllHellper.UpdateInvestigador(loginUtilizador.getInvestigador().getId(),grauacademico, nome, instituicao, datanascimento, utilizador, email, telefone, telemovel));
+            return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
         }
-         FacesMessage msg = new FacesMessage("Erro passWord invalida!", "ERROR MSG");
+        FacesMessage msg = new FacesMessage("Erro passWord invalida!", "ERROR MSG");
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);
         FacesContext.getCurrentInstance().addMessage(null, msg);
-        return"";
+        return "";
     }
       public String atualizarPassWord() {
         loginUtilizador.setInvestigador(AllHellper.UpdatePassInvestigador(loginUtilizador.getInvestigador().getId(), newpassword));
-         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     public String cancelar() {
-         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 }
