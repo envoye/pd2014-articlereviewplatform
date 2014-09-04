@@ -167,7 +167,7 @@ public class SubmissaoArtigo {
         art.setInvestigadors(inv);
         AllHellper.SaveQualquerCoisa(art);
         
-        return "/model/artigos/LoginUtilizador.xhtml?faces-redirect=true";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     private static String getFilename(Part part) {
