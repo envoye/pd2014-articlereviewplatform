@@ -86,8 +86,9 @@ public class MBInvestigadorContacto {
     }
     
     public String gravar() {
-        
-        AllHellper.SaveQualquerCoisa(new Contacto(loginUtilizador.getInvestigador(),investigador,0));
+        Contacto contacto=new Contacto(investigador,loginUtilizador.getInvestigador(),0);
+        AllHellper.SaveQualquerCoisa(contacto);
+       loginUtilizador.getInvestigador().getContactosForIdInvestigador().add(contacto);
         return  "/model/investigadorAP/InvestigadorContacto.xhtml?faces-redirect=true";
     }
     
