@@ -37,7 +37,8 @@
                                     <td align="right" style="width: 80px;">Tema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" required="true" />
+                                        <h:inputText id="temaInput" size='40' value="#{MBConferenciaTema.tema}" 
+                                                     required="false" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -46,7 +47,7 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputTextarea id="descTemaInput" rows="3" cols="60" value="#{MBConferenciaTema.descricao}" 
-                                                     required="true" />                                                        
+                                                     required="false" />                                                        
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,12 +62,11 @@
 
                                 <td>
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaTema.gravar()}" />
-
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaTema.cancelar()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaTema.cancelarIntro()}" />
                                 </td>
                             </tr>
                             <tr>
