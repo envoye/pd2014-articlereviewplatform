@@ -165,12 +165,18 @@ public class MBConferencia{
     
     public String gravar() {
         Conferencia conf=new Conferencia(loginUtilizador.getInvestigador(), nome);
-        Set<Conferenciaedicao> confEd = new HashSet<Conferenciaedicao>();
-        confEd.add(new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, false, null, null, null));
-        conf.setConferenciaedicaos(confEd);
+        
+        //conf.setConferenciaedicaos(confEd);
         
         AllHellper.SaveQualquerCoisa(conf);
-        loginUtilizador.getInvestigador().getConferencias().add(conf);
+         Set<Conferenciaedicao> confEd = new HashSet<Conferenciaedicao>();
+        Conferenciaedicao conferenciaedicao=new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, false, null, null, null);
+        confEd.add(conferenciaedicao);
+        AllHellper.SaveQualquerCoisa(conferenciaedicao);
+        conf.setConferenciaedicaos(confEd);
+        Set<Conferencia> c=loginUtilizador.getInvestigador().getConferencias();
+        c.add(conf);
+       loginUtilizador.getInvestigador().setConferencias(c);
         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     

@@ -180,7 +180,9 @@ public class MBConferenciaEdicao {
         AllHellper.SaveQualquerCoisa(confEd);
         for (Conferencia conferencia1 : loginUtilizador.getInvestigador().getConferencias()) {
             if(conferencia1.getId()==conferencia.getId()){
+                loginUtilizador.getInvestigador().getConferencias().remove(conferencia1);
              conferencia1.getConferenciaedicaos().add(confEd);
+                loginUtilizador.getInvestigador().getConferencias().add(conferencia1);
              break;
             }
         }
