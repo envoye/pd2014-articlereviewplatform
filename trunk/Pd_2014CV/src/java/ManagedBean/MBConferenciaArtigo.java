@@ -13,6 +13,7 @@ import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciaedicao;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -28,7 +29,7 @@ public class MBConferenciaArtigo implements Serializable {
     private Conferenciaedicao conferenciaedicao;
     private Artigo artigo;
     private boolean publicar;
-    private List<Conferenciaedicao> listaEdicoes;
+    private List<Conferencia> listaEdicoes;
     private List<Artigo> listaArtigos;
     @Inject
      private LoginUtilizador loginUtilizador;
@@ -63,14 +64,28 @@ public class MBConferenciaArtigo implements Serializable {
         this.publicar = publicar;
     }
 
-    public List<Conferenciaedicao> getListaEdicoes() {
+    public List<Conferencia> getListaEdicoes() {
         if(this.listaEdicoes == null){
-            this.listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisa(Conferenciaedicao.class);
+            this.listaEdicoes = new ArrayList<Conferencia>();
+            List<Conferencia> lConferencia=(List<Conferencia>)AllHellper.getListQualquerCoisa(Conferencia.class);
+            for (Conferencia conferencia1 : lConferencia) {
+                Conferenciaedicao aux = null;
+                int corentId=0;
+                for (Conferenciaedicao conferenciaedicao2 : conferencia1.getConferenciaedicaos()) {
+                    if(conferenciaedicao2.getId()>corentId){
+                    aux=conferenciaedicao2;
+                    corentId=conferenciaedicao2.getId();
+                    }
+                        
+                }
+                if(aux!=null  && (new Date().before( aux.getDataLimiteSubmissao())))
+                this.listaEdicoes.add(conferencia1);
+            }
         }        
         return listaEdicoes;
     }
 
-    public void setListaEdicoes(List<Conferenciaedicao> listaEdicoes) {
+    public void setListaEdicoes(List<Conferencia> listaEdicoes) {
         this.listaEdicoes = listaEdicoes;
     }
 

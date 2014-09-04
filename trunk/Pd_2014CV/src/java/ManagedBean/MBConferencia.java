@@ -11,7 +11,9 @@ import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Tema;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -163,13 +165,18 @@ public class MBConferencia{
     
     public String gravar() {
         Conferencia conf=new Conferencia(loginUtilizador.getInvestigador(), nome);
+        Set<Conferenciaedicao> confEd = new HashSet<Conferenciaedicao>();
+        confEd.add(new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, false, null, null, null));
+        conf.setConferenciaedicaos(confEd);
+        
         AllHellper.SaveQualquerCoisa(conf);
-        AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
-        return "./model/conferencias/Conferencia.xhtml?faces-redirect=true";
+        loginUtilizador.getInvestigador().getConferencias().add(conf);
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
         return  "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+        
     }
 
     public String pesquisar() {

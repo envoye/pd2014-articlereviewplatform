@@ -9,10 +9,18 @@ $( document ).ready(function() {
     $(".datetime").datepicker({ dateFormat: 'dd/mm/yy' ,changeMonth: true,
       changeYear: true});
     $( ".selector" ).spinner({ max: 10, min: 1});
-    $( ".selector" ).spinner( "value", 5 );
+    $( ".selector" ).spinner( "value", 1 );
     $( ".selector" ).spinner({ numberFormat: "n" });
     $( ".selector").unbind("keypress");
     $( ".selector").bind("keydown", function (event) {
     event.preventDefault();
 });
+    $( ".spiner" ).spinner({ min: 1});
+    $( ".spiner" ).spinner( "value", 1 );
+    $( ".spiner" ).spinner({ numberFormat: "n" });
+    $( ".spiner").unbind("keypress");
+    $( ".spiner").bind("keydown", function (event) {
+    event.preventDefault();
+});
+
 });
