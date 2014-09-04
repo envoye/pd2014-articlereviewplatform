@@ -10,7 +10,9 @@ import HelpersHibernate.AllHellper;
 import HibernatePackage.Investigador;
 import HibernatePackage.Investigadorareaconhecimento;
 import HibernatePackage.Subtema;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -77,6 +79,18 @@ public class MBInvestigadorAreaConhecimento {
     public List<Subtema> getListaSubtemas() {
         if(this.listaSubtemas == null){
             this.listaSubtemas = (List<Subtema>)AllHellper.getListQualquerCoisa(Subtema.class);
+            Set<Investigadorareaconhecimento> investigadorareaconhecimentos=loginUtilizador.getInvestigador().getInvestigadorareaconhecimentos();
+            for (Investigadorareaconhecimento investigadorareaconhecimento : investigadorareaconhecimentos) {
+               Subtema sub= investigadorareaconhecimento.getSubtema();
+               int i=sub.getId();
+               ArrayList<Subtema> s=new ArrayList<Subtema>();  
+                for (Subtema subF : this.listaSubtemas){
+                    if(subF .getId()==i)
+                        s.add(subF);
+                 } 
+                this.listaSubtemas.removeAll(s);
+            }
+            
         }                        
         return listaSubtemas;
     }
@@ -109,7 +123,9 @@ public class MBInvestigadorAreaConhecimento {
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Investigadorareaconhecimento(subtema, loginUtilizador.getInvestigador(), grauConfianca, preferencia));
+        Investigadorareaconhecimento investigadorareaconhecimento=new Investigadorareaconhecimento(subtema, loginUtilizador.getInvestigador(), grauConfianca, preferencia);
+        AllHellper.SaveQualquerCoisa(investigadorareaconhecimento);
+        loginUtilizador.getInvestigador().getInvestigadorareaconhecimentos().add(investigadorareaconhecimento);
         return "/model/investigadorAP/InvestigadorAreaConhecimento.xhtml?faces-redirect=true";
     }
     
