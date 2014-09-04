@@ -136,7 +136,7 @@
                                     <td align="right" style="width: 250px;">Nº Máximo de Artigos</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="maxArtigosInput" size="1" value="#{MBConferencia.maxArtigos}" 
+                                        <h:inputText id="maxArtigosInput" size="1" class="spiner" value="#{MBConferencia.maxArtigos}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -146,18 +146,11 @@
                                     <td align="right" style="width: 250px;">Nº Máximo de Artigos por Revisor</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="maxArtigosRevisorInput" size="1" value="#{MBConferencia.maxArtigosRevisor}" />                                                        
+                                        <h:inputText id="maxArtigosRevisorInput" size="1" class="spiner" value="#{MBConferencia.maxArtigosRevisor}" />                                                        
                                     </td>
                                 </tr>                                
 <!-- Configuração Encerrada -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">Configuração Encerrada</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:selectBooleanCheckbox id="configuracaoEncerradaInput" value="#{MBConferencia.configEncerrada}"/>
-                                    </td>
-                                </tr>                                
+
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>

@@ -10,9 +10,11 @@ import HelpersHibernate.AllHellper;
 import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Tema;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -31,17 +33,16 @@ public class MBConferenciaEdicao {
     private short maxArtigosRevisor;
     private short maxArtigos;
     private boolean configEncerrada;
-    private Conferencia conferencia;
+    private Conferencia conferencia=new Conferencia();
     private List<Conferencia> listConferencias; 
-    private Tema temaEdicao;
+    private Tema temaEdicao=new Tema();
     private List<Tema> listTemas; 
-    
+      @Inject
+    private LoginUtilizador loginUtilizador;
     /**
      * Creates a new instance of ConferenciaEdicao
      */
-    public MBConferenciaEdicao() {
-    }
-
+   
     public String getSubNome() {
         return subNome;
     }
@@ -78,7 +79,7 @@ public class MBConferenciaEdicao {
         return edicao;
     }
 
-    public void setEdicao() {
+    public void setEdicao(String edicao) {
         int _edicao = 1;
         String condicao=(" where Conferenciaedicao.conferencia.id = '"+ this.conferencia.getId()+"'");        
         List<Conferenciaedicao> listaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class, condicao);
@@ -136,7 +137,8 @@ public class MBConferenciaEdicao {
 
     public List<Conferencia> getListConferencias() {
         if(listConferencias == null){
-            listConferencias = (List<Conferencia>)AllHellper.getListQualquerCoisa(Conferencia.class);
+            listConferencias=new ArrayList<Conferencia>();
+            listConferencias.addAll( loginUtilizador.getInvestigador().getConferencias());
         }
         return listConferencias;
     }
@@ -174,8 +176,16 @@ public class MBConferenciaEdicao {
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Conferenciaedicao(temaEdicao, conferencia, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, configEncerrada, null, null, null));
-        return "/model/conferencias/ConferenciaEdicao.xhtml?faces-redirect=true";
+        Conferenciaedicao confEd=new Conferenciaedicao(temaEdicao, conferencia, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, false, null, null, null);
+        AllHellper.SaveQualquerCoisa(confEd);
+        for (Conferencia conferencia1 : loginUtilizador.getInvestigador().getConferencias()) {
+            if(conferencia1.getId()==conferencia.getId()){
+             conferencia1.getConferenciaedicaos().add(confEd);
+             break;
+            }
+        }
+
+         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {

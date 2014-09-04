@@ -23,7 +23,7 @@
                 
                 <div class="boxForm">
 
-                    <h:form class="jqtransform">
+                    <h:form id="confed" class="jqtransform">
 
                         <table>
                             <tbody>
@@ -37,21 +37,13 @@
                                     <td align="right" style="width: 250px;">Conferência</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaEdicao.conferencia.id}" id="TemaInput" style="width: 200px">
+                                        <h:selectOneMenu value="#{MBConferenciaEdicao.conferencia.id}" id="ConferenciaInput" style="width: 200px">
                                             <f:selectItems value="#{MBConferenciaEdicao.listConferencias}" var="conferencias" itemValue="#{conferencias.id}" itemLabel="#{conferencias.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>
 <!-- Edição -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">Edição</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="edicaoInput" size="10" value="#{MBConferenciaEdicao.edicao}" 
-                                                     required="true" />                                                        
-                                    </td>
-                                </tr>                                
+                                                               
 <!-- SubNome -->
                                 <tr>
                                     <td style="width: 10px; height: 30px;"></td>
@@ -119,7 +111,7 @@
                                     <td align="right" style="width: 250px;">Nº Máximo de Artigos</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="maxArtigosInput" size="1" value="#{MBConferenciaEdicao.maxArtigos}" 
+                                        <h:inputText id="maxArtigosInput" size="1" class="spiner" value="#{MBConferenciaEdicao.maxArtigos}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -129,18 +121,11 @@
                                     <td align="right" style="width: 250px;">Nº Máximo de Artigos por Revisor</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="maxArtigosRevisorInput" size="1" value="#{MBConferenciaEdicao.maxArtigosRevisor}" />                                                        
+                                        <h:inputText id="maxArtigosRevisorInput" size="1" class="spiner" value="#{MBConferenciaEdicao.maxArtigosRevisor}" />                                                        
                                     </td>
                                 </tr>                                
 <!-- Configuração Encerrada -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">Configuração Encerrada</td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:selectBooleanCheckbox id="configuracaoEncerradaInput" value="#{MBConferenciaEdicao.configEncerrada}"/>
-                                    </td>
-                                </tr>                                
+                                                             
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
