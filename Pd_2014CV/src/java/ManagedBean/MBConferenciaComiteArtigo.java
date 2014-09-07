@@ -9,6 +9,7 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigo;
 import HibernatePackage.Conferencia;
+import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciacomiteartigo;
 import HibernatePackage.Conferenciaedicao;
@@ -30,8 +31,8 @@ import javax.inject.Named;
 @Named(value = "MBConferenciaComiteArtigo")
 @SessionScoped
 public class MBConferenciaComiteArtigo implements Serializable {
-    private Conferenciacomite conferenciacomite;
-    private Artigo artigo;
+    private Conferenciacomite conferenciacomite= new Conferenciacomite();
+    private Artigo artigo= new Artigo();
     private String estado;
     private Date dataInicioLicitacao;
     private Date dataFimLicitacao;
@@ -128,10 +129,45 @@ public class MBConferenciaComiteArtigo implements Serializable {
     }
 
     public List<Artigo> getListaArtigos() {
-        if(this.listaArtigos == null){
-            this.listaArtigos = (List<Artigo>)AllHellper.getListQualquerCoisa(Artigo.class);
-        }                                
-        return listaArtigos;
+        
+       for(int i = 0;i < getListConferencias().size();i++){
+           if(listConferencias.get(i).getId().equals(this.conferencia.getId())){
+               this.conferencia=listConferencias.get(i);
+           }
+        }
+            Set<Conferenciaedicao> confed=this.conferencia.getConferenciaedicaos();
+            Conferenciaedicao aux = null;
+            int id=0;
+            for (Conferenciaedicao object : confed) {
+               if(object.getId()>id){
+               id=object.getId();
+               aux=object;
+               } 
+            }
+            this.listaArtigos=new ArrayList<Artigo>();
+            List<Artigo> listInvestigador= new ArrayList<Artigo>();
+            if(aux!=null){
+             for(Conferenciaartigo object : aux.getConferenciaartigos()){
+             this.listaArtigos.add(object.getArtigo());
+             }   
+            for(Conferenciacomite object : aux.getConferenciacomites()){
+            
+            for(Artigo inv : this.listaArtigos){
+                for(Conferenciacomiteartigo cca : object.getConferenciacomiteartigos()){
+                if(cca.getArtigo().getId()==inv.getId())
+                   listInvestigador.add(inv);
+                }
+            }
+            
+            }}
+           
+            this.listaArtigos.remove(listInvestigador);
+          
+               
+        return this.listaArtigos;
+         
+        
+       
     }
 
     public void setListaArtigos(List<Artigo> listaArtigos) {
@@ -162,7 +198,26 @@ public class MBConferenciaComiteArtigo implements Serializable {
         this.listaEdicoes = listaEdicoes;
     }
 
-    public List<Conferencia> getListConferencias() {
+      public List<Conferencia> getListConferencias() {
+        if(listConferencias == null || listConferencias.size()==0 ){
+     
+            this.listConferencias= new ArrayList<Conferencia>();
+            List<Conferencia> lConferencia=new ArrayList<Conferencia>();
+            lConferencia.addAll(loginUtilizador.getInvestigador().getConferencias());
+            for (Conferencia conferencia1 : lConferencia) {
+                Conferenciaedicao aux = null;
+                int corentId=0;
+                for (Conferenciaedicao conferenciaedicao2 : conferencia1.getConferenciaedicaos()) {
+                    if(conferenciaedicao2.getId()>corentId){
+                    aux=conferenciaedicao2;
+                    corentId=conferenciaedicao2.getId();
+                    }
+                        
+                }
+                if(aux!=null  && (new Date().before( aux.getDataLimiteSubmissao())))
+                this.listConferencias.add(conferencia1);
+            }
+        }        
         return listConferencias;
     }
 
@@ -170,11 +225,38 @@ public class MBConferenciaComiteArtigo implements Serializable {
         this.listConferencias = listConferencias;
     }
 
-    public List<Investigador> getListaInvestigadores() {
+   public List<Investigador> getListaInvestigadores() {
         if(this.listaInvestigadores == null){
-            this.listaInvestigadores = (List<Investigador>)AllHellper.getListQualquerCoisa(Investigador.class);
-        }             
-        return listaInvestigadores;
+            Set<Conferenciaedicao> confed=this.conferencia.getConferenciaedicaos();
+            Conferenciaedicao aux = null;
+            int id=0;
+            for (Conferenciaedicao object : confed) {
+               if(object.getId()>id){
+               id=object.getId();
+               aux=object;
+               } 
+            }
+            List<Investigador> listInvestigador= new ArrayList<Investigador>();
+            if(aux!=null)
+                this.listaInvestigadores = (List<Investigador>)AllHellper.getListQualquerCoisa(Investigador.class);
+            for(Conferenciacomite object : aux.getConferenciacomites()){
+            
+            for(Investigador inv : this.listaInvestigadores){
+                if(object.getInvestigador().getId()==inv.getId())
+                   listInvestigador.add(inv);
+            
+            }
+            
+            }
+              for(Investigador inv : this.listaInvestigadores){
+                if(loginUtilizador.getInvestigador().getId()==inv.getId())
+                   listInvestigador.add(inv);
+            
+            }
+            this.listaInvestigadores.retainAll(listInvestigador);
+          
+            }     
+        return this.listaInvestigadores;
     }
 
     public void setListaInvestigadores(List<Investigador> listaInvestigadores) {
@@ -216,6 +298,12 @@ public class MBConferenciaComiteArtigo implements Serializable {
         }
         if(confEd!=null)
             AllHellper.SaveQualquerCoisa(new Conferenciacomiteartigo(conferenciacomite, artigo, estado, dataInicioLicitacao, dataFimLicitacao, pontuacao, pontuacaoComite, null, null));
+       loginUtilizador.setInvestigador(AllHellper.getInvestigador(loginUtilizador.getInvestigador().getId()));
+        this.listaArtigos=null;
+       this.listConferencias=null;
+       this.listaInvestigadores=null;
+        
+        
         return "/model/conferencias/ConferenciaComiteArtigo.xhtml?faces-redirect=true";
     }
     
@@ -228,6 +316,10 @@ public class MBConferenciaComiteArtigo implements Serializable {
     }        
 
     public String next() {
+        for(int i=0;i<getListConferencias().size();i++){
+            if(listConferencias.get(i).getId().equals(conferencia.getId())){
+                this.conferencia=listConferencias.get(i);
+            }}
         if(conferencia.getId()>=0)
             return "/model/conferencias/ConferenciaComiteArtigoDois.xhtml?faces-redirect=true";
         else

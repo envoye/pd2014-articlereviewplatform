@@ -50,7 +50,16 @@
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
-
+<tr>
+                                    <td style="width: 10px; height: 45px;"></td>
+                                    <td align="right" style="width: 250px;">Artigo</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferenciaArtigo.artigo.id}" id="artigoInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaArtigo.listaArtigos}" var="edicao" itemValue="#{edicao.id}" itemLabel="#{edicao.titulo}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
 

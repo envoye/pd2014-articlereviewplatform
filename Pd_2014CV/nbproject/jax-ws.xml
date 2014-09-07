@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
   <services>
-    <service name="ConfereciaWebService">
-      <implementation-class>WebServicePD.ConfereciaWebService</implementation-class>
+    <service name="ConferenciasWebService">
+      <implementation-class>WebService.ConferenciasWebService</implementation-class>
+    </service>
+    <service name="NewWebService">
+      <implementation-class>WebService.NewWebService</implementation-class>
     </service>
   </services>
   <clients/>

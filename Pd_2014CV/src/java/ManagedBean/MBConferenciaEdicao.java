@@ -8,6 +8,7 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Conferencia;
+import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Tema;
 import java.util.ArrayList;
@@ -178,6 +179,7 @@ public class MBConferenciaEdicao {
     public String gravar() {
         Conferenciaedicao confEd=new Conferenciaedicao(temaEdicao, conferencia, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, false, null, null, null);
         AllHellper.SaveQualquerCoisa(confEd);
+         AllHellper.SaveQualquerCoisa(new Conferenciacomite(confEd, loginUtilizador.getInvestigador()));
         for (Conferencia conferencia1 : loginUtilizador.getInvestigador().getConferencias()) {
             if(conferencia1.getId()==conferencia.getId()){
                 loginUtilizador.getInvestigador().getConferencias().remove(conferencia1);
@@ -186,7 +188,7 @@ public class MBConferenciaEdicao {
              break;
             }
         }
-
+ loginUtilizador.setInvestigador(AllHellper.getInvestigador(loginUtilizador.getInvestigador().getId()));
          return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     
