@@ -33,6 +33,9 @@ public class MBInvestigadorAreaConhecimento {
     @Inject
     private LoginUtilizador loginUtilizador;
      
+    private List<Investigadorareaconhecimento> listaAreas;
+    private Investigadorareaconhecimento selectedArea;
+    private int areaId;
      
     /**
      * Creates a new instance of MBInvestigadorAreaConhecimento
@@ -117,6 +120,41 @@ public class MBInvestigadorAreaConhecimento {
     public void setLoginUtilizador(LoginUtilizador loginUtilizador) {
         this.loginUtilizador = loginUtilizador;
     }
+
+    public List<Investigadorareaconhecimento> getListaAreas() {
+        if (listaAreas == null){
+            listaAreas = (List<Investigadorareaconhecimento>)AllHellper.getListQualquerCoisa(Investigadorareaconhecimento.class);
+        }                        
+        return listaAreas;
+    }
+
+    public void setListaAreas(List<Investigadorareaconhecimento> listaAreas) {
+        this.listaAreas = listaAreas;
+    }
+
+    public Investigadorareaconhecimento getSelectedArea() {
+        if (this.selectedArea.getId() == null) {
+            this.selectedArea = new Investigadorareaconhecimento();
+        }                        
+        return selectedArea;
+    }
+
+    public void setSelectedArea(Investigadorareaconhecimento selectedArea) {
+        this.selectedArea = selectedArea;
+    }
+
+    public int getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
+        for (int i=0;i<this.getListaAreas().size();i++){
+            if (this.listaAreas.get(i).getId() == areaId){
+                this.selectedArea = this.listaAreas.get(i);
+            }
+        }                                        
+    }
     
     public String introduzir() {
         return "/model/investigadorAP/InvestigadorAreaConhecimento.xhtml?faces-redirect=true";
@@ -128,13 +166,28 @@ public class MBInvestigadorAreaConhecimento {
         loginUtilizador.getInvestigador().getInvestigadorareaconhecimentos().add(investigadorareaconhecimento);
         return "/model/investigadorAP/InvestigadorAreaConhecimento.xhtml?faces-redirect=true";
     }
+
+    public String atualizar() {
+        AllHellper.UpdateAreaConhecimento(this.selectedArea.getId(), this.selectedArea.getSubtema(), null, this.selectedArea.getGrauConfianca(), this.selectedArea.getPreferencia());
+        return "/model/investigadorAP/InvestigadorAreaConhecimentoEdit.xhtml?faces-redirect=true";
+    }                    
     
-    public String cancelar() {
+    public String cancelarAct() {
         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
+    public String cancelarIntro() {
+        return "/model/investigadorAP/InvestigadorAreaConhecimentoEdit.xhtml?faces-redirect=true";
+    }        
+    
     public String pesquisar() {
-        return "index";
+        return "/model/investigadorAP/InvestigadorAreaConhecimentoPesquisa.xhtml?faces-redirect=true";
     }            
     
+    public String next() {
+        if(this.selectedArea.getId() == null) {
+            return "";
+        }
+        return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
+    }        
 }

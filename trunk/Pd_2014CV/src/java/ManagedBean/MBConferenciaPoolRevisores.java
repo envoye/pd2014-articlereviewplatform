@@ -18,7 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -37,8 +36,9 @@ public class MBConferenciaPoolRevisores implements Serializable {
     private Date dataFimConvite;
     private List<Conferenciaedicao> listaEdicoes;
     private List<Investigador> listaInvestigadores;
-     private List<Conferencia> listConferencias;
-      public Conferencia getConferencia() {
+    private List<Conferencia> listConferencias;
+      
+    public Conferencia getConferencia() {
         return conferencia;
     }
 
