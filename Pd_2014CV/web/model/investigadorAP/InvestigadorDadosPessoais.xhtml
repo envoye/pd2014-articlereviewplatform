@@ -23,7 +23,7 @@
 
             <ui:define name="form">
 
-                <div class="boxLogin">
+                <div class="boxForm">
                     <h:form id="DP" >
 
                         <table>
@@ -149,10 +149,9 @@
                                         <h:message for="passwordconfInput" style="color:red"  />
                                     </td>
                                 </tr>
-
-
-
-
+                                <tr>
+                                    <td style="height: 40px;"></td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -161,7 +160,12 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton  value="Registar" class="btn btn-default" action="#{MBInvestigadorDadosPessoais.atualizar()}" />
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Atualizar" class="btn btn-default" action="#{MBInvestigadorDadosPessoais.atualizar()}" />
+                                </td>
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBInvestigadorDadosPessoais.cancelar()}" />
                                 </td>
                             </tr>
                             <tr>

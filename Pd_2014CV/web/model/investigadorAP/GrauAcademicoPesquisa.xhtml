@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
+
+            <ui:define name="title">
+                Conference Team Manager - Grau Académico
+            </ui:define>
+
+            <ui:define name="formTitle">
+
+                <h2 class="subtitle" align="center">
+                    Pesquisa de Graus Académicos
+                </h2>                
+                
+            </ui:define>
+
+            <ui:define name="form">
+
+                <div class="boxForm">
+
+                    <h:form class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px; height: 60px;"></td>
+                                    <td align="right" style="width: 80px;">Grau Académico</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBGrauAcademico.grauId}" id="grauacademicoInput"  style="width: 200px" >
+                                            <f:selectItems value="#{MBGrauAcademico.listaGraus}" var="grauSel" itemValue="#{grauSel.id}" itemLabel="#{grauSel.grauacademico}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                    <td style="width: 20px;"></td>
+                                    <td>
+                                        <h:commandButton image="../../images/ctm_Next.png" action="#{MBGrauAcademico.next()}" />
+                                    </td>
+                                </tr>  
+                                <tr>
+                                    <td style="height: 80px;"></td>
+                                </tr>                                
+                            </tbody>
+                        </table>
+                        
+                    </h:form>
+                </div>                                       
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

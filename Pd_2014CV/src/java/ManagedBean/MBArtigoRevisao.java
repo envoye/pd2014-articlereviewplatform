@@ -34,9 +34,12 @@ public class MBArtigoRevisao implements Serializable {
     
     private List<Conferenciacomiteartigo> listaArtigos;
     private List<Conferenciapoolrevisores> listaRevisores;
-    
     private List<Artigorevisaoitems> listaItemsRevisao;
 
+    private List<Artigorevisao> listaArtigoRevisao;
+    private Artigorevisao selectedArtigoRevisao;
+    private int artigoRevisaoId;
+    
     /**
      * Creates a new instance of MBArtigoRevisao
      */
@@ -133,20 +136,71 @@ public class MBArtigoRevisao implements Serializable {
         this.listaItemsRevisao = listaItemsRevisao;
     }    
 
+    public List<Artigorevisao> getListaArtigoRevisao() {
+        if (listaArtigoRevisao == null){
+            listaArtigoRevisao = (List<Artigorevisao>)AllHellper.getListQualquerCoisa(Artigorevisao.class);
+        }                        
+        return listaArtigoRevisao;
+    }
+
+    public void setListaArtigoRevisao(List<Artigorevisao> listaArtigoRevisao) {
+        this.listaArtigoRevisao = listaArtigoRevisao;
+    }
+
+    public Artigorevisao getSelectedArtigoRevisao() {
+        if (this.selectedArtigoRevisao.getId() == null) {
+            this.selectedArtigoRevisao = new Artigorevisao();
+        }                
+        return selectedArtigoRevisao;
+    }
+
+    public void setSelectedArtigoRevisao(Artigorevisao selectedArtigoRevisao) {
+        this.selectedArtigoRevisao = selectedArtigoRevisao;
+    }
+
+    public int getArtigoRevisaoId() {
+        return artigoRevisaoId;
+    }
+
+    public void setArtigoRevisaoId(int artigoRevisaoId) {
+        this.artigoRevisaoId = artigoRevisaoId;
+        for (int i=0;i<this.getListaArtigoRevisao().size();i++){
+            if (this.listaArtigoRevisao.get(i).getId() == artigoRevisaoId){
+                this.selectedArtigoRevisao = this.listaArtigoRevisao.get(i);
+            }
+        }                                
+    }
+    
     public String introduzir() {
-        return  "/model/artigos/ArtigoRevisao.xhtml?faces-redirect=true";
+        return "/model/artigos/ArtigoRevisao.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
         AllHellper.SaveQualquerCoisa(new Artigorevisao(conferenciacomiteartigo, conferenciapoolrevisores, preferencia, estadoRevisor, estadoAuto, estadoGc, pontuacao, null));
-        return  "/model/artigos/ArtigoRevisao.xhtml?faces-redirect=true";
-    }
-    
-    public String cancelar() {
-        return  "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+        return "/model/artigos/ArtigoRevisaoEdit.xhtml?faces-redirect=true";
     }
 
+    public String atualizar() {
+        AllHellper.UpdateArtigoRevisao(this.selectedArtigoRevisao.getId(), this.selectedArtigoRevisao.getConferenciacomiteartigo(), this.selectedArtigoRevisao.getConferenciapoolrevisores(), this.selectedArtigoRevisao.getPreferencia(), this.selectedArtigoRevisao.getEstadoRevisor(), this.selectedArtigoRevisao.getEstadoAuto(), this.selectedArtigoRevisao.getEstadoGc(), this.selectedArtigoRevisao.getPontuacao());
+        return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
+    }                
+    
+    public String cancelarAct() {
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+    }
+
+    public String cancelarIntro() {
+        return "/model/artigos/ArtigoRevisaoEdit.xhtml?faces-redirect=true";
+    }    
+    
     public String pesquisar() {
-        return "index";
+        return "/model/artigos/ArtigoRevisaoPesquisa.xhtml?faces-redirect=true";
+    }        
+    
+    public String next() {
+        if(this.selectedArtigoRevisao.getId() == null) {
+            return "";
+        }
+        return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
     }        
 }

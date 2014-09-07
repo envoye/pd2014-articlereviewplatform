@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <body>
 
@@ -13,7 +13,7 @@
             </ui:define>
 
             <ui:define name="formTitle">
-                
+
                 <h2 class="subtitle" align="center">
                     Grau Académico
                 </h2>
@@ -21,7 +21,7 @@
             </ui:define>
 
             <ui:define name="form">
-                
+
                 <div class="boxForm">
                     
                     <h:form class="jqtransform">
@@ -37,27 +37,40 @@
                                     <td style="width: 10px;"></td>
                                     <td>
                                         <h:inputText id="grauInput" size='40' value="#{MBGrauAcademico.grauAcademico}" 
-                                                     required="true" />
+                                                     required="false" />
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="height: 20px;"></td>
+                                    <td style="height: 40px;"></td>
                                 </tr>
                             </tbody>
                         </table>
 
                         <table>
                             <tr>
-                                <td style="width: 450px;"></td>
+                                <td style="width: 400px;"></td>
 
                                 <td>
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBGrauAcademico.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBGrauAcademico.gravar()}" />
+
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBGrauAcademico.cancelarIntro()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBGrauAcademico.cancelar()}" />
+                                </td>
+
+                                <td style="width: 15px;"></td>                                
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Search.png" action="#{MBGrauAcademico.pesquisar()}" />
                                 </td>                                
+                                
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
@@ -66,7 +79,7 @@
 
                     </h:form>
 
-                </div>
+                </div>                
                 
             </ui:define>
 
