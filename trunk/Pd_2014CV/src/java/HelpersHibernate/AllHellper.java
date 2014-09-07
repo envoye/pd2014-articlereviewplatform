@@ -187,6 +187,26 @@ public class AllHellper {
         return investigador;
     }        
     
+      public static Investigador getInvestigador(int id) {
+        Investigador investigador;
+        Session session = GeralHelper.GetSession();
+        org.hibernate.Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            investigador = (Investigador) session.get(Investigador.class, id);
+            
+            
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            return null;
+        }
+        return investigador;
+    }  
+     
     public static Boolean UpdateTema(int id, String nomeTema, String descricao) {
         Session session = GeralHelper.GetSession();
         org.hibernate.Transaction tx = null;

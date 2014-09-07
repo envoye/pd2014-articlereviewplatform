@@ -8,6 +8,7 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Conferencia;
+import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Tema;
 import java.util.Date;
@@ -172,11 +173,15 @@ public class MBConferencia{
          Set<Conferenciaedicao> confEd = new HashSet<Conferenciaedicao>();
         Conferenciaedicao conferenciaedicao=new Conferenciaedicao(temaEdicao, conf, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, false, null, null, null);
         confEd.add(conferenciaedicao);
+        
         AllHellper.SaveQualquerCoisa(conferenciaedicao);
+        AllHellper.SaveQualquerCoisa(new Conferenciacomite(conferenciaedicao, loginUtilizador.getInvestigador()));
         conf.setConferenciaedicaos(confEd);
         Set<Conferencia> c=loginUtilizador.getInvestigador().getConferencias();
         c.add(conf);
        loginUtilizador.getInvestigador().setConferencias(c);
+       
+        loginUtilizador.setInvestigador(AllHellper.getInvestigador(loginUtilizador.getInvestigador().getId()));
         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     

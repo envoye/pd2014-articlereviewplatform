@@ -27,7 +27,7 @@ import javax.inject.Named;
 @SessionScoped
 public class MBConferenciaArtigo implements Serializable {
     private Conferenciaedicao conferenciaedicao=new Conferenciaedicao();
-    private Artigo artigo;
+    private Artigo artigo=new Artigo();
     private boolean publicar;
     private List<Conferencia> listaEdicoes;
     private List<Artigo> listaArtigos;
@@ -45,7 +45,23 @@ public class MBConferenciaArtigo implements Serializable {
     }
 
     public void setConferenciaedicao(Conferenciaedicao conferenciaedicao) {
-        this.conferenciaedicao = conferenciaedicao;
+        Conferencia c = null;
+        int id=0;
+         for (Conferencia conferenciaedicao2 : listaEdicoes){
+             if(conferenciaedicao2.getId()==conferenciaedicao.getId()){
+                c=conferenciaedicao2;
+                break;
+             }
+         }
+        int corentId=0;
+         for (Conferenciaedicao conferenciaedicao2 : c.getConferenciaedicaos()) {
+                    if(conferenciaedicao2.getId()>corentId){
+                    this.conferenciaedicao=conferenciaedicao2;
+                    corentId=conferenciaedicao2.getId();
+                    }
+                        
+                }
+        
     }
 
     public Artigo getArtigo() {
@@ -53,7 +69,12 @@ public class MBConferenciaArtigo implements Serializable {
     }
 
     public void setArtigo(Artigo artigo) {
-        this.artigo = artigo;
+         for(int i=0;i<getListaArtigos().size();i++){
+            if(getListaArtigos().get(i).getId().equals(this.artigo.getId())){
+                this.artigo = getListaArtigos().get(i);
+            }
+        }
+        
     }
 
     public Boolean isPublicar() {
@@ -110,7 +131,10 @@ public class MBConferenciaArtigo implements Serializable {
     }
     
     public String gravar() {
-        AllHellper.SaveQualquerCoisa(new Conferenciaartigo(conferenciaedicao, artigo, publicar));
+        setConferenciaedicao(conferenciaedicao);
+        setArtigo(artigo);
+        AllHellper.SaveQualquerCoisa(new Conferenciaartigo(conferenciaedicao, artigo, false));
+        loginUtilizador.setInvestigador(AllHellper.getInvestigador(loginUtilizador.getInvestigador().getId()));
         return "/model/conferencias/ConferenciaComiteArtigo.xhtml?faces-redirect=true";
     }
     
