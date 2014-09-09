@@ -6,10 +6,15 @@
 
 package WebService;
 
-import javax.jws.WebService;
+import HelpersHibernate.AllHellper;
+import HibernatePackage.Artigo;
+import HibernatePackage.Investigador;
+import TrabalharDados.WorkingData;
+import java.util.ArrayList;
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.ejb.Stateless;
+import javax.jws.WebService;
 
 /**
  *
@@ -22,8 +27,20 @@ public class ConferenciasWebService {
     /**
      * This is a sample web service operation
      */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    @WebMethod(operationName = "getNumeroArtigos")
+    //@WebParam(name = "name") String txt
+    public int getNumeroArtigos() {
+        ArrayList<Artigo> i= (ArrayList<Artigo>)AllHellper.getListQualquerCoisa(Artigo.class);
+        return i.size();
+    }
+    @WebMethod(operationName = "getDiasRestantesByName")
+    public String getDiasRestantesByName(@WebParam(name = "name") String name) {
+        
+        return WorkingData.getDiasFimConferencia(name);
+    }
+     @WebMethod(operationName = "getDiasRestantesById")
+    public String getDiasRestantesById(@WebParam(name = "id") int id) {
+       
+        return WorkingData.getDiasFimConferencia(id);
     }
 }
