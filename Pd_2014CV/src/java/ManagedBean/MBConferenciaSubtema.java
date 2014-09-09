@@ -9,9 +9,10 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Subtema;
 import HibernatePackage.Tema;
+import java.io.Serializable;
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -19,15 +20,16 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBConferenciaSubtema")
-@ViewScoped
-public class MBConferenciaSubtema {
+@SessionScoped
+public class MBConferenciaSubtema implements Serializable {
     private Tema tema;
     private String nome;
     private String descricao;
     private List<Tema> listTemas;
     private int temaId;
     private List<Subtema> listSubtemas;
-    private Subtema subtemaSelecionado;
+    private Subtema selectedSubtema = new Subtema();
+    private int subtemaId;
     private HtmlDataTable dataTableSubtemas;
     
     /**
@@ -36,12 +38,6 @@ public class MBConferenciaSubtema {
     public MBConferenciaSubtema() {
     }
 
-//    public MBConferenciaSubtema(Tema tema, String nome, String descricao) {
-//        this.tema = tema;
-//        this.nome = nome;
-//        this.descricao = descricao;
-//    }
-    
     public void setTema(Tema tema) {
         this.tema = tema;
     }
@@ -94,7 +90,9 @@ public class MBConferenciaSubtema {
     }
 
     public List<Subtema> getListSubtemas() {
-        this.listSubtemas = (List<Subtema>)AllHellper.getListQualquerCoisa(Subtema.class);
+        if (listSubtemas == null){
+            this.listSubtemas = (List<Subtema>)AllHellper.getListQualquerCoisa(Subtema.class);
+        }                
         return this.listSubtemas;
     }
 
@@ -102,13 +100,28 @@ public class MBConferenciaSubtema {
         this.listSubtemas = listSubtemas;
     }
 
-    public Subtema getSubtemaSelecionado() {
-        return subtemaSelecionado;
+    public Subtema getSelectSubtema() {
+        if (this.selectedSubtema.getId() == null) {
+            this.selectedSubtema = new Subtema(new Tema(), "");
+        }        
+        return selectedSubtema;
     }
 
-    public String setSubtemaSelecionado() {
-        this.subtemaSelecionado = (Subtema) this.dataTableSubtemas.getRowData();
-        return "subtemaSelecionado";
+    public void setSelectedSubtema(Subtema selectedSubtema) {
+        this.selectedSubtema = selectedSubtema;
+    }
+
+    public int getSubtemaId() {
+        return subtemaId;
+    }
+
+    public void setSubtemaId(int subtemaId) {
+        this.subtemaId = subtemaId;
+        for (int i=0;i<this.getListSubtemas().size();i++){
+            if (this.listSubtemas.get(i).getId() == subtemaId){
+                this.selectedSubtema = this.listSubtemas.get(i);
+            }
+        }                        
     }
 
     public HtmlDataTable getDataTableSubtemas() {
@@ -128,11 +141,28 @@ public class MBConferenciaSubtema {
         return "/model/conferencias/ConferenciaSubtema.xhtml?faces-redirect=true";
     }
     
-    public String cancelar() {
+    public String cancelarAct() {
         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+    }
+
+    public String cancelarIntro() {
+        return "/model/conferencias/ConferenciaSubtemaEdit.xhtml?faces-redirect=true";
+    }    
+    
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedSubtema);
+        this.selectedSubtema = new Subtema();
+        return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";        
     }
     
     public String pesquisar() {
         return "/model/conferencias/ConferenciaSubtemaList.xhtml?faces-redirect=true";
     }
+    
+    public String next() {
+        if(this.selectedSubtema.getId() == null) {
+            return "";
+        }
+        return "/model/conferencias/ConferenciaSubtemaEdit.xhtml?faces-redirect=true";
+    }        
 }

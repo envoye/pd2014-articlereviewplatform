@@ -35,8 +35,8 @@
                                     <td align="right" style="width: 250px;">Nome Item</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='nomeInput' size='40' value="#{MBItemRevisao.nomeItem}" 
-                                                     required="true" />
+                                        <h:inputText id='nomeInput' size='40' value="#{MBItemRevisao.selectedItemRevisao.nomeItem}" 
+                                                     required="false" />
                                     </td>
                                 </tr>
 <!-- Descricao -->
@@ -49,8 +49,8 @@
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputTextarea id="descricaoItemInput" cols="31" rows="4" value="#{MBItemRevisao.descricao}" 
-                                                     required="true" />                                                        
+                                        <h:inputTextarea id="descricaoItemInput" cols="31" rows="4" value="#{MBItemRevisao.selectedItemRevisao.descricao}" 
+                                                     required="false" />                                                        
                                     </td>
                                 </tr>                                
 <!-- Tipo -->
@@ -59,7 +59,7 @@
                                     <td align="right" style="width: 250px;">Tipo</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectBooleanCheckbox id="tipoInput" value="#{MBItemRevisao.tipo}"/>                                                        
+                                        <h:selectBooleanCheckbox id="tipoInput" value="#{MBItemRevisao.selectedItemRevisao.tipo}"/>
                                     </td>
                                 </tr>                                
 <!-- Privado -->
@@ -68,7 +68,7 @@
                                     <td align="right" style="width: 250px;">Genérico</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectBooleanCheckbox id="privadoInput" value="#{MBItemRevisao.privado}"/>                                                        
+                                        <h:selectBooleanCheckbox id="privadoInput" value="#{MBItemRevisao.selectedItemRevisao.privado}"/>
                                     </td>
                                 </tr>                                
                                 <tr>
@@ -83,25 +83,26 @@
 
                                 <td>
                                     <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBItemRevisao.introduzir()}" />
-                        </td>
+                                </td>
+                                
                                 <td style="width: 15px;"></td>
-
                                 <td>
-
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBItemRevisao.gravar()}" />
-
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBItemRevisao.cancelarAct()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Eliminar" action="#{MBItemRevisao.eliminar()}" />
                                 </td>
 
                                 <td style="width: 15px;"></td>                                
                                 <td>
                                     <h:commandButton image="../../images/ctm_Search.png" value="Pesquisar" action="#{MBItemRevisao.pesquisar()}" />
                                 </td>                                                                
-                                
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Cancelar" action="#{MBItemRevisao.cancelarAct()}" />
+                                </td>                                
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>

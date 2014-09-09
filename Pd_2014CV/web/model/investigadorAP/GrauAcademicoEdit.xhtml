@@ -36,7 +36,7 @@
                                     <td align="right" style="width: 120px;">Grau Académico</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="grauInput" size='40' value="#{MBGrauAcademico.grauAcademico}" 
+                                        <h:inputText id="grauInput" size='40' value="#{MBGrauAcademico.selectedGrau.grauacademico}" 
                                                      required="false" />
                                     </td>
                                 </tr>
@@ -48,7 +48,7 @@
 
                         <table>
                             <tr>
-                                <td style="width: 400px;"></td>
+                                <td style="width: 470px;"></td>
 
                                 <td>
                                     <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBGrauAcademico.introduzir()}" />
@@ -63,12 +63,17 @@
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBGrauAcademico.cancelar()}" />
-                                </td>
-
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Eliminar" action="#{MBGrauAcademico.eliminar()}" />
+                                </td>                                                                
+                                
                                 <td style="width: 15px;"></td>                                
                                 <td>
                                     <h:commandButton image="../../images/ctm_Search.png" action="#{MBGrauAcademico.pesquisar()}" />
+                                </td>                                
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Cancelar" action="#{MBGrauAcademico.cancelarAct()}" />
                                 </td>                                
                                 
                             </tr>

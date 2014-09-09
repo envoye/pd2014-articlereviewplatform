@@ -23,7 +23,7 @@ public class MBGrauAcademico implements Serializable  {
     private String grauAcademico;
     
     private List<Grauacademico> listaGraus;
-    private Grauacademico selectedGrau;
+    private Grauacademico selectedGrau = new Grauacademico();
     private int grauId;
     
     /**
@@ -53,7 +53,7 @@ public class MBGrauAcademico implements Serializable  {
 
     public Grauacademico getSelectedGrau() {
         if (this.selectedGrau.getId() == null) {
-            this.selectedGrau = new Grauacademico("", null);
+            this.selectedGrau = new Grauacademico("",null);
         }        
         return selectedGrau;
     }
@@ -98,15 +98,18 @@ public class MBGrauAcademico implements Serializable  {
         this.grauAcademico = "";
         return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
     }    
+ 
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedGrau);
+        this.selectedGrau = new Grauacademico("",null);
+        return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
+    }    
     
     public String pesquisar() {
         return "/model/investigadorAP/GrauAcademicoPesquisa.xhtml?faces-redirect=true";
     }    
     
     public String next() {
-        if(this.selectedGrau.getId() == null) {
-            return "";
-        }
         return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
     }        
 }
