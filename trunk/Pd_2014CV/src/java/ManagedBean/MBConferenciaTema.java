@@ -119,14 +119,17 @@ public class MBConferenciaTema implements Serializable {
         return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
     }
 
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedTema);
+        this.selectedTema = new Tema();
+        return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
+    }
+    
     public String pesquisar() {
         return "/model/conferencias/ConferenciaTemaPesquisa.xhtml?faces-redirect=true";
     }
 
     public String next() {
-        if(this.selectedTema.getId() == null) {
-            return "";
-        }
         return "/model/conferencias/ConferenciaTemaEdit.xhtml?faces-redirect=true";
     }    
     

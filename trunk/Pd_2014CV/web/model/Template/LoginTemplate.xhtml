@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,219 +17,210 @@
         <h:outputStylesheet name="./css/style-desktop.css" />
         <h:outputStylesheet name="./css/Menu/styles.css" />
         <h:outputStylesheet name="./css/Login/LoginStyle.css" />
-        
+
         <h:outputStylesheet name="./css/plugin/jqtransformplugin/jqtransform.css" />
-       
-     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />   
-        
-     <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />  
-    <script  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" /> 
-    <h:outputScript name="./css/Validacao/verify.notify.js" />
-     <h:outputScript name="./css/Login/LoginScript.js" />
-    <!--
-     <h:outputStylesheet name="./css/jqueryApi/jquery-ui.css"/>
-     <h:outputScript name="./css/jqueryApi/jquery.min.js"/>
-     <h:outputScript name="./css/jqueryApi/jquery-ui.min.js"/>
-      -->  
-    
+
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />   
+
+        <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />  
+        <script  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js" /> 
+        <h:outputScript name="./css/Validacao/verify.notify.js" />
+        <h:outputScript name="./css/Login/LoginScript.js" />
+        <!--
+        <h:outputStylesheet name="./css/jqueryApi/jquery-ui.css"/>
+        <h:outputScript name="./css/jqueryApi/jquery.min.js"/>
+        <h:outputScript name="./css/jqueryApi/jquery-ui.min.js"/>
+        -->  
+
         <h:outputScript name="./css/Menu/menu_jquery.js"/>
         <h:outputScript name="./css/plugin/jqtransformplugin/jquery.highlight.pack.js" />
         <h:outputScript name="./css/plugin/jqtransformplugin/jquery.jqtransform.js"/>
-       
+
         <h:outputScript name="./css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"/>
-        
-        
+
         <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.min.css"/>
 
-    <!-- Include FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" />
+        <!-- Include FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" />
 
-    <!-- jQuery and Bootstrap JS -->
+        <!-- jQuery and Bootstrap JS -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css"/>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.js"></script>
+        <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.js"></script>
 
-    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.js"></script>
-       <h:outputScript name="./css/Validacao/messages.js"/>
-    <title><ui:insert name="title" /></title>
+        <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.js"></script>
+        <h:outputScript name="./css/Validacao/messages.js"/>
+        <title><ui:insert name="title" /></title>
     </h:head>
 
     <h:body>
 
-        <div id="header-wrapper">
-            <header id="header">
-                <div class="5grid-layout">
-                    <div class="row">
-                        <div class="6u" id="logo">
-                            <h1><a href="#" class="mobileUI-site-name">Conference Team Manager</a></h1>
-                            <p>manage your conference team</p>
-
-                        </div>
-                        <div class="6u" id="menu">
-                            <nav class="mobileUI-site-nav">
-                                <ul>
-                                    <li><a href="../principais/PaginaPrincipal.xhtml">Principal</a></li>
-                                    <li><a href="../principais/Conferencias.xhtml">Conferências</a></li>
-                                    <li class="current_page_item"><a href="../principais/AreaPessoal.xhtml">Área Pessoal</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </div>
-
-        <div id="wrapper">
-            <div id="page">
-                <div class="5grid-layout">
-                    <div class="row">
-                        <div class="3u" id="sidebar2">
-                            <section>
-                                <div class="sbox1">
-                                    <!-- 
-                                    <h2>Nulla luctus eleifend</h2>
-                                    <ul class="style1">
-                                        <li class="first"><a href="#">Maecenas luctus lectus at sapien</a></li>
-                                        <li><a href="#">Donec dictum metus in sapien</a></li>
-                                        <li><a href="#">Nulla luctus eleifend purus</a></li>
-                                        <li><a href="#">Maecenas luctus lectus at sapien</a></li>
-                                        <li><a href="#">Donec dictum metus in sapien</a></li>
-                                    </ul>
-                                    -->  
-                      
-
-                                </div>
-                            </section>
-                            <section>
-                                <h2>Níveis de acesso</h2>
-                                <ul class="style2">
-                                    <li class="first">
-                                        <p><a href="#"><img src="../../images/pics09.jpg" alt=""/>
-                                                <strong>General Chair 
-                                                <br>(1º nível de acesso)</br></strong> 
-                                                O investigador responsável pela criação e decisor supremo dos atos que envolvem a conferência.
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p><a href="#"><img src="../../images/pics10.jpg" alt=""/>
-                                                <strong>Elementos do Comité 
-                                                <br>(2º nível de acesso)</br></strong>
-                                                O investigador que é delegado pelo General Chair para auxiliar na gestão da informação e atos que envolvem a conferência. Poder de decisão médio.
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p><a href="#"><img src="../../images/pics08.jpg" alt=""/>
-                                                <strong>Revisor 
-                                                <br>(3º nível de acesso)</br></strong> 
-                                                O investigador responsável por rever e classificar os artigos submetidos à conferência. As suas decisão carecem sempre confirmação superior.
-                                            </a>
-                                        </p>
-                                    </li>
-                                </ul>
-                            </section>
-                        </div>
-                                                
-                        <div class="8u" id="pageform">
-                            <section>
-                                <div class="post">
-                                    <div class="boxTitleForm">
-                                        
-                                        <ui:insert name="formTitle">FormTitle</ui:insert>
-                        
-                                    </div>                
-                                </div>
-                            </section>
-                        </div>
-                        
-                        <div class="8u mobileUI-main-content" id="content">
-                            <section>
-                                <div class="post">
-                                    <div >
-                                      <ui:insert name="form">Form</ui:insert>
-                                    </div>
-                                   </div>
-                            </section>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="footer-wrapper">
-            <div class="5grid-layout">
-                <div class="row" id="footer-content">
-                    <div class="3u" id="box1">
-                        <section>
-                            <h2></h2>
-                            <div class="balloon">
-                                <blockquote>&ldquo;&nbsp;&nbsp;O talento vence jogos, mas só o trabalho de equipa ganha campeonatos.&nbsp;&nbsp;&rdquo;<br/>
-                                    <br/>
-                                    <strong>&ndash;&nbsp;&nbsp;Michael Jordan</strong></blockquote>
-                            </div>
-                            <div class="ballon-bgbtm">&nbsp;</div>
-                            <p></p>
-                        </section>
-                    </div>
-                    <div class="3u" id="box2">
-                        <section>
-                            <h2>Donec dictum metus</h2>
-                            <ul class="style6">
-                                <li class="first">
-                                    <h3>Mauris vulputate dolor sit amet</h3>
-                                    <p><a href="#">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</a></p>
-                                </li>
-                                <li>
-                                    <h3>Fusce ultrices fringilla metus</h3>
-                                    <p><a href="#">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</a></p>
-                                </li>
-                                <li>
-                                    <h3>Donec dictum metus in sapien</h3>
-                                    <p><a href="#">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum.</a></p>
-                                </li>
-                            </ul>
-                        </section>
-                    </div>
-                    <div class="3u" id="box3">
-                        <section>
-                            <h2>Nulla luctus eleifend</h2>
-                            <ul class="style5">
-                                <li><a href="#"><img src="../../images/pics07.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="../../images/pics08.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="../../images/pics09.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="../../images/pics10.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="../../images/pics11.jpg" alt=""/></a></li>
-                                <li><a href="#"><img src="../../images/pics12.jpg" alt=""/></a></li>
-                            </ul>
-                            <p class="button-style2"><a href="#">More Collections</a></p>
-                        </section>
-                    </div>
-                    <div class="3u" id="box4">
-                        <section>
-                            <h2>Nulla luctus eleifend</h2>
-                            <p><strong>Aliquam erat volutpat. Pellentesque tristique ante ut risus. </strong></p>
-                            <p>&nbsp;</p>
-                            <p>Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. Suspendisse dictum porta lectus. </p>
-                            <p>&nbsp;</p>
-                            <p>Donec placerat odio vel elit. Nullam ante orci, pellentesque eget, tempus quis, ultrices in, est. Curabitur sit amet nulla. Nam in massa. Sed vel tellus. Curabitur sem urna, consequat.</p>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <f:view contentType="text/html; charset=UTF-8" encoding="UTF-8" >
         
-        <div>
-            <div class="5grid-layout" id="copyright">
-                <div class="row">
-                    <div class="12u">
-                        <p>&copy; <a href="http://www.ctm.com/">Conference Team Manager</a> | Built: <a href="http://www.isec.pt/">CT and VD</a></p>
+            <div id="header-wrapper">
+                <header id="header">
+                    <div class="5grid-layout">
+                        <div class="row">
+                            <div class="6u" id="logo">
+                                <h1><a href="#" class="mobileUI-site-name">Conference Team Manager</a></h1>
+                                <p>manage your conference team</p>
+
+                            </div>
+                            <div class="6u" id="menu">
+                                <nav class="mobileUI-site-nav">
+                                    <ul>
+                                        <li><a href="../principais/PaginaPrincipal.xhtml">Principal</a></li>
+                                        <li><a href="../principais/Conferencias.xhtml">Conferências</a></li>
+                                        <li class="current_page_item"><a href="../principais/AreaPessoal.xhtml">Área Pessoal</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <div id="wrapper">
+                <div id="page">
+                    <div class="5grid-layout">
+                        <div class="row">
+                            <div class="3u" id="sidebar2">
+    <!--                            <section>
+                                    <div class="sbox1">
+
+                                    </div>
+                                </section>-->
+                                <section>
+                                    <h2>Níveis de acesso</h2>
+                                    <ul class="style2">
+                                        <li class="first">
+                                            <p><a href="#"><img src="../../images/pics09.jpg" alt=""/>
+                                                    <strong>General Chair 
+                                                    <br>(1º nível de acesso)</br></strong> 
+                                                    O investigador responsável pela criação e decisor supremo dos atos que envolvem a conferência.
+                                                </a>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p><a href="#"><img src="../../images/pics10.jpg" alt=""/>
+                                                    <strong>Elementos do Comité 
+                                                    <br>(2º nível de acesso)</br></strong>
+                                                    O investigador que é delegado pelo General Chair para auxiliar na gestão da informação e atos que envolvem a conferência. Poder de decisão médio.
+                                                </a>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p><a href="#"><img src="../../images/pics08.jpg" alt=""/>
+                                                    <strong>Revisor 
+                                                    <br>(3º nível de acesso)</br></strong> 
+                                                    O investigador responsável por rever e classificar os artigos submetidos à conferência. As suas decisão carecem sempre confirmação superior.
+                                                </a>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+
+                            <div class="8u" id="pageform">
+                                <section>
+                                    <div class="post">
+                                        <div class="boxTitleForm">
+
+                                            <ui:insert name="formTitle">FormTitle</ui:insert>
+
+                                        </div>                
+                                    </div>
+                                </section>
+                            </div>
+
+                            <div class="8u mobileUI-main-content" id="content">
+                                <section>
+                                    <div class="post">
+                                        <div >
+                                          <ui:insert name="form">Form</ui:insert>
+                                        </div>
+                                       </div>
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>        
 
+            <div id="footer-wrapper">
+                <div class="5grid-layout">
+                    <div class="row" id="footer-content">
+                        <div class="3u" id="box1">
+                            <section>
+                                <h2></h2>
+                                <div class="balloon">
+                                    <blockquote>&ldquo;&nbsp;&nbsp;O talento vence jogos, mas só o trabalho de equipa ganha campeonatos.&nbsp;&nbsp;&rdquo;<br/>
+                                        <br/>
+                                        <strong>&ndash;&nbsp;&nbsp;Michael Jordan</strong></blockquote>
+                                </div>
+                                <div class="ballon-bgbtm">&nbsp;</div>
+                                <p></p>
+                            </section>
+                        </div>
+                        <div class="3u" id="box2">
+                            <section>
+                                <h2>Mapa do site</h2>
+                                <ul class="style6">
+                                    <a href="#"><img src="../../images/confConferenciaFooter.jpg" alt="top"  /></a>
+                                    <li class="first"></li>
+                                    <li>
+                                        <h3>Conferências</h3>
+                                        <p><a href="/Pd_2014CV/faces/model/conferencias/Conferencia.xhtml">&nbsp;&#9733;&nbsp;&nbsp;&nbsp;&nbsp;Conferências</a></p>
+                                        <p><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaEdicao.xhtml">&nbsp;&#9733;&nbsp;&nbsp;&nbsp;&nbsp;Edições</a></p>
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                        <div class="3u" id="box3">
+                            <section>
+                                <h2></h2>
+                                <ul class="style6">
+                                    <a href="#"><img src="../../images/confArtigosFooter.jpg" alt=""/></a>
+                                    <li class="first"></li>
+                                    <li>
+                                        <h3>Artigos</h3>
+                                        <p><a href="/Pd_2014CV/faces/model/artigos/SubmissaoArtigo.xhtml">&nbsp;&#9733;&nbsp;&nbsp;&nbsp;&nbsp;Submissão Artigos</a></p>
+                                        <p><a href="/Pd_2014CV/faces/model/artigos/ArtigoRevisaoEdit.xhtml">&nbsp;&#9733;&nbsp;&nbsp;&nbsp;&nbsp;Revisão Artigos</a></p>
+                                    </li>
+                                </ul>
+                            </section>
+                        </div>
+                        <div class="3u" id="box4">
+                            <section>
+                                <h2></h2>                                
+                                <ul class="style6">
+                                    <a href="#"><img src="../../images/confInvestigadorFooter.jpeg" alt=""/></a>
+                                    <li class="first"></li>
+                                    <li>
+                                        <h3>Investigadores</h3>
+                                        <p><a href="/Pd_2014CV/faces/model/investigador/LoginUtilizador.xhtml">&nbsp;&#9733;&nbsp;&nbsp;&nbsp;&nbsp;Acesso à sua Área Pessoal</a></p>
+                                        <p><a href="/Pd_2014CV/faces/model/investigador/RegistoUtilizador.xhtml">&nbsp;&#9733;&nbsp;&nbsp;&nbsp;&nbsp;Registo</a></p>
+                                        <p><a href="/Pd_2014CV/faces/model/investigadorAP/InvestigadorDadosPessoais.xhtml">&nbsp;&#9733;&nbsp;&nbsp;&nbsp;&nbsp;Dados Pessoais</a></p>
+                                    </li>
+                                </ul>                                
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="5grid-layout" id="copyright">
+                    <div class="row">
+                        <div class="12u">
+                            <p>&copy; <a href="http://www.ctm.com/">Conference Team Manager</a> | Built: <a href="http://www.isec.pt/">CT and VD</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+
+        </f:view>    
     </h:body>
 
 </html>

@@ -18,7 +18,7 @@
             </ui:define>
 
             <ui:define name="form">
-                
+
                 <div class="boxForm">
 
                     <h:form class="jqtransform">
@@ -36,10 +36,7 @@
                                             <f:selectItems value="#{MBInvestigadorContacto.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
-                                    
-                                    <td>
-                                      <h:commandButton image="../../images/ctm_Search.jpg" action="#{MBConferencia.pesquisar}" />
-                                    </td>
+
                                 </tr>
                                                              
                                 <tr>
@@ -53,14 +50,30 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Introduzir" action="#{MBInvestigadorContacto.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBInvestigadorContacto.gravar()}" />
+
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBInvestigadorContacto.cancelarIntro()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Eliminar" action="#{MBInvestigadorContacto.eliminar()}" />
                                 </td>
 
+                                <td style="width: 15px;"></td>
+                                <td>
+                                  <h:commandButton image="../../images/ctm_Search.jpg" action="#{MBConferencia.pesquisar()}" />
+                                </td>
+                                
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Cancelar" action="#{MBInvestigadorContacto.cancelarAct()}" />
+                                </td>                                
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>
@@ -68,7 +81,7 @@
                         </table>                        
 
                     </h:form>
-                </div>
+                </div>                
                 
             </ui:define>
 

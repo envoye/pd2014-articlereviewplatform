@@ -9,10 +9,11 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Contacto;
 import HibernatePackage.Investigador;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,15 +22,15 @@ import javax.inject.Named;
  * @author Valter
  */
 @Named(value = "MBInvestigadorContacto")
-@ViewScoped
-public class MBInvestigadorContacto {
+@SessionScoped
+public class MBInvestigadorContacto implements Serializable {
     private Investigador investigador=new Investigador();
     private List<Investigador> listaInvestigadores;
      @Inject
     private LoginUtilizador loginUtilizador;
      
     private List<Contacto> listaContactos;
-    private Contacto selectedContacto;
+    private Contacto selectedContacto = new Contacto();
     private int contactoId;
     /**
      * Creates a new instance of MBInvestigadorContacto
@@ -138,15 +139,18 @@ public class MBInvestigadorContacto {
     public String cancelarIntro() {
         return "/model/investigadorAP/InvestigadorContactoEdit.xhtml?faces-redirect=true";
     }    
+
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedContacto);
+        this.selectedContacto = new Contacto();
+        return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
+    }            
     
     public String pesquisar() {
         return "/model/investigadorAP/InvestigadorContactoPesquisa.xhtml?faces-redirect=true";
     }        
     
     public String next() {
-        if(this.selectedContacto.getId() == null) {
-            return "";
-        }
         return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
     }            
 }

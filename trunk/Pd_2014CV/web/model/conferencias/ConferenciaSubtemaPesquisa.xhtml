@@ -10,14 +10,14 @@
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Revisão de Artigo
+                Conference Team Manager - Subtemas
             </ui:define>
 
             <ui:define name="formTitle">
-                
-                <h3 class="subtitle" align="center">
-                    Pesquisa de Revisão de Artigo
-                </h3>
+
+                <h2 class="subtitle" align="center">
+                    Pesquisa de Subtemas para Conferências
+                </h2>                                
                 
             </ui:define>
 
@@ -33,16 +33,16 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 200px; height: 60px;"></td>
-                                    <td align="right" style="width: 80px;">Artigo</td>
+                                    <td align="right" style="width: 80px;">Tema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBArtigoRevisao.artigoRevisaoId}" id="artigoRevisaoInput"  style="width: 200px" >
-                                            <f:selectItems value="#{MBArtigoRevisao.listaArtigoRevisao}" var="artigoRevisaoSel" itemValue="#{artigoRevisaoSel.id}" itemLabel="#{artigoRevisaoSel.conferenciacomiteartigo.artigo.titulo}"/>
+                                        <h:selectOneMenu value="#{MBConferenciaSubtema.subtemaId}" id="SubtemaInput"  style="width: 200px" >
+                                            <f:selectItems value="#{MBConferenciaSubtema.listSubtemas}" var="subtemaSel" itemValue="#{subtemaSel.id}" itemLabel="#{subtemaSel.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
                                     <td style="width: 20px;"></td>
                                     <td>
-                                        <h:commandButton image="../../images/ctm_Next.png" action="#{MBArtigoRevisao.next()}" />
+                                        <h:commandButton image="../../images/ctm_Next.png" action="#{MBConferenciaSubtema.next()}" />
                                     </td>
                                 </tr>  
                                 <tr>
@@ -52,7 +52,7 @@
                         </table>
                         
                     </h:form>
-                </div>                       
+                </div>                                                
                 
             </ui:define>
 

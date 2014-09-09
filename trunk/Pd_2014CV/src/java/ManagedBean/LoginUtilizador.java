@@ -82,6 +82,8 @@ public class LoginUtilizador implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         try {
+            this.investigador = null;
+            this.loggedIn = false;
             request.logout();
             return "/model/principais/PaginaPrincipal.xhtml?faces-redirect=true";
         } catch (ServletException e) {

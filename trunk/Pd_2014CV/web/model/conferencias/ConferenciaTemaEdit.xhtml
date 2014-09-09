@@ -62,7 +62,7 @@
                                                      action="#{MBConferenciaTema.listarSubtemas()}" />
                                 </td>                                
 
-                                <td style="width: 300px;"></td>
+                                <td style="width: 270px;"></td>
 
                                 <td>
                                     <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBConferenciaTema.introduzir()}" />
@@ -77,14 +77,18 @@
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaTema.cancelarAct()}" />
-                                </td>
-
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Eliminar" action="#{MBConferenciaTema.eliminar()}" />
+                                </td>                                
+                                
                                 <td style="width: 15px;"></td>                                
                                 <td>
                                     <h:commandButton image="../../images/ctm_Search.png" value="Pesquisar" action="#{MBConferenciaTema.pesquisar()}" />
                                 </td>                                
                                 
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Cancelar" action="#{MBConferenciaTema.cancelarAct()}" />
+                                </td>
                             </tr>
                             <tr>
                                 <td style="height: 50px;"></td>

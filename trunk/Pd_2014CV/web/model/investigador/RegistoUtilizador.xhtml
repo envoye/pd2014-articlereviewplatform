@@ -17,7 +17,9 @@
 
             
             <ui:define name="formTitle">
-                <h3 class="subtitle" align="center">Registo de acesso à plataforma</h3>
+                <h2 class="subtitle" align="center">
+                    Registo de acesso à plataforma
+                </h2>
             </ui:define>
             
             
@@ -37,7 +39,7 @@
                                     <td align="right" style="width: 250px;" >Nome</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id='nomeInput' size='60' class="form-control" value="#{RegistoUtilizador.nome}"> 
+                                        <h:inputText id='nomeInput' size='60' value="#{RegistoUtilizador.nome}"> 
 <!--                                                  pt:data-validate="required,size(3,60)">-->
                                         </h:inputText> 
                                         <h:message for="NomeInput" style="color:red" />
@@ -49,7 +51,7 @@
                                     <td align="right" style="width: 250px;">Grau Académico</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{RegistoUtilizador.idGrauacademico}" id="GrauacademicoInput" style="width: 200px" class="form-control">
+                                        <h:selectOneMenu value="#{RegistoUtilizador.idGrauacademico}" id="GrauacademicoInput" style="width: 250px">
                                             <f:selectItems value="#{RegistoUtilizador.listGrauacademico}" var="country" itemValue="#{country.id}" itemLabel="#{country.grauacademico}"/>
                                         </h:selectOneMenu>  
                                     </td>
@@ -60,7 +62,7 @@
                                     <td align="right" style="width: 250px;">Instituição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="instituicaoInput" size="60" value="#{RegistoUtilizador.instituicao}" class="form-control">
+                                        <h:inputText id="instituicaoInput" size="60" value="#{RegistoUtilizador.instituicao}">
 <!--                                                pt:data-validate="required,size(2,60)"   --> 
                                         </h:inputText> 
                                         <h:message for="instituicaoInput" style="color:red"  />
@@ -72,7 +74,7 @@
                                     <td align="right" style="width: 250px;">Data de Nascimento</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" class="datetime form-control" size="10"> 
+                                        <h:inputText id="datanascimentoInput" value="#{RegistoUtilizador.datanascimento}" size="10"> 
                                             <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
                                         <h:message for="datanascimentoInput" style="color:red"  />
                                     </td>
@@ -83,7 +85,7 @@
                                     <td align="right" style="width: 250px;">Utilizador</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="utilizadorInput" value="#{RegistoUtilizador.utilizador}" class="form-control">
+                                        <h:inputText id="utilizadorInput" value="#{RegistoUtilizador.utilizador}">
 <!--                                                    pt:data-validate="required,size(3,60)"-->
                                         </h:inputText> 
                                         <h:message for="utilizadorInput" style="color:red" />
@@ -95,7 +97,7 @@
                                     <td align="right" style="width: 250px;">Password</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputSecret id="passwordInput" binding="#{passwordComponent}" value="#{RegistoUtilizador.password}" class="form-control">
+                                        <h:inputSecret id="passwordInput" binding="#{passwordComponent}" value="#{RegistoUtilizador.password}">
                                         </h:inputSecret> 
                                         <h:message for="passwordInput" style="color:red"  />
                                     </td>
@@ -106,7 +108,7 @@
                                     <td align="right" style="width: 250px;">Confirme a Password</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputSecret id="passwordconfInput" value="#{RegistoUtilizador.passwordconf}" class="form-control">
+                                        <h:inputSecret id="passwordconfInput" value="#{RegistoUtilizador.passwordconf}">
                                             <f:validator validatorId="confirmPasswordValidator" />
                                             <f:attribute name="passwordComponent" value="#{passwordComponent}" />
                                         </h:inputSecret> 
@@ -119,7 +121,7 @@
                                     <td align="right" style="width: 250px;">Email</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}"  class="form-control">
+                                        <h:inputText id="emailInput" size="40" value="#{RegistoUtilizador.email}">
 <!--                                                   pt:data-validate="required,email" -->
                                         </h:inputText> 
                                         <h:message for="emailInput" style="color:red"  />
@@ -131,7 +133,7 @@
                                     <td align="right" style="width: 250px;">Telefone</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="telefoneInput" size="20" value="#{RegistoUtilizador.telefone}" class="form-control">
+                                        <h:inputText id="telefoneInput" size="20" value="#{RegistoUtilizador.telefone}">
 <!--                                                pt:data-validate="required"  -->
                                         </h:inputText> 
                                         <h:message for="telefoneInput" style="color:red"  />
@@ -143,7 +145,7 @@
                                     <td align="right" style="width: 250px;">Telemóvel</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="telemovelInput" size="20" value="#{RegistoUtilizador.telemovel}" class="form-control">
+                                        <h:inputText id="telemovelInput" size="20" value="#{RegistoUtilizador.telemovel}">
 <!--                                              pt:data-validate="required"   -->
                                         </h:inputText> 
                                         <h:message for="telemovelInput" style="color:red"  />
@@ -154,17 +156,18 @@
                         
                         <table>
                             <tr>
-                                <td style="width: 500px;"></td>
+                                <td style="width: 600px;"></td>
 
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Save.png" value="Registar" class="btn btn-default" action="#{RegistoUtilizador.registar()}" />
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Registar" action="#{RegistoUtilizador.registar()}" />
                                 </td>
-                            </tr>
-                            <td style="width: 15px;"></td>
-                            <td>
-                                <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{RegistoUtilizador.cancelar()}" />
-                            </td>
-                            <tr>
+
+                                <td style="width: 15px;"></td>
+                            
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{RegistoUtilizador.cancelar()}" />
+                                </td>
+
                                 <td style="height: 50px;"></td>
                             </tr>
                         </table>                                                

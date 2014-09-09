@@ -26,7 +26,7 @@ public class MBItemRevisao implements Serializable {
     private String descricao;
     
     private List<Itemrevisao> listaItemsRevisao;
-    private Itemrevisao selectedItemRevisao;
+    private Itemrevisao selectedItemRevisao = new Itemrevisao();
     private int itemRevisaoId;
     /**
      * Creates a new instance of MBItemRevisao
@@ -131,14 +131,17 @@ public class MBItemRevisao implements Serializable {
         return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
     }
 
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedItemRevisao);
+        this.selectedItemRevisao = new Itemrevisao();
+        return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
+    }        
+    
     public String pesquisar() {
         return "/model/artigos/ItemRevisaoPesquisa.xhtml?faces-redirect=true";
     }        
     
     public String next() {
-        if(this.selectedItemRevisao.getId() == null) {
-            return "";
-        }
         return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
     }    
 }

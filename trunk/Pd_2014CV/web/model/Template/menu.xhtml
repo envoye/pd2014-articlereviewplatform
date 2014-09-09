@@ -37,7 +37,7 @@
                         <li><a href="/Pd_2014CV/faces/model/investigadorAP/AlterarPassword.xhtml">Alterar Password</a></li>
                         <li><a href="/Pd_2014CV/faces/model/investigadorAP/InvestigadorDadosPessoais.xhtml">Dados Pessoais</a></li>
                         <li><a href="/Pd_2014CV/faces/model/investigadorAP/InvestigadorAreaConhecimento.xhtml">Áreas de Conhecimento</a></li>
-                        <li><a href="/Pd_2014CV/faces/model/investigadorAP/InvestigadorContacto.xhtml">Contactos</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/investigadorAP/InvestigadorContactoEdit.xhtml">Contactos</a></li>
                     </ul>
                 </li>
 <!--MENU: Artigos-->
@@ -84,11 +84,18 @@
                     <a style="color: red;">Dados Diversos</a>
                     <ul>
                         <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaTemaEdit.xhtml">Temas</a></li>
-                        <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaSubtema.xhtml">Sub-Temas</a></li>
+                        <li><a href="/Pd_2014CV/faces/model/conferencias/ConferenciaSubtemaEdit.xhtml">Sub-Temas</a></li>
                         <li><a href="/Pd_2014CV/faces/model/investigadorAP/GrauAcademicoEdit.xhtml">Graus Académicos</a></li>
                         <li><a href="/Pd_2014CV/faces/model/artigos/ItemRevisaoEdit.xhtml">Items para Revisões</a></li>
                     </ul>
                 </li> 
+                <li>
+                    <a>
+                        <h:form>
+                            <h:commandLink value="Terminar sessão"  action="#{auth.logout()}" style=" color: white; vertical-align: middle"/>
+                        </h:form>
+                    </a>
+                </li>
             </ul>
         </nav>
         
