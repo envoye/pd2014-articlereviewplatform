@@ -10,15 +10,11 @@
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Contactos
+                Conference Team Manager - Conferências
             </ui:define>
 
             <ui:define name="formTitle">
-                
-                <h3 class="subtitle" align="center">
-                    Pesquisa de Contactos do Investigador
-                </h3>
-                
+                <h3 class="subtitle" align="center">Pesquisa de Edições de Conferências</h3>
             </ui:define>
 
             <ui:define name="form">
@@ -33,16 +29,16 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 200px; height: 60px;"></td>
-                                    <td align="right" style="width: 80px;">Contacto</td>
+                                    <td align="right" style="width: 80px;">Edição</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBInvestigadorContacto.contactoId}" id="contactoInput"  style="width: 200px" >
-                                            <f:selectItems value="#{MBInvestigadorContacto.listaContactos}" var="contactoSel" itemValue="#{contactoSel.id}" itemLabel="#{contactoSel.investigadorByInvestigadorContactId.nome}"/>
+                                        <h:selectOneMenu value="#{MBConferencia.conferenciaId}" id="conferenciaInput"  style="width: 200px" >
+                                            <f:selectItems value="#{MBConferencia.listConferencias}" var="conferenciaSel" itemValue="#{conferenciaSel.id}" itemLabel="#{conferenciaSel.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
                                     <td style="width: 20px;"></td>
                                     <td>
-                                        <h:commandButton image="../../images/ctm_Next.png" action="#{MBInvestigadorContacto.next()}" />
+                                        <h:commandButton image="../../images/ctm_Next.png" action="#{MBConferencia.nextC()}" />
                                     </td>
                                 </tr>  
                                 <tr>
@@ -52,7 +48,7 @@
                         </table>
                         
                     </h:form>
-                </div>                       
+                </div>                                                                
                 
             </ui:define>
 

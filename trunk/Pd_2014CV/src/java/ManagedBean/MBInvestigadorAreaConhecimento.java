@@ -173,21 +173,31 @@ public class MBInvestigadorAreaConhecimento {
     }                    
     
     public String cancelarAct() {
+        this.subtema = new Subtema();
+        this.grauConfianca = 0;
+        this.preferencia = 0;
         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
     public String cancelarIntro() {
+        this.subtema = new Subtema();
+        this.grauConfianca = 0;
+        this.preferencia = 0;        
         return "/model/investigadorAP/InvestigadorAreaConhecimentoEdit.xhtml?faces-redirect=true";
     }        
+
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedArea);
+        this.selectedArea = new Investigadorareaconhecimento();
+        return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
+    }            
     
     public String pesquisar() {
         return "/model/investigadorAP/InvestigadorAreaConhecimentoPesquisa.xhtml?faces-redirect=true";
     }            
     
     public String next() {
-        if(this.selectedArea.getId() == null) {
-            return "";
-        }
-        return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
+        return "/model/investigadorAP/InvestigadorAreaConhecimentoEdit.xhtml?faces-redirect=true";
     }        
+    
 }

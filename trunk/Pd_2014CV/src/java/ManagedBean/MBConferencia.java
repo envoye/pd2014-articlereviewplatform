@@ -42,6 +42,11 @@ public class MBConferencia{
     private List<Tema> listTemas;
       @Inject
     private LoginUtilizador loginUtilizador;
+      
+    private Conferencia selectedConferencia;
+    private int conferenciaId;
+    private List<Conferenciaedicao> ListaEdicoes;
+      
     public String getNome() {
         return nome;
     }
@@ -121,8 +126,6 @@ public class MBConferencia{
         this.configEncerrada = configEncerrada;
     }
 
-  
-
     public List<Conferencia> getListConferencias() {
         if(listConferencias == null){
             listConferencias = (List<Conferencia>)AllHellper.getListQualquerCoisa(Conferencia.class);
@@ -160,6 +163,34 @@ public class MBConferencia{
         this.listTemas = listTemas;
     }
 
+    public Conferencia getSelectedConferencia() {
+        return selectedConferencia;
+    }
+
+    public void setSelectedConferencia(Conferencia selectedConferencia) {
+        this.selectedConferencia = selectedConferencia;
+    }
+
+    public int getConferenciaId() {
+        return conferenciaId;
+    }
+
+    public void setConferenciaId(int conferenciaId) {
+        this.conferenciaId = conferenciaId;
+    }
+
+    public List<Conferenciaedicao> getListaEdicoes() {
+        if(ListaEdicoes == null){
+            String condicao=(" where idConferencia='"+ this.conferenciaId+"''");
+            ListaEdicoes = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class, condicao);
+        }        
+        return ListaEdicoes;
+    }
+
+    public void setListaEdicoes(List<Conferenciaedicao> ListaEdicoes) {
+        this.ListaEdicoes = ListaEdicoes;
+    }
+    
     public String introduzir() {
         return "./model/conferencias/Conferencia.xhtml?faces-redirect=true";
     }
@@ -186,11 +217,19 @@ public class MBConferencia{
     }
     
     public String cancelar() {
-        return  "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+        return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
         
     }
 
     public String pesquisar() {
-        return "index";
+        return "./model/conferencias/ConferenciaPesquisaConferencia.xhtml?faces-redirect=true";
+    }
+    
+    public String nextC() {
+        return "./model/conferencias/ConferenciaPesquisaEdicao.xhtml?faces-redirect=true";        
     }    
+
+    public String nextE() {
+        return "./model/conferencias/ConferenciaEdit.xhtml?faces-redirect=true";
+    }
 }

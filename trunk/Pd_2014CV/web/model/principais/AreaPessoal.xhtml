@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -17,12 +18,7 @@
                 <h3 class="subtitle" align="center">Área Pessoal - Início</h3>
 
             </ui:define>
-<!--            
-            <ui:define name="loginInfo">
 
-
-            </ui:define>            
-            -->
             <ui:define name="form">
                 
                 <div class="boxForm">
@@ -31,14 +27,100 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td style="height: 20px;"></td>
+                                    <td style="width: 5px; height: 40px;"></td>
+                                    <td>
+                                        <h2 class="style5" style="font-size: 16px;">As minhas Conferências</h2>
+                                    </td>                                    
                                 </tr>
                                 <tr>
                                     <td style="width: 5px; height: 50px;"></td>
                                     <td>
-
+                                        <h:dataTable id="listGC" value="#{MBAreaPessoal.listaGC}" var="userGC"
+                                                     border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Conferência"/>
+                                                </f:facet>
+                                                <h:outputText value="#{userGC.subNomeConferencia}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Data" />
+                                                </f:facet>
+                                                <h:outputText value="#{userGC.data}" />
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Local" />
+                                                </f:facet>
+                                                <h:outputText value="#{userGC.local}" />
+                                            </h:column>                                            
+                                        </h:dataTable>                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5px; height: 50px;"></td>
+                                    <td>
+                                        <h2 class="style5" style="font-size: 16px;">As Conferências enquanto Elemento de Comité</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5px; height: 50px;"></td>
+                                    <td>
+                                        <h:dataTable id="listEC" value="#{MBAreaPessoal.listaEC}" var="userEC"
+                                                     border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Conferência"/>
+                                                </f:facet>
+                                                <h:outputText value="#{userEC.subNomeConferencia}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Data" />
+                                                </f:facet>
+                                                <h:outputText value="#{userEC.data}" />
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Artigo" />
+                                                </f:facet>
+                                                <h:outputText value="#{userEC.local}" />
+                                            </h:column>                                            
+                                        </h:dataTable>                                                                                
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5px; height: 50px;"></td>
+                                    <td>
+                                        <h2 class="style5" style="font-size: 16px;">As Conferências onde revejo artigos</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5px; height: 50px;"></td>
+                                    <td>
+                                        <h:dataTable id="listRev" value="#{MBAreaPessoal.listaRev}" var="userRev"
+                                                     border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Conferência"/>
+                                                </f:facet>
+                                                <h:outputText value="#{userRev.subNomeConferencia}"/>
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Data" />
+                                                </f:facet>
+                                                <h:outputText value="#{userRev.data}" />
+                                            </h:column>
+                                            <h:column>
+                                                <f:facet name="header">
+                                                    <h:outputText value="Artigo" />
+                                                </f:facet>
+                                                <h:outputText value="#{userRev.local}" />
+                                            </h:column>                                            
+                                        </h:dataTable>                                        
                                         
-
                                     </td>
                                 </tr>
                                 <tr>
