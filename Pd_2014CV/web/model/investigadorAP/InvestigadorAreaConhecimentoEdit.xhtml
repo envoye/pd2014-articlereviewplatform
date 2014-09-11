@@ -35,7 +35,7 @@
                                     <td align="right" style="width: 80px;">Subtema</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBInvestigadorAreaConhecimento.subtema.id}" id="subtemaInput" style="width: 200px">
+                                        <h:selectOneMenu value="#{MBInvestigadorAreaConhecimento.selectedArea.subtema.id}" id="subtemaInput" style="width: 200px">
                                             <f:selectItems value="#{MBInvestigadorAreaConhecimento.listaSubtemas}" var="subtemas" itemValue="#{subtemas.id}" itemLabel="#{subtemas.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
@@ -46,7 +46,7 @@
                                     <td align="right" style="width: 250px;">Grau de Confiança</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText id="confiancaInput" size="10" class="selector" value="#{MBInvestigadorAreaConhecimento.grauConfianca}" 
+                                        <h:inputText id="confiancaInput" size="10" class="selector" value="#{MBInvestigadorAreaConhecimento.selectedArea.grauConfianca}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -56,7 +56,7 @@
                                     <td align="right" style="width: 250px;">Preferência</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:inputText  id="preferenciaInput" size="10" class="selector" value="#{MBInvestigadorAreaConhecimento.preferencia}" 
+                                        <h:inputText  id="preferenciaInput" size="10" class="selector" value="#{MBInvestigadorAreaConhecimento.selectedArea.preferencia}" 
                                                      required="true" />                                                        
                                     </td>
                                 </tr>                                
@@ -71,12 +71,29 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBInvestigadorAreaConhecimento.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBInvestigadorAreaConhecimento.gravar()}" />
+
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBInvestigadorAreaConhecimento.cancelarIntro()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Eliminar" action="#{MBInvestigadorAreaConhecimento.eliminar()}" />
+                                </td>                                
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Search.png" value="Eliminar" action="#{MBInvestigadorAreaConhecimento.pesquisar()}" />
+                                </td>                                                                
+                                
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Cancelar" action="#{MBInvestigadorAreaConhecimento.cancelarAct()}" />
                                 </td>
 
                             </tr>
@@ -86,7 +103,7 @@
                         </table>                        
                         
                     </h:form>
-                </div>                
+                </div>                                
                 
             </ui:define>
 
