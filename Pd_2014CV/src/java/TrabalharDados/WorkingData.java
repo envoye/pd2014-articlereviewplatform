@@ -8,7 +8,9 @@ package TrabalharDados;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Conferencia;
+import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciaedicao;
+import HibernatePackage.Conferenciapoolrevisores;
 import HibernatePackage.Investigador;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,7 +49,48 @@ public class WorkingData {
        }
    return listConferencia;
    }
+     
+       public static List<Conferenciaedicao> getTodasEdicaosConferenciasAbertasInvestigador(Investigador investigador){
+   Conferencia aux=null;
+   Set<Conferencia> setConferencia=investigador.getConferencias();
+   List<Conferenciaedicao> listConferencia=new ArrayList<Conferenciaedicao>();
+   int id=0;
+       for (Conferencia conferencia : setConferencia) {
+       Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
+        if(isOpenConferenciaedicao(conferenciaedicao)) 
+         listConferencia.add(conferenciaedicao);
+       }
+   return listConferencia;
+   }
    
+       public static List<Conferenciaedicao> getTodasEdicoesConferenciasAbertasInvestigadorComite(Investigador investigador){
+   Conferencia aux=null;
+   Set<Conferenciacomite> setConferenciacomite=investigador.getConferenciacomites();
+   List<Conferenciaedicao> listConferenciaedicao=new ArrayList<Conferenciaedicao>();
+   int id=0;
+       for (Conferenciacomite comite : setConferenciacomite) {
+       Conferenciaedicao conferenciaedicao = comite.getConferenciaedicao();
+        if(isOpenConferenciaedicao(conferenciaedicao)) 
+         listConferenciaedicao.add(conferenciaedicao);
+       }
+   return listConferenciaedicao;
+   }
+       
+          public static List<Conferenciaedicao> getTodasEdicoesConferenciasAbertasInvestigadorRevisores(Investigador investigador){
+   Conferencia aux=null;
+   Set<Conferenciapoolrevisores> setConferenciacomite=investigador.getConferenciapoolrevisoreses();
+   List<Conferenciaedicao> listConferenciaedicao=new ArrayList<Conferenciaedicao>();
+   int id=0;
+       for (Conferenciapoolrevisores revisor : setConferenciacomite) {
+       Conferenciaedicao conferenciaedicao = revisor.getConferenciaedicao();
+        if(isOpenConferenciaedicao(conferenciaedicao)) 
+         listConferenciaedicao.add(conferenciaedicao);
+       }
+   return listConferenciaedicao;
+   }
+     
+     
+     
    public static boolean isOpenConferenciaedicao(Conferenciaedicao conferenciaedicao){
    if(conferenciaedicao.getData().after(new Date())&&conferenciaedicao.getConfiguracaoEncerrada()==false)
    return true;
@@ -56,7 +99,9 @@ public class WorkingData {
    
    public static String getDiasFimConferencia(String nome){
     String condicao=(" as conf where conf.nome='"+ nome+"'");
-
+       try {
+           
+       
         Conferencia conferencia=(Conferencia)AllHellper.getQualquerCoisaCondicao(Conferencia.class,condicao);
         if(conferencia==null)
             return "A conferencia não existe";
@@ -67,12 +112,16 @@ public class WorkingData {
             return ""+(int)( (conferenciaedicao.getData().getTime() - (new Date()).getTime()) / (1000 * 60 * 60 * 24) );
         
         return "Não existem edições abertas"; 
-     
+      } catch (Exception e) {
+    return "erro";
+       }
         
    } 
     public static String getDiasFimConferencia(int id){
    String condicao=(" as conf where conf.id='"+id+"'");
-
+try {
+        
+   
         Conferencia conferencia=(Conferencia)AllHellper.getQualquerCoisaCondicao(Conferencia.class,condicao);
         if(conferencia==null)
            return "A conferencia não existe";
@@ -82,6 +131,9 @@ public class WorkingData {
         if(isOpenConferenciaedicao(conferenciaedicao))
             return ""+(int)( (conferenciaedicao.getData().getTime() - (new Date()).getTime()) / (1000 * 60 * 60 * 24) );
         
-        return "Não existem edições abertas"; 
+        return "Não existem edições abertas";
+     } catch (Exception e) {
+         return "erro";
+    }
    } 
 }
