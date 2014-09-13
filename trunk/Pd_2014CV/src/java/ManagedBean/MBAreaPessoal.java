@@ -38,12 +38,8 @@ public class MBAreaPessoal implements Serializable {
 
     public List<Conferenciaedicao> getListaGC() {
         Investigador i=loginUtilizador.getInvestigador();
-        
-        if (this.listaGC == null){
-            String condicao = "inner join conferencia on conferencia.`Id` = conferenciaedicao.`idConferencia` " 
-                    + "where conferencia.Investigador_Id = '" + i.getId() + "' and data >= curdate();";
-            this.listaGC = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class,condicao);
-        }                
+        listaGC=TrabalharDados.WorkingData.getTodasEdicaosConferenciasAbertasInvestigador(i);
+              
         return listaGC;
     }
 
@@ -52,14 +48,11 @@ public class MBAreaPessoal implements Serializable {
     }
 
     public List<Conferenciaedicao> getListaEC() {
-        if (this.listaEC == null){
-            String condicao = " inner join conferenciacomite on conferenciaedicao.`Id` = conferenciacomite.`idConferenciaEdicao` " 
-                    + "inner join investigador on investigador.`Id` = conferenciacomite.`idInvestigador` " 
-                    + "where investigador.username = '" + this.loginUtilizador.getUsername() + "' "
-                    + "and data >= curdate();";
+       
+          Investigador i=loginUtilizador.getInvestigador();
             
-            this.listaEC = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class,condicao);
-        }                        
+            this.listaEC = TrabalharDados.WorkingData.getTodasEdicoesConferenciasAbertasInvestigadorComite(i);
+                              
         return listaEC;
     }
 
@@ -68,14 +61,8 @@ public class MBAreaPessoal implements Serializable {
     }
 
     public List<Conferenciaedicao> getListaRev() {
-        if (this.listaRev == null){
-            String condicao = " inner join conferenciapoolrevisores on conferenciaedicao.`Id` = conferenciapoolrevisores.`idConferenciaEdicao` " 
-                    + "inner join investigador on investigador.`Id` = conferenciapoolrevisores.`idInvestigador` " 
-                    + "where investigador.username = '" + this.loginUtilizador.getUsername() + "' "
-                    + "and data >= curdate();";
-            
-            this.listaRev = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class,condicao);
-        }                        
+       Investigador i=loginUtilizador.getInvestigador();
+       listaRev=TrabalharDados.WorkingData.getTodasEdicoesConferenciasAbertasInvestigadorRevisores(i);
         return listaRev;
     }
 

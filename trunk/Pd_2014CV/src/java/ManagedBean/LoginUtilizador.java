@@ -16,6 +16,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.WebServiceRef;
+
+
 
 
 /**
@@ -25,6 +28,8 @@ import javax.servlet.http.HttpServletRequest;
 @Named(value = "auth")
 @SessionScoped
 public class LoginUtilizador implements Serializable {
+    
+  
 
     private static final long serialVersionUID = 7765876811740798583L;
     private String username;
@@ -63,7 +68,7 @@ public class LoginUtilizador implements Serializable {
     public String login () {
         
         String condicao=(" as inv where inv.utilizador='"+ username+"' and inv.password='" +password+"'");
-
+        
         investigador=(Investigador)AllHellper.getQualquerCoisaCondicao(Investigador.class,condicao);
 
         if (investigador!=null&& password.equals(investigador.getPassword())&& username.equals(investigador.getUtilizador())) {
@@ -91,4 +96,9 @@ public class LoginUtilizador implements Serializable {
             return "";
         }
     }
+
+    
+
+   
+    
 }
