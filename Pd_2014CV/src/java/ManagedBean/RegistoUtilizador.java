@@ -9,6 +9,7 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Grauacademico;
 import HibernatePackage.Investigador;
+import TrabalharDados.WorkingData;
 import java.util.Date;
 import java.util.List;
 import javax.faces.view.ViewScoped;
@@ -156,8 +157,10 @@ public class RegistoUtilizador {
     }
      
     public String registar () {
+        if(!WorkingData.utilizadorJaExiste(utilizador,email)){
         AllHellper.SaveQualquerCoisa(new Investigador(grauacademico, nome, instituicao, datanascimento, utilizador, password, email, telefone, telemovel, null, null, null, null, null, null,null,null));
-        return "/model/investigador/LoginUtilizador.xhtml?faces-redirect=true";
+        return "/model/investigador/LoginUtilizador.xhtml?faces-redirect=true";}
+        return"";
     }
     
     public String cancelar() {
