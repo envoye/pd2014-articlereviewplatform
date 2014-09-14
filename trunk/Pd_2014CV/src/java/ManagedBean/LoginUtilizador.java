@@ -98,7 +98,9 @@ public class LoginUtilizador implements Serializable {
     }
 
     
-
+public void actualisaInvestigador(){
+this.investigador=AllHellper.getInvestigador(this.investigador.getId());
+}  
    
     
 }

@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.swing.text.StyledEditorKit;
 
 /**
  *
@@ -92,6 +95,8 @@ public class WorkingData {
      
      
    public static boolean isOpenConferenciaedicao(Conferenciaedicao conferenciaedicao){
+       if(conferenciaedicao==null)
+           return false;
    if(conferenciaedicao.getData().after(new Date())&&conferenciaedicao.getConfiguracaoEncerrada()==false)
    return true;
    return false;
@@ -117,6 +122,7 @@ public class WorkingData {
        }
         
    } 
+   
     public static String getDiasFimConferencia(int id){
    String condicao=(" as conf where conf.id='"+id+"'");
 try {
@@ -136,4 +142,48 @@ try {
          return "erro";
     }
    } 
-}
+    
+    
+    public static boolean ConferenciaJaExiste(String nome){
+    String condicao=(" as conf where conf.nome='"+ nome+"'");
+     Conferencia conferencia=null;  
+    try {
+           
+       
+        conferencia=(Conferencia)AllHellper.getQualquerCoisaCondicao(Conferencia.class,condicao);
+       
+            
+        
+      } catch (Exception e) {
+    return true;
+       }
+     if(conferencia!=null)
+         return true;
+     return false;
+        
+   } 
+    
+   //investigador 
+    
+       public static boolean utilizadorJaExiste (String username,String email) {
+           Investigador investigador=null;
+           try {
+             String condicao=(" as inv where inv.utilizador='"+ username+"' or inv.email='" +email+"'");
+        
+             investigador=(Investigador)AllHellper.getQualquerCoisaCondicao(Investigador.class,condicao);
+
+           } catch (Exception e) {
+               return true;
+           }
+           if(investigador!=null)
+           return true;
+           return false;
+       }
+      
+        
+    } 
+    
+    
+    
+    
+
