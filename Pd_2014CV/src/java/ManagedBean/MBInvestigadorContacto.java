@@ -9,6 +9,7 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Contacto;
 import HibernatePackage.Investigador;
+import TrabalharDados.WorkingData;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,19 @@ public class MBInvestigadorContacto implements Serializable {
     private LoginUtilizador loginUtilizador;
      
     private List<Contacto> listaContactos;
+    private List<Investigador> listaContactosPrivados;
+
+    public List<Investigador> getListaContactosPrivados() {
+        Investigador i=loginUtilizador.getInvestigador();
+        this.listaContactosPrivados=WorkingData.GetContactosDoInvestigador(i);
+       
+        return listaContactosPrivados;
+    }
+
+    public void setListaContactosPrivados(List<Investigador> listaContactosPrivados) {
+        
+        this.listaContactosPrivados = listaContactosPrivados;
+    }
     private Contacto selectedContacto = new Contacto();
     private int contactoId;
     /**
@@ -46,33 +60,16 @@ public class MBInvestigadorContacto implements Serializable {
         for(int i=0;i<this.getListaInvestigadores().size();i++){
             if(this.listaInvestigadores.get(i).getId().equals(this.investigador.getId())){
                 this.investigador = this.listaInvestigadores.get(i);
+                break;
             }
         }        
     }
 
     public List<Investigador> getListaInvestigadores() {
-        if(this.listaInvestigadores == null){
-            this.listaInvestigadores = (List<Investigador>)AllHellper.getListQualquerCoisa(Investigador.class);
-        Set<Contacto> Contactos=loginUtilizador.getInvestigador().getContactosForIdInvestigador();
-            for (Contacto contactos : Contactos) {
-               Investigador sub= contactos.getInvestigadorByInvestigadorContactId();
-               int i=sub.getId();
-               ArrayList<Investigador> s=new ArrayList<Investigador>();  
-                for (Investigador invF : this.listaInvestigadores){
-                    if(invF .getId()==i)
-                        s.add(invF);
-                 } 
-                this.listaInvestigadores.removeAll(s);
-            }
-        } 
-        int i=loginUtilizador.getInvestigador().getId();
         
-        for (Investigador invF : this.listaInvestigadores){
-                    if(invF .getId()==i){
-                       this.listaInvestigadores.remove(invF);
-                               break;
-                 } 
-        }
+        Investigador i=loginUtilizador.getInvestigador();
+        this.listaInvestigadores=WorkingData.getListaInvestigadoresNaoAmigos(i);
+       
         
         return this.listaInvestigadores;
     }
@@ -123,7 +120,7 @@ public class MBInvestigadorContacto implements Serializable {
     public String gravar() {
         Contacto contacto=new Contacto(investigador,loginUtilizador.getInvestigador(),0);
         AllHellper.SaveQualquerCoisa(contacto);
-       loginUtilizador.getInvestigador().getContactosForIdInvestigador().add(contacto);
+       loginUtilizador.actualisaInvestigador();
         return "/model/investigadorAP/InvestigadorContactoEdit.xhtml?faces-redirect=true";
     }
 
