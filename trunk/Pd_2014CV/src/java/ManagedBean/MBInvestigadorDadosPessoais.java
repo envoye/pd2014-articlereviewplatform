@@ -9,6 +9,7 @@ package ManagedBean;
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Grauacademico;
 import HibernatePackage.Investigador;
+import TrabalharDados.WorkingData;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
@@ -196,8 +197,15 @@ public class MBInvestigadorDadosPessoais implements Serializable {
     public String atualizar() {
        Investigador i=loginUtilizador.getInvestigador();
         if(i.getPassword().equals(password)){
+              if(!WorkingData.utilizadorJaExiste(utilizador,email)){
             loginUtilizador.setInvestigador(AllHellper.UpdateInvestigador(loginUtilizador.getInvestigador().getId(),grauacademico, nome, instituicao, datanascimento, utilizador, email, telefone, telemovel));
             return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+              }
+              FacesMessage msg = new FacesMessage("Email ou utilizador já utilizados!", "ERROR MSG");
+        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return "";
+              
         }
         FacesMessage msg = new FacesMessage("Erro passWord invalida!", "ERROR MSG");
         msg.setSeverity(FacesMessage.SEVERITY_ERROR);

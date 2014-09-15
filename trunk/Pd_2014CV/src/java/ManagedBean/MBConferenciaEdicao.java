@@ -10,7 +10,9 @@ import HelpersHibernate.AllHellper;
 import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciaedicao;
+import HibernatePackage.Investigador;
 import HibernatePackage.Tema;
+import TrabalharDados.WorkingData;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -137,10 +139,8 @@ public class MBConferenciaEdicao {
     }
 
     public List<Conferencia> getListConferencias() {
-        if(listConferencias == null){
-            listConferencias=new ArrayList<Conferencia>();
-            listConferencias.addAll( loginUtilizador.getInvestigador().getConferencias());
-        }
+        Investigador i=loginUtilizador.getInvestigador();
+       listConferencias=WorkingData.getTodasConferenciasFechadasInvestigador(i);
         return listConferencias;
     }
 
@@ -179,16 +179,10 @@ public class MBConferenciaEdicao {
     public String gravar() {
         Conferenciaedicao confEd=new Conferenciaedicao(temaEdicao, conferencia, subNome, descricao, data, local, edicao, limiteSubmissao, maxArtigosRevisor, maxArtigos, false, null, null, null);
         AllHellper.SaveQualquerCoisa(confEd);
-         AllHellper.SaveQualquerCoisa(new Conferenciacomite(confEd, loginUtilizador.getInvestigador()));
-        for (Conferencia conferencia1 : loginUtilizador.getInvestigador().getConferencias()) {
-            if(conferencia1.getId()==conferencia.getId()){
-                loginUtilizador.getInvestigador().getConferencias().remove(conferencia1);
-             conferencia1.getConferenciaedicaos().add(confEd);
-                loginUtilizador.getInvestigador().getConferencias().add(conferencia1);
-             break;
-            }
-        }
- loginUtilizador.setInvestigador(AllHellper.getInvestigador(loginUtilizador.getInvestigador().getId()));
+        AllHellper.SaveQualquerCoisa(new Conferenciacomite(confEd, loginUtilizador.getInvestigador()));
+        loginUtilizador.actualisaInvestigador();
+        
+        
          return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     

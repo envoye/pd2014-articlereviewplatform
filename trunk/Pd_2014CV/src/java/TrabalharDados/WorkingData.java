@@ -11,6 +11,7 @@ import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Conferenciapoolrevisores;
+import HibernatePackage.Contacto;
 import HibernatePackage.Investigador;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,6 +49,19 @@ public class WorkingData {
        for (Conferencia conferencia : setConferencia) {
        Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
         if(isOpenConferenciaedicao(conferenciaedicao)) 
+         listConferencia.add(conferencia);
+       }
+   return listConferencia;
+   }
+     
+       public static List<Conferencia> getTodasConferenciasFechadasInvestigador(Investigador investigador){
+   Conferencia aux=null;
+   Set<Conferencia> setConferencia=investigador.getConferencias();
+   List<Conferencia> listConferencia=new ArrayList<Conferencia>();
+   int id=0;
+       for (Conferencia conferencia : setConferencia) {
+       Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
+        if(!isOpenConferenciaedicao(conferenciaedicao)) 
          listConferencia.add(conferencia);
        }
    return listConferencia;
@@ -179,7 +193,52 @@ try {
            return true;
            return false;
        }
-      
+     
+       public static List<Investigador> GetContactosDoInvestigador(Investigador investigador){
+       
+        List<Investigador>  listaInvestigadores=new ArrayList<Investigador>();
+            Set<Contacto> Contactos=investigador.getContactosForIdInvestigador();
+            for (Contacto contactos : Contactos) {
+               Investigador sub= contactos.getInvestigadorByInvestigadorContactId();
+               listaInvestigadores.add(sub);
+            }
+       return listaInvestigadores;
+       }
+       
+       
+          public static List<Investigador> getListaInvestigadoresNaoAmigos(Investigador investigador) {
+             
+            List<Investigador>  listaInvestigadores = (List<Investigador>)AllHellper.getListQualquerCoisa(Investigador.class);
+            List<Investigador>  listaContactos=GetContactosDoInvestigador(investigador);
+            
+            for (Investigador contactos : listaContactos) {
+              
+               int i=contactos.getId();
+                 
+                for (Investigador invF : listaInvestigadores){
+                    if(invF .getId()==i){
+                        listaInvestigadores.remove(invF);
+                        break;
+                    }
+                 } 
+                
+            }
+        
+        int i=investigador.getId();
+        
+        for (Investigador invF : listaInvestigadores){
+                    if(invF .getId()==i){
+                       listaInvestigadores.remove(invF);
+                       break;
+                 } 
+        }
+        
+        return listaInvestigadores;
+    } 
+       
+       
+       
+       
         
     } 
     
