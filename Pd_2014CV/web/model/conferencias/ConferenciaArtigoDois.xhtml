@@ -33,11 +33,7 @@
                                     <td style="width: 10px; height: 45px;"></td>
                                     <td align="right" style="width: 250px;">Edição</td>
                                     <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:selectOneMenu value="#{MBConferenciaArtigo.conferenciaedicao.id}" id="edicaoInput" style="width: 300px">
-                                            <f:selectItems value="#{MBConferenciaArtigo.listaEdicoes}" var="edicao" itemValue="#{edicao.id}" itemLabel="#{edicao.edicao}"/>
-                                        </h:selectOneMenu>                                          
-                                    </td>
+                                   
                                 </tr>                                
 <!-- Artigo -->
                                 <tr>
@@ -45,7 +41,7 @@
                                     <td align="right" style="width: 250px;">Artigo</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaArtigo.artigo.id}" id="artigoInput" style="width: 300px">
+                                        <h:selectOneMenu value="#{MBConferenciaArtigo.idartigo}" id="artigoInput" style="width: 300px">
                                             <f:selectItems value="#{MBConferenciaArtigo.listaArtigos}" var="artigos" itemValue="#{artigos.id}" itemLabel="#{artigos.titulo}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
@@ -56,7 +52,7 @@
                                     <td align="right" style="width: 250px;">Publicar?</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectBooleanCheckbox id="publicarInput" value="#{MBConferenciaArtigo.isPublicar}"/>
+                                      
                                     </td>
                                 </tr>                                
                                 <tr>
@@ -69,21 +65,16 @@
                             <tr>
                                 <td style="width: 500px;"></td>
 
-                                <td>
-                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBConferenciaArtigo.introduzir()}" />
-                        </td>
+                            
                                 <td style="width: 15px;"></td>
 
                                 <td>
 
-                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaArtigo.gravar()}" />
+                                    <h:commandButton image="../../images/ctm_Save.png" value="gravar" action="#{MBConferenciaArtigo.gravar()}" />
 
                                 </td>
 
-                                <td style="width: 15px;"></td>
-                                <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaArtigo.cancelar()}" />
-                                </td>
+                                
 
                             </tr>
                             <tr>

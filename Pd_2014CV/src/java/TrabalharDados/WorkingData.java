@@ -7,7 +7,9 @@
 package TrabalharDados;
 
 import HelpersHibernate.AllHellper;
+import HibernatePackage.Artigo;
 import HibernatePackage.Conferencia;
+import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciacomite;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Conferenciapoolrevisores;
@@ -106,7 +108,20 @@ public class WorkingData {
    return listConferenciaedicao;
    }
      
-     
+          public static List<Conferencia> getTodasEdicaosConferenciasAbertasTodosUtilizadores(){
+   Conferencia aux=null;
+   List<Conferencia> setConferencia=(List<Conferencia>)AllHellper.getListQualquerCoisa(Conferencia.class);
+   List<Conferencia> listConferencia=new ArrayList<Conferencia>();
+   int id=0;
+       for (Conferencia conferencia : setConferencia) {
+       Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
+        if(isOpenConferenciaedicao(conferenciaedicao)) 
+         listConferencia.add(conferencia);
+       }
+   return listConferencia;
+   }
+          
+    
      
    public static boolean isOpenConferenciaedicao(Conferenciaedicao conferenciaedicao){
        if(conferenciaedicao==null)
@@ -236,8 +251,50 @@ try {
         return listaInvestigadores;
     } 
        
-       
-       
+         public static List<Artigo> getListaArtigosInvestigador(Investigador investigador) {
+        
+           ArrayList<Artigo>  listaArtigos=new ArrayList<Artigo> ();
+         try{
+            listaArtigos.addAll(investigador.getArtigos());
+         }catch(Exception ex){
+        
+         }
+                       
+        return listaArtigos;
+    }
+           public static List<Artigo> getListaArtigosConferenciaedicao(Conferenciaedicao conferenciaedicao) {
+        
+           ArrayList<Artigo>  listaArtigos=new ArrayList<Artigo> ();
+         try{
+             for (Conferenciaartigo listaArtigo : conferenciaedicao.getConferenciaartigos()) {
+                 Artigo a=listaArtigo.getArtigo();
+                 if(a!=null)
+                listaArtigos.add(a);
+             }
+           
+         }catch(Exception ex){
+        
+         }
+                       
+        return listaArtigos;
+    }
+        public static List<Artigo> getListaArtigosConferenciaedicaoNaoSubmetidosInvestigador(Conferenciaedicao conferenciaedicao, Investigador investigador) {
+        
+           ArrayList<Artigo>  listaArtigos=new ArrayList<Artigo> ();
+           List<Artigo>  InvestigadorArtigos=getListaArtigosInvestigador(investigador);
+           List<Artigo>  ConferenciaedicaoArtigos=getListaArtigosConferenciaedicao(conferenciaedicao);
+            for (Artigo artigo : InvestigadorArtigos) {
+                for (Artigo ConferenciaedicaoArtigo : ConferenciaedicaoArtigos) {
+                 if(ConferenciaedicaoArtigo.getId()==artigo.getId()){
+                 listaArtigos.add(artigo);
+                 break;
+                 }   
+                }
+                
+            }
+            InvestigadorArtigos.removeAll(listaArtigos);
+        return  InvestigadorArtigos;
+    }  
        
         
     } 

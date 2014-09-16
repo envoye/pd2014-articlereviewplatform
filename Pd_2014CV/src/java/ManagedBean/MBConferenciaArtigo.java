@@ -11,11 +11,14 @@ import HibernatePackage.Artigo;
 import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciaedicao;
+import HibernatePackage.Investigador;
+import TrabalharDados.WorkingData;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,7 +28,7 @@ import javax.inject.Named;
  */
 @Named(value = "MBConferenciaArtigo")
 @SessionScoped
-public class MBConferenciaArtigo implements Serializable {
+public class MBConferenciaArtigo implements Serializable  {
     private Conferenciaedicao conferenciaedicao=new Conferenciaedicao();
     private Artigo artigo=new Artigo();
     private boolean publicar;
@@ -33,49 +36,45 @@ public class MBConferenciaArtigo implements Serializable {
     private List<Artigo> listaArtigos;
     @Inject
      private LoginUtilizador loginUtilizador;
+    
+    private int id=0;
+    private int idartigo=0;
+
+    public int getIdartigo() {
+        return idartigo;
+    }
+
+    public void setIdartigo(int idartigo) {
+        this.idartigo = idartigo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
     private Conferencia conferencia=new Conferencia();    
+
+    public Conferencia getConferencia() {
+        return conferencia;
+    }
+
+    public void setConferencia(Conferencia conferencia) {
+        this.conferencia = conferencia;
+    }
     /**
      * Creates a new instance of MBConferenciaArtigo
      */
     public MBConferenciaArtigo() {
     }
 
-    public Conferenciaedicao getConferenciaedicao() {
-        return conferenciaedicao;
-    }
+   
 
-    public void setConferenciaedicao(Conferenciaedicao conferenciaedicao) {
-        Conferencia c = null;
-        int id=0;
-         for (Conferencia conferenciaedicao2 : listaEdicoes){
-             if(conferenciaedicao2.getId()==conferenciaedicao.getId()){
-                c=conferenciaedicao2;
-                break;
-             }
-         }
-        int corentId=0;
-         for (Conferenciaedicao conferenciaedicao2 : c.getConferenciaedicaos()) {
-                    if(conferenciaedicao2.getId()>corentId){
-                    this.conferenciaedicao=conferenciaedicao2;
-                    corentId=conferenciaedicao2.getId();
-                    }
-                        
-                }
-        
-    }
-
-    public Artigo getArtigo() {
-        return artigo;
-    }
-
-    public void setArtigo(Artigo artigo) {
-         for(int i=0;i<getListaArtigos().size();i++){
-            if(getListaArtigos().get(i).getId().equals(this.artigo.getId())){
-                this.artigo = getListaArtigos().get(i);
-            }
-        }
-        
-    }
+  
 
     public Boolean isPublicar() {
         return publicar;
@@ -86,23 +85,7 @@ public class MBConferenciaArtigo implements Serializable {
     }
 
     public List<Conferencia> getListaEdicoes() {
-        if(this.listaEdicoes == null){
-            this.listaEdicoes = new ArrayList<Conferencia>();
-            List<Conferencia> lConferencia=(List<Conferencia>)AllHellper.getListQualquerCoisa(Conferencia.class);
-            for (Conferencia conferencia1 : lConferencia) {
-                Conferenciaedicao aux = null;
-                int corentId=0;
-                for (Conferenciaedicao conferenciaedicao2 : conferencia1.getConferenciaedicaos()) {
-                    if(conferenciaedicao2.getId()>corentId){
-                    aux=conferenciaedicao2;
-                    corentId=conferenciaedicao2.getId();
-                    }
-                        
-                }
-                if(aux!=null  && (new Date().before( aux.getDataLimiteSubmissao())))
-                this.listaEdicoes.add(conferencia1);
-            }
-        }        
+       listaEdicoes= WorkingData.getTodasEdicaosConferenciasAbertasTodosUtilizadores();
         return listaEdicoes;
     }
 
@@ -111,14 +94,8 @@ public class MBConferenciaArtigo implements Serializable {
     }
 
     public List<Artigo> getListaArtigos() {
-        if(this.listaArtigos == null){
-           this.listaArtigos=new ArrayList<Artigo> ();
-         try{
-            this.listaArtigos.addAll(loginUtilizador.getInvestigador().getArtigos());
-         }catch(Exception ex){
-         return null;
-         }
-        }                
+        
+       listaArtigos= WorkingData.getListaArtigosConferenciaedicaoNaoSubmetidosInvestigador(conferenciaedicao,loginUtilizador.getInvestigador());               
         return listaArtigos;
     }
 
@@ -131,11 +108,18 @@ public class MBConferenciaArtigo implements Serializable {
     }
     
     public String gravar() {
-        setConferenciaedicao(conferenciaedicao);
-        setArtigo(artigo);
+         if(idartigo==0)
+            return"";
+        for (Artigo Edicoe : listaArtigos) {
+             if(Edicoe.getId()==idartigo){
+             artigo=Edicoe;
+             break;
+             }
+            }
+        
         AllHellper.SaveQualquerCoisa(new Conferenciaartigo(conferenciaedicao, artigo, false));
-        loginUtilizador.setInvestigador(AllHellper.getInvestigador(loginUtilizador.getInvestigador().getId()));
-        return "/model/conferencias/ConferenciaComiteArtigo.xhtml?faces-redirect=true";
+        loginUtilizador.actualisaInvestigador();
+         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
     
     public String cancelar() {
@@ -147,9 +131,16 @@ public class MBConferenciaArtigo implements Serializable {
     }    
     
     public String next() {
-        if(conferencia.getId()>=0)
-            return "/model/conferencias/ConferenciaComiteArtigoDois.xhtml?faces-redirect=true";
-        else
-            return "";
+        if(id==0)
+            return"";
+        for (Conferencia Edicoe : listaEdicoes) {
+             if(Edicoe.getId()==id){
+             conferencia=Edicoe;
+             break;
+             }
+            }
+        this.conferenciaedicao=WorkingData.getUltimaEdição(conferencia);
+            return "/model/conferencias/ConferenciaArtigoDois.xhtml?faces-redirect=true";
+       
     }
 }
