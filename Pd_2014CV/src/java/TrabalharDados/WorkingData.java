@@ -296,6 +296,43 @@ try {
         return  InvestigadorArtigos;
     }  
        
+              public static List<Investigador> getComiteEdicao(Conferenciaedicao conferenciaedicao) {
+        
+           ArrayList<Investigador>  listaInvestigadores=new ArrayList<Investigador> ();
+         try{
+             for (Conferenciacomite conferenciacomite  : conferenciaedicao.getConferenciacomites()) {
+                 Investigador i=conferenciacomite.getInvestigador();
+                 if(i!=null)
+                listaInvestigadores.add(i);
+             }
+           
+         }catch(Exception ex){
+        
+         }
+                       
+        return listaInvestigadores;
+    }
+        
+        public static List<Investigador> getListaInvestigadoresConferenciaedicaoLivres(Conferenciaedicao conferenciaedicao,Investigador investigador) {
+        
+           ArrayList<Investigador>  listInvestigador=new ArrayList<Investigador> ();
+           List<Investigador>  Investigadoramigos=GetContactosDoInvestigador(investigador);
+           List<Investigador>  ConferenciaedicaoInvestigador=getComiteEdicao(conferenciaedicao);
+            for (Investigador inv : Investigadoramigos) {
+                for (Investigador Com : ConferenciaedicaoInvestigador) {
+                 if(Com.getId()==inv.getId()){
+                 listInvestigador.add(inv);
+                 break;
+                 }   
+                }
+                
+            }
+            Investigadoramigos.removeAll(listInvestigador);
+        return  Investigadoramigos;
+    }  
+        
+        
+        
         
     } 
     
