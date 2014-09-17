@@ -136,6 +136,44 @@ public class WorkingData {
         return false;
     }
 
+    public static List<Conferenciaedicao> getListEdicoesPassadas() {
+        Conferencia aux = null;
+        List<Conferencia> setConferencia = (List<Conferencia>) AllHellper.getListQualquerCoisa(Conferencia.class);
+        List<Conferenciaedicao> listConferencia = new ArrayList<Conferenciaedicao>();
+        int id = 0;
+        for (Conferencia conferencia : setConferencia) {
+            Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
+            if (isEdicaoPassada(conferenciaedicao)) {
+                listConferencia.add(conferenciaedicao);
+            }
+        }
+        return listConferencia;
+    }    
+
+    public static List<Conferenciaedicao> getListEdicoesFuturas() {
+        Conferencia aux = null;
+        List<Conferencia> setConferencia = (List<Conferencia>) AllHellper.getListQualquerCoisa(Conferencia.class);
+        List<Conferenciaedicao> listConferencia = new ArrayList<Conferenciaedicao>();
+        int id = 0;
+        for (Conferencia conferencia : setConferencia) {
+            Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
+            if (!isEdicaoPassada(conferenciaedicao)) {
+                listConferencia.add(conferenciaedicao);
+            }
+        }
+        return listConferencia;
+    }        
+    
+    public static boolean isEdicaoPassada(Conferenciaedicao conferenciaedicao) {
+        if (conferenciaedicao == null) {
+            return false;
+        }
+        if (conferenciaedicao.getData().before(new Date())) {
+            return true;
+        }
+        return false;
+    }    
+    
     public static String getDiasFimConferencia(String nome) {
         String condicao = (" as conf where conf.nome='" + nome + "'");
         try {
