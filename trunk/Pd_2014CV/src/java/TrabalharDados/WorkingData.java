@@ -336,6 +336,7 @@ public class WorkingData {
             }
 
         }
+        
         Investigadoramigos.removeAll(listInvestigador);
         return Investigadoramigos;
     }
