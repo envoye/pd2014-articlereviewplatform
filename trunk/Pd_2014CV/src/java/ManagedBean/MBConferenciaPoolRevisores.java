@@ -37,7 +37,20 @@ public class MBConferenciaPoolRevisores implements Serializable {
     private List<Conferenciaedicao> listaEdicoes;
     private List<Investigador> listaInvestigadores;
     private List<Conferencia> listConferencias;
-      
+    
+    private Conferenciaedicao selectedEdicao = new Conferenciaedicao();
+    private int edicaoId;
+
+    private Investigador selectedInvestigador = new Investigador();
+    private int investigadorId;
+
+    
+    private List<Conferenciapoolrevisores> listaPoolRevisores;
+    private Conferenciapoolrevisores selectedRevisor = new Conferenciapoolrevisores();
+    private int revisorId;
+
+    private int opcao = 2;
+    
     public Conferencia getConferencia() {
         return conferencia;
     }
@@ -55,7 +68,7 @@ public class MBConferenciaPoolRevisores implements Serializable {
         listConferencias=new ArrayList<Conferencia>();
             Set<Conferencia> conf=loginUtilizador.getInvestigador().getConferencias();
         
-            listConferencias .addAll(conf);
+            listConferencias.addAll(conf);
         }
         return listConferencias;
     }
@@ -149,9 +162,101 @@ public class MBConferenciaPoolRevisores implements Serializable {
     public void setListaInvestigadores(List<Investigador> listaInvestigadores) {
         this.listaInvestigadores = listaInvestigadores;
     }
+
+    public Conferenciaedicao getSelectedEdicao() {
+        if (this.selectedEdicao.getId() == null) {
+            this.selectedEdicao = new Conferenciaedicao();
+        }                
+        return selectedEdicao;
+    }
+
+    public void setSelectedEdicao(Conferenciaedicao selectedEdicao) {
+        this.selectedEdicao = selectedEdicao;
+    }
+
+    public int getEdicaoId() {
+        return edicaoId;
+    }
+
+    public void setEdicaoId(int edicaoId) {
+        this.edicaoId = edicaoId;
+        for (int i=0;i<this.getListaEdicoes().size();i++){
+            if (this.listaEdicoes.get(i).getId() == edicaoId){
+                this.selectedEdicao = this.listaEdicoes.get(i);
+            }
+        }            
+    }
+
+    public Investigador getSelectedInvestigador() {
+        if (this.selectedInvestigador.getId() == null) {
+            this.selectedInvestigador = new Investigador();
+        }                        
+        return selectedInvestigador;
+    }
+
+    public void setSelectedInvestigador(Investigador selectedInvestigador) {
+        this.selectedInvestigador = selectedInvestigador;
+    }
+
+    public int getInvestigadorId() {
+        return investigadorId;
+    }
+
+    public void setInvestigadorId(int investigadorId) {
+        this.investigadorId = investigadorId;
+        for (int i=0;i<this.getListaInvestigadores().size();i++){
+            if (this.listaInvestigadores.get(i).getId() == investigadorId){
+                this.selectedInvestigador = this.listaInvestigadores.get(i);
+            }
+        }                    
+    }
+   
+    public List<Conferenciapoolrevisores> getListaPoolRevisores() {
+        if (listaPoolRevisores == null){
+            listaPoolRevisores = (List<Conferenciapoolrevisores>)AllHellper.getListQualquerCoisa(Conferenciapoolrevisores.class);
+        }                        
+        return listaPoolRevisores;
+    }
+
+    public void setListaPoolRevisores(List<Conferenciapoolrevisores> listaPoolRevisores) {
+        this.listaPoolRevisores = listaPoolRevisores;
+    }
+
+    public Conferenciapoolrevisores getSelectedRevisor() {
+        if (this.selectedRevisor.getId() == null) {
+            this.selectedRevisor = new Conferenciapoolrevisores();
+        }                
+        return selectedRevisor;
+    }
+
+    public void setSelectedRevisor(Conferenciapoolrevisores selectedRevisor) {
+        this.selectedRevisor = selectedRevisor;
+    }
+
+    public int getRevisorId() {
+        return revisorId;
+    }
+
+    public void setRevisorId(int revisorId) {
+        this.revisorId = revisorId;
+        for (int i=0;i<this.getListaPoolRevisores().size();i++){
+            if (this.listaPoolRevisores.get(i).getId() == revisorId){
+                this.selectedRevisor = this.listaPoolRevisores.get(i);
+            }
+        }                                
+    }
+
+    public int getOpcao() {
+        return opcao;
+    }
+
+    public void setOpcao(int opcao) {
+        this.opcao = opcao;
+    }
     
     public String introduzir() {
-        return "/model/conferencias/ConferenciaPoolRevisores.xhtml?faces-redirect=true";
+        this.opcao = 1;
+        return "/model/conferencias/ConferenciaPoolRevisoresPesquisa.xhtml?faces-redirect=true";
     }
     
     public String gravar() {
@@ -169,21 +274,40 @@ public class MBConferenciaPoolRevisores implements Serializable {
                 }
                 if(confEd!=null)
         AllHellper.SaveQualquerCoisa(new Conferenciapoolrevisores(confEd, this.investigador, this.classificacao, this.estado, this.dataInicioConvite, this.dataFimConvite, null));
-        return "/model/conferencias/ConferenciaPoolRevisores.xhtml?faces-redirect=true";
+        return "/model/conferencias/ConferenciaPoolRevisoresEdit.xhtml?faces-redirect=true";
     }
     
-    public String cancelar() {
+    public String cancelarAct() {
         return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
     }
 
-    public String pesquisar() {
-        return "index";
-    } 
-    
-     public String next() {
-        if(conferencia.getId()>=0)
-            return "/model/conferencias/ConferenciaPoolRevisoresDois.xhtml?faces-redirect=true";
-        else
-            return "";
+    public String cancelarIntro() {
+        return "/model/conferencias/ConferenciaPoolRevisoresEdit.xhtml?faces-redirect=true";
     }
+    
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedRevisor);
+        this.selectedRevisor = new Conferenciapoolrevisores();
+        return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
+    }        
+    
+    public String pesquisar() {
+        this.opcao = 2;
+        return "/model/conferencias/ConferenciaPoolRevisoresPesquisa.xhtml?faces-redirect=true";
+    } 
+        
+     public String next() {
+        if (this.opcao == 1) {
+            return "/model/conferencias/ConferenciaPoolRevisores.xhtml?faces-redirect=true";            
+        } 
+        else {
+            if (this.opcao == 2) {
+                return "/model/conferencias/ConferenciaPoolRevisoresEdit.xhtml?faces-redirect=true";
+            }
+            else {
+                return "/model/principais/AreaPessoal.xhtml?faces-redirect=true";
+            }
+        }
+     }
+     
 }

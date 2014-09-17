@@ -71,72 +71,6 @@
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
-<!-- Preferencia -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">
-                                        <h:outputLabel for="PrefInput">
-                                            Preferência
-                                        </h:outputLabel>                                                                                
-                                    </td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="preferenciaInput" size="10" value="#{MBArtigoRevisao.preferencia}" 
-                                                     required="true" />                                                        
-                                    </td>
-                                </tr>                                
-<!-- Pontuação -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td align="right" style="width: 250px;">
-                                        <h:outputLabel for="PontuacaoInput">
-                                            Pontuação
-                                        </h:outputLabel>                                                                                
-                                    </td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="pontuacaoInput" size="10" value="#{MBArtigoRevisao.pontuacao}" 
-                                                     required="true" />                                                        
-                                    </td>
-                                </tr>                                
-                            </tbody>        
-                        </table>
-                        
-                        
-                        
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td style="height: 20px;"></td>
-                                </tr>
-<!-- Estado Revisão -->
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>                                    
-                                    <td align="right" style="width: 250px;">Revisto por</td>
-                                    <td align="right" style="width: 100px; font-weight: bold;">Revisor</td>
-                                    <td align="right" style="width: 100px; font-weight: bold;">Auto</td>
-                                    <td align="right" style="width: 150px; font-weight: bold;">GeneralChair</td>                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td style="width: 10px; height: 30px;"></td>
-                                    <td style="width: 270px;"></td>
-<!-- Revisto: Revisor -->                                    
-                                    <td>
-                                        <h:selectBooleanCheckbox id="estadoRevisorInput" value="#{MBArtigoRevisao.isEstadoRevisor()}" style="width: 100px;"/>
-                                    </td>
-<!-- Estado Auto -->
-                                    <td>
-                                        <h:selectBooleanCheckbox id="estadoAutoInput" value="#{MBArtigoRevisao.isEstadoAuto()}" style="width: 110px;"/>
-                                    </td>
-<!-- Estado GC -->
-                                    <td>
-                                        <h:selectBooleanCheckbox id="estadoGCInput" value="#{MBArtigoRevisao.isEstadoGc()}" style="width: 110px;"/>
-                                    </td>
-                                </tr>                                
 
                                 <tr>
                                     <td style="height: 40px;"></td>
@@ -149,19 +83,12 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBArtigoRevisao.introduzir()}" />
-                        </td>
-                                <td style="width: 15px;"></td>
-
-                                <td>
-
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBArtigoRevisao.gravar()}" />
-
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBArtigoRevisao.cancelar()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBArtigoRevisao.cancelarIntro()}" />
                                 </td>
 
                             </tr>
@@ -176,24 +103,6 @@
             </ui:define>
 
         </ui:composition>
-
-        <script>
-            $(document).ready(function(){
-                $("#AR").validate({
-                    rules: {
-                        'AR:preferenciaInput': {
-                            required: true,
-                            minlength: 3,
-                            maxlength: 60
-                        },
-
-                        'AR:pontuacaoInput': {
-                            required: true
-                        }
-                    }
-                });
-            });
-        </script>        
         
     </body>
 </html>

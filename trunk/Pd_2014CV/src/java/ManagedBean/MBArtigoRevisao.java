@@ -37,7 +37,7 @@ public class MBArtigoRevisao implements Serializable {
     private List<Artigorevisaoitems> listaItemsRevisao;
 
     private List<Artigorevisao> listaArtigoRevisao;
-    private Artigorevisao selectedArtigoRevisao;
+    private Artigorevisao selectedArtigoRevisao = new Artigorevisao(new Conferenciacomiteartigo(), new Conferenciapoolrevisores());
     private int artigoRevisaoId;
     
     /**
@@ -196,11 +196,18 @@ public class MBArtigoRevisao implements Serializable {
     public String pesquisar() {
         return "/model/artigos/ArtigoRevisaoPesquisa.xhtml?faces-redirect=true";
     }        
+
+    public String eliminar() {
+        AllHellper.DelQualquerCoisa(this.selectedArtigoRevisao);
+        this.selectedArtigoRevisao = new Artigorevisao();
+        return "/model/investigadorAP/GrauAcademicoEdit.xhtml?faces-redirect=true";
+    }        
     
     public String next() {
-        if(this.selectedArtigoRevisao.getId() == null) {
-            return "";
-        }
         return "/model/artigos/ItemRevisaoEdit.xhtml?faces-redirect=true";
     }        
+    
+    public String acessoForum() {
+        return "/model/chat/Chat.xhtml?faces-redirect=true";
+    }
 }

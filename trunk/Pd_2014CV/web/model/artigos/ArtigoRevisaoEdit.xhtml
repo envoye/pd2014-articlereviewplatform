@@ -1,25 +1,200 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                title
+                Conference Team Manager - Revisão de Artigo
             </ui:define>
 
             <ui:define name="formTitle">
-                formTitle
+                <h3 class="subtitle" align="center">Revisão de Artigo</h3>
             </ui:define>
 
             <ui:define name="form">
-                form
+
+                <div class="boxForm">
+
+                    <h:form id="AR" class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!-- Artigo -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="ArtigoInput">
+                                            Artigo
+                                        </h:outputLabel>                                        
+                                        
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBArtigoRevisao.selectedArtigoRevisao.conferenciacomiteartigo.id}" id="artigoInput" style="width: 300px">
+                                            <f:selectItems value="#{MBArtigoRevisao.listaArtigos}" var="artigos" itemValue="#{artigos.id}" itemLabel="#{artigos.titulo}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>
+<!-- Revisor -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="RevisorInput">
+                                            Revisor
+                                        </h:outputLabel>                                        
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBArtigoRevisao.selectedArtigoRevisao.conferenciapoolrevisores.id}" id="revisorInput" style="width: 300px">
+                                            <f:selectItems value="#{MBArtigoRevisao.listaRevisores}" var="revisores" itemValue="#{revisores.id}" itemLabel="#{revisores.investigador.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>                                
+<!-- Preferencia -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="PrefInput">
+                                            Preferência
+                                        </h:outputLabel>                                                                                
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="preferenciaInput" size="10" value="#{MBArtigoRevisao.selectedArtigoRevisao.preferencia}" 
+                                                     required="false" />                                                        
+                                    </td>
+                                </tr>                                
+<!-- Pontuação -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="PontuacaoInput">
+                                            Pontuação
+                                        </h:outputLabel>                                                                                
+                                    </td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:inputText id="pontuacaoInput" size="10" value="#{MBArtigoRevisao.selectedArtigoRevisao.pontuacao}" 
+                                                     required="false" />                                                        
+                                    </td>
+                                </tr>                                
+                            </tbody>        
+                        </table>
+                        
+                        
+                        
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!-- Estado Revisão -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>                                    
+                                    <td align="right" style="width: 250px;">Revisto por</td>
+                                    <td align="right" style="width: 100px; font-weight: bold;">Revisor</td>
+                                    <td align="right" style="width: 100px; font-weight: bold;">Auto</td>
+                                    <td align="right" style="width: 150px; font-weight: bold;">GeneralChair</td>                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td style="width: 270px;"></td>
+<!-- Revisto: Revisor -->                                    
+                                    <td>
+                                        <h:selectBooleanCheckbox id="estadoRevisorInput" value="#{MBArtigoRevisao.selectedArtigoRevisao.estadoRevisor}" style="width: 100px;"/>
+                                    </td>
+<!-- Estado Auto -->
+                                    <td>
+                                        <h:selectBooleanCheckbox id="estadoAutoInput" value="#{MBArtigoRevisao.selectedArtigoRevisao.estadoAuto}" style="width: 110px;"/>
+                                    </td>
+<!-- Estado GC -->
+                                    <td>
+                                        <h:selectBooleanCheckbox id="estadoGCInput" value="#{MBArtigoRevisao.selectedArtigoRevisao.estadoGc}" style="width: 110px;"/>
+                                    </td>
+                                </tr>                                
+
+                                <tr>
+                                    <td style="height: 40px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <td style="width: 200px;"></td>
+                                <td style="width: 5px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Comment.png" 
+                                                     value="ForumRevisao" 
+                                                     action="#{MBArtigoRevisao.acessoForum()}" />
+                                </td>                                
+
+                                <td style="width: 270px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBArtigoRevisao.introduzir()}" />
+                        </td>
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBArtigoRevisao.gravar()}" />
+                                </td>
+
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBArtigoRevisao.cancelarAct()}" />
+                                </td>
+                                
+                                <td style="width: 15px;"></td>                                
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Search.png" action="#{MBArtigoRevisao.pesquisar()}" />
+                                </td>                                                                    
+                                
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Eliminar" action="#{MBArtigoRevisao.eliminar()}" />
+                                </td>                                
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>                        
+                        
+                    </h:form>
+                </div>                
+                
+                
             </ui:define>
 
         </ui:composition>
 
+        <script>
+            $(document).ready(function(){
+                $("#AR").validate({
+                    rules: {
+                        'AR:preferenciaInput': {
+                            minlength: 3,
+                            maxlength: 60
+                        },
+
+                        'AR:pontuacaoInput': {
+                            minlength: 1,
+                            maxlength: 20
+                        }
+                    }
+                });
+            });
+        </script>                
+        
     </body>
 </html>

@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
 
@@ -11,12 +13,79 @@
                 Conference Team Manager
             </ui:define>
             
-            <ui:define name="conferencia">
-                top
+            <ui:define name="conferenciasRealizadas">
+                <h:dataTable id="confRealizGrid" value="#{MBConferenciaPublica.listaConfRealiz}" var="confRealiz"
+                             border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Conferência"/>
+                        </f:facet>
+                        <h:outputText value="#{confRealiz.subNomeConferencia}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data" />
+                        </f:facet>
+                        <h:outputText value="#{confRealiz.data}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Local" />
+                        </f:facet>
+                        <h:outputText value="#{confRealiz.local}" />
+                    </h:column>                                            
+                </h:dataTable>
             </ui:define>
 
-            <ui:define name="artigo">
-                left
+            <ui:define name="conferenciasFuturas">
+                <h:dataTable id="confFuturasGrid" value="#{MBConferenciaPublica.listaConfFuturas}" var="confFuturas"
+                             border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Conferência"/>
+                        </f:facet>
+                        <h:outputText value="#{confFuturas.subNomeConferencia}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data" />
+                        </f:facet>
+                        <h:outputText value="#{confFuturas.data}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Local" />
+                        </f:facet>
+                        <h:outputText value="#{confFuturas.local}" />
+                    </h:column>                                            
+                </h:dataTable>
+            </ui:define>            
+            
+            <ui:define name="topArtigos">
+                <h:dataTable id="topArtigosGrid" value="#{MBConferenciaPublica.listaTopArtigos}" var="topArtigos"
+                             border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Artigo"/>
+                        </f:facet>
+                        <h:outputText value="#{topArtigos.conferenciacomiteartigo.artigo.titulo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Conferência" />
+                        </f:facet>
+                        <h:outputText value="#{topArtigos.conferenciacomiteartigo.conferenciacomite.conferenciaedicao.descricao}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Pontuação" />
+                        </f:facet>
+                        <h:outputText value="#{topArtigos.conferenciacomiteartigo.pontuacao}" />
+                    </h:column>                                            
+                </h:dataTable>
             </ui:define>
 
         </ui:composition>

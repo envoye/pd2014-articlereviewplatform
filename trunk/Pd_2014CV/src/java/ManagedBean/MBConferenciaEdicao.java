@@ -36,11 +36,13 @@ public class MBConferenciaEdicao {
     private short maxArtigosRevisor;
     private short maxArtigos;
     private boolean configEncerrada;
+    
     private Conferencia conferencia=new Conferencia();
     private List<Conferencia> listConferencias; 
     private Tema temaEdicao=new Tema();
     private List<Tema> listTemas; 
-      @Inject
+    
+    @Inject
     private LoginUtilizador loginUtilizador;
     /**
      * Creates a new instance of ConferenciaEdicao
