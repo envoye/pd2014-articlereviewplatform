@@ -8,6 +8,7 @@ package ManagedBean;
 
 import HelpersHibernate.AllHellper;
 import HibernatePackage.Artigorevisao;
+import HibernatePackage.Conferenciacomiteartigo;
 import HibernatePackage.Conferenciaedicao;
 import java.util.List;
 import javax.enterprise.context.Dependent;
@@ -23,7 +24,7 @@ public class MBConferenciaPublica {
     private List<Conferenciaedicao> listaConfRealiz;
     private List<Conferenciaedicao> listaConfFuturas;
     
-    private List<Artigorevisao> listaTopArtigos;
+    private List<Conferenciacomiteartigo> listaTopArtigos;
     /**
      * Creates a new instance of MBConferenciaPublica
      */
@@ -32,11 +33,6 @@ public class MBConferenciaPublica {
  
     public List<Conferenciaedicao> getListaConfRealiz() {
         listaConfRealiz = TrabalharDados.WorkingData.getListEdicoesPassadas();
-//        if (listaConfRealiz == null){
-//            String condicao = " where conferenciaedicao.data < curdate() "
-//                    + "order by conferenciaedicao.data desc limit 10";
-//            listaConfRealiz = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class, condicao);
-//        }                
         return listaConfRealiz;
     }
 
@@ -45,11 +41,7 @@ public class MBConferenciaPublica {
     }
 
     public List<Conferenciaedicao> getListaConfFuturas() {
-        if (listaConfFuturas == null){
-            String condicao = " where conferenciaedicao.data >= curdate() "
-                    + "order by conferenciaedicao.data desc limit 10";
-            listaConfFuturas = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class, condicao);
-        }                        
+        listaConfFuturas = TrabalharDados.WorkingData.getListEdicoesFuturas();
         return listaConfFuturas;
     }
 
@@ -57,15 +49,12 @@ public class MBConferenciaPublica {
         this.listaConfFuturas = listaConfFuturas;
     }
 
-    public List<Artigorevisao> getListaTopArtigos() {
-        if (listaTopArtigos == null){
-            String condicao = " order by artigorevisao.pontuacao desc limit 10";
-            listaTopArtigos = (List<Artigorevisao>)AllHellper.getListQualquerCoisaCondicao(Artigorevisao.class, condicao);
-        }                                
+    public List<Conferenciacomiteartigo> getListaTopArtigos() {
+        listaTopArtigos = TrabalharDados.WorkingData.getListaTopArtigos();
         return listaTopArtigos;
     }
 
-    public void setListaTopArtigos(List<Artigorevisao> listaTopArtigos) {
+    public void setListaTopArtigos(List<Conferenciacomiteartigo> listaTopArtigos) {
         this.listaTopArtigos = listaTopArtigos;
     }
     

@@ -10,6 +10,7 @@ import HibernatePackage.Artigo;
 import HibernatePackage.Conferencia;
 import HibernatePackage.Conferenciaartigo;
 import HibernatePackage.Conferenciacomite;
+import HibernatePackage.Conferenciacomiteartigo;
 import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Conferenciapoolrevisores;
 import HibernatePackage.Contacto;
@@ -142,9 +143,14 @@ public class WorkingData {
         List<Conferenciaedicao> listConferencia = new ArrayList<Conferenciaedicao>();
         int id = 0;
         for (Conferencia conferencia : setConferencia) {
-            Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
-            if (isEdicaoPassada(conferenciaedicao)) {
-                listConferencia.add(conferenciaedicao);
+            if (id < 10){
+                Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
+                if (isEdicaoPassada(conferenciaedicao)) {
+                    listConferencia.add(conferenciaedicao);
+                    id++;
+                }
+            } else {
+                break;
             }
         }
         return listConferencia;
@@ -156,9 +162,13 @@ public class WorkingData {
         List<Conferenciaedicao> listConferencia = new ArrayList<Conferenciaedicao>();
         int id = 0;
         for (Conferencia conferencia : setConferencia) {
-            Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
-            if (!isEdicaoPassada(conferenciaedicao)) {
-                listConferencia.add(conferenciaedicao);
+            if (id < 10){            
+                Conferenciaedicao conferenciaedicao = getUltimaEdição(conferencia);
+                if (!isEdicaoPassada(conferenciaedicao)) {
+                    listConferencia.add(conferenciaedicao);
+                }
+            } else {
+                break;
             }
         }
         return listConferencia;
@@ -324,6 +334,18 @@ public class WorkingData {
         return listaArtigos;
     }
 
+    public static List<Conferenciacomiteartigo> getListaTopArtigos() {
+        List<Conferenciacomiteartigo> listaArtigos = null;
+        try {
+            String condicao = " order by artigorevisao.pontuacao desc limit 10";
+            listaArtigos = (List<Conferenciacomiteartigo>) AllHellper.getListQualquerCoisaCondicao(Conferenciacomiteartigo.class,condicao);
+        } catch (Exception ex) {
+
+        }
+        return listaArtigos;
+    }
+    
+    
     public static List<Artigo> getListaArtigosConferenciaedicaoNaoSubmetidosInvestigador(Conferenciaedicao conferenciaedicao, Investigador investigador) {
 
         ArrayList<Artigo> listaArtigos = new ArrayList<Artigo>();

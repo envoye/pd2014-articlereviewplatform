@@ -7,6 +7,20 @@
 
     <body>
 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="./css/5grid/core.css" />
+        <h:outputStylesheet name="./css/5grid/core-desktop.css" />
+        <h:outputStylesheet name="./css/5grid/core-1200px.css" />
+        <h:outputStylesheet name="./css/5grid/core-noscript.css" />
+        <h:outputStylesheet name="./css/style.css" />
+        <h:outputStylesheet name="./css/style-desktop.css" />
+        <h:outputStylesheet name="./css/Menu/styles.css" />        
+        <h:outputScript name="./css/5grid/jquery.js"/>
+        <h:outputScript name="./css/Menu/menu_jquery.js"/>
+        <h:outputScript name="./css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none"/>        
+        
         <ui:composition template="../Template/ConferenciasTemplate.xhtml">
 
             <ui:define name="title">
@@ -14,28 +28,38 @@
             </ui:define>
             
             <ui:define name="conferenciasRealizadas">
-                <h:dataTable id="confRealizGrid" value="#{MBConferenciaPublica.listaConfRealiz}" var="confRealiz"
-                             border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
-
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Conferência"/>
-                        </f:facet>
-                        <h:outputText value="#{confRealiz.subNomeConferencia}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Data" />
-                        </f:facet>
-                        <h:outputText value="#{confRealiz.data}" />
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Local" />
-                        </f:facet>
-                        <h:outputText value="#{confRealiz.local}" />
-                    </h:column>                                            
-                </h:dataTable>
+                <div class="5grid-layout">
+                    <div class="row divider">
+                        <section>
+                            <h:dataTable id="confRealizGrid" value="#{MBConferenciaPublica.listaConfRealiz}" var="confRealiz"
+                                         border="2" headerClass="areaPessoalGridHeader" rowClasses="areaPessoalGridOddRow,areaPessoalGridEvenRow">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Conferência" />
+                                    </f:facet>
+                                    <h:outputText value="#{confRealiz.subNomeConferencia}"/>
+                                </h:column>
+                                <h:column>
+                                    <h:outputText style=" " />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Data" />
+                                    </f:facet>
+                                    <h:outputText value="#{confRealiz.data}">
+                                        <f:convertDateTime pattern="dd.MM.yyyy" />                                                    
+                                    </h:outputText>                                                        
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Local" />
+                                    </f:facet>
+                                    <h:outputText value="#{confRealiz.local}" />
+                                </h:column>                                            
+                            </h:dataTable>
+                        </section>
+                    </div>
+                </div>
             </ui:define>
 
             <ui:define name="conferenciasFuturas">
@@ -52,7 +76,9 @@
                         <f:facet name="header">
                             <h:outputText value="Data" />
                         </f:facet>
-                        <h:outputText value="#{confFuturas.data}" />
+                        <h:outputText value="#{confFuturas.data}">
+                            <f:convertDateTime pattern="dd.MM.yyyy" />                                                    
+                        </h:outputText>                            
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -71,19 +97,19 @@
                         <f:facet name="header">
                             <h:outputText value="Artigo"/>
                         </f:facet>
-                        <h:outputText value="#{topArtigos.conferenciacomiteartigo.artigo.titulo}"/>
+                        <h:outputText value="#{topArtigos.artigo.titulo}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Conferência" />
                         </f:facet>
-                        <h:outputText value="#{topArtigos.conferenciacomiteartigo.conferenciacomite.conferenciaedicao.descricao}" />
+                        <h:outputText value="#{topArtigos.conferenciacomite.conferenciaedicao.subNomeConferencia}" />
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Pontuação" />
                         </f:facet>
-                        <h:outputText value="#{topArtigos.conferenciacomiteartigo.pontuacao}" />
+                        <h:outputText value="#{topArtigos.pontuacao}" />
                     </h:column>                                            
                 </h:dataTable>
             </ui:define>
