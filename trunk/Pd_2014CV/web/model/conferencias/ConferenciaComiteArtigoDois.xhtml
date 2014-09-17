@@ -42,8 +42,8 @@
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaComiteArtigo.conferenciacomite.id}" id="comiteInput" style="width: 300px">
-                                            <f:selectItems value="#{MBConferenciaComiteArtigo.listaConferenciaComite}" var="comite" itemValue="#{comite.id}" itemLabel="#{comite.investigador.nome}"/>
+                                        <h:selectOneMenu value="#{MBConferenciaComiteArtigo.idinvestigador}" id="comiteInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaComiteArtigo.listaInvestigadores}" var="comite" itemValue="#{comite.id}" itemLabel="#{comite.investigador.nome}"/>
                                         </h:selectOneMenu>                                                                                  
                                     </td>
                                 </tr>
@@ -58,25 +58,13 @@
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaComiteArtigo.artigo.id}" id="artigoInput" style="width: 300px">
+                                        <h:selectOneMenu value="#{MBConferenciaComiteArtigo.idartigo}" id="artigoInput" style="width: 300px">
                                             <f:selectItems value="#{MBConferenciaComiteArtigo.listaArtigos}" var="artigo" itemValue="#{artigo.id}" itemLabel="#{artigo.titulo}"/>
                                         </h:selectOneMenu>                                                                                  
                                     </td>
                                 </tr>
 <!--Estado-->
-                                <tr>
-                                    <td style="width: 80px; height: 40px;"></td>
-                                    <td align="right" style="width: 200px;">
-                                        <h:outputLabel for="estadoInput">
-                                            Estado
-                                        </h:outputLabel>                                        
-                                    </td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="estadoInput" value="#{MBConferenciaComiteArtigo.estado}" 
-                                                     required="true" />                                                        
-                                    </td>
-                                </tr>
+                                
 <!-- Licitação: Início -->
                                 <tr>
                                     <td style="width: 80px; height: 40px;"></td>
@@ -106,33 +94,9 @@
                                     </td>
                                 </tr>
 <!--Pontuação-->
-                                <tr>
-                                    <td style="width: 80px; height: 40px;"></td>
-                                    <td align="right" style="width: 200px;">
-                                        <h:outputLabel for="pontuacaoInput">
-                                            Pontuação
-                                        </h:outputLabel>                                        
-                                    </td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="pontuacaoInput" size="3" value="#{MBConferenciaComiteArtigo.pontuacao}" 
-                                                     required="true" />                                                        
-                                    </td>
-                                </tr>
+                                
 <!--Pontuação Comite-->
-                                <tr>
-                                    <td style="width: 80px; height: 40px;"></td>
-                                    <td align="right" style="width: 200px;">
-                                        <h:outputLabel for="pontuacaoComiteInput">
-                                            Pontuação do Comité
-                                        </h:outputLabel>                                        
-                                    </td>
-                                    <td style="width: 10px;"></td>
-                                    <td>
-                                        <h:inputText id="pontuacaoComiteInput" size="3" value="#{MBConferenciaComiteArtigo.pontuacaoComite}" 
-                                                     required="true" />                                                        
-                                    </td>
-                                </tr>
+                                
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>

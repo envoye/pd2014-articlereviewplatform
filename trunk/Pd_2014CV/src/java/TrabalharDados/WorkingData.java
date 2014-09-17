@@ -401,4 +401,51 @@ public class WorkingData {
         return Investigadoramigos;
     }
 
+    public static List<Artigo> getListaArtigosConferenciaAtribuidosComite(Conferenciaedicao conferenciaedicao) {
+
+        ArrayList<Artigo> listaArtigos = new ArrayList<Artigo>();
+        Set<Conferenciacomite> comiteEdicao = conferenciaedicao.getConferenciacomites();
+            for (Conferenciacomite inv : comiteEdicao ) {
+            Set<Conferenciacomiteartigo> conferenciacomiteartigos = inv.getConferenciacomiteartigos(); 
+                for (Conferenciacomiteartigo conferenciacomiteartigo : conferenciacomiteartigos) {
+                   listaArtigos.add(conferenciacomiteartigo.getArtigo());
+                    
+                }
+                    
+                }
+            
+
+        return listaArtigos;
+    } 
+    
+   public static List<Artigo> getListaArtigosConferenciaNaoAtribuidosComite(Conferenciaedicao conferenciaedicao) {
+
+        ArrayList<Artigo> listaArtigos = new ArrayList<Artigo>();
+        List<Artigo> InvestigadorArtigos = getListaArtigosConferenciaAtribuidosComite(conferenciaedicao);
+        List<Artigo> ConferenciaedicaoArtigos = getListaArtigosConferenciaedicao(conferenciaedicao);
+        for (Artigo artigo : InvestigadorArtigos) {
+            for (Artigo ConferenciaedicaoArtigo : ConferenciaedicaoArtigos) {
+                if (ConferenciaedicaoArtigo.getId() == artigo.getId()) {
+                    listaArtigos.add(artigo);
+                    break;
+                }
+            }
+
+        }
+        InvestigadorArtigos.removeAll(listaArtigos);
+        return InvestigadorArtigos;
+    } 
+    
+      public static Conferenciacomite getComiteDoInvestigadorEdicao(Conferenciaedicao conferenciaedicao,Investigador investigador) {
+
+          Set<Conferenciacomite> conferenciacomite=conferenciaedicao.getConferenciacomites();
+          for (Conferenciacomite conferenciacomite1 : conferenciacomite) {
+              if(conferenciacomite1.getInvestigador().getId()==investigador.getId()){
+              return conferenciacomite1;
+              }
+              
+          }
+          
+         return null; 
+      }
 }
