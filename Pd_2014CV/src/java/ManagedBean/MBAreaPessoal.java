@@ -39,7 +39,6 @@ public class MBAreaPessoal implements Serializable {
     public List<Conferenciaedicao> getListaGC() {
         Investigador i=loginUtilizador.getInvestigador();
         listaGC=TrabalharDados.WorkingData.getTodasEdicaosConferenciasAbertasInvestigador(i);
-              
         return listaGC;
     }
 

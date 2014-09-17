@@ -31,11 +31,12 @@ public class MBConferenciaPublica {
     }
  
     public List<Conferenciaedicao> getListaConfRealiz() {
-        if (listaConfRealiz == null){
-            String condicao = " where conferenciaedicao.data < curdate() "
-                    + "order by conferenciaedicao.data desc limit 10";
-            listaConfRealiz = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class, condicao);
-        }                
+        listaConfRealiz = TrabalharDados.WorkingData.getListEdicoesPassadas();
+//        if (listaConfRealiz == null){
+//            String condicao = " where conferenciaedicao.data < curdate() "
+//                    + "order by conferenciaedicao.data desc limit 10";
+//            listaConfRealiz = (List<Conferenciaedicao>)AllHellper.getListQualquerCoisaCondicao(Conferenciaedicao.class, condicao);
+//        }                
         return listaConfRealiz;
     }
 
