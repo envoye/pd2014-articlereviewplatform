@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
@@ -41,6 +42,13 @@
                                     <td align="right" style="width: 250px;">Artigo</td>
                                     <td style="width: 10px;"></td>
                                     <td>
+                                        <c:if test="${MBConferenciaArtigo.listaArtigos==null}">
+                                         <meta http-equiv="refresh" content="0; url=/Pd_2014CV/faces/model/principais/AreaPessoal.xhtml" />
+                                        </c:if>
+                                        
+                                       <c:if test="${0>=MBConferenciaArtigo.listaArtigos.size()}">
+                                         <meta http-equiv="refresh" content="0; url=/Pd_2014CV/faces/model/principais/AreaPessoal.xhtml" />
+                                        </c:if>
                                         <h:selectOneMenu value="#{MBConferenciaArtigo.idartigo}" id="artigoInput" style="width: 300px">
                                             <f:selectItems value="#{MBConferenciaArtigo.listaArtigos}" var="artigos" itemValue="#{artigos.id}" itemLabel="#{artigos.titulo}"/>
                                         </h:selectOneMenu>                                          
@@ -73,7 +81,10 @@
                                     <h:commandButton image="../../images/ctm_Save.png" value="gravar" action="#{MBConferenciaArtigo.gravar()}" />
 
                                 </td>
-
+                                 <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Cancelar" action="#{MBConferenciaArtigo.cancelar()}" />
+                                </td>  
                                 
 
                             </tr>
