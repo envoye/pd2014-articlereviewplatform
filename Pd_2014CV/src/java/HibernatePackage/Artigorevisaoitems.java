@@ -8,12 +8,11 @@ package HibernatePackage;
  */
 public class Artigorevisaoitems  implements java.io.Serializable {
 
-
-     private ArtigorevisaoitemsId id;
-     private Artigorevisao artigorevisao;
-     private Itemrevisao itemrevisao;
-     private Byte classificacao;
-     private String descricao;
+    private ArtigorevisaoitemsId id;
+    private Artigorevisao artigorevisao;
+    private Itemrevisao itemrevisao;
+    private Byte classificacao;
+    private String descricao;
 
     public Artigorevisaoitems() {
     }

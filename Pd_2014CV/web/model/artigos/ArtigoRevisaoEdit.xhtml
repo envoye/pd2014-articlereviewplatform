@@ -38,7 +38,7 @@
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBArtigoRevisao.selectedArtigoRevisao.conferenciacomiteartigo.id}" id="artigoInput" style="width: 300px">
+                                        <h:selectOneMenu value="#{MBArtigoRevisao.artigoId}" id="artigoInput" style="width: 300px">
                                             <f:selectItems value="#{MBArtigoRevisao.listaArtigos}" var="artigos" itemValue="#{artigos.id}" itemLabel="#{artigos.titulo}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
@@ -53,7 +53,7 @@
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBArtigoRevisao.selectedArtigoRevisao.conferenciapoolrevisores.id}" id="revisorInput" style="width: 300px">
+                                        <h:selectOneMenu value="#{MBArtigoRevisao.revisorId}" id="revisorInput" style="width: 300px">
                                             <f:selectItems value="#{MBArtigoRevisao.listaRevisores}" var="revisores" itemValue="#{revisores.id}" itemLabel="#{revisores.investigador.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
@@ -141,10 +141,14 @@
                                                      action="#{MBArtigoRevisao.acessoForum()}" />
                                 </td>                                
 
-                                <td style="width: 270px;"></td>
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Modify.png" value="AssociarItem" action="#{MBArtigoRevisao.addItem()}" />
+                                </td>                                
+                                <td style="width: 150px;"></td>
                                 <td>
                                     <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBArtigoRevisao.introduzir()}" />
-                        </td>
+                                </td>
                                 <td style="width: 15px;"></td>
                                 <td>
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBArtigoRevisao.gravar()}" />
