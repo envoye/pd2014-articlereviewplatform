@@ -5,67 +5,65 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <h:head>
-
-        <!-- jQuery and Bootstrap JS -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-        <!-- BootstrapValidator JS -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>         
-
-    </h:head>
-    
     <body>
 
         <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
 
             <ui:define name="title">
-                Conference Team Manager - Revisão de Artigo
+                Conference Team Manager - Items para Revisão de Artigo
             </ui:define>
 
             <ui:define name="formTitle">
-                <h3 class="subtitle" align="center">Revisão de Artigo</h3>
+                <h3 class="subtitle" align="center">Items para Revisão de Artigo</h3>
             </ui:define>
 
             <ui:define name="form">
-                
                 <div class="boxForm">
 
-                    <h:form id="AR" class="jqtransform">
+                    <h:form id="ARI" class="jqtransform">
                         <table>
                             <tbody>
                                 <tr>
                                     <td style="height: 20px;"></td>
                                 </tr>
-<!-- Artigo -->
+<!-- ArtigoRevisao -->
                                 <tr>
                                     <td style="width: 10px; height: 30px;"></td>
                                     <td align="right" style="width: 250px;">
-                                        <h:outputLabel for="ArtigoInput">
+                                        <h:outputLabel for="ArtigoRevisaoInput">
+                <div class="boxForm">
+
+                    <h:form id="ARI" class="jqtransform">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!-- ArtigoRevisao -->
+                                <tr>
+                                    <td style="width: 10px; height: 30px;"></td>
+                                    <td align="right" style="width: 250px;">
+                                        <h:outputLabel for="ArtigoRevisaoInput">
                                             Artigo
                                         </h:outputLabel>                                        
-                                        
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBArtigoRevisao.conferenciacomiteartigo.id}" id="artigoInput" style="width: 300px">
-                                            <f:selectItems value="#{MBArtigoRevisao.listaArtigos}" var="artigos" itemValue="#{artigos.id}" itemLabel="#{artigos.titulo}"/>
-                                        </h:selectOneMenu>                                          
+                                        <h:inputText id='ArtigoInput' size='60' value="#{MBArtigoRevisao.conferenciacomiteartigo.artigo.titulo}"/> 
                                     </td>
                                 </tr>
-<!-- Revisor -->
+<!-- ItemRevisao -->
                                 <tr>
                                     <td style="width: 10px; height: 30px;"></td>
                                     <td align="right" style="width: 250px;">
                                         <h:outputLabel for="RevisorInput">
-                                            Revisor
+                                            Item
                                         </h:outputLabel>                                        
                                     </td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBArtigoRevisao.conferenciapoolrevisores.id}" id="revisorInput" style="width: 300px">
-                                            <f:selectItems value="#{MBArtigoRevisao.listaRevisores}" var="revisores" itemValue="#{revisores.id}" itemLabel="#{revisores.investigador.nome}"/>
+                                        <h:selectOneMenu value="#{MBArtigoRevisaoItem.revisaoItemId}" id="itemRevisaoInput" style="width: 300px">
+                                            <f:selectItems value="#{MBArtigoRevisaoItem.listaItemsRevisao}" var="itemsRevisao" itemValue="#{itemsRevisao.id}" itemLabel="#{itemsRevisao.nomeItem}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
                                 </tr>                                
@@ -81,12 +79,12 @@
                                 <td style="width: 500px;"></td>
 
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBArtigoRevisao.gravar()}" />
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBArtigoRevisaoItem.gravar()}" />
                                 </td>
 
                                 <td style="width: 15px;"></td>
                                 <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBArtigoRevisao.cancelarIntro()}" />
+                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBArtigoRevisaoItem.cancelarIntro()}" />
                                 </td>
 
                             </tr>
@@ -97,10 +95,9 @@
                         
                     </h:form>
                 </div>                
-                
             </ui:define>
 
         </ui:composition>
-        
+
     </body>
 </html>

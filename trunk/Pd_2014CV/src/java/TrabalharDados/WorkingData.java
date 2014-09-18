@@ -15,6 +15,7 @@ import HibernatePackage.Conferenciaedicao;
 import HibernatePackage.Conferenciapoolrevisores;
 import HibernatePackage.Contacto;
 import HibernatePackage.Investigador;
+import HibernatePackage.Itemrevisao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -345,6 +346,16 @@ public class WorkingData {
         return listaArtigos;
     }
     
+    public static List<Itemrevisao> getListaItemsRevisao(int itemTipo) {
+        List<Itemrevisao> listaItems = null;
+        try {
+            String condicao = " where Itemrevisao.tipo = " + itemTipo;
+            listaItems = (List<Itemrevisao>) AllHellper.getListQualquerCoisaCondicao(Itemrevisao.class,condicao);
+        } catch (Exception ex) {
+            
+        }
+        return listaItems;        
+    }    
     
     public static List<Artigo> getListaArtigosConferenciaedicaoNaoSubmetidosInvestigador(Conferenciaedicao conferenciaedicao, Investigador investigador) {
 
@@ -405,16 +416,13 @@ public class WorkingData {
 
         ArrayList<Artigo> listaArtigos = new ArrayList<Artigo>();
         Set<Conferenciacomite> comiteEdicao = conferenciaedicao.getConferenciacomites();
-            for (Conferenciacomite inv : comiteEdicao ) {
-            Set<Conferenciacomiteartigo> conferenciacomiteartigos = inv.getConferenciacomiteartigos(); 
-                for (Conferenciacomiteartigo conferenciacomiteartigo : conferenciacomiteartigos) {
-                   listaArtigos.add(conferenciacomiteartigo.getArtigo());
-                    
-                }
-                    
-                }
-            
+        for (Conferenciacomite inv : comiteEdicao ) {
+        Set<Conferenciacomiteartigo> conferenciacomiteartigos = inv.getConferenciacomiteartigos(); 
+            for (Conferenciacomiteartigo conferenciacomiteartigo : conferenciacomiteartigos) {
+               listaArtigos.add(conferenciacomiteartigo.getArtigo());
 
+            }
+        }
         return listaArtigos;
     } 
     
