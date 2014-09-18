@@ -34,7 +34,7 @@
                                     <td align="right" style="width: 250px;">Investigador</td>
                                     <td style="width: 10px;"></td>
                                     <td>
-                                        <h:selectOneMenu value="#{MBConferenciaPoolRevisores.revisorId}" id="investigadorInput" style="width: 300px">
+                                        <h:selectOneMenu value="#{MBConferenciaPoolRevisores.idinvestigador}" id="investigadorInput" style="width: 300px">
                                             <f:selectItems value="#{MBConferenciaPoolRevisores.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.nome}"/>
                                         </h:selectOneMenu>                                          
                                     </td>
@@ -58,7 +58,7 @@
                                     <td align="right" style="width: 60px;">de</td>
                                     <td style="width: 10px;"></td>                                    
                                     <td>
-                                        <h:inputText id="inicioConviteInput" value="#{MBConferenciaPoolRevisores.selectedRevisor.dataInicioConvite}" class="datetime" size="10"
+                                        <h:inputText id="inicioConviteInput" value="#{MBConferenciaPoolRevisores.dataInicioConvite}" class="datetime" size="10"
                                                      required="false">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
                                     </td>
                                 </tr>
@@ -68,7 +68,7 @@
                                     <td align="right" style="width: 60px;">até</td>
                                     <td style="width: 10px;"></td>                                    
                                     <td>
-                                        <h:inputText id="fimConviteInput" value="#{MBConferenciaPoolRevisores.selectedRevisor.dataFimConvite}" class="datetime" size="10"
+                                        <h:inputText id="fimConviteInput" value="#{MBConferenciaPoolRevisores.dataFimConvite}" class="datetime" size="10"
                                                      required="false">  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
                                     </td>
                                 </tr>
@@ -102,15 +102,8 @@
                                     <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaPoolRevisores.gravar()}" />
                                 </td>
 
-                                <td style="width: 15px;"></td>
-                                <td>
-                                    <h:commandButton image="../../images/ctm_Delete.png" value="Cancelar" action="#{MBConferenciaPoolRevisores.eliminar()}" />
-                                </td>
-
-                                <td style="width: 15px;"></td>                                
-                                <td>
-                                    <h:commandButton image="../../images/ctm_Search.png" action="#{MBConferenciaPoolRevisores.pesquisar()}" />
-                                </td>                                                                    
+                                
+                                                                                        
                                 
                                 <td style="width: 15px;"></td>
                                 <td>

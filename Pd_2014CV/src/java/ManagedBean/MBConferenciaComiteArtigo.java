@@ -127,16 +127,10 @@ public class MBConferenciaComiteArtigo implements Serializable {
         this.pontuacaoComite = pontuacaoComite;
     }
 
-    public List<Conferenciacomite> getListaConferenciaComite() {
-        if(this.listaConferenciaComite == null){
-            this.listaConferenciaComite = (List<Conferenciacomite>)AllHellper.getListQualquerCoisa(Conferenciacomite.class);
-        }                        
-        return listaConferenciaComite;
-    }
+   
+   
 
-    public void setListaConferenciaComite(List<Conferenciacomite> listaConferenciaComite) {
-        this.listaConferenciaComite = listaConferenciaComite;
-    }
+ 
 
     public List<Artigo> getListaArtigos() {
         

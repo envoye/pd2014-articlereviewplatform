@@ -434,14 +434,14 @@ public class WorkingData {
         for (Artigo artigo : InvestigadorArtigos) {
             for (Artigo ConferenciaedicaoArtigo : ConferenciaedicaoArtigos) {
                 if (ConferenciaedicaoArtigo.getId() == artigo.getId()) {
-                    listaArtigos.add(artigo);
+                    listaArtigos.add(ConferenciaedicaoArtigo);
                     break;
                 }
             }
 
         }
-        InvestigadorArtigos.removeAll(listaArtigos);
-        return InvestigadorArtigos;
+        ConferenciaedicaoArtigos.removeAll(listaArtigos);
+        return ConferenciaedicaoArtigos;
     } 
     
       public static Conferenciacomite getComiteDoInvestigadorEdicao(Conferenciaedicao conferenciaedicao,Investigador investigador) {
@@ -456,4 +456,63 @@ public class WorkingData {
           
          return null; 
       }
+      
+     public static List<Conferenciapoolrevisores> getListaRevisoresedicao(Conferenciaedicao conferenciaedicao) {
+
+        ArrayList<Conferenciapoolrevisores> ListConferenciapoolrevisores = new ArrayList<Conferenciapoolrevisores>();
+        
+        for (Conferenciapoolrevisores conf: conferenciaedicao.getConferenciapoolrevisoreses()) {
+           ListConferenciapoolrevisores.add(conf);
+
+        }
+        
+        return ListConferenciapoolrevisores ;
+    }
+      public static List<Investigador> getListaInvestigadoresRevisoresedicao(Conferenciaedicao conferenciaedicao) {
+
+        ArrayList<Investigador> ListConferenciapoolrevisores = new ArrayList<Investigador>();
+        
+        for (Conferenciapoolrevisores conf: conferenciaedicao.getConferenciapoolrevisoreses()) {
+           ListConferenciapoolrevisores.add(conf.getInvestigador());
+
+        }
+        
+        return ListConferenciapoolrevisores ;
+    } 
+     
+     public static List<Investigador> getListaAmigosNaoRevisores(Conferenciaedicao conferenciaedicao, Investigador investigador) {
+
+        ArrayList<Investigador> listInvestigador = new ArrayList<Investigador>();
+        List<Investigador> Investigadoramigos = GetContactosDoInvestigador(investigador);
+        List<Investigador> ConferenciaedicaoInvestigador = getListaInvestigadoresRevisoresedicao(conferenciaedicao);
+        for (Investigador inv : Investigadoramigos) {
+            for (Investigador Com : ConferenciaedicaoInvestigador) {
+                if (Com.getId() == inv.getId()) {
+                    listInvestigador.add(inv);
+                    break;
+                }
+            }
+
+        }
+        
+        Investigadoramigos.removeAll(listInvestigador);
+        return Investigadoramigos;
+    } 
+     
+    public static List<Conferencia> getTodasConferenciasAbertasInvestigadorComite(Investigador investigador) {
+      
+        Set<Conferenciacomite> setConferenciacomite = investigador.getConferenciacomites();
+        List<Conferencia> listConferenciaedicao = new ArrayList<Conferencia>();
+       
+        for (Conferenciacomite comite : setConferenciacomite) {
+            Conferenciaedicao conferenciaedicao = comite.getConferenciaedicao();
+            if (isOpenConferenciaedicao(conferenciaedicao)) {
+                listConferenciaedicao.add(conferenciaedicao.getConferencia());
+            }
+        }
+        return listConferenciaedicao;
+    }
+     
+     
+     
 }
