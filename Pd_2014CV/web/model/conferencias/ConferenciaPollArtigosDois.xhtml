@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../Template/AreaPessoalTemplate.xhtml">
+ <ui:define name="title">
+                Conference Team Manager - Pool de Revisores
+            </ui:define>
+
+            <ui:define name="formTitle">
+                <h3 class="subtitle" align="center">Pool de Revisores da Conferência</h3>
+            </ui:define>
+
+            <ui:define name="form">
+                
+                <div class="boxForm">
+
+                    <h:form class="jqtransform">
+
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+<!-- Investigador -->
+                                <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Investigador</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferenciaPoolRevisoresArtigo.idinvestigador}" id="investigadorInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaPoolRevisoresArtigo.listaInvestigadores}" var="investigadores" itemValue="#{investigadores.id}" itemLabel="#{investigadores.investigador.nome}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>
+    <tr>
+                                    <td style="width: 10px; height: 40px;"></td>
+                                    <td align="right" style="width: 250px;">Investigador</td>
+                                    <td style="width: 10px;"></td>
+                                    <td>
+                                        <h:selectOneMenu value="#{MBConferenciaPoolRevisoresArtigo.idcomiteartigo}" id="artigodorInput" style="width: 300px">
+                                            <f:selectItems value="#{MBConferenciaPoolRevisoresArtigo.conferenciacomiteartigo}" var="ciacomiteartig" itemValue="#{ciacomiteartig.id}" itemLabel="#{ciacomiteartig.artigo.titulo}"/>
+                                        </h:selectOneMenu>                                          
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>                                
+
+                               
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>                                
+<!-- Estado -->                                
+                               
+<!-- Classificação -->
+                               
+                                <tr>
+                                    <td style="height: 20px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <td style="width: 500px;"></td>
+
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Add.png" value="Novo" action="#{MBConferenciaPoolRevisoresArtigo.introduzir()}" />
+                                </td>
+                                <td style="width: 15px;"></td>
+
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Save.png" value="Gravar" action="#{MBConferenciaPoolRevisoresArtigo.gravar()}" />
+                                </td>
+
+                                
+                                                                                        
+                                
+                                <td style="width: 15px;"></td>
+                                <td>
+                                    <h:commandButton image="../../images/ctm_Exit.png" value="Eliminar" action="#{MBConferenciaPoolRevisoresArtigo.cancelarAct()}" />
+                                </td>                                                                
+                            </tr>
+                            <tr>
+                                <td style="height: 50px;"></td>
+                            </tr>
+                        </table>                        
+                        
+                    </h:form>
+                    
+                </div>                                    
+                
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>
